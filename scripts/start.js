@@ -7,7 +7,7 @@ const webpackConfig = require( '../config/webpack.dev' );
 
 new WebpackDevServer( webpack( webpackConfig ), {
 	disableHostCheck: true,
-	publicPath: config.output.publicPath,
+	publicPath: webpackConfig.output.publicPath,
 	hot: true,
 	https: true,
 	historyApiFallback: true,

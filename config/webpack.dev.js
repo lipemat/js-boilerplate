@@ -1,6 +1,8 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const config = require( '../helpers/package-config' );
+const postCSSOptions = require('../config/postcss.config' );
+const babelOptions = require('../config/babel.config' );
 
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
@@ -40,9 +42,10 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				use: [ 'babel-loader' ],
+				loader: 'babel-loader',
 				include: path.resolve( config.workingDirectory, 'src' ),
-				exclude: /node_modules/
+				exclude: /node_modules/,
+				query: babelOptions
 			},
 			{
 				test: /\.pcss$/,
@@ -59,9 +62,7 @@ module.exports = {
 					},
 					{
 						loader: 'postcss-loader',
-						options: {
-							sourceMap: true
-						}
+						options: postCSSOptions
 					}
 				]
 			}

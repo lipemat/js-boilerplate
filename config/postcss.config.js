@@ -14,6 +14,8 @@ if ( 'production' === process.env.NODE_ENV ) {
 	config.plugins.push( require( 'postcss-clean' )( {
 		level: 2
 	} ) );
+} else {
+	config.sourceMap = true;
 }
 
 

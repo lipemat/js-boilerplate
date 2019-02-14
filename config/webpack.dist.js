@@ -41,6 +41,8 @@ module.exports = {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
+				include: path.resolve( config.workingDirectory, 'src' ),
+				exclude: /node_modules/,
 				query: babelOptions
 			},
 			{
