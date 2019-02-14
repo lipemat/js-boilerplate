@@ -3,11 +3,12 @@ const config = require( '../helpers/package-config' );
 
 module.exports = {
 	verbose: true,
+	babelrc: true,
 	'moduleNameMapper': {
-		'^.+\\.pcss$': path.resolve( __dirname, '../tests/mocks/style-mock.js' )
+		"^.+\\.pcss$": path.resolve( __dirname, '../tests/mocks/style-mock.js' )
 	},
 	'transform': {
-		'^.+\\.js$': path.resolve( __dirname, '../tests/transformers/babel.transform.js' )
+		"^.+\\.jsx?$": path.resolve( __dirname, '../tests/transformers/babel.transform.js' )
 	},
 	'setupFilesAfterEnv': [ path.resolve( config.workingDirectory, 'tests/setup.js' ) ]
 };

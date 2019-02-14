@@ -1,16 +1,13 @@
 module.exports = {
-	"presets": [
+	'presets': [
 		[
-			"env",
-			{
-				"modules": false
-			}
+			'env'
 		],
-		"stage-2",
-		"react"
+		'stage-2',
+		'react'
 	],
-	"plugins": [
-		"syntax-dynamic-import",
-		"react-hot-loader/babel"
+	'plugins': [
+		'syntax-dynamic-import',
+		'react-hot-loader/babel'
 	]
-}
+};

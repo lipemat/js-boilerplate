@@ -5,8 +5,14 @@
  */
 
 module.exports = require( 'babel-jest' ).createTransformer( {
+	babelrc: false,
 	'presets': [
-		'env',
+		[
+			'env',
+			{
+				modules: false
+			}
+		],
 		'stage-2',
 		'react'
 	],
