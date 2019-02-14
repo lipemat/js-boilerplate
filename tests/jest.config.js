@@ -5,12 +5,12 @@ const config = require( '../helpers/package-config' );
  * to have configuration files in the root of the project.
  *
  * We pull what we need from the here from that file.
+ * Also allows overriding configurations per project, not sure if we actually need that yet?
  *
  * @notice may become available later https://github.com/facebook/jest/pull/7696
  *
  */
 module.exports = {
-	verbose: true,
 	'moduleNameMapper': {
 		"^.+\.pcss$": path.resolve( __dirname, '../tests/mocks/style-mock.js' )
 	},
@@ -18,5 +18,5 @@ module.exports = {
 	'transform': {
 		"^.+\\.jsx?$": path.resolve( __dirname, '../tests/transformers/babel.transform.js' )
 	},
-	'setupTestFrameworkScriptFile': path.resolve( config.workingDirectory, 'tests/setup.js' )
+	'setupFilesAfterEnv': [ path.resolve( config.workingDirectory, 'tests/setup.js' ) ]
 };
