@@ -12,19 +12,5 @@ module.exports = {
 	"plugins": [
 		"syntax-dynamic-import",
 		"react-hot-loader/babel"
-	],
-	"env": {
-		"test": {
-			"presets": [
-				[
-					"env"
-				],
-				"stage-2",
-				"react"
-			],
-			"plugins": [
-				"babel-plugin-dynamic-import-node"
-			]
-		}
-	}
+	]
 }
