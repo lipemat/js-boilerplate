@@ -31,6 +31,8 @@
     "lipemat-js-boilerplate": "node scripts/init.js"
   },
   "dependencies": {
+    "@types/react-test-renderer": "^16.8.1",
+    "@types/jest": "^24.0.4",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^23.6.0",
