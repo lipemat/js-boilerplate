@@ -1,0 +1,22 @@
+{
+  "name": "lipemat-js-boilerplate",
+  "version": "0.0.1",
+  "description": "Dependencies and scripts for a no config JavaScript App",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lipemat/js-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "boilerplate",
+    "ES6",
+    "no-config"
+  ],
+  "author": "Mat Lipe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lipemat/js-boilerplate/issues"
+  },
+  "homepage": "https://github.com/lipemat/js-boilerplate#readme"
+}
