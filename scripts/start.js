@@ -1,15 +1,11 @@
+process.env.BABEL_ENV = 'development';
+process.env.NODE_ENV = 'development';
+
 const webpack = require( 'webpack' );
 const WebpackDevServer = require( 'webpack-dev-server' );
+const webpackConfig = require( '../config/webpack.dev' );
 
-new webpack.DefinePlugin( {
-	PRODUCTION: JSON.stringify( false ),
-	'process.env.BABEL_ENV': JSON.stringify( 'development' ),
-	'process.env.NODE_ENV': JSON.stringify( 'development' )
-} );
-
-const config = require( '../config/webpack.dev' );
-
-new WebpackDevServer( webpack( config ), {
+new WebpackDevServer( webpack( webpackConfig ), {
 	disableHostCheck: true,
 	publicPath: config.output.publicPath,
 	hot: true,
