@@ -1,6 +1,6 @@
 {
   "name": "lipemat-js-boilerplate",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Dependencies and scripts for a no config JavaScript App",
   "main": "index.js",
   "repository": {
@@ -27,6 +27,9 @@
   "author": "Mat Lipe",
   "license": "MIT",
   "sideEffects": false,
+  "scripts": {
+    "lipemat-js-boilerplate": "node scripts/init.js"
+  },
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",

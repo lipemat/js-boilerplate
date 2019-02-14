@@ -1,0 +1,16 @@
+{
+  "name": "core-js",
+  "version": "1.0.0",
+  "description": "JS App from the core theme",
+  "theme_path": "/wp-content/themes/core/",
+  "scripts": {
+    "dist": "lipemat-js-boilerplate dist",
+    "start": "lipemat-js-boilerplate start",
+    "lint": "eslint src --fix",
+    "test": "lipemat-js-boilerplate test"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "lipemat-js-boilerplate": "1.0.0"
+  }
+}
