@@ -6,7 +6,7 @@
   "scripts": {
     "dist": "lipemat-js-boilerplate dist",
     "start": "lipemat-js-boilerplate start",
-    "lint": "eslint src --fix",
+    "lint": "lipemat-js-boilerplate lint",
     "test": "lipemat-js-boilerplate test"
   },
   "devDependencies": {},
