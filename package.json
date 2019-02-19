@@ -31,6 +31,8 @@
     "lipemat-js-boilerplate": "node scripts/init.js"
   },
   "dependencies": {
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.8.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^23.6.0",
@@ -63,9 +65,9 @@
     "postcss-preset-env": "^6.5.0",
     "postcss-scss": "^2.0.0",
     "prop-types": "^15.7.1",
-    "react": "^16.8.1",
+    "react": "^16.8.2",
     "react-document-title": "^2.0.3",
-    "react-dom": "^16.8.1",
+    "react-dom": "^16.8.2",
     "react-hot-loader": "^4.6.5",
     "react-loadable": "^5.4.0",
     "react-redux": "^5.0.7",
