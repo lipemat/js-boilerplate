@@ -5,9 +5,9 @@ const webpack = require( 'webpack' );
 const webpackConfig = require( '../helpers/config' ).getConfig( 'webpack.dist.js' );
 
 
-async function build( webpackConfig ) {
+async function build( config ) {
 	// Compiler Instance.
-	const compiler = await webpack( webpackConfig );
+	const compiler = await webpack( config );
 
 	// Run the compiler.
 	compiler.run( ( err, stats ) => {
@@ -15,3 +15,4 @@ async function build( webpackConfig ) {
 	} );
 
 }
+build( webpackConfig );
