@@ -2,7 +2,7 @@ process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const webpack = require( 'webpack' );
-const webpackConfig = require( '../config/webpack.dist' );
+const webpackConfig = require( '../helpers/config' ).getConfig( 'webpack.dist.js' );
 
 
 async function build( webpackConfig ) {
@@ -12,8 +12,6 @@ async function build( webpackConfig ) {
 	// Run the compiler.
 	compiler.run( ( err, stats ) => {
 		console.log( stats.toString() );
-	});
+	} );
 
 }
-
-build(webpackConfig);

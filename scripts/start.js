@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'development';
 
 const webpack = require( 'webpack' );
 const WebpackDevServer = require( 'webpack-dev-server' );
-const webpackConfig = require( '../config/webpack.dev' );
+const webpackConfig = require( '../helpers/config' ).getConfig('webpack.dev.js');
 
 new WebpackDevServer( webpack( webpackConfig ), {
 	disableHostCheck: true,

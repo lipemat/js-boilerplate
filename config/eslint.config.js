@@ -1,3 +1,6 @@
+const packageConfig = require( '../helpers/package-config' );
+const path = require( 'path' );
+
 /**
  * To create a custom config to extend, eslint requires a node module starting with
  * the name `eslint-config-`.
@@ -10,7 +13,7 @@
  *
  */
 
-module.exports = {
+let config = {
 	'extends': [
 		'wordpress',
 		'plugin:react/recommended'
@@ -35,3 +38,12 @@ module.exports = {
 		}
 	}
 };
+
+/**
+ * Allows overriding configurations in the project `/config/eslint.config.js` file.
+ * We don't actually need to do this because .eslintrc is already an override of this
+ * file but we support it anyway to keep things consistant.
+ *
+ */
+
+module.exports = config;

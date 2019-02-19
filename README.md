@@ -35,6 +35,14 @@ To use the built in eslint, copy the following items from `templates` into your 
 
 Now you may adjust the eslint configuration as desired and run the linter via `yarn run lint`.
 
+### Configuration Overrides
+All configurations are found in the `config` directory and may be extended by adding a matching file within your project directory.
+
+For instance is you want to adjust `webpack.dev.js` you may add a `config/webpack.dev.js` file in your project directory.
+
+All declarations are merged in favor of the project config.
+
+
 
 ### Testing
 To use the built in testing, copy the following items from `templates` into your project root:

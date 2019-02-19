@@ -1,7 +1,5 @@
 /**
  * Get all configurations for package.json of the project running this.
- *
- * @type {any}
  */
 const path = require( 'path' );
 const fs = require( 'fs' );
@@ -12,9 +10,7 @@ packageConfig.workingDirectory = workingDirectory;
 
 try {
 	let localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );
-	for ( let attr in localConfig ) {
-		packageConfig[ attr ] = localConfig[ attr ];
-	}
+	packageConfig = { ...packageConfig, ...localConfig }
 } catch ( e ) {
 }
 
