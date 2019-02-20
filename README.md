@@ -30,14 +30,10 @@ Add the following to your package.json. (this may also be found in the `template
 You may adjust things as needed by be sure to leave the `scripts` as is.
 
 ### Code Completion In PHPStorm
-Some `@type` have been specified in this library to assist with code completion etc. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in imported module". 
-
-I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`.
-
-You may notice that because the modules do not exist in your project's package.json that PHP/Web Storm will mark imports and not being installed (In case where the @types have not been previously added). 
+You may notice that because the modules do not exist in your project's package.json that PHP/Web Storm will mark imports and not being installed.
 
 There are 2 ways to solve this issue:
-1. Specify `@types` using `Languages & Frameworks -> JavaScript -> Libraries` **(preferred)**.
+1. Specify copy the `ts/package.json` folder and file to your project` **(preferred)**.
 2. Add dependencies to the package.json that you are using directly so PHPStorm will find them.
 
 ### ESLint
