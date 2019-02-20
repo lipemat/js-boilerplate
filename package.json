@@ -84,9 +84,7 @@
     "webpack": "^4.20.2",
     "webpack-cleanup-plugin": "https://github.com/lipemat/webpack-cleanup-plugin.git#0.5.3",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.4",
-    "wpapi": "^1.1.2",
-    "yargs": "^11.0.0"
+    "webpack-dev-server": "^3.1.4"
   },
   "bugs": {
     "url": "https://github.com/lipemat/js-boilerplate/issues"

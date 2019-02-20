@@ -2,6 +2,7 @@
   "//": "This is to allow PHPStorm to map to modules install as depenencies",
   "//": "@see Readme section 'Code Completion In PHPStorm'",
   "dependencies": {
+    "@types/react-dom": "^16.8.2",
 	"babel-core": "^6.26.3",
 	"babel-eslint": "^8.2.3",
 	"babel-jest": "^23.6.0",
@@ -54,8 +55,6 @@
 	"webpack": "^4.20.2",
 	"webpack-cleanup-plugin": "https://github.com/lipemat/webpack-cleanup-plugin.git#0.5.3",
 	"webpack-cli": "^3.1.1",
-	"webpack-dev-server": "^3.1.4",
-	"wpapi": "^1.1.2",
-	"yargs": "^11.0.0"
+	"webpack-dev-server": "^3.1.4"
   }
 }
