@@ -7,7 +7,6 @@ const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' 
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: [
-		'react-hot-loader/patch',
 		'webpack-dev-server/client?https://localhost:3000',
 		'webpack/hot/only-dev-server',
 		'./src/index.js'
@@ -46,6 +45,11 @@ module.exports = {
 				include: path.resolve( config.workingDirectory, 'src' ),
 				exclude: /node_modules/,
 				query: babelOptions
+			},
+			{
+				test: /\.jsx?$/,
+				include: /node_modules/,
+				use: ['react-hot-loader/webpack'],
 			},
 			{
 				test: /\.pcss$/,
