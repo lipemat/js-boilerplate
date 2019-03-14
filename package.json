@@ -27,9 +27,6 @@
   "author": "Mat Lipe",
   "license": "MIT",
   "sideEffects": false,
-  "scripts": {
-    "lipemat-js-boilerplate": "node scripts/init.js"
-  },
   "dependencies": {
     "@types/react-dom": "^16.8.2",
     "babel-core": "^6.26.3",
