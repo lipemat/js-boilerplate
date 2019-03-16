@@ -1,4 +1,4 @@
-## The Start Of  A Beautiful JS App
+## The Start Of A Beautiful JS App
 
 A zero configuration starting point for  a React or non React app. 
 
