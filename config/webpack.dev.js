@@ -27,6 +27,7 @@ module.exports = {
 	entry: [
 		'webpack-dev-server/client?https://localhost:3000',
 		'webpack/hot/only-dev-server',
+		'@babel/polyfill/noConflict',
 		'./src/index.js'
 	],
 	mode: 'development',

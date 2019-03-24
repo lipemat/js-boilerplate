@@ -1,13 +1,11 @@
 module.exports = {
 	'presets': [
-		[
-			'env'
-		],
-		'stage-2',
-		'react'
+		"@babel/preset-env",
+		"@babel/preset-react",
+		"@babel/preset-typescript"
 	],
 	'plugins': [
-		'syntax-dynamic-import',
+		'@babel/plugin-syntax-dynamic-import',
 		'react-hot-loader/babel'
 	]
 };

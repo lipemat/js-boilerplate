@@ -8,7 +8,10 @@ const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' 
 
 module.exports = {
 	devtool: false,
-	entry: path.resolve( config.workingDirectory, './src/index' ),
+	entry: [
+		'@babel/polyfill/noConflict',
+		'./src/index.js'
+	],
 	mode: 'production',
 	externals: {
 		jquery: 'jQuery'
