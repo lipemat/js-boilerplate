@@ -5,7 +5,7 @@ module.exports = {
 		"@babel/preset-typescript"
 	],
 	'plugins': [
-		'syntax-dynamic-import',
+		'@babel/plugin-syntax-dynamic-import',
 		'react-hot-loader/babel'
 	]
 };
