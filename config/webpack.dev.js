@@ -50,11 +50,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				enforce: "pre",
-				test: /\.jsx?$/,
-				loader: 'source-map-loader'
-			},
-			{
 				test: /\.(j|t)sx?$/,
 				loader: 'babel-loader',
 				include: path.resolve( config.workingDirectory, 'src' ),
