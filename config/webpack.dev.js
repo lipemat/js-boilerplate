@@ -1,10 +1,10 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
+const configHelper = require('../helpers/config' );
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const config = require( '../helpers/package-config' );
-const postCSSOptions = require('../helpers/config' ).getConfig( 'postcss.config.js' );
-const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' );
-const tsOptions = require( '../helpers/config' ).getConfig( 'tsconfig.json', true );
+const postCSSOptions = configHelper.getConfig( 'postcss.config.js' );
+const babelOptions = configHelper.getConfig( 'babel.config.js' );
 
 let plugins = [
 	new webpack.ProvidePlugin( {
@@ -18,8 +18,8 @@ let plugins = [
 
 //Loads a thread which verifies any TypeScripts on changes.
 //Only use this if the project has a tsconfig.json file.
-if ( tsOptions.__HAS_LOCAL_ROOT__ ) {
-	plugins.push( new ForkTsCheckerWebpackPlugin( tsOptions ) );
+if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
+	plugins.push( new ForkTsCheckerWebpackPlugin() );
 }
 
 module.exports = {
