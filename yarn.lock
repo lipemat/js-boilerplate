@@ -862,6 +862,14 @@
     "@types/istanbul-lib-coverage" "^1.1.0"
     "@types/yargs" "^12.0.9"
 
+"@lipemat/css-mqpacker@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@lipemat/css-mqpacker/-/css-mqpacker-8.0.1.tgz#64f2111150885cd90b6301541bb3acd5a796ce4e"
+  integrity sha512-Ijf1r+WiJHHeHvjZ1J3W3M+S3a0p5JNP7rxjqpRvbxq9MgwGW4QiFK3KGpIeBVfYVltV3t/YsAklFApVYlwkEA==
+  dependencies:
+    minimist "^1.2.0"
+    postcss "^7.0.0"
+
 "@types/babel__core@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.0.tgz#710f2487dda4dcfd010ca6abb2b4dc7394365c51"
@@ -5020,14 +5028,6 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
-
-lipemat-css-mqpacker@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/lipemat-css-mqpacker/-/lipemat-css-mqpacker-8.0.0.tgz#24965fbdfd52f3b937058d917d88547892b19a71"
-  integrity sha512-PZGEEVlPi/F6+heGBjdFPxfwfdQQlXOQacOavQWTGjD8aO+Mqe8VUn4nOMejIqhuWX760yrJgk0l6qYsA4I9ew==
-  dependencies:
-    minimist "^1.2.0"
-    postcss "^7.0.0"
 
 load-json-file@^4.0.0:
   version "4.0.0"
