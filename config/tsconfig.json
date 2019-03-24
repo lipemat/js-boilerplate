@@ -4,6 +4,7 @@
 	"compilerOptions": {
 		"sourceMap": true,
 		"target": "es6",
+        "module": "commonjs",
 		"jsx": "preserve",
 		"allowSyntheticDefaultImports": true
 	},
