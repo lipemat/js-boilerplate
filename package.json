@@ -1,6 +1,6 @@
 {
   "name": "@lipemat/js-boilerplate",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Dependencies and scripts for a no config JavaScript App",
   "main": "index.js",
   "repository": {
@@ -34,7 +34,6 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@babel/types": "^7.4.0",
     "@lipemat/css-mqpacker": "^8.0.1",
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.8",
