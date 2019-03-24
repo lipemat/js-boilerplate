@@ -7,6 +7,6 @@
  * @notice may become available later https://github.com/facebook/jest/pull/7696
  *
  */
-let config = require( 'lipemat-js-boilerplate/tests/jest.config' );
+let config = require( '@lipemat/js-boilerplate/tests/jest.config' );
 
 module.exports = config;

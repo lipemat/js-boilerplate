@@ -5,9 +5,9 @@
  * We pull what we need from the library in this way.
  *
  * @notice may become available later https://github.com/facebook/jest/pull/7696
- * 
+ *
  * @notice This may also be adjusted per project this way directly in this file. :)
  */
-let config = require( './node_modules/lipemat-js-boilerplate/tests/jest.config' );
+let config = require( './node_modules/@lipemat/js-boilerplate/tests/jest.config' );
 
 module.exports = config;
