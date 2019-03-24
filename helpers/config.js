@@ -21,6 +21,7 @@ function getConfig( $fileName, $fromRoot = false ) {
 		let localConfig = {};
 		if ( $fromRoot ) {
 			localConfig = require( path.resolve( packageConfig.workingDirectory, $fileName ) );
+			localConfig.__HAS_LOCAL_ROOT__ = true;
 		} else {
 			localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
 		}

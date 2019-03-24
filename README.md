@@ -35,7 +35,7 @@ Some `@type` have been specified in this library to assist with code completion 
 You may notice that because the modules do not exist in your project's package.json that PHP/Web Storm will mark imports and not being installed.
 
 There are 2 ways to solve this issue:
-1. Specify copy the `ts/package.json` folder and file to your project` **(preferred)**.
+1. Specifically copy the `ts/package.json` folder and file to your project` **(preferred)**.
 2. Add dependencies to the package.json that you are using directly so PHPStorm will find them.
 
 ### ESLint
@@ -43,6 +43,14 @@ To use the built in eslint, copy the following items from `templates` into your 
 1. `.eslintrc`
 
 Now you may adjust the eslint configuration as desired and run the linter via `yarn run lint`.
+
+### TypeScript
+To use the built in TypeScript, copy the following items from `templates` into your project root:
+1. `tsconfig.json`
+
+TypeScript will run a validator during dev and output any errors in the console. These same errors will display within PHPStorm if you copied tsconfig.json file in step 1. You technically don't have to fix any issues to compile but it's recommended. 
+
+Babel will automatically compile TypeScript files into the finished javascript, and will ignore errors. 
 
 ### Configuration Overrides
 All configurations are found in the `config` directory and may be extended by adding a matching file within your project directory.

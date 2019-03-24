@@ -20,7 +20,7 @@ module.exports = {
 		chunkFilename: '[name].[chunkhash].js'
 	},
 	resolve: {
-		extensions: [ '.js', '.jsx', 'json', '.pcss' ],
+		extensions: [ '.ts', 'tsx', '.js', '.jsx', 'json', '.pcss' ],
 		modules: [
 			path.resolve( config.workingDirectory, 'src' ),
 			'node_modules'
@@ -39,7 +39,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.(j|t)sx?$/,
 				loader: 'babel-loader',
 				include: path.resolve( config.workingDirectory, 'src' ),
 				exclude: /node_modules/,

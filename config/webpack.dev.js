@@ -6,6 +6,22 @@ const postCSSOptions = require('../helpers/config' ).getConfig( 'postcss.config.
 const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' );
 const tsOptions = require( '../helpers/config' ).getConfig( 'tsconfig.json', true );
 
+let plugins = [
+	new webpack.ProvidePlugin( {
+		jQuery: 'jquery',
+		$: 'jquery'
+	} ),
+	new webpack.HotModuleReplacementPlugin(),
+	new webpack.NamedModulesPlugin(),
+	new webpack.NoEmitOnErrorsPlugin(),
+];
+
+//Loads a thread which verifies any TypeScripts on changes.
+//Only use this if the project has a tsconfig.json file.
+if ( tsOptions.__HAS_LOCAL_ROOT__ ) {
+	plugins.push( new ForkTsCheckerWebpackPlugin( tsOptions ) );
+}
+
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: [
@@ -24,22 +40,13 @@ module.exports = {
 		chunkFilename: '[name].js'
 	},
 	resolve: {
-		extensions: [ '.js', '.jsx', 'json', '.pcss' ],
+		extensions: [ '.ts', 'tsx', '.js', '.jsx', 'json', '.pcss' ],
 		modules: [
 			path.resolve( config.workingDirectory, 'src' ),
 			'node_modules'
 		]
 	},
-	plugins: [
-		new webpack.ProvidePlugin( {
-			jQuery: 'jquery',
-			$: 'jquery'
-		} ),
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin(),
-		new webpack.NoEmitOnErrorsPlugin(),
-		new ForkTsCheckerWebpackPlugin( tsOptions ) //Loads a thread which verifies any TypeScripts on changes.
-	],
+	plugins: plugins,
 	module: {
 		rules: [
 			{
