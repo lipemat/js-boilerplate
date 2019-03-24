@@ -4,7 +4,7 @@ A zero configuration starting point for  a React or non React app.
 
 ### Installation
 ```bash
-yarn add lipemat-js-boilerplate
+yarn add @lipemat/js-boilerplate
 ```
 
 ### Usage
@@ -21,7 +21,7 @@ Add the following to your package.json. (this may also be found in the `template
   },
   "devDependencies": {},
   "dependencies": {
-    "lipemat-js-boilerplate": "^1.1.5"
+    "@lipemat/js-boilerplate": "^2.0.1"
   }
 }
 
