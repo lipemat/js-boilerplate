@@ -1,6 +1,29 @@
 const packageConfig = require( './package-config' );
 const path = require( 'path' );
 
+/**
+ * Check to see if a local config file exists.
+ *
+ * @param {String} $fileName
+ * @param {boolean} $inRoot - Look in the root their project directory instead of their /config directory
+ *
+ * @returns {boolean}
+ */
+function hasLocalOverride( $fileName, $inRoot = false ) {
+	let hasLocal = false;
+	try {
+		let localConfig = {};
+		if ( $inRoot ) {
+			require( path.resolve( packageConfig.workingDirectory, $fileName ) );
+			hasLocal = true;
+		} else {
+			require( path.resolve( packageConfig.workingDirectory + '/config' ) );
+				hasLocal = true;
+		}
+	} catch ( e ) {}
+
+	return hasLocal;
+}
 
 /**
  * Get a config for our /config directory merged with any
@@ -11,21 +34,14 @@ const path = require( 'path' );
  * is specified with the project's file.
  *
  * @param {String} $fileName
- * @param {boolean} $fromRoot - Pull from the root their project directory instead of their /config directory
- *                              (defaults to their /config directory)
+ *
  * @returns {object}
  */
-function getConfig( $fileName, $fromRoot = false ) {
+function getConfig( $fileName ) {
 	let config = require( '../config/' + $fileName );
 	try {
 		let localConfig = {};
-		if ( $fromRoot ) {
-			localConfig = require( path.resolve( packageConfig.workingDirectory, $fileName ) );
-			localConfig.__HAS_LOCAL_ROOT__ = true;
-		} else {
-			localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
-		}
-
+		localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
 		config = {...config, ...localConfig};
 	} catch ( e ) {
 	}
@@ -33,5 +49,6 @@ function getConfig( $fileName, $fromRoot = false ) {
 }
 
 module.exports = {
-	getConfig: getConfig
+	getConfig: getConfig,
+	hasLocalOverride: hasLocalOverride
 };

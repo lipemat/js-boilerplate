@@ -48,6 +48,6 @@ switch ( script ) {
 	}
 	default:
 		console.log( 'Unknown script "' + script + '".' );
-		console.log( 'Perhaps you need to update lipemat-js-boilerplate?' );
+		console.log( 'Perhaps you need to update @lipemat/js-boilerplate?' );
 		break;
 }
