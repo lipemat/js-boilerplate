@@ -10,13 +10,21 @@ const path = require( 'path' );
  * we will merge the contents with our config/babel.config.js in favor of whatever
  * is specified with the project's file.
  *
- * @param {String} fileName
+ * @param {String} $fileName
+ * @param {boolean} $fromRoot - Pull from the root their project directory instead of their /config directory
+ *                              (defaults to their /config directory)
  * @returns {object}
  */
-function getConfig( fileName ) {
-	let config = require( '../config/' + fileName );
+function getConfig( $fileName, $fromRoot = false ) {
+	let config = require( '../config/' + $fileName );
 	try {
-		let localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', fileName ) );
+		let localConfig = {};
+		if ( $fromRoot ) {
+			localConfig = require( path.resolve( packageConfig.workingDirectory, $fileName ) );
+		} else {
+			localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
+		}
+
 		config = {...config, ...localConfig};
 	} catch ( e ) {
 	}

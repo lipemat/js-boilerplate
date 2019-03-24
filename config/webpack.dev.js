@@ -1,8 +1,10 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const config = require( '../helpers/package-config' );
 const postCSSOptions = require('../helpers/config' ).getConfig( 'postcss.config.js' );
 const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' );
+const tsOptions = require( '../helpers/config' ).getConfig( 'tsconfig.json', true );
 
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
@@ -35,12 +37,18 @@ module.exports = {
 		} ),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
-		new webpack.NoEmitOnErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin(),
+		new ForkTsCheckerWebpackPlugin( tsOptions ) //Loads a thread which verifies any TypeScripts on changes.
 	],
 	module: {
 		rules: [
 			{
+				enforce: "pre",
 				test: /\.jsx?$/,
+				loader: 'source-map-loader'
+			},
+			{
+				test: /\.(j|t)sx?$/,
 				loader: 'babel-loader',
 				include: path.resolve( config.workingDirectory, 'src' ),
 				exclude: /node_modules/,

@@ -1,0 +1,17 @@
+{
+	"//": "@see ./templates/tsconfig.json to use/extend this configuration in your project",
+	"//": "PHPStorm will only see changes to the file, if you resave the project root's tsconfig.json file",
+	"compilerOptions": {
+		"sourceMap": true,
+		"target": "es6",
+		"jsx": "preserve",
+		"allowSyntheticDefaultImports": true
+	},
+	"exclude": [
+		"node_modules"
+	],
+	"include": [
+		"../ts/postcss.d.ts",
+		"../../../src/**/*"
+	]
+}
