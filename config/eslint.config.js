@@ -42,8 +42,13 @@ let config = {
 /**
  * Allows overriding configurations in the project `/config/eslint.config.js` file.
  * We don't actually need to do this because .eslintrc is already an override of this
- * file but we support it anyway to keep things consistant.
+ * file but we support it anyway to keep things consistent.
  *
  */
+try {
+	let localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', 'eslint.config.js' ) );
+	config = {...config, ...localConfig};
+} catch ( e ) {
+}
 
 module.exports = config;
