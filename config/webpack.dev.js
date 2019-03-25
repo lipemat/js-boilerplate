@@ -41,7 +41,7 @@ module.exports = {
 		chunkFilename: '[name].js'
 	},
 	resolve: {
-		extensions: [ '.ts', 'tsx', '.js', '.jsx', 'json', '.pcss' ],
+		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( config.workingDirectory, 'src' ),
 			'node_modules'
