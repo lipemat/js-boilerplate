@@ -41,7 +41,7 @@ module.exports = {
 		chunkFilename: '[name].js'
 	},
 	resolve: {
-		extensions: [ '.ts', 'tsx', '.js', '.jsx', 'json', '.pcss' ],
+		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( config.workingDirectory, 'src' ),
 			'node_modules'
@@ -55,10 +55,10 @@ module.exports = {
 				loader: 'babel-loader',
 				include: path.resolve( config.workingDirectory, 'src' ),
 				exclude: /node_modules/,
-				query: babelOptions
+				options: babelOptions
 			},
 			{
-				test: /\.jsx?$/,
+				test: /\.(j|t)sx?$/,
 				include: /node_modules/,
 				use: ['react-hot-loader/webpack'],
 			},
