@@ -31,7 +31,9 @@ let config = {
 		//Rules to override the standard JS ones when we get undesired results for TypeScript may be found here
 		//@link https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
 		'rules': {
-			'@typescript-eslint/no-unused-vars': 'error'
+			'@typescript-eslint/no-unused-vars': 'error',
+			'semi': [ 0 ],
+			'no-magic-numbers': [ 0 ]
 		}
 	} ],
 	'rules': {
