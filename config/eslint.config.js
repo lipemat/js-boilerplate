@@ -18,11 +18,14 @@ let config = {
 		'wordpress',
 		'plugin:react/recommended'
 	],
-	'parser': 'babel-eslint',
+	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
 		'ecmaVersion': 7,
 		'sourceType': 'module'
 	},
+	'plugins': [
+		'@typescript-eslint/eslint-plugin'
+	],
 	'rules': {
 		'camelcase': [ 2, {'properties': 'never'} ],
 		'lines-around-comment': [ 0 ],
