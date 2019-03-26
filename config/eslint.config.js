@@ -23,9 +23,17 @@ let config = {
 		'ecmaVersion': 7,
 		'sourceType': 'module'
 	},
-	'plugins': [
-		'@typescript-eslint/eslint-plugin'
-	],
+	"overrides": [ {
+		'files': [ '**/*.ts', '**/*.tsx' ],
+		'plugins': [
+			'@typescript-eslint'
+		],
+		//Rules to override the standard JS ones when we get undesired results for TypeScript may be found here
+		//@link https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
+		'rules': {
+			'@typescript-eslint/no-unused-vars': 'error'
+		}
+	} ],
 	'rules': {
 		'camelcase': [ 2, {'properties': 'never'} ],
 		'lines-around-comment': [ 0 ],
@@ -51,7 +59,7 @@ let config = {
 try {
 	let localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', 'eslint.config.js' ) );
 	config = {...config, ...localConfig};
-} catch ( e ) {
+} catch (e) {
 }
 
 module.exports = config;
