@@ -1,7 +1,7 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const WebpackCleanupPlugin = require( 'webpack-cleanup-plugin' );
+const WebpackCleanupPlugin = require( '@lipemat/webpack-cleanup-plugin' );
 const config = require( '../helpers/package-config' );
 const postCSSOptions = require('../helpers/config' ).getConfig( 'postcss.config.js' );
 const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' );
@@ -61,7 +61,7 @@ module.exports = {
 						}
 					},
 					{
-						loader: 'postcss-loader',
+						loader: '@lipemat/postcss-loader',
 						options: postCSSOptions
 					}
 				]

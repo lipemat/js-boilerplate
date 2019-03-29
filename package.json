@@ -23,10 +23,6 @@
   "bin": {
     "lipemat-js-boilerplate": "./bin/lipemat-js-boilerplace.js"
   },
-  "resolutions": {
-    "postcss-loader": "https://github.com/lipemat/postcss-loader.git",
-    "webpack-cleanup-plugin": "https://github.com/lipemat/webpack-cleanup-plugin.git"
-  },
   "author": "Mat Lipe",
   "license": "MIT",
   "sideEffects": false,
@@ -38,6 +34,8 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@lipemat/css-mqpacker": "^8.0.1",
+    "@lipemat/postcss-loader": "^3.0.1",
+    "@lipemat/webpack-cleanup-plugin": "^0.5.4",
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
@@ -63,7 +61,6 @@
     "postcss-clean": "^1.1.0",
     "postcss-custom-media": "^6.0.0",
     "postcss-import": "^12.0.1",
-    "postcss-loader": "https://github.com/lipemat/postcss-loader.git#v3.0.0",
     "postcss-nested": "^4.1.1",
     "postcss-preset-env": "^6.5.0",
     "postcss-scss": "^2.0.0",
@@ -87,7 +84,6 @@
     "typescript": "^3.3.4000",
     "update-notifier": "^2.5.0",
     "webpack": "^4.20.2",
-    "webpack-cleanup-plugin": "https://github.com/lipemat/webpack-cleanup-plugin.git#0.5.3",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.4"
   },

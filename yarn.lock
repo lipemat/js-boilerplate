@@ -870,6 +870,25 @@
     minimist "^1.2.0"
     postcss "^7.0.0"
 
+"@lipemat/postcss-loader@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@lipemat/postcss-loader/-/postcss-loader-3.0.1.tgz#66325fdcada5a8e730c7218456d522874dd60e28"
+  integrity sha512-IdOvXOCsQH+ngaG+DK5oE2uH29Rg9FsmvFYGzoTFBcTTenOE4YTbMwbuT+C3bYV0rtfngsYc73AUW9y9pVl4oA==
+  dependencies:
+    loader-utils "^1.1.0"
+    postcss "^7.0.0"
+    postcss-load-config "^2.0.0"
+    schema-utils "^1.0.0"
+
+"@lipemat/webpack-cleanup-plugin@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@lipemat/webpack-cleanup-plugin/-/webpack-cleanup-plugin-0.5.4.tgz#331ad5c9b75e01f732bbaaa20d5e0ef824d60252"
+  integrity sha512-k7r6EqSbc8hXeajghwiqXEj5CIXFwINZyYYUTSTPlE+fl3Qfrd137ChdRVXfJOfeLP9uVzrheAXFxvmY9pBXDQ==
+  dependencies:
+    lodash.union "4.6.0"
+    minimatch "3.0.4"
+    recursive-readdir-sync "1.0.6"
+
 "@types/babel__core@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.0.tgz#710f2487dda4dcfd010ca6abb2b4dc7394365c51"
@@ -6328,15 +6347,6 @@ postcss-load-config@^2.0.0:
     cosmiconfig "^4.0.0"
     import-cwd "^2.0.0"
 
-"postcss-loader@https://github.com/lipemat/postcss-loader.git", "postcss-loader@https://github.com/lipemat/postcss-loader.git#v3.0.0":
-  version "3.0.0"
-  resolved "https://github.com/lipemat/postcss-loader.git#57c6d498c2e5e10bce0eb7c5fa6aafaf9988b278"
-  dependencies:
-    loader-utils "^1.1.0"
-    postcss "^7.0.0"
-    postcss-load-config "^2.0.0"
-    schema-utils "^1.0.0"
-
 postcss-logical@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/postcss-logical/-/postcss-logical-3.0.0.tgz#2495d0f8b82e9f262725f75f9401b34e7b45d5b5"
@@ -8459,22 +8469,6 @@ webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
-
-"webpack-cleanup-plugin@https://github.com/lipemat/webpack-cleanup-plugin.git":
-  version "0.5.3"
-  resolved "https://github.com/lipemat/webpack-cleanup-plugin.git#0d13eff703e59fcf8369407fb636d963a971025e"
-  dependencies:
-    lodash.union "4.6.0"
-    minimatch "3.0.4"
-    recursive-readdir-sync "1.0.6"
-
-"webpack-cleanup-plugin@https://github.com/lipemat/webpack-cleanup-plugin.git#0.5.3":
-  version "0.5.3"
-  resolved "https://github.com/lipemat/webpack-cleanup-plugin.git#546a547eb3ce6828a3bea8c91ddf1de510f8a983"
-  dependencies:
-    lodash.union "4.6.0"
-    minimatch "3.0.4"
-    recursive-readdir-sync "1.0.6"
 
 webpack-cli@^3.1.1:
   version "3.2.3"
