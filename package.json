@@ -3,6 +3,9 @@
   "version": "2.1.0",
   "description": "Dependencies and scripts for a no config JavaScript App",
   "main": "index.js",
+  "engines": {
+    "node": ">=10.15.3 <11.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lipemat/js-boilerplate.git"
