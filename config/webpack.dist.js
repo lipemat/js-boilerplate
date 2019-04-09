@@ -35,7 +35,8 @@ module.exports = {
 			$: 'jquery'
 		} ),
 		new MiniCssExtractPlugin( {
-			filename: 'master.css'
+			filename: 'master.css',
+			chunkFilename: '[name].[chunkhash].css'
 		} ),
 		new WebpackCleanupPlugin()
 	],
