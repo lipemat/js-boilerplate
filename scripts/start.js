@@ -7,7 +7,7 @@ const webpackConfig = require( '../helpers/config' ).getConfig('webpack.dev.js')
 
 new WebpackDevServer( webpack( webpackConfig ), {
 	disableHostCheck: true,
-	publicPath: webpackConfig.output.publicPath,
+	host: 'localhost',
 	hot: true,
 	https: true,
 	historyApiFallback: true,
@@ -15,7 +15,9 @@ new WebpackDevServer( webpack( webpackConfig ), {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
 		'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-	}
+	},
+	port: 3000,
+	publicPath: webpackConfig.output.publicPath,
 } ).listen( 3000, 'localhost', function( err, result ) {
 	if ( err ) {
 		return console.log( err );
