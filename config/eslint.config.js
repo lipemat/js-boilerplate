@@ -14,6 +14,9 @@ const path = require( 'path' );
  */
 
 let config = {
+	'plugins': [
+		'react-hooks'
+	],
 	'extends': [
 		'wordpress',
 		'plugin:react/recommended'
@@ -42,6 +45,8 @@ let config = {
 		'react/no-unescaped-entities': [ 2, {'forbid': [ '>', '}' ]} ],
 		'space-in-parens': [ 2, 'always' ],
 		'react/display-name': [ 0 ],
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'warn',
 		'react/prop-types': [ 2, {'skipUndeclared': true} ],
 		'yoda': [ 2, 'always', {'onlyEquality': true} ]
 	},
