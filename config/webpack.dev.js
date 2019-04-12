@@ -22,12 +22,6 @@ if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin() );
 }
 
-/**
- * Hack to prevent css-loader from breaking sourcemaps for postcss.
- * @link https://github.com/lipemat/postcss-loader/commit/bf909a8742717291e7a71282f4e4bcd94b5c5833
- */
-postCSSOptions.doNotPassMeta = true;
-
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: [
