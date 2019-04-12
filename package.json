@@ -60,7 +60,7 @@
     "mini-css-extract-plugin": "^0.6.0",
     "postcss": "^7.0.14",
     "postcss-clean": "^1.1.0",
-    "postcss-custom-media": "^7.0.8",
+    "postcss-custom-media": "https://github.com/postcss/postcss-custom-media#926f1ef629b3e82118148b1153deafe45f6e5a39",
     "postcss-import": "^12.0.1",
     "postcss-nested": "^4.1.2",
     "postcss-preset-env": "^6.6.0",

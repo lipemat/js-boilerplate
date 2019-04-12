@@ -6201,12 +6201,18 @@ postcss-color-rebeccapurple@^4.0.1:
     postcss "^7.0.2"
     postcss-values-parser "^2.0.0"
 
-postcss-custom-media@^7.0.7, postcss-custom-media@^7.0.8:
+postcss-custom-media@^7.0.7:
   version "7.0.8"
   resolved "https://registry.yarnpkg.com/postcss-custom-media/-/postcss-custom-media-7.0.8.tgz#fffd13ffeffad73621be5f387076a28b00294e0c"
   integrity sha512-c9s5iX0Ge15o00HKbuRuTqNndsJUbaXdiNsksnVH8H4gdc+zbLzr/UasOwNG6CTDpLFekVY4672eWdiiWu2GUg==
   dependencies:
     postcss "^7.0.14"
+
+"postcss-custom-media@https://github.com/postcss/postcss-custom-media#926f1ef629b3e82118148b1153deafe45f6e5a39":
+  version "6.0.0"
+  resolved "https://github.com/postcss/postcss-custom-media#926f1ef629b3e82118148b1153deafe45f6e5a39"
+  dependencies:
+    postcss "^7.0.2"
 
 postcss-custom-properties@^8.0.9:
   version "8.0.10"
