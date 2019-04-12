@@ -21,7 +21,7 @@ Add the following to your package.json. (this may also be found in the `template
   },
   "devDependencies": {},
   "dependencies": {
-    "@lipemat/js-boilerplate": "^2.3.1"
+    "@lipemat/js-boilerplate": "^2.3.2"
   }
 }
 

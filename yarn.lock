@@ -886,10 +886,10 @@
     minimist "^1.2.0"
     postcss "^7.0.0"
 
-"@lipemat/postcss-loader@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@lipemat/postcss-loader/-/postcss-loader-3.1.0.tgz#e76a946191f60cd8f5ab349044325ecf75ff1587"
-  integrity sha512-0vnLL+N1WOxAYnnlij6wfVkTGzkmEkRIO0WzhJhfyMvN+v4nJ40WPBmUQfUk/Dtec9n1pIoLcwIl0K8E2+D7Bw==
+"@lipemat/postcss-loader@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@lipemat/postcss-loader/-/postcss-loader-3.1.1.tgz#f7fafd923989590d08cc1ea29a621f9cde848431"
+  integrity sha512-eXKf9fDKzK7APuIxWDj2kV+kLne+7vf841ah7Mw8uj+n5lUXFXbJEiMaehKg1E8su7fpP6R86YAv/C2mgeiyNA==
   dependencies:
     loader-utils "^1.1.0"
     postcss "^7.0.0"
