@@ -4,6 +4,7 @@ let config = {
 		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
 		require( 'postcss-preset-env' ),
+		require( 'postcss-color-mod-function' ),
 		require( '@lipemat/css-mqpacker' )
 	],
 	parser: 'postcss-scss'
