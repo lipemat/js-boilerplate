@@ -41,14 +41,15 @@ let config = {
 	} ],
 	'rules': {
 		'camelcase': [ 2, {'properties': 'never'} ],
+		"indent": [1, "tab", {"SwitchCase": 1}]
 		'lines-around-comment': [ 0 ],
 		'react/no-unescaped-entities': [ 2, {'forbid': [ '>', '}' ]} ],
-		'space-in-parens': [ 2, 'always' ],
 		'react/display-name': [ 0 ],
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
 		'react/prop-types': [ 2, {'skipUndeclared': true} ],
-		'yoda': [ 2, 'always', {'onlyEquality': true} ]
+		'space-in-parens': [ 2, 'always' ],
+		'yoda': [ 2, 'always', {'onlyEquality': true} ],
 	},
 	'settings': {
 		'react': {
