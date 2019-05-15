@@ -41,7 +41,7 @@ let config = {
 	} ],
 	'rules': {
 		'camelcase': [ 2, {'properties': 'never'} ],
-		"indent": [1, "tab", {"SwitchCase": 1}]
+		"indent": [1, "tab", {"SwitchCase": 1}],
 		'lines-around-comment': [ 0 ],
 		'react/no-unescaped-entities': [ 2, {'forbid': [ '>', '}' ]} ],
 		'react/display-name': [ 0 ],
