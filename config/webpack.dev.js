@@ -6,6 +6,9 @@ const config = require( '../helpers/package-config' );
 const postCSSOptions = configHelper.getConfig( 'postcss.config.js' );
 const babelOptions = configHelper.getConfig( 'babel.config.js' );
 
+// To allow line numbers to show up in console errors. @see React Error Boundaries.
+babelOptions.plugins.unshift( '@babel/plugin-transform-react-jsx-source' );
+
 let plugins = [
 	new webpack.ProvidePlugin( {
 		jQuery: 'jquery',
