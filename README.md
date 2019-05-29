@@ -1,6 +1,6 @@
 ## The Start Of A Beautiful JS App
 
-A zero configuration starting point for  a React or non React app. 
+A zero configuration starting point for a React or non React app. 
 
 ### Installation
 ```bash
@@ -21,7 +21,7 @@ Add the following to your package.json. (this may also be found in the `template
   },
   "devDependencies": {},
   "dependencies": {
-    "@lipemat/js-boilerplate": "^2.3.3"
+    "@lipemat/js-boilerplate": "^2.4.0"
   }
 }
 
