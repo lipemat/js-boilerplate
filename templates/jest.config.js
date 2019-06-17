@@ -4,9 +4,11 @@
  *
  * We pull what we need from the library in this way.
  *
- * @notice may become available later https://github.com/facebook/jest/pull/7696
+ * @notice may become available later https://www.npmjs.com/package/@jest/core
+ *
+ * @notice This may also be adjusted per project this way directly in this file. :)
  *
  */
-let config = require( '@lipemat/js-boilerplate/tests/jest.config' );
+let config = require( '@lipemat/js-boilerplate/config/jest.config' );
 
 module.exports = config;

@@ -7,5 +7,9 @@
  * @link https://github.com/facebook/jest/issues/1468#issuecomment-276753756
  */
 module.exports = require( 'babel-jest' ).createTransformer( {
-	"presets": ["env", "react"]
+	"presets": [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-typescript"
+    ]
 });

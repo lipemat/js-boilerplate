@@ -7,7 +7,7 @@ let jest = require( 'jest' );
  *
  * We pull what we need from our `jest.config.js` from there.
  *
- * @notice may become available later https://github.com/facebook/jest/pull/7696
+ * @notice may become available later https://www.npmjs.com/package/@jest/core
  *
  */
 

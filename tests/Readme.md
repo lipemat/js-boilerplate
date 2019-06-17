@@ -1,6 +1,6 @@
 ## Tests are using Jest and Test Renderer by react. Enzyme for dom testing.
 
-1. Need to copy/paste the `jest.config-root-exampl.js` file into your project root `jest.config.js`.
+1. Need to copy/paste the `templates/jest.config.js` file into your project root `jest.config.js`.
 
 1. Tests file must have .test.js in file name
 2. Run test by calling yarn test
