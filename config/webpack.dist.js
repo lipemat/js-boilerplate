@@ -9,7 +9,8 @@ const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' 
 module.exports = {
 	devtool: false,
 	entry: [
-		'@babel/polyfill/noConflict',
+		'core-js/stable',
+		'regenerator-runtime/runtime',
 		'./src/index.js'
 	],
 	mode: 'production',
