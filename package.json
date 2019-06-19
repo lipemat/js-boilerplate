@@ -44,7 +44,6 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
-    "caniuse-db": "^1.0.30000976",
     "classnames": "^2.2.6",
     "core-js": "^3.1.4",
     "cross-spawn": "^6.0.5",
