@@ -1,5 +1,13 @@
 ## The Start Of A Beautiful JS App
 
+<p>
+<a href="https://www.npmjs.com/package/@lipemat/js-boilerplate">
+<img alt="npm" src="https://img.shields.io/npm/v/@lipemat/js-boilerplate.svg">
+</a>
+    <img alt="node" src="https://img.shields.io/node/v/@lipemat/js-boilerplate.svg">
+</p>
+
+
 A zero configuration starting point for a React or non React app. 
 
 ### Installation
