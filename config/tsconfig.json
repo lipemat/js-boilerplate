@@ -1,6 +1,6 @@
 {
   "//": "@see ./templates/tsconfig.json to use/extend this configuration in your project",
-  "//": "PHPStorm will only see changes to the file, if you resave the project root's tsconfig.json file",
+  "//": "PHPStorm will only see changes to the file, if you re-save the project root's tsconfig.json file",
   "compilerOptions": {
     "sourceMap": true,
     "target": "es6",
