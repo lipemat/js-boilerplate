@@ -73,10 +73,11 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
-							modules: true,
 							importLoaders: 1,
+							localIdentName: '[name]_[local]__[hash:base64:4]',
+							modules: true,
 							sourceMap: true,
-							localIdentName: '[name]_[local]__[hash:base64:4]'
+							url: false
 						}
 					},
 					{
