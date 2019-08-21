@@ -3,8 +3,10 @@ const path = require( 'path' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const WebpackCleanupPlugin = require( '@lipemat/webpack-cleanup-plugin' );
 const config = require( '../helpers/package-config' );
-const postCSSOptions = require('../helpers/config' ).getConfig( 'postcss.config.js' );
-const babelOptions = require('../helpers/config' ).getConfig( 'babel.config.js' );
+const postCSSOptions = require( '../helpers/config' ).getConfig( 'postcss.config.js' );
+const babelOptions = require( '../helpers/config' ).getConfig( 'babel.config.js' );
+const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
+const SriPlugin = require( 'webpack-subresource-integrity' );
 
 module.exports = {
 	devtool: false,
@@ -21,7 +23,8 @@ module.exports = {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: 'master.js',
 		publicPath: config.theme_path + 'js/dist/',
-		chunkFilename: '[name].[chunkhash].js'
+		chunkFilename: '[name].[chunkhash].js',
+		crossOriginLoading: 'anonymous'
 	},
 	resolve: {
 		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
@@ -39,7 +42,11 @@ module.exports = {
 			filename: 'master.css',
 			chunkFilename: '[name].[chunkhash].css'
 		} ),
-		new WebpackCleanupPlugin()
+		new WebpackCleanupPlugin(),
+		new SriPlugin( {
+			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ]
+		} ),
+		new WebpackAssetsManifest( {integrity: true} )
 	],
 	module: {
 		rules: [
