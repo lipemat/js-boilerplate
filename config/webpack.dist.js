@@ -18,7 +18,9 @@ module.exports = {
 	mode: 'production',
 	optimization: {
 		splitChunks: {
-			chunks: 'all'
+			chunks: 'all',
+			maxInitialRequests: Infinity,
+			minSize: 0
 		}
 	},
 	externals: {
