@@ -16,14 +16,6 @@ module.exports = {
 		'./src/index.js'
 	],
 	mode: 'production',
-	optimization: {
-		splitChunks: {
-			chunks: 'all',
-			maxInitialRequests: Infinity,
-			minSize: 0,
-			maxSize: 500000
-		}
-	},
 	externals: {
 		jquery: 'jQuery'
 	},
@@ -55,7 +47,16 @@ module.exports = {
 			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ]
 		} ),
 		new WebpackAssetsManifest( {integrity: true} )
+		// @note if using BundleAnalyzerPlugin remove the optimization config.
 	],
+	optimization: {
+		splitChunks: {
+			chunks: 'all',
+			maxInitialRequests: Infinity,
+			minSize: 0,
+			maxSize: 500000 // @note if using BundleAnalyzerPlugin remove this line during testing.
+		}
+	},
 	module: {
 		rules: [
 			{
