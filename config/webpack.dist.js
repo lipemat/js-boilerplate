@@ -16,6 +16,11 @@ module.exports = {
 		'./src/index.js'
 	],
 	mode: 'production',
+	optimization: {
+		splitChunks: {
+			chunks: 'all'
+		}
+	},
 	externals: {
 		jquery: 'jQuery'
 	},
