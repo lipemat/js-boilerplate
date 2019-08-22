@@ -20,7 +20,8 @@ module.exports = {
 		splitChunks: {
 			chunks: 'all',
 			maxInitialRequests: Infinity,
-			minSize: 0
+			minSize: 0,
+			maxSize: 500000
 		}
 	},
 	externals: {
