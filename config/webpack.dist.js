@@ -53,8 +53,7 @@ module.exports = {
 		splitChunks: {
 			chunks: 'all',
 			maxInitialRequests: Infinity,
-			minSize: 0,
-			maxSize: 500000 // @note if using BundleAnalyzerPlugin remove this line during testing.
+			minSize: 0
 		}
 	},
 	module: {
