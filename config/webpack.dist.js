@@ -47,15 +47,7 @@ module.exports = {
 			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ]
 		} ),
 		new WebpackAssetsManifest( {integrity: true} )
-		// @note if using BundleAnalyzerPlugin remove the optimization config.
 	],
-	optimization: {
-		splitChunks: {
-			chunks: 'all',
-			maxInitialRequests: Infinity,
-			minSize: 0
-		}
-	},
 	module: {
 		rules: [
 			{
