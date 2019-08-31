@@ -1,6 +1,6 @@
 {
   "name": "@lipemat/js-boilerplate",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Dependencies and scripts for a no config JavaScript App",
   "main": "index.js",
   "engines": {
