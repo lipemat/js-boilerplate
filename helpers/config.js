@@ -12,7 +12,6 @@ const path = require( 'path' );
 function hasLocalOverride( $fileName, $inRoot = false ) {
 	let hasLocal = false;
 	try {
-		let localConfig = {};
 		if ( $inRoot ) {
 			require( path.resolve( packageConfig.workingDirectory, $fileName ) );
 			hasLocal = true;
@@ -40,8 +39,7 @@ function hasLocalOverride( $fileName, $inRoot = false ) {
 function getConfig( $fileName ) {
 	let config = require( '../config/' + $fileName );
 	try {
-		let localConfig = {};
-		localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
+		const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
 		config = {...config, ...localConfig};
 	} catch ( e ) {
 	}
