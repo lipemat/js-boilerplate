@@ -11,6 +11,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@lipemat/js-boilerplate": "^4.0.1"
+    "@lipemat/js-boilerplate": "^4.1.0"
   }
 }
