@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "JS App from the core theme",
   "theme_path": "/wp-content/themes/core/",
+  "root": "../../../../",
   "scripts": {
     "dist": "lipemat-js-boilerplate dist",
     "start": "lipemat-js-boilerplate start",
@@ -11,6 +12,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@lipemat/js-boilerplate": "^4.1.0"
+    "@lipemat/js-boilerplate": "^4.1.1"
   }
 }
