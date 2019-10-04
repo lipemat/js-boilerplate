@@ -3,7 +3,7 @@ const webpackConfig = configHelper.getConfig('webpack.dev.js');
 
 module.exports = {
 	disableHostCheck: true,
-	host: 'localhost',
+	host: '0.0.0.0', // Allow connections from outside localhost to support mobile debugging
 	hot: true,
 	https: true,
 	historyApiFallback: true,
