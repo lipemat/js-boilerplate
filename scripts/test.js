@@ -1,14 +1,7 @@
-const config = require( '../helpers/package-config' );
-let jest = require( 'jest' );
-
 /**
- * UGH! Currently Jest does not have a proper public api for passing configuration so we have
- * to have configuration files in the root of the project.
+ * Runs `jest` with any arguments passed via the terminal or yarn.
  *
- * We pull what we need from our `jest.config.js` from there.
- *
- * @notice may become available later https://www.npmjs.com/package/@jest/core
- *
+ * @notice you must add `/templates/jest.config.js` to the root of your project.
+ * @script `lipemat-js-boilerplate test`
  */
-
-jest.runCLI( {}, [config.workingDirectory] );
+require('jest-cli/bin/jest');

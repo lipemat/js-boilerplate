@@ -1,12 +1,7 @@
 /**
- * UGH! Currently Jest does not have a proper public api for calling so we have
- * to have configuration files in the root of the project and call `jest`.
+ * @notice This file is required in the root of the JS project to allow `jest` to run.
  *
- * We pull what we need from the library in this way.
- *
- * @notice may become available later https://www.npmjs.com/package/@jest/core
- *
- * @notice This may also be adjusted per project this way directly in this file. :)
+ * May adjust configuration here or with a config override via `config/jest.config.js`.
  *
  */
 let config = require( '@lipemat/js-boilerplate/config/jest.config' );
