@@ -1,5 +1,8 @@
+global.__TEST__ = true;
+
 const path = require( 'path' );
 const config = require( '../helpers/package-config' );
+const {getConfig} = require( '../helpers/config' );
 /**
  * UGH! Currently Jest does not have a proper public api for calling so we have
  * to have configuration files in the root of the project.
@@ -10,13 +13,16 @@ const config = require( '../helpers/package-config' );
  * @notice may become available later https://github.com/facebook/jest/pull/7696
  *
  */
+let babelConfig = getConfig( 'babel.config' );
+delete babelConfig.cacheDirectory;
+
 module.exports = {
 	'moduleNameMapper': {
-		"^.+\.pcss$": path.resolve( __dirname, '../tests/mocks/style-mock.js' )
+		'\\.(pcss|less|css)$': 'identity-obj-proxy',
 	},
 	'testURL': 'http://localhost',
 	'transform': {
-		"^.+\\.jsx?$": path.resolve( __dirname, '../tests/transformers/babel.transform.js' )
+		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ]
 	},
 	'setupFilesAfterEnv': [ path.resolve( config.workingDirectory, 'tests/setup.js' ) ]
 };

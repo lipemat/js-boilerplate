@@ -73,3 +73,4 @@ To use the built in testing, copy the following items from `templates` into your
 2. `tests`
 
 Now you may write `jest` tests as desired and run them via `yarn run test` 
+1. Tests file must have .test.js in file name
