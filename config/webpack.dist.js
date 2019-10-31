@@ -1,5 +1,6 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
+const fs = require( 'fs' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const WebpackCleanupPlugin = require( '@lipemat/webpack-cleanup-plugin' );
 const config = require( '../helpers/package-config' );
@@ -8,20 +9,30 @@ const babelOptions = require( '../helpers/config' ).getConfig( 'babel.config.js'
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const SriPlugin = require( 'webpack-subresource-integrity' );
 
-module.exports = {
-	devtool: false,
-	entry: [
+let entry = {
+	master : [
 		'core-js/stable',
 		'regenerator-runtime/runtime',
 		'./src/index.js'
-	],
+	]
+}
+
+// Loads an admin.js file if it exists @since 4.3.0
+if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) ) {
+	entry.admin = entry.master;
+	entry.admin.splice( -1, 1, './src/admin.js' );
+}
+
+module.exports = {
+	devtool: false,
+	entry: entry,
 	mode: 'production',
 	externals: {
 		jquery: 'jQuery'
 	},
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
-		filename: 'master.js',
+		filename: '[name].js',
 		publicPath: config.theme_path + 'js/dist/',
 		chunkFilename: '[name].[chunkhash].js',
 		crossOriginLoading: 'anonymous'

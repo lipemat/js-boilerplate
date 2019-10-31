@@ -1,5 +1,6 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
+const fs = require( 'fs' );
 const configHelper = require('../helpers/config' );
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const config = require( '../helpers/package-config' );
@@ -25,22 +26,32 @@ if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin() );
 }
 
-module.exports = {
-	devtool: 'cheap-module-eval-source-map',
-	entry: [
+let entry = {
+	master : [
 		'webpack-dev-server/client?https://localhost:3000',
 		'webpack/hot/only-dev-server',
 		'core-js/stable',
 		'regenerator-runtime/runtime',
 		'./src/index.js'
-	],
+	]
+}
+
+// Loads an admin.js file if it exists @since 5.0.0
+if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) ) {
+	entry.admin = entry.master;
+	entry.admin.splice( -1, 1, './src/admin.js' );
+}
+
+module.exports = {
+	devtool: 'cheap-module-eval-source-map',
+	entry: entry,
 	mode: 'development',
 	externals: {
 		jquery: 'jQuery'
 	},
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
-		filename: 'master.js',
+		filename: '[name].js',
 		publicPath: 'https://localhost:3000/js/dist/',
 		chunkFilename: '[name].js'
 	},
