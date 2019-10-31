@@ -38,7 +38,7 @@ let entry = {
 
 // Loads an admin.js file if it exists @since 5.0.0
 if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) ) {
-	entry.admin = entry.master;
+	entry.admin = [...entry.master];
 	entry.admin.splice( -1, 1, './src/admin.js' );
 }
 
