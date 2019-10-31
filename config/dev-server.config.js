@@ -13,5 +13,6 @@ module.exports = {
 		'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
 	},
 	port: 3000,
+	public: 'localhost:3000',
 	publicPath: webpackConfig.output.publicPath
 };
