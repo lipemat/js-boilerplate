@@ -46,6 +46,7 @@ module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: entry,
 	mode: 'development',
+	stats: 'minimal',
 	externals: {
 		jquery: 'jQuery'
 	},

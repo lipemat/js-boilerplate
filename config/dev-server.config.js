@@ -15,5 +15,5 @@ module.exports = {
 	port: 3000,
 	public: 'localhost:3000',
 	publicPath: webpackConfig.output.publicPath,
-	stats: 'minimal'
+	stats: webpackConfig.stats
 };
