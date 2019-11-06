@@ -27,6 +27,14 @@ module.exports = {
 	devtool: false,
 	entry: entry,
 	mode: 'production',
+	stats: {
+		assets: true,
+		children: false,
+		hash: false,
+		modules: false,
+		timings: false,
+		version: false,
+	},
 	externals: {
 		jquery: 'jQuery'
 	},

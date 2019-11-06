@@ -35,7 +35,18 @@ async function build( config ) {
 		if ( err ) {
 			throw err;
 		}
-		console.log( stats.toString() );
+
+		const info = stats.toJson();
+		if (stats.hasWarnings()) {
+			console.warn(info.warnings.toString());
+		}
+
+		if ( stats.hasErrors() ) {
+			console.error(info.errors.toString());
+		} else {
+			console.log( stats.toString( config.stats ) );
+		}
+
 		updateRevisionFile();
 	} );
 }
