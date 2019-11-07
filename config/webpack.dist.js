@@ -33,7 +33,7 @@ module.exports = {
 		hash: false,
 		modules: false,
 		timings: false,
-		version: false,
+		version: false
 	},
 	externals: {
 		jquery: 'jQuery'

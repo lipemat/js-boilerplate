@@ -37,9 +37,6 @@ async function build( config ) {
 		}
 
 		const info = stats.toJson();
-		if (stats.hasWarnings()) {
-			console.warn(info.warnings.toString());
-		}
 
 		if ( stats.hasErrors() ) {
 			console.error(info.errors.toString());
