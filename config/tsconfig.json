@@ -17,7 +17,7 @@
     "node_modules"
   ],
   "include": [
-    "../ts/postcss.d.ts",
+    "../@types/postcss.d.ts",
     "../../../../src/**/*"
   ]
 }
