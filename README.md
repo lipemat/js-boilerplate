@@ -43,7 +43,7 @@ Some `@types` have been specified in this library to assist with code completion
 You may notice that because the modules do not exist in your project's package.json that PHP/Web Storm will mark imports and not being installed.
 
 There are 2 ways to solve this issue:
-1. Specifically copy the `@types/package.json` folder and file to your project **(preferred)**.
+1. Specifically copy the `@ts/package.json` folder and file to your project **(preferred)**.
 2. Add dependencies to the package.json that you are using directly so PHPStorm will find them.
 
 ### ESLint
