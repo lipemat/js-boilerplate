@@ -37,7 +37,7 @@ module.exports = {
 	},
 	// Displays warnings of size limits.
 	performance: {
-		hints: true
+		hints: 'warning'
 	},
 	externals: {
 		jquery: 'jQuery'
