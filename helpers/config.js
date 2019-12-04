@@ -1,6 +1,8 @@
 const packageConfig = require( './package-config' );
 const path = require( 'path' );
 
+const extensions = Object.keys( packageConfig.dependencies ).filter( name => name.includes( 'js-boilerplate-' ) );
+
 /**
  * Check to see if a local config file exists.
  *
@@ -17,15 +19,16 @@ function hasLocalOverride( $fileName, $inRoot = false ) {
 			hasLocal = true;
 		} else {
 			require( path.resolve( packageConfig.workingDirectory + '/config' ) );
-				hasLocal = true;
+			hasLocal = true;
 		}
-	} catch ( e ) {}
+	} catch ( e ) {
+	}
 
 	return hasLocal;
 }
 
 /**
- * Get a config for our /config directory merged with any
+ * Get a config from our /config directory merged with any
  * matching configuration from the project directory.
  *
  * For instance if we have a file named config/babel.config.js in our project
@@ -37,7 +40,7 @@ function hasLocalOverride( $fileName, $inRoot = false ) {
  * @returns {object}
  */
 function getConfig( $fileName ) {
-	let config = require( '../config/' + $fileName );
+	let config = {...require( '../config/' + $fileName ), ...getExtensionsConfig( $fileName )};
 	try {
 		const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
 		config = {...config, ...localConfig};
@@ -46,7 +49,29 @@ function getConfig( $fileName ) {
 	return config;
 }
 
+/**
+ * Get a config from any existing extension's /config directory's
+ * merged together into one.
+ *
+ * @param {String} $fileName
+ *
+ * @returns {object}
+ */
+function getExtensionsConfig( $fileName ) {
+	let config = {};
+	extensions.map( extension => {
+		try {
+			const extensionConfig = require( extension + '/config/' + $fileName );
+			config = {...config, ...extensionConfig};
+		} catch ( e ) {
+		}
+	} );
+
+	return config;
+}
+
 module.exports = {
 	getConfig: getConfig,
+	getExtensionsConfig: getExtensionsConfig,
 	hasLocalOverride: hasLocalOverride
 };

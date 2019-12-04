@@ -18,6 +18,7 @@
   ],
   "include": [
     "../@types/pcss/index.d.ts",
-    "../../../../src/**/*"
+    "../../../../src/**/*",
+    "../../js-boilerplate-*/@types/**/*.ts" // Any extensions declarations.
   ]
 }

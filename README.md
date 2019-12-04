@@ -67,6 +67,11 @@ For instance is you want to adjust `webpack.dev.js` you may add a `config/webpac
 
 All declarations are merged in favor of the project config.
 
+### Extensions
+To create a package which extends any of the files within the `config` directory, create a package with "js-boilerplate-" somewhere in it's name. Within your package, create a `config` directory and place any overrides there. Works the same as [Configuration Overrides](#configuration-overrides)
+
+This is useful when you have often reused overrides to support a particular library. [Here is an example](https://github.com/lipemat/js-boilerplate-gutenberg)
+
 ### Testing
 To use the built in testing, copy the following items from `templates` into your project root:
 1. `jest.config.js`
