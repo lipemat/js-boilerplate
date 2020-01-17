@@ -34,7 +34,7 @@ let entry = {
 		'regenerator-runtime/runtime',
 		'./src/index.js'
 	]
-}
+};
 
 // Loads an admin.js file if it exists @since 5.0.0
 if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) ) {

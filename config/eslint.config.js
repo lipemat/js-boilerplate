@@ -15,10 +15,9 @@ const path = require( 'path' );
 
 let config = {
 	'extends': [ 'plugin:@wordpress/eslint-plugin/recommended' ],
-	'parser': '@typescript-eslint/parser',
-	'parserOptions': {
-		'ecmaVersion': 7,
-		'sourceType': 'module'
+	'globals': {
+		'$': 'readonly',
+		'jQuery': 'readonly'
 	},
 	'overrides': [ {
 		'files': [ '**/*.ts', '**/*.tsx' ],
@@ -29,18 +28,31 @@ let config = {
 		//@link https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
 		'rules': {
 			'@typescript-eslint/no-unused-vars': 'error',
-			'semi': [ 0 ],
-			'no-magic-numbers': [ 0 ]
+			'jsdoc/no-undefined-types': [ 0 ],
+			'no-magic-numbers': [ 0 ],
+			'no-undef': [ 0 ],
+			'semi': [ 0 ]
 		}
 	} ],
+	'parser': '@typescript-eslint/parser',
+	'parserOptions': {
+		'ecmaVersion': 7,
+		'sourceType': 'module'
+	},
 	'rules': {
 		'camelcase': [ 2, {'properties': 'never'} ],
-		"indent": [1, "tab", {"SwitchCase": 1}],
+		'indent': [1, 'tab', {'SwitchCase': 1}],
 		'lines-around-comment': [ 0 ],
+		'jsdoc/require-param-type': [ 0 ],
+		'jsdoc/require-returns-description': [ 0 ],
+		'jsdoc/check-tag-names': [1, {'definedTags': ['notice', 'link'] } ],
+		'no-console': [ 0 ],
+		'object-curly-spacing': [1, 'never' ],
 		'react/no-unescaped-entities': [ 2, {'forbid': [ '>', '}' ]} ],
 		'react/display-name': [ 0 ],
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
+		'react/jsx-curly-spacing': [1, {'when': 'never', 'allowMultiline': false, children: true}],
 		'react/prop-types': [ 2, {'skipUndeclared': true} ],
 		'space-in-parens': [ 2, 'always' ],
 		'yoda': [ 2, 'always', {'onlyEquality': true} ],
