@@ -14,13 +14,7 @@ const path = require( 'path' );
  */
 
 let config = {
-	'plugins': [
-		'react-hooks'
-	],
-	'extends': [
-		'wordpress',
-		'plugin:react/recommended'
-	],
+	'extends': [ 'plugin:@wordpress/eslint-plugin/recommended' ],
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
 		'ecmaVersion': 7,
