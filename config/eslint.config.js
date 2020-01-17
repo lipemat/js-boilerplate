@@ -20,7 +20,7 @@ let config = {
 		'ecmaVersion': 7,
 		'sourceType': 'module'
 	},
-	"overrides": [ {
+	'overrides': [ {
 		'files': [ '**/*.ts', '**/*.tsx' ],
 		'plugins': [
 			'@typescript-eslint'
