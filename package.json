@@ -33,6 +33,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@hot-loader/react-dom": "^16.11.0",
     "@lipemat/css-mqpacker": "^8.0.1",
     "@lipemat/postcss-loader": "^3.1.1",
     "@lipemat/webpack-cleanup-plugin": "^0.5.4",
