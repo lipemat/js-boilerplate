@@ -40,6 +40,7 @@ let config = {
 		'sourceType': 'module'
 	},
 	'rules': {
+		'arrow-parens': [ 1, 'as-needed' ],
 		'camelcase': [ 2, {'properties': 'never'} ],
 		'indent': [1, 'tab', {'SwitchCase': 1}],
 		'lines-around-comment': [ 0 ],
