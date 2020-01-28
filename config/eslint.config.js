@@ -48,6 +48,7 @@ let config = {
 		'jsdoc/require-returns-description': [ 0 ],
 		'jsdoc/check-tag-names': [1, {'definedTags': ['notice', 'link'] } ],
 		'no-console': [ 0 ],
+		'no-multiple-empty-lines': [ 'error', { max: 2 } ],
 		'object-curly-spacing': [1, 'never' ],
 		'react/no-unescaped-entities': [ 2, {'forbid': [ '>', '}' ]} ],
 		'react/display-name': [ 0 ],
