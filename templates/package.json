@@ -4,6 +4,12 @@
   "description": "JS App from the core theme",
   "theme_path": "/wp-content/themes/core/",
   "root": "../../../../",
+  "browserslist": [
+    "last 3 versions",
+    "IE 11",
+    "iOS >= 9",
+    "Safari >= 9"
+  ],
   "scripts": {
     "dist": "lipemat-js-boilerplate dist",
     "start": "lipemat-js-boilerplate start",
