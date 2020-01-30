@@ -16,12 +16,6 @@
     "ES6",
     "no-config"
   ],
-  "browserslist": [
-    "last 3 versions",
-    "IE 11",
-    "iOS >= 9",
-    "Safari >= 9"
-  ]
   "bin": {
     "lipemat-js-boilerplate": "./bin/lipemat-js-boilerplace.js"
   },
