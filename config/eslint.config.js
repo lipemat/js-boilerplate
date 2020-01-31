@@ -57,6 +57,11 @@ let config = {
 		'react/jsx-curly-spacing': [1, {'when': 'never', 'allowMultiline': false, children: true}],
 		'react/prop-types': [ 2, {'skipUndeclared': true} ],
 		'space-in-parens': [ 2, 'always' ],
+		'space-before-function-paren': [ 'error', {
+			anonymous: 'never',
+			named: 'never',
+			asyncArrow: 'ignore',
+		} ],
 		'yoda': [ 2, 'always', {'onlyEquality': true} ],
 	},
 	'settings': {
