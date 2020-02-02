@@ -35,7 +35,7 @@ Add the following to your package.json. (this may also be found in the `template
 
 ```
 
-You may adjust things as needed by be sure to leave the `scripts` as is.
+**_You may adjust things as needed but be sure to leave the `scripts` as is._**
 
 ### Code Completion In PHPStorm
 Some `@types` have been specified in this library to assist with code completion and allow using the built in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built in TypeScript support).
@@ -79,3 +79,11 @@ To use the built in testing, copy the following items from `templates` into your
 
 Now you may write `jest` tests as desired and run them via `yarn run test` 
 1. Tests file must have .test.js in file name
+
+**Alternatively you may create a [run configuration](https://www.jetbrains.com/help/phpstorm/running-unit-tests-on-jest.html#createRunConfigJest) in PHPStorm for an interactive testing experience.**
+1. Jest package: `<project root>/node_modules/jest-cli`
+2. Working directory: root of your app which contains the `jest.config.js`.
+3. "All tests" to run entire directory of tests.
+4. "Suite" to run a particular file of tests.
+
+
