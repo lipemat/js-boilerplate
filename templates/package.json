@@ -2,6 +2,7 @@
   "name": "core-js",
   "version": "1.0.0",
   "description": "JS App from the core theme",
+  "test_url": "http://startingpoint.loc",
   "theme_path": "/wp-content/themes/core/",
   "root": "../../../../",
   "scripts": {
