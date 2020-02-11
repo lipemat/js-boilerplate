@@ -13,6 +13,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@lipemat/js-boilerplate": "^5.4.1"
+    "@lipemat/js-boilerplate": "^5.4.2"
   }
 }
