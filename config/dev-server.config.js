@@ -4,12 +4,11 @@ const packageConfig = require( '../helpers/package-config' );
 
 const url = new URL( packageConfig.url );
 
-
 module.exports = {
 	disableHostCheck: true,
 	host: '0.0.0.0', // Allow connections from outside localhost to support mobile debugging
 	hot: true,
-	https: url.protocol === 'https',
+	https: url.protocol === 'https:',
 	historyApiFallback: true,
 	headers: {
 		'Access-Control-Allow-Origin': '*',
