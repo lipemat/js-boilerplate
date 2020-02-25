@@ -28,7 +28,7 @@ if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 
 let entry = {
 	master : [
-		'webpack-dev-server/client?https://localhost:3000',
+		'webpack-dev-server/client?' + config.url + ':3000',
 		'webpack/hot/only-dev-server',
 		'core-js/stable',
 		'regenerator-runtime/runtime',
@@ -53,7 +53,7 @@ module.exports = {
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
-		publicPath: 'https://localhost:3000/js/dist/',
+		publicPath: config.url + ':3000/js/dist/',
 		chunkFilename: '[name].js'
 	},
 	resolve: {

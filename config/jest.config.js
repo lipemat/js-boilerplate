@@ -11,7 +11,7 @@ let jestConfig = {
 	'moduleNameMapper': {
 		'\\.(pcss|less|css)$': 'identity-obj-proxy'
 	},
-	'testURL': packageConfig.test_url || 'http://localhost',
+	'testURL': packageConfig.url,
 	'transform': {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ]
 	},
