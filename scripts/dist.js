@@ -8,11 +8,12 @@ const webpackConfig = require( '../helpers/config' ).getConfig( 'webpack.dist.js
 const packageConfig = require( '../helpers/package-config' );
 
 /**
- * Bump the .revision file to the latest
- * Useful when PWA is active because Chrome will reload when developing via workspaces
- * but reloading the page will get the old "Application" cached resources unless we
- * bump the revision.
- * All helps with sha integrity issues on developing locally.
+ * Bump the .revision file to the current timestamp.
+ *
+ * Useful when PWA is active because Chrome will get the old service worker
+ * cached resources unless we bump the revision.
+ *
+ * Also helps with sha integrity issues on developing locally.
  */
 function updateRevisionFile() {
 	if ( packageConfig.root ) {
