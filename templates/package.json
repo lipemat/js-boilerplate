@@ -12,6 +12,6 @@
     "test": "lipemat-js-boilerplate test"
   },
   "dependencies": {
-    "@lipemat/js-boilerplate": "^5.6.0"
+    "@lipemat/js-boilerplate": "^5.6.1"
   }
 }
