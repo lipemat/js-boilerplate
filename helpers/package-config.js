@@ -9,6 +9,7 @@ let packageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
 packageConfig.workingDirectory = workingDirectory;
 packageConfig.theme_path = packageConfig.theme_path || '';
 packageConfig.url = packageConfig.url || 'https://localhost';
+packageConfig.root = packageConfig.root || '../../../../';
 
 try {
 	let localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );

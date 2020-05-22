@@ -1,18 +1,16 @@
 {
   "name": "core-js",
   "version": "1.0.0",
-  "description": "JS App from the core theme",
-  "url": "http://startingpoint.loc",
+  "description": "JS app for the core theme",
+  "url": "http://starting-point.loc",
   "theme_path": "/wp-content/themes/core/",
-  "root": "../../../../",
   "scripts": {
     "dist": "lipemat-js-boilerplate dist",
     "start": "lipemat-js-boilerplate start",
     "lint": "lipemat-js-boilerplate lint",
     "test": "lipemat-js-boilerplate test"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@lipemat/js-boilerplate": "^5.4.2"
+    "@lipemat/js-boilerplate": "^5.5.0"
   }
 }
