@@ -4,6 +4,7 @@
   "description": "JS app for the core theme",
   "url": "http://starting-point.loc",
   "theme_path": "/wp-content/themes/core/",
+  "root": "../../../../",
   "scripts": {
     "dist": "lipemat-js-boilerplate dist",
     "start": "lipemat-js-boilerplate start",
