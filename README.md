@@ -38,13 +38,9 @@ Add the following to your package.json. (this may also be found in the `template
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
 
 ### Code Completion In PHPStorm
-Some `@types` have been specified in this library to assist with code completion and allow using the built in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built in TypeScript support).
+You must add the used `@types` to package.json to allow use of third party definitions. 
 
-You may notice that because the modules do not exist in your project's package.json that PHP/Web Storm will mark imports and not being installed.
-
-There are 2 ways to solve this issue:
-1. Specifically copy the `ts/package.json` folder and file to your project **(preferred)**.
-2. Add dependencies to the package.json that you are using directly so PHPStorm will find them.
+Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built in TypeScript support).
 
 ### ESLint
 To use the built in eslint, copy the following items from `templates` into your project root:
@@ -56,7 +52,7 @@ Now you may adjust the eslint configuration as desired and run the linter via `y
 To use the built in TypeScript, copy the following items from `templates` into your project root:
 1. `tsconfig.json`
 
-TypeScript will run a validator during dev and output any errors in the console. These same errors will display within PHPStorm if you copied tsconfig.json file in step 1. You technically don't have to fix any issues to compile but it's recommended. 
+TypeScript will run a validator during dev and output any errors in the console. These same errors will display within PHPStorm if you copied tsconfig.json file in step 1. You technically don't have to fix any issues to compile, but it's recommended. 
 
 Babel will automatically compile TypeScript files into the finished javascript, and will ignore errors. 
 

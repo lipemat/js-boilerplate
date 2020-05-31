@@ -3,12 +3,13 @@ const path = require( 'path' );
 const fs = require( 'fs' );
 const configHelper = require('../helpers/config' );
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const PnpWebpackPlugin = require( 'pnp-webpack-plugin' )
 const config = require( '../helpers/package-config' );
 const postCSSOptions = configHelper.getConfig( 'postcss.config.js' );
 const babelOptions = configHelper.getConfig( 'babel.config.js' );
 
 // To allow line numbers to show up in console errors. @see React Error Boundaries.
-babelOptions.plugins.unshift( '@babel/plugin-transform-react-jsx-source' );
+babelOptions.plugins.unshift( require.resolve( '@babel/plugin-transform-react-jsx-source' ) );
 
 let plugins = [
 	new webpack.ProvidePlugin( {
@@ -28,10 +29,10 @@ if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 
 let entry = {
 	master : [
-		'webpack-dev-server/client?' + config.url + ':3000',
-		'webpack/hot/only-dev-server',
-		'core-js/stable',
-		'regenerator-runtime/runtime',
+		require.resolve( 'webpack-dev-server/client' ) + '?' + config.url + ':3000',
+		require.resolve( 'webpack/hot/only-dev-server' ),
+		require.resolve( 'core-js/stable' ),
+		require.resolve( 'regenerator-runtime/runtime' ),
 		'./src/index.js'
 	]
 };
@@ -43,7 +44,7 @@ if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) 
 }
 
 module.exports = {
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'eval-cheap-module-source-map',
 	entry: entry,
 	mode: 'development',
 	stats: 'minimal',
@@ -64,14 +65,22 @@ module.exports = {
 		modules: [
 			path.resolve( config.workingDirectory, 'src' ),
 			'node_modules'
+		],
+		plugins: [
+			PnpWebpackPlugin,
 		]
+	},
+	resolveLoader: {
+		plugins: [
+			PnpWebpackPlugin.moduleLoader(module),
+		],
 	},
 	plugins: plugins,
 	module: {
 		rules: [
 			{
 				test: /\.(j|t)sx?$/,
-				loader: 'babel-loader',
+				loader: require.resolve( 'babel-loader' ),
 				include: path.resolve( config.workingDirectory, 'src' ),
 				exclude: /node_modules/,
 				options: babelOptions

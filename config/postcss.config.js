@@ -7,7 +7,7 @@ let config = {
 		require( 'postcss-color-mod-function' ),
 		require( '@lipemat/css-mqpacker' )
 	],
-	parser: 'postcss-scss'
+	parser: require.resolve( 'postcss-scss' )
 };
 
 // For production we minify it.
