@@ -1,13 +1,13 @@
 module.exports = {
 	cacheDirectory: true,
 	presets: [
-		require( '@babel/preset-env' ),
-		require( '@babel/preset-react' ),
-		require( '@babel/preset-typescript' ),
+		'@babel/preset-env',
+		'@babel/preset-react',
+		'@babel/preset-typescript',
 	],
 	plugins: [
-		require( '@babel/plugin-syntax-dynamic-import' ),
-		require( 'react-hot-loader/babel' ),
+		'@babel/plugin-syntax-dynamic-import',
+		'react-hot-loader/babel',
 	],
 };
 
