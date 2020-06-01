@@ -44,7 +44,7 @@ Unfortunately, some typescripts still send errors to PHPStorm like "Default expo
 
 ### ESLint
 To use the built in eslint, copy the following items from `templates` into your project root:
-1. `.eslintrc`
+1. `.eslintrc.js`
 
 Now you may adjust the eslint configuration as desired and run the linter via `yarn run lint`.
 
