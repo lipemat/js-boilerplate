@@ -5,11 +5,17 @@ const path = require( 'path' );
  * To create a custom config to extend, eslint requires a node module starting with
  * the name `eslint-config-`.
  * To get around this requirement we pass the full path to the `extends` declaration in
- * our project's `.eslintrc`.
+ * our project's `.eslintrc.js`.
  *
- * We are then able to make project specific adjustments to the `.eslintrc`.
+ * We are then able to make project specific adjustments to the `.eslintrc.js`.
  *
- * @see ../templates/.eslintrc
+ * @see ../templates/.eslintrc.js
+ *
+ * @todo Currently eslint does not support configurations being required inside dependencies. :-(
+ *       For now, we have to add them all individually to the active project's dependencies.
+ *       Once Eslint fully supports PNP, move all the eslint and eslint plugin declarations out
+ *       of the `peerDependencies` and template and put them in `dependencies`.
+ *
  *
  */
 
