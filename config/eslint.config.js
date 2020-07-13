@@ -31,7 +31,17 @@ let config = {
 			'jsdoc/no-undefined-types': [ 0 ],
 			'no-magic-numbers': [ 0 ],
 			'no-undef': [ 0 ],
-			'semi': [ 0 ]
+			'semi': [ 0 ],
+			'@typescript-eslint/type-annotation-spacing': [ 'warn', {
+				before: false,
+				after: true,
+				overrides: {
+					arrow: {
+						before: true,
+						after: true,
+					},
+				},
+			} ]
 		}
 	} ],
 	'parser': '@typescript-eslint/parser',
@@ -41,6 +51,7 @@ let config = {
 	},
 	'rules': {
 		'arrow-parens': [ 1, 'as-needed' ],
+		'arrow-spacing': [ 1, { 'before': true, 'after': true } ],
 		'camelcase': [ 2, {'properties': 'never'} ],
 		'indent': [1, 'tab', {'SwitchCase': 1}],
 		'lines-around-comment': [ 0 ],
@@ -56,6 +67,7 @@ let config = {
 		'react-hooks/exhaustive-deps': 'warn',
 		'react/jsx-curly-spacing': [1, {'when': 'never', 'allowMultiline': false, children: true}],
 		'react/prop-types': [ 2, {'skipUndeclared': true} ],
+		'space-before-blocks': [ 1, 'always' ],
 		'space-before-function-paren': [ 'error', {
 			anonymous: 'never',
 			named: 'never',
