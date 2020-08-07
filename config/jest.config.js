@@ -15,7 +15,8 @@ let jestConfig = {
 	'transform': {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ]
 	},
-	'setupFilesAfterEnv': [ path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ) ]
+	'setupFilesAfterEnv': [ path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ) ],
+	'snapshotSerializers' : [ "enzyme-to-json/serializer" ]
 };
 
 /**
