@@ -20,10 +20,12 @@ let plugins = [
 	new webpack.NoEmitOnErrorsPlugin(),
 ];
 
-//Loads a thread which verifies any TypeScripts on changes.
-//Only use this if the project has a tsconfig.json file.
+// Loads a thread which verifies any TypeScripts on changes.
+// Only use this if the project has a tsconfig.json file.
 if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
-	plugins.push( new ForkTsCheckerWebpackPlugin() );
+	plugins.push( new ForkTsCheckerWebpackPlugin( {
+		formatter: 'basic'
+	} ) );
 }
 
 let entry = {
