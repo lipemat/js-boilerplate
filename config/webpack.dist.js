@@ -74,7 +74,10 @@ module.exports = {
 		new SriPlugin( {
 			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ]
 		} ),
-		new WebpackAssetsManifest( {integrity: true} )
+		new WebpackAssetsManifest( {
+			integrity: true,
+			output: 'manifest.json'
+		} )
 	],
 	module: {
 		rules: [
