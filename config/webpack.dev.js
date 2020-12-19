@@ -23,7 +23,10 @@ let plugins = [
 // Only use this if the project has a tsconfig.json file.
 if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {
-		formatter: 'basic'
+		formatter: 'basic',
+		logger: {
+			devServer: false
+		}
 	} ) );
 }
 
