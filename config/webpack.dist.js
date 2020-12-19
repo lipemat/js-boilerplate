@@ -42,6 +42,11 @@ module.exports = {
 	externals: {
 		jquery: 'jQuery'
 	},
+	target: [ "web", "es5" ],
+	optimization: {
+		// Automatically adds names to modules which don't have /** webpackChunkName **/ defined.
+		chunkIds: "named"
+	},
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
@@ -88,7 +93,7 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							importLoaders: 1,
-							localIdentName: '[hash:base64:5]',
+							localIdentName: '[contenthash:base64:5]',
 							modules: true,
 							url: false
 						}
