@@ -85,6 +85,13 @@ dist
 /.rts2_cache_es/
 /.rts2_cache_cjs/
 
+# Yarn berry files
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
 # PHPStorm files
 # https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
 # User-specific stuff
