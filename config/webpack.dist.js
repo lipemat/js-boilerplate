@@ -43,10 +43,6 @@ module.exports = {
 		jquery: 'jQuery'
 	},
 	target: [ "web", "es5" ],
-	optimization: {
-		// Automatically adds names to modules which don't have /** webpackChunkName **/ defined.
-		chunkIds: "named"
-	},
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
