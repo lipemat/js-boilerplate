@@ -29,8 +29,18 @@ module.exports = {
 	mode: 'production',
 	stats: {
 		assets: true,
+		assetsSort: 'size',
+		assetsSpace: 100,
+		cached: false,
+		cachedAssets: true,
 		children: false,
+		colors: true,
 		hash: false,
+		groupAssetsByChunk: false,
+		groupAssetsByEmitStatus: false,
+		groupAssetsByExtension: false,
+		groupAssetsByInfo: false,
+		groupAssetsByPath: false,
 		modules: false,
 		timings: false,
 		version: false
