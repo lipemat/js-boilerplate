@@ -96,8 +96,9 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							importLoaders: 1,
-							localIdentName: '[contenthash:base64:5]',
-							modules: true,
+							modules: {
+								localIdentName: '[contenthash:base64:5]',
+							},
 							url: false
 						}
 					},
