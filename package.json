@@ -35,6 +35,7 @@
     "@lipemat/webpack-cleanup-plugin": "^1.0.0",
     "@types/classnames": "^2.2.7",
     "@types/jest": "^24.0.19",
+    "@types/jquery": "^3.5.5",
     "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.3",
     "@types/react-router-dom": "^4.3.4",
