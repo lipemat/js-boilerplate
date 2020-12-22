@@ -2,7 +2,7 @@
   "//": "@see ./templates/tsconfig.json to use/extend this configuration in your project",
   "//": "PHPStorm will only see changes to the file, if you re-save the project root's tsconfig.json file",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
     "lib": [
       "dom",
