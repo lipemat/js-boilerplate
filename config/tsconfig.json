@@ -19,10 +19,5 @@
   },
   "exclude": [
     "node_modules"
-  ],
-  "include": [
-    "../@types/pcss/index.d.ts",
-    "../../../../src/**/*",
-    "../../js-boilerplate-*/@types/**/*.ts" // Any extensions declarations.
   ]
 }
