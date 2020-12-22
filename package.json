@@ -15,6 +15,13 @@
     "ES6",
     "no-config"
   ],
+  "files": [
+    "@types/",
+    "bin/",
+    "config/",
+    "helpers/",
+    "scripts/"
+  ],
   "bin": {
     "lipemat-js-boilerplate": "./bin/lipemat-js-boilerplace.js"
   },
