@@ -35,4 +35,4 @@ fs.readFile( PNP_FILE, 'utf8', ( err, data ) => {
 	} );
 } );
 
-console.log( 'whoop' )
+console.log( 'The .pnp.js file has been adjusted to no longer display warnings for loose modules.' )
