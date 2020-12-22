@@ -2,16 +2,20 @@
   "//": "@see ./templates/tsconfig.json to use/extend this configuration in your project",
   "//": "PHPStorm will only see changes to the file, if you re-save the project root's tsconfig.json file",
   "compilerOptions": {
-    "sourceMap": true,
-    "target": "es6",
-    "module": "commonjs",
+    "allowSyntheticDefaultImports": true
     "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "module": "commonjs",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "sourceMap": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true
+    "target": "es6"
   },
   "exclude": [
     "node_modules"
