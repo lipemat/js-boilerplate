@@ -23,8 +23,9 @@ Add the following to your package.json. (this may also be found in the `template
   "theme_path": "/wp-content/themes/core/",
   "scripts": {
     "dist": "lipemat-js-boilerplate dist",
-    "start": "lipemat-js-boilerplate start",
     "lint": "lipemat-js-boilerplate lint",
+    "postinstall": "lipemat-js-boilerplate fix-pnp",
+    "start": "lipemat-js-boilerplate start",
     "test": "lipemat-js-boilerplate test"
   },
   "devDependencies": {},
@@ -36,6 +37,14 @@ Add the following to your package.json. (this may also be found in the `template
 ```
 
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
+
+
+## Version 6
+
+**Version 6 has many backward incompatibilities and should be updated with focus and thoroughness.**
+
+[Migration instructions are here.](https://github.com/lipemat/js-boilerplate/wiki/Version-6-Migration)
+
 
 ### Code Completion In PHPStorm
 Some `@types` have been specified in this library to assist with code completion and allow using the built in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built in TypeScript support).
@@ -85,5 +94,4 @@ Now you may write `jest` tests as desired and run them via `yarn run test`
 2. Working directory: root of your app which contains the `jest.config.js`.
 3. "All tests" to run entire directory of tests.
 4. "Suite" to run a particular file of tests.
-
 
