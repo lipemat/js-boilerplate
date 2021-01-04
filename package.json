@@ -1,6 +1,6 @@
 {
   "name": "@lipemat/js-boilerplate",
-  "version": "6.0.0-beta.26",
+  "version": "6.0.0",
   "description": "Dependencies and scripts for a no config JavaScript app",
   "engines": {
     "node": ">=14.15.3"
@@ -36,7 +36,7 @@
     "@babel/preset-typescript": "^7.12.7",
     "@hot-loader/react-dom": "^16.11.0",
     "@lipemat/css-mqpacker": "^8.0.1",
-    "@lipemat/eslint-config": "1.0.0-beta.8",
+    "@lipemat/eslint-config": "^1.0.0",
     "@lipemat/postcss-loader": "^3.1.2",
     "@lipemat/webpack-cleanup-plugin": "^1.0.0",
     "@types/lipemat__js-boilerplate": "lipemat/types-js-boilerplate#semver:^1.0.0",
