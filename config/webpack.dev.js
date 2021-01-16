@@ -16,7 +16,6 @@ let plugins = [
 		$: 'jquery'
 	} ),
 	new webpack.HotModuleReplacementPlugin(),
-	new webpack.NoEmitOnErrorsPlugin(),
 ];
 
 // Loads a thread which verifies any TypeScripts on changes.
@@ -72,7 +71,8 @@ module.exports = {
 	},
 	plugins: plugins,
 	optimization: {
-		moduleIds: 'named'
+		moduleIds: 'named',
+		noEmitOnErrors: true
 	},
 	module: {
 		rules: [
