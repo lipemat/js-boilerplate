@@ -72,7 +72,7 @@ module.exports = {
 	plugins: plugins,
 	optimization: {
 		moduleIds: 'named',
-		noEmitOnErrors: true
+		emitOnErrors: false
 	},
 	module: {
 		rules: [
