@@ -18,7 +18,8 @@ async function build( config ) {
 		const info = stats.toJson();
 
 		if ( stats.hasErrors() ) {
-			console.error(info.errors.toString());
+			console.error( info.errors );
+			process.exit( 1 );
 		} else {
 			console.log( stats.toString( config.stats ) );
 		}
