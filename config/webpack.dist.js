@@ -9,23 +9,22 @@ const babelOptions = require( '../helpers/config' ).getConfig( 'babel.config.js'
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const SriPlugin = require( 'webpack-subresource-integrity' );
 
-let entry = {
-	master : [
-		'core-js/stable',
+const entry = {
+	master: [
 		'regenerator-runtime/runtime',
-		'./src/index.js'
-	]
+		'./src/index.js',
+	],
 };
 
 // Loads an admin.js file if it exists @since 4.3.0
 if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) ) {
-	entry.admin = [...entry.master];
+	entry.admin = [ ...entry.master ];
 	entry.admin.splice( -1, 1, './src/admin.js' );
 }
 
 module.exports = {
 	devtool: false,
-	entry: entry,
+	entry,
 	mode: 'production',
 	stats: {
 		assets: true,
@@ -43,47 +42,47 @@ module.exports = {
 		groupAssetsByPath: false,
 		modules: false,
 		timings: false,
-		version: false
+		version: false,
 	},
 	// Displays warnings of size limits.
 	performance: {
-		hints: 'warning'
+		hints: 'warning',
 	},
 	externals: {
-		jquery: 'jQuery'
+		jquery: 'jQuery',
 	},
-	target: [ "web", "es5" ],
+	target: [ 'web', 'es5' ],
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
 		publicPath: config.theme_path + 'js/dist/',
 		chunkFilename: '[name].[chunkhash].js',
-		crossOriginLoading: 'anonymous'
+		crossOriginLoading: 'anonymous',
 	},
 	resolve: {
 		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( config.workingDirectory, 'src' ),
-			'node_modules'
-		]
+			'node_modules',
+		],
 	},
 	plugins: [
 		new webpack.ProvidePlugin( {
 			jQuery: 'jquery',
-			$: 'jquery'
+			$: 'jquery',
 		} ),
 		new MiniCssExtractPlugin( {
 			filename: 'master.css',
-			chunkFilename: '[name].[chunkhash].css'
+			chunkFilename: '[name].[chunkhash].css',
 		} ),
 		new WebpackCleanupPlugin(),
 		new SriPlugin( {
-			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ]
+			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ],
 		} ),
 		new WebpackAssetsManifest( {
 			integrity: true,
-			output: 'manifest.json'
-		} )
+			output: 'manifest.json',
+		} ),
 	],
 	module: {
 		rules: [
@@ -92,7 +91,7 @@ module.exports = {
 				loader: 'babel-loader',
 				include: path.resolve( config.workingDirectory, 'src' ),
 				exclude: /node_modules/,
-				options: babelOptions
+				options: babelOptions,
 			},
 			{
 				test: /\.pcss$/,
@@ -104,16 +103,16 @@ module.exports = {
 							importLoaders: 1,
 							modules: true,
 							localIdentName: '[contenthash:base64:5]',
-							url: false
-						}
+							url: false,
+						},
 					},
 					{
 						loader: '@lipemat/postcss-loader',
-						options: postCSSOptions
-					}
-				]
-			}
+						options: postCSSOptions,
+					},
+				],
+			},
 
-		]
-	}
+		],
+	},
 };
