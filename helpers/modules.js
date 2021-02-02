@@ -16,7 +16,7 @@ const config = require( './package-config' );
 function getBabelExcludeRegex() {
 	const nonES5 = areYouES5.checkModules( {} );
 	// Support specifying additional es5Modules in package.json.
-	const regex = regexBuilder.getBabelLoaderIgnoreRegex( [ ...nonES5.es6Modules, ...config.es5Modules ] );
+	const regex = regexBuilder.getBabelLoaderIgnoreRegex( [ ...nonES5.es6Modules, ...config.es6Modules ] );
 
 	// We must strip off the leading and trailing '/'.
 	return new RegExp( regex.replace( /^\/|\/$/g, '' ) );
