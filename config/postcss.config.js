@@ -1,16 +1,9 @@
-const postcssPresetEnv = require( 'postcss-preset-env' );
-
 const config = {
 	plugins: [
 		require( 'postcss-import' ),
 		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
-		postcssPresetEnv( {
-			browsers: [
-				'defaults',
-				'not IE 11',
-			],
-		} ),
+		require( 'postcss-preset-env' ),
 		require( 'postcss-color-mod-function' ),
 		require( '@lipemat/css-mqpacker' ),
 	],
