@@ -33,7 +33,6 @@ const entry = {
 	master: [
 		'webpack-dev-server/client?' + config.url + ':3000',
 		'webpack/hot/only-dev-server',
-		'regenerator-runtime/runtime',
 		'./src/index.js',
 	],
 };

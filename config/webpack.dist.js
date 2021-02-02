@@ -11,7 +11,6 @@ const SriPlugin = require( 'webpack-subresource-integrity' );
 
 const entry = {
 	master: [
-		'regenerator-runtime/runtime',
 		'./src/index.js',
 	],
 };
