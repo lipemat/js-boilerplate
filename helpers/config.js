@@ -6,10 +6,10 @@ const extensions = Object.keys( packageConfig.dependencies ).filter( name => nam
 /**
  * Check to see if a local config file exists.
  *
- * @param {String} $fileName
+ * @param {string} $fileName
  * @param {boolean} $inRoot - Look in the root their project directory instead of their /config directory
  *
- * @returns {boolean}
+ * @return {boolean}
  */
 function hasLocalOverride( $fileName, $inRoot = false ) {
 	let hasLocal = false;
@@ -18,7 +18,7 @@ function hasLocalOverride( $fileName, $inRoot = false ) {
 			require( path.resolve( packageConfig.workingDirectory, $fileName ) );
 			hasLocal = true;
 		} else {
-			require( path.resolve( packageConfig.workingDirectory + '/config' ) );
+			require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
 			hasLocal = true;
 		}
 	} catch ( e ) {
@@ -35,9 +35,9 @@ function hasLocalOverride( $fileName, $inRoot = false ) {
  * we will merge the contents with our config/babel.config.js in favor of whatever
  * is specified with the project's file.
  *
- * @param {String} $fileName
+ * @param {string} $fileName
  *
- * @returns {object}
+ * @return {Object}
  */
 function getConfig( $fileName ) {
 	let config = {...require( '../config/' + $fileName ), ...getExtensionsConfig( $fileName )};
@@ -53,13 +53,13 @@ function getConfig( $fileName ) {
  * Get a config from any existing extension's /config directory's
  * merged together into one.
  *
- * @param {String} $fileName
+ * @param {string} $fileName
  *
- * @returns {object}
+ * @return {Object}
  */
 function getExtensionsConfig( $fileName ) {
 	let config = {};
-	extensions.map( extension => {
+	extensions.forEach( extension => {
 		try {
 			const extensionConfig = require( extension + '/config/' + $fileName );
 			config = {...config, ...extensionConfig};
@@ -71,7 +71,7 @@ function getExtensionsConfig( $fileName ) {
 }
 
 module.exports = {
-	getConfig: getConfig,
-	getExtensionsConfig: getExtensionsConfig,
-	hasLocalOverride: hasLocalOverride
+	getConfig,
+	getExtensionsConfig,
+	hasLocalOverride,
 };
