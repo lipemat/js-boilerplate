@@ -1,3 +1,4 @@
+const moduleHelpers = require( '../helpers/modules' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const fs = require( 'fs' );
@@ -88,8 +89,7 @@ module.exports = {
 			{
 				test: /\.(j|t)sx?$/,
 				loader: 'babel-loader',
-				include: path.resolve( config.workingDirectory, 'src' ),
-				exclude: /node_modules/,
+				exclude: moduleHelpers.getBabelExcludeRegex(),
 				options: babelOptions,
 			},
 			{
