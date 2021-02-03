@@ -7,15 +7,14 @@ const presetEnv = {
 	shippedProposals: true,
 	useBuiltIns: 'usage',
 };
+
 /**
- * Requirement of Babel preset when no browserlist config is specified.
- *
- * @notice Will change in Babel 8.
+ * If browserslist is not specified, we fallback to WordPress defaults.
  *
  * @link https://babeljs.io/docs/en/babel-preset-env#targets
  */
 if ( browserslist( browserslist.defaults ) === browserslist() ) {
-	presetEnv.targets = 'defaults';
+	presetEnv.targets = require( '@wordpress/browserslist-config' );
 }
 
 module.exports = {
