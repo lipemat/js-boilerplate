@@ -90,11 +90,16 @@ Now you may write `jest` tests as desired and run them via `yarn run test`
 3. "All tests" to run an entire directory of tests.
 4. "Suite" to run a particular file of tests.
 
-## IE11 Support
+## Legacy Browsers Support
+
+#### IE11
+
+By default, IE11 is disabled via an internal Browserslist configuration. If you would like to support IE11, add it 
+as a target to your project's Browserslist configuration and all tooling will automatically support it.
 
 #### Custom properties
 
-IE11 does not support custom properties e.g. `--color-red: red;` natively. To make custom properties work with this
+IE11 (and some older browsers) do not support custom properties e.g. `--color-red: red;` natively. To make custom properties work with this
 library create `src/globals/pcss/variables.css` file and add any used custom properties to it.
 
 The app will automatically compile with fallback values for older browsers.
