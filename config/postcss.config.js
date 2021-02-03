@@ -1,8 +1,8 @@
 const postcssPresetEnv = require( 'postcss-preset-env' );
-const browserslist = require( 'browserslist' );
 const packageConfig = require( '../helpers/package-config' );
 const path = require( 'path' );
 const fs = require( 'fs' );
+const {getDefaultBrowsersList} = require( '../helpers/config' );
 
 /**
  * Files containing CSS properties to be provided to `postcss-preset-env`.
@@ -21,12 +21,13 @@ const presetEnv = {
 };
 
 /**
- * If browserslist is not specified, we fallback to WordPress defaults.
+ * If browserslist is not specified, we fallback to WordPress defaults
+ * except for IE11 which we don't support by default.
  *
  * @link https://github.com/csstools/postcss-preset-env#browsers
  */
-if ( browserslist( browserslist.defaults ) === browserslist() ) {
-	presetEnv.browsers = require( '@wordpress/browserslist-config' );
+if ( getDefaultBrowsersList() ) {
+	presetEnv.browsers = getDefaultBrowsersList();
 }
 
 

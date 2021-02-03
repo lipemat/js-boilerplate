@@ -1,6 +1,7 @@
-const browserslist = require( 'browserslist' );
+const {getDefaultBrowsersList} = require( '../helpers/config' );
 
 const presetEnv = {
+	debug: true,
 	corejs: {
 		version: '3.8',
 	},
@@ -9,12 +10,13 @@ const presetEnv = {
 };
 
 /**
- * If browserslist is not specified, we fallback to WordPress defaults.
+ * If browserslist is not specified, we fallback to WordPress defaults
+ * except for IE11 which we don't support by default.
  *
  * @link https://babeljs.io/docs/en/babel-preset-env#targets
  */
-if ( browserslist( browserslist.defaults ) === browserslist() ) {
-	presetEnv.targets = require( '@wordpress/browserslist-config' );
+if ( getDefaultBrowsersList() ) {
+	presetEnv.targets = getDefaultBrowsersList();
 }
 
 module.exports = {
