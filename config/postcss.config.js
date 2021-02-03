@@ -16,7 +16,7 @@ const fs = require( 'fs' );
 const presetEnv = {
 	importFrom: [
 		path.resolve( packageConfig.workingDirectory, 'src/globals/pcss/variables.css' ),
-		path.resolve( packageConfig.workingDirectory, '../pcss/variables.css' ),
+		path.resolve( packageConfig.workingDirectory, '../pcss/globals/variables.css' ),
 	].filter( filePath => fs.existsSync( filePath ) ),
 };
 
