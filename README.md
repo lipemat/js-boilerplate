@@ -47,22 +47,17 @@ Add the following to your package.json. (this may also be found in the `template
 
 
 ### Code Completion In PHPStorm
-Some `@types` have been specified in this library to assist with code completion and allow using the built in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built in TypeScript support).
+Some `@types` have been specified in this library to assist with code completion and allow using the built-in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built-in TypeScript support).
 
-You may notice that because the modules do not exist in your project's package.json that PHP/Web Storm will mark imports and not being installed.
-
-There are 2 ways to solve this issue:
-1. Specifically copy the `ts/package.json` folder and file to your project **(preferred)**.
-2. Add dependencies to the package.json that you are using directly so PHPStorm will find them.
 
 ### ESLint
-To use the built in eslint, copy the following items from `templates` into your project root:
+To use the built-in eslint, copy the following items from `templates` into your project root:
 1. `.eslintrc`
 
 Now you may adjust the eslint configuration as desired and run the linter via `yarn run lint`.
 
 ### TypeScript
-To use the built in TypeScript, copy the following items from `templates` into your project root:
+To use the built-in TypeScript, copy the following items from `templates` into your project root:
 1. `tsconfig.json`
 
 TypeScript will run a validator during dev and output any errors in the console. These same errors will display within PHPStorm if you copied tsconfig.json file in step 1. You technically don't have to fix any issues to compile but it's recommended. 
@@ -90,8 +85,36 @@ Now you may write `jest` tests as desired and run them via `yarn run test`
 1. Tests file must have .test.js in file name
 
 **Alternatively you may create a [run configuration](https://www.jetbrains.com/help/phpstorm/running-unit-tests-on-jest.html#createRunConfigJest) in PHPStorm for an interactive testing experience.**
-1. Jest package: `<project root>/node_modules/jest-cli`
-2. Working directory: root of your app which contains the `jest.config.js`.
-3. "All tests" to run entire directory of tests.
+1. __Jest package__: `<project root>/node_modules/jest-cli`
+2. __Working directory__: root of your app which contains the `jest.config.js`.
+3. "All tests" to run an entire directory of tests.
 4. "Suite" to run a particular file of tests.
 
+## IE11 Support
+
+#### Custom properties
+
+IE11 does not support custom properties e.g. `--color-red: red;` natively. To make custom properties work with this
+library create `src/globals/pcss/variables.css` file and add any used custom properties to it.
+
+The app will automatically compile with fallback values for older browsers.
+
+An alternative/extra location is `../pcss/globals/variables.css`.
+
+#### ES6 Modules
+
+The app will automatically detect any packages in your `package.json` which do not support ES5 and add them to the list
+of files that Babel will transform into ES5 code.
+
+If you have a package which has a dependency which does not support ES5, you will need to add it to a `es6Modules` key
+in your `package.json` to have it transformed.
+
+**Example**
+
+```JSON
+{
+ "es6Modules": [
+    "buffer"
+  ]
+}
+```
