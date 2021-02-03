@@ -1,7 +1,6 @@
 const {getDefaultBrowsersList} = require( '../helpers/config' );
 
 const presetEnv = {
-	debug: true,
 	corejs: {
 		version: '3.8',
 	},
