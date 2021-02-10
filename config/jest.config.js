@@ -8,6 +8,9 @@ let babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
 
 let jestConfig = {
+	'globals': {
+		'__TEST__': true,
+	},
 	'moduleNameMapper': {
 		'\\.(pcss|less|css)$': 'identity-obj-proxy'
 	},

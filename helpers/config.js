@@ -81,9 +81,14 @@ function getExtensionsConfig( $fileName ) {
  *
  * @link https://github.com/browserslist/browserslist#config-file
  *
- * @return {false | string[]}
+ * @return {boolean | string[]}
  */
 const getDefaultBrowsersList = once( () => {
+	// JEST requires the default browsers list for JSDOM to work.
+	if ( typeof global.__TEST__ !== 'undefined' && global.__TEST__ ) {
+		return false;
+	}
+
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
 		const browsers = require( '@wordpress/browserslist-config' );
 		browsers.push( 'not IE 11' );
