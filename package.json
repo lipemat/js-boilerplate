@@ -4,7 +4,7 @@
   "description": "Dependencies and scripts for a no config JavaScript app",
   "main": "index.js",
   "engines": {
-    "node": ">=12.13.1 <14.0.0"
+    "node": ">=12.13.1"
   },
   "repository": {
     "type": "git",
