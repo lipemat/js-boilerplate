@@ -6,9 +6,11 @@
   "theme_path": "/wp-content/themes/core/",
   "root": "../../../../",
   "scripts": {
+    "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",
-    "start": "lipemat-js-boilerplate start",
     "lint": "lipemat-js-boilerplate lint",
+    "postinstall": "lipemat-js-boilerplate fix-pnp",
+    "start": "lipemat-js-boilerplate start",
     "test": "lipemat-js-boilerplate test"
   },
   "dependencies": {

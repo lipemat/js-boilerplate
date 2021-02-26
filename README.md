@@ -22,6 +22,7 @@ Add the following to your package.json. (this may also be found in the `template
 {
   "theme_path": "/wp-content/themes/core/",
   "scripts": {
+    "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",
     "lint": "lipemat-js-boilerplate lint",
     "postinstall": "lipemat-js-boilerplate fix-pnp",
@@ -55,6 +56,21 @@ To use the built-in eslint, copy the following items from `templates` into your 
 1. `.eslintrc`
 
 Now you may adjust the eslint configuration as desired and run the linter via `yarn run lint`.
+
+### Browserslist
+To retrieve a list of all currently targeted browsers, add the following to your `package.json`
+and run `yarn browserslist`.
+
+```json
+{
+  "scripts": {
+    "browserslist": "lipemat-js-boilerplate browserslist"
+  }
+}
+```
+
+The console will display a list of browsers targeted by your [browserslist configruation](https://github.com/browserslist/browserslist#config-file), or the defaults if no configuration is specified.
+
 
 ### TypeScript
 To use the built-in TypeScript, copy the following items from `templates` into your project root:
