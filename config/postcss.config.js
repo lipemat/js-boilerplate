@@ -18,6 +18,27 @@ const presetEnv = {
 		path.resolve( packageConfig.workingDirectory, 'src/globals/pcss/variables.css' ),
 		path.resolve( packageConfig.workingDirectory, '../pcss/globals/variables.css' ),
 	].filter( filePath => fs.existsSync( filePath ) ),
+
+	features: {
+		/**
+		 * Fixes `focus-visible` feature for CSS modules (included by preset-env anywhere
+		 * Safari is supported).
+		 *
+		 * Requires `focus-visible` polyfill to be loaded externally to support Safari.
+		 *
+		 * @link https://caniuse.com/css-focus-visible
+		 *
+		 * May be imported directly into index.js for SPA or site which loads JS app
+		 * on every page.
+		 * @link https://github.com/WICG/focus-visible
+		 *
+		 * Most often will need it site wide on pages which do and don't us the JS app.
+		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
+		 */
+		'focus-visible-pseudo-class': {
+			replaceWith: ':global(.focus-visible)',
+		},
+	},
 };
 
 /**
@@ -39,19 +60,6 @@ const config = {
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
 		require( '@lipemat/css-mqpacker' ),
-
-		/**
-		 * Requires `focus-visible` polyfill to be loaded externally to support Safari.
-		 *
-		 * @link https://caniuse.com/css-focus-visible
-		 *
-		 * May be imported directly into index.js for SPA or site which load JS app on every page.
-		 * @link https://github.com/WICG/focus-visible
-		 *
-		 * Most often will need it site wide on pages which do and don't us the JS app.
-		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
-		 */
-		require( 'postcss-focus-visible' )( {replaceWith: ':global(.focus-visible)'} ),
 	],
 	parser: 'postcss-scss',
 };
