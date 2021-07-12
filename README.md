@@ -44,7 +44,7 @@ If you are using https in your local environment, you may point to the certifica
 
 ```json
   "certificates": {
-      "cert": "<path to -crt.pem file>,
+      "cert": "<path to -crt.pem file>",
       "key": "<path to -key.pem file>"
   }
 ```
