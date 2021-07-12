@@ -39,6 +39,16 @@ Add the following to your package.json. (this may also be found in the `template
 
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
 
+### Certificates
+If you are using https in your local environment, you may point to the certificates in your package.json like so:
+
+```json
+  "certificates": {
+      "cert": "<path to -crt.pem file>,
+      "key": "<path to -key.pem file>"
+  }
+```
+
 
 ## Version 6
 
