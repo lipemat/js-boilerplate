@@ -32,7 +32,7 @@ const presetEnv = {
 		 * on every page.
 		 * @link https://github.com/WICG/focus-visible
 		 *
-		 * Most often will need it site wide on pages which do and don't us the JS app.
+		 * Most often will need it site wide on pages which do and don't use the JS app.
 		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
 		 */
 		'focus-visible-pseudo-class': {
