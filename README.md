@@ -1,4 +1,4 @@
-## The Start Of A Beautiful JS App
+# The Start Of A Beautiful JS App
 
 <p>
 <a href="https://www.npmjs.com/package/@lipemat/js-boilerplate">
@@ -10,12 +10,18 @@
 
 A zero configuration starting point for a React or non React app. 
 
-### Installation
+## Installation
 ```bash
 yarn add @lipemat/js-boilerplate
 ```
 
-### Usage
+## Version 6
+
+**Version 6 has many backward incompatibilities and should be updated with focus and thoroughness.**
+
+[Migration instructions are here.](https://github.com/lipemat/js-boilerplate/wiki/Version-6-Migration)
+
+## Usage
 Add the following to your package.json. (this may also be found in the `templates` directory.
 
 ```json
@@ -39,25 +45,17 @@ Add the following to your package.json. (this may also be found in the `template
 
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
 
-
-## Version 6
-
-**Version 6 has many backward incompatibilities and should be updated with focus and thoroughness.**
-
-[Migration instructions are here.](https://github.com/lipemat/js-boilerplate/wiki/Version-6-Migration)
-
-
-### Code Completion In PHPStorm
+## Code Completion In PHPStorm
 Some `@types` have been specified in this library to assist with code completion and allow using the built-in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built-in TypeScript support).
 
 
-### ESLint
+## ESLint
 To use the built-in eslint, copy the following items from `templates` into your project root:
 1. `.eslintrc`
 
 Now you may adjust the eslint configuration as desired and run the linter via `yarn run lint`.
 
-### Browserslist
+## Browserslist
 To retrieve a list of all currently targeted browsers, add the following to your `package.json`
 and run `yarn browserslist`.
 
@@ -72,7 +70,7 @@ and run `yarn browserslist`.
 The console will display a list of browsers targeted by your [browserslist configruation](https://github.com/browserslist/browserslist#config-file), or the defaults if no configuration is specified.
 
 
-### TypeScript
+## TypeScript
 To use the built-in TypeScript, copy the following items from `templates` into your project root:
 1. `tsconfig.json`
 
@@ -139,3 +137,14 @@ in your `package.json` to have it transformed.
   ]
 }
 ```
+
+## Certificates
+If you are using https in your local environment, you may point to the certificates in your package.json like so:
+
+```json
+  "certificates": {
+      "cert": "<path to -crt.pem file>",
+      "key": "<path to -key.pem file>"
+  }
+```
+
