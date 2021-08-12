@@ -15,7 +15,6 @@ const plugins = [
 		jQuery: 'jquery',
 		$: 'jquery',
 	} ),
-	new webpack.HotModuleReplacementPlugin(),
 ];
 
 // Loads a thread which verifies any TypeScripts on changes.
