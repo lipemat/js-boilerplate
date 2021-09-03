@@ -94,7 +94,7 @@ module.exports = {
 						options: {
 							importLoaders: 1,
 							modules: true,
-							localIdentName: 'Ⓜ[name]__[local]__[contenthash:base64:1]',
+							localIdentName: 'Ⓜ[name]__[local]__[contenthash:base64:2]',
 							sourceMap: true,
 							url: false,
 						},
