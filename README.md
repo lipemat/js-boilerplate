@@ -15,11 +15,11 @@ A zero configuration starting point for a React or non React app.
 yarn add @lipemat/js-boilerplate
 ```
 
-## Version 6
+## Version 7
 
-**Version 6 has many backward incompatibilities and should be updated with focus and thoroughness.**
+**Version 7 has some backward incompatibilities and should be updated with focus and thoroughness.**
 
-[Migration instructions are here.](https://github.com/lipemat/js-boilerplate/wiki/Version-6-Migration)
+[Migration instructions are here.](https://github.com/lipemat/js-boilerplate/wiki/Version-7-Migration)
 
 ## Usage
 Add the following to your package.json. (this may also be found in the `templates` directory.
@@ -142,9 +142,11 @@ in your `package.json` to have it transformed.
 If you are using https in your local environment, you may point to the certificates in your package.json like so:
 
 ```json
+{
   "certificates": {
-      "cert": "<path to -crt.pem file>",
-      "key": "<path to -key.pem file>"
+    "cert": "<path to -crt.pem file>",
+    "key": "<path to -key.pem file>"
   }
+}
 ```
 
