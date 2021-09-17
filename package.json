@@ -45,7 +45,6 @@
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.2.2",
     "browserslist": "^4.17.0",
-    "classnames": "^2.2.6",
     "core-js": "^3.8.3",
     "cross-spawn": "^6.0.5",
     "css-loader": "6.2.0",
