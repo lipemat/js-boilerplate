@@ -100,8 +100,10 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							importLoaders: 1,
-							modules: true,
-							localIdentName: '[contenthash:base64:5]',
+							modules: {
+								exportLocalsConvention: 'camelCase',
+								localIdentName: '[contenthash:base64:5]',
+							},
 							url: false,
 						},
 					},
