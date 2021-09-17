@@ -1,6 +1,5 @@
 const packageConfig = require( './package-config' );
 const path = require( 'path' );
-const without = require( 'lodash/without' );
 const once = require( 'lodash/once' );
 const browserslist = require( 'browserslist' );
 
@@ -90,9 +89,7 @@ const getDefaultBrowsersList = once( () => {
 	}
 
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		const browsers = require( '@wordpress/browserslist-config' );
-		browsers.push( 'not IE 11' );
-		return without( browsers, 'ie >= 11' );
+		return require( '@wordpress/browserslist-config' );
 	}
 	return false;
 } );
