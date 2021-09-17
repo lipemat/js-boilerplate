@@ -87,7 +87,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(j|t)sx?$/,
+				test: /\.[jt]sx?$/,
 				loader: 'babel-loader',
 				exclude: moduleHelpers.getBabelExcludeRegex(),
 				options: babelOptions,

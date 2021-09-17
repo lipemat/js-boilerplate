@@ -74,14 +74,14 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(j|t)sx?$/,
+				test: /\.[jt]sx?$/,
 				loader: 'babel-loader',
 				include: path.resolve( config.workingDirectory, 'src' ),
 				exclude: /node_modules/,
 				options: babelOptions,
 			},
 			{
-				test: /\.(j|t)sx?$/,
+				test: /\.[jt]sx?$/,
 				include: /node_modules/,
 				use: [ 'react-hot-loader/webpack' ],
 			},
