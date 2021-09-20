@@ -10,31 +10,31 @@ const help = `
 
 	Usage: lipemat-js-boilerplate browserslist [options]
 
-	--help, -h       Show help menu.`
+	--help, -h       Show help menu.`;
 
 const args = process.argv.slice( 2 );
-if ( args[0] && ( args[0] === '-h' || args[0] === '--help' ) ) {
+if ( args[ 0 ] && ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) ) {
 	console.log( help );
 	process.exit( 0 );
 }
 
 
 const provided = getDefaultBrowsersList() || browserslist.loadConfig( {
-	path: path.resolve( '.' )
+	path: path.resolve( '.' ),
 } );
 
 console.log( '' );
-console.log( 'Provided Browserslist' );
+console.log( 'JS Provided Browserslist' );
 console.table( provided );
 
 console.log( '' );
-console.log( 'Included Browsers' );
+console.log( 'JS Included Browsers' );
 console.table( browserslist( provided, {
-	env: 'production'
+	env: 'production',
 } ) );
 
 console.log( '' );
-console.log( 'Browser Coverage' );
+console.log( 'JS Browser Coverage' );
 console.table( browserslist.coverage( browserslist( provided, {
-	env: 'production'
+	env: 'production',
 } ) ) );
