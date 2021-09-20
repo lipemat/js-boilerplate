@@ -4,22 +4,22 @@ global.__TEST__ = true;
 const path = require( 'path' );
 const packageConfig = require( '../helpers/package-config' );
 
-let babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
+const babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
 
 let jestConfig = {
-	'globals': {
-		'__TEST__': true,
+	globals: {
+		__TEST__: true,
 	},
-	'moduleNameMapper': {
-		'\\.(pcss|less|css)$': 'identity-obj-proxy'
+	moduleNameMapper: {
+		'\\.(pcss|less|css)$': 'identity-obj-proxy',
 	},
-	'testURL': packageConfig.url,
-	'transform': {
-		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ]
+	testURL: packageConfig.url,
+	transform: {
+		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
-	'setupFilesAfterEnv': [ path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ) ],
-	'snapshotSerializers' : [ "enzyme-to-json/serializer" ]
+	setupFilesAfterEnv: [ path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ) ],
+	snapshotSerializers: [ 'enzyme-to-json/serializer' ],
 };
 
 /**
@@ -28,7 +28,7 @@ let jestConfig = {
  * is already an override of this file but we support it anyway to keep things consistent.
  */
 try {
-	let localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', 'jest.config.js' ) );
+	const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', 'jest.config.js' ) );
 	jestConfig = {...jestConfig, ...localConfig};
 } catch ( e ) {
 }
