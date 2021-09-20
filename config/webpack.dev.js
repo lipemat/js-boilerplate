@@ -25,6 +25,9 @@ if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 		logger: {
 			devServer: false,
 		},
+		typescript: {
+			configFile: config.workingDirectory + '/tsconfig.json',
+		},
 	} ) );
 }
 
@@ -32,14 +35,14 @@ const entry = {
 	master: [
 		'webpack-dev-server/client?' + config.url + ':3000',
 		'webpack/hot/only-dev-server',
-		'./src/index.js',
+		config.workingDirectory + '/src/index.js',
 	],
 };
 
-// Loads an admin.js file if it exists @since 5.0.0
-if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) ) {
+// Loads an admin.js file if it exists.
+if ( fs.existsSync( path.resolve( config.workingDirectory, '/src/admin.js' ) ) ) {
 	entry.admin = [ ...entry.master ];
-	entry.admin.splice( -1, 1, './src/admin.js' );
+	entry.admin.splice( -1, 1, config.workingDirectory + '/src/admin.js' );
 }
 
 module.exports = {

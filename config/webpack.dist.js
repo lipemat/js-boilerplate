@@ -12,14 +12,14 @@ const SriPlugin = require( 'webpack-subresource-integrity' );
 
 const entry = {
 	master: [
-		'./src/index.js',
+		config.workingDirectory + '/src/index.js',
 	],
 };
 
-// Loads an admin.js file if it exists @since 4.3.0
-if ( fs.existsSync( path.resolve( config.workingDirectory, './src/admin.js' ) ) ) {
+// Loads an admin.js file if it exists.
+if ( fs.existsSync( path.resolve( config.workingDirectory, '/src/admin.js' ) ) ) {
 	entry.admin = [ ...entry.master ];
-	entry.admin.splice( -1, 1, './src/admin.js' );
+	entry.admin.splice( -1, 1, config.workingDirectory + '/src/admin.js' );
 }
 
 module.exports = {
