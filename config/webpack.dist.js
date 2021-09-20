@@ -55,7 +55,7 @@ module.exports = {
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
-		publicPath: config.theme_path + 'js/dist/',
+		publicPath: config.themeUrlPath + 'js/dist/',
 		chunkFilename: '[name].[chunkhash].js',
 		crossOriginLoading: 'anonymous',
 	},
