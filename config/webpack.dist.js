@@ -103,6 +103,10 @@ module.exports = {
 							modules: {
 								exportLocalsConvention: 'camelCase',
 								localIdentName: '[contenthash:base64:5]',
+								// Default to :global for classes in "global" directories.
+								mode: resourcePath => {
+									return /globals?\//i.test( resourcePath.replace( /\\/g, '/' ) ) ? 'global' : 'local';
+								},
 							},
 							url: false,
 						},
