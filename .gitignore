@@ -15,9 +15,6 @@
 ehthumbs.db
 Thumbs.db
 
-# Lock file which is never used as this is a library
-yarn.lock
-
 # Logs
 logs
 *.log
