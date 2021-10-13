@@ -66,7 +66,7 @@ const config = {
 
 // For production we minify it.
 if ( 'production' === process.env.NODE_ENV ) {
-	config.plugins.push( require( 'postcss-clean' )( {
+	config.plugins.push( require( '../lib/postcss-clean' )( {
 		level: 2,
 	} ) );
 } else {
