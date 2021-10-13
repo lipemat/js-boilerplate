@@ -1813,7 +1813,6 @@ __metadata:
     lodash: ^4.17.19
     mini-css-extract-plugin: ^1.3.3
     postcss: ^7.0.14
-    postcss-clean: ^1.1.0
     postcss-color-mod-function: ^3.0.3
     postcss-custom-media: ^6.0.0
     postcss-import: ^12.0.1
@@ -3996,7 +3995,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clean-css@npm:^4.2.3, clean-css@npm:^4.x":
+"clean-css@npm:^4.2.3":
   version: 4.2.3
   resolution: "clean-css@npm:4.2.3"
   dependencies:
@@ -9785,16 +9784,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-clean@npm:^1.1.0":
-  version: 1.2.2
-  resolution: "postcss-clean@npm:1.2.2"
-  dependencies:
-    clean-css: ^4.x
-    postcss: ^6.x
-  checksum: 724531a71304abefc795744bf259987ba1e2c94a531544edf3b1b0b61cc33212064186bb1d10f51d1aa8d49b912069fc424d127067cf609ea68a713c2d1456a3
-  languageName: node
-  linkType: hard
-
 "postcss-color-functional-notation@npm:^2.0.1":
   version: 2.0.1
   resolution: "postcss-color-functional-notation@npm:2.0.1"
@@ -10251,7 +10240,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:^6.0.1, postcss@npm:^6.x":
+"postcss@npm:^6.0.1":
   version: 6.0.23
   resolution: "postcss@npm:6.0.23"
   dependencies:
