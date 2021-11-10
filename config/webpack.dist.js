@@ -17,7 +17,7 @@ const entry = {
 };
 
 // Loads an admin.js file if it exists.
-if ( fs.existsSync( path.resolve( config.workingDirectory, '/src/admin.js' ) ) ) {
+if ( fs.existsSync( path.resolve( config.workingDirectory, 'src/admin.js' ) ) ) {
 	entry.admin = [ ...entry.master ];
 	entry.admin.splice( -1, 1, config.workingDirectory + '/src/admin.js' );
 }
