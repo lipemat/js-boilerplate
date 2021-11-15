@@ -1765,15 +1765,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lipemat/eslint-config@npm:^1.0.1":
-  version: 1.0.2
-  resolution: "@lipemat/eslint-config@npm:1.0.2"
+"@lipemat/eslint-config@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@lipemat/eslint-config@npm:1.1.0"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^4.11.1
     "@typescript-eslint/parser": ^4.11.1
     "@wordpress/eslint-plugin": ^7.4.0
     eslint: ^7.17.0
-  checksum: cc95cf218e87d96fb98564852d10bf2ae556994fab8e01c271e2433a6502a68b60e1fea010330e32376d0042fb1bf09c1df75fb41c5ede0f0014a961fe581b5f
+  checksum: be7c287a4754131dab93bb109483ef2c09fe9aa63898508af7fc3a3a6c09d3da4fb8f79985168d6852e74f3bef5c5f101b9f126b968ab5066a03f55ebf528306
   languageName: node
   linkType: hard
 
@@ -1789,7 +1789,7 @@ __metadata:
     "@babel/preset-typescript": ^7.12.7
     "@hot-loader/react-dom": ^16.11.0
     "@lipemat/css-mqpacker": ^8.0.1
-    "@lipemat/eslint-config": ^1.0.1
+    "@lipemat/eslint-config": ^1.1.0
     "@lipemat/postcss-loader": ^3.1.2
     "@lipemat/webpack-cleanup-plugin": ^1.0.0
     "@types/lipemat__js-boilerplate": "lipemat/types-js-boilerplate#semver:^1.3.0"
