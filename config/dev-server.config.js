@@ -14,7 +14,6 @@ if ( 'object' === typeof ( packageConfig.certificates ) ) {
 
 module.exports = {
 	allowedHosts: 'all',
-	compress: false,
 	host: '0.0.0.0', // Allow connections from any IP.
 	hot: true,
 	https,
