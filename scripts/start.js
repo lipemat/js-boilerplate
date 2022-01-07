@@ -15,10 +15,4 @@ const server = new WebpackDevServer( devServerConfig, webpack( webpackConfig ) )
 	} catch ( err ) {
 		return console.log( err );
 	}
-
-	if ( devServerConfig.https ) {
-		console.log( `Listening at https://${devServerConfig.host}:${devServerConfig.port}/` );
-	} else {
-		console.log( `Listening at http://${devServerConfig.host}:${devServerConfig.port}/` );
-	}
 } )();
