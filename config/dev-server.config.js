@@ -14,14 +14,21 @@ if ( 'object' === typeof ( packageConfig.certificates ) ) {
 
 module.exports = {
 	allowedHosts: 'all',
-	host: '0.0.0.0', // Allow connections from any IP.
-	hot: true,
+	client: {
+		logging: 'warn',
+		overlay: {
+			errors: true,
+			warnings: false,
+		},
+	},
 	https,
 	headers: {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
 		'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
 	},
+	host: '0.0.0.0', // Allow connections from any IP.
+	hot: true,
 	port: 3000,
 	static: false,
 };
