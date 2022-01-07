@@ -1845,8 +1845,8 @@ __metadata:
     postcss-preset-env: ^6.6.0
     postcss-scss: ^2.0.0
     prop-types: ^15.7.2
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^17.0.1
+    react-dom: ^17.0.1
     react-hot-loader: ^4.8.3
     react-test-renderer: ^17.0.2
     react-transition-group: ^4.4.1
@@ -10515,7 +10515,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
+"react-dom@npm:^17.0.1":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -10613,7 +10613,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
+"react@npm:^17.0.1":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:
