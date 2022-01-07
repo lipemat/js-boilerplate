@@ -33,8 +33,6 @@ if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 
 const entry = {
 	master: [
-		'webpack-dev-server/client?' + config.url + ':3000',
-		'webpack/hot/only-dev-server',
 		config.workingDirectory + '/src/index.js',
 	],
 };
