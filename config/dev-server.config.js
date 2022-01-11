@@ -24,7 +24,6 @@ module.exports = {
 			warnings: false,
 		},
 	},
-	server,
 	headers: {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
@@ -33,5 +32,6 @@ module.exports = {
 	host: '0.0.0.0', // Allow connections from any IP.
 	hot: true,
 	port: 3000,
+	server,
 	static: false,
 };
