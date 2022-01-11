@@ -3,12 +3,15 @@ const packageConfig = require( '../helpers/package-config' );
 
 const url = new URL( packageConfig.url );
 
-let https = 'https:' === url.protocol;
+let server = 'https:' === url.protocol ? 'https' : 'http';
 // Load local certificates for https during development.
 if ( 'object' === typeof ( packageConfig.certificates ) ) {
-	https = {
-		cert: fs.readFileSync( packageConfig.certificates.cert ),
-		key: fs.readFileSync( packageConfig.certificates.key ),
+	server = {
+		type: 'https',
+		options: {
+			cert: fs.readFileSync( packageConfig.certificates.cert ),
+			key: fs.readFileSync( packageConfig.certificates.key ),
+		},
 	};
 }
 
@@ -21,7 +24,7 @@ module.exports = {
 			warnings: false,
 		},
 	},
-	https,
+	server,
 	headers: {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
