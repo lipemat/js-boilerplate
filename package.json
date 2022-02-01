@@ -23,7 +23,7 @@
     "scripts/"
   ],
   "bin": {
-    "lipemat-js-boilerplate": "./bin/lipemat-js-boilerplace.js"
+    "lipemat-js-boilerplate": "bin/lipemat-js-boilerplate.js"
   },
   "author": "Mat Lipe",
   "license": "MIT",
