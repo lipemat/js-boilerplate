@@ -44,7 +44,7 @@ if ( fs.existsSync( path.resolve( config.workingDirectory, 'src/admin.js' ) ) ) 
 }
 
 module.exports = {
-	devtool: 'eval-cheap-module-source-map',
+	devtool: 'eval-source-map',
 	entry,
 	mode: 'development',
 	stats: 'minimal',
