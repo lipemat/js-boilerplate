@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "JS app for the core theme",
   "url": "http://starting-point.loc",
+  "jsPath": "./js",
   "themeUrlPath": "/wp-content/themes/core/",
-  "root": "../../../../",
+  "theme_path": "./",
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",

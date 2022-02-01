@@ -1,7 +1,7 @@
 /**
  * Runs `jest` with any arguments passed via the terminal or yarn.
  *
- * @notice you must add `/templates/jest.config.js` to the root of your project.
+ * @notice you must add `/templates/jest.config.js` to the `jsPath` of your project.
  *
  * @example `lipemat-js-boilerplate test`
  */

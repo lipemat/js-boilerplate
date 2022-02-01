@@ -26,7 +26,8 @@ Add the following to your package.json. (this may also be found in the `template
 
 ```json
 {
-  "theme_path": "/wp-content/themes/core/",
+  "jsPath": "./js",
+  "themeUrlPath": "/wp-content/themes/core/",
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",
@@ -37,13 +38,15 @@ Add the following to your package.json. (this may also be found in the `template
   },
   "devDependencies": {},
   "dependencies": {
-    "@lipemat/js-boilerplate": "^5.6.0"
+    "@lipemat/js-boilerplate": "^8.0.0"
   }
 }
 
 ```
-
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
+
+* `jsPath`: Path of JS application relative to `package.json`. If `package.json` is in same directory as the JS application, this may be omitted.
+* `themeUrlPath`: Path of `package.json` file relative to site's domain.
 
 ## Code Completion In PHPStorm
 Some `@types` have been specified in this library to assist with code completion and allow using the built-in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built-in TypeScript support).
@@ -80,8 +83,10 @@ Babel will automatically compile TypeScript files into the finished javascript, 
 
 ### Configuration Overrides
 All configurations are found in the `config` directory and may be extended by adding a matching file within your project directory.
-
 For instance is you want to adjust `webpack.dev.js` you may add a `config/webpack.dev.js` file in your project directory.
+
+**@note** The `jsPath` will be taken into account so if you specified a `jsPath` the `config` directory must be placed
+inside it. (e.g. `js/config/wepack.dev.js`).
 
 All declarations are merged in favor of the project config.
 
@@ -125,7 +130,7 @@ An alternative/extra location is `../pcss/globals/variables.css`.
 The app will automatically detect any packages in your `package.json` which do not support ES5 and add them to the list
 of files that Babel will transform into ES5 code.
 
-If you have a package which has a dependency which does not support ES5, you will need to add it to a `es6Modules` key
+If you have a package, which has a dependency, which does not support ES5, you will need to add it to a `es6Modules` key
 in your `package.json` to have it transformed.
 
 **Example**
@@ -149,4 +154,3 @@ If you are using https in your local environment, you may point to the certifica
   }
 }
 ```
-
