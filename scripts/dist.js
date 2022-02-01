@@ -3,7 +3,6 @@ process.env.NODE_ENV = 'production';
 
 const webpack = require( 'webpack' );
 const webpackConfig = require( '../helpers/config' ).getConfig( 'webpack.dist.js' );
-const updateRevisionFile = require( '../helpers/revision' ).updateRevisionFile;
 
 async function build( config ) {
 	// Compiler Instance.
@@ -23,11 +22,8 @@ async function build( config ) {
 		} else {
 			console.log( stats.toString( config.stats ) );
 		}
-
-		updateRevisionFile();
 	} );
 }
 
 
 build( webpackConfig );
-

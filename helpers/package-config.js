@@ -9,8 +9,6 @@ let packageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
 packageConfig.workingDirectory = packageConfig.jsPath ? path.resolve( packageConfig.jsPath ) : workingDirectory;
 packageConfig.themeUrlPath = packageConfig.themeUrlPath || '/';
 packageConfig.url = packageConfig.url || 'http://localhost';
-packageConfig.root = packageConfig.root || './';
-packageConfig.regenerate_revision = packageConfig.regenerate_revision || false;
 packageConfig.es6Modules = packageConfig.es6Modules || [];
 
 try {
