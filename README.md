@@ -15,12 +15,6 @@ A zero configuration starting point for a React or non React app.
 yarn add @lipemat/js-boilerplate
 ```
 
-## Version 7
-
-**Version 7 has some backward incompatibilities and should be updated with focus and thoroughness.**
-
-[Migration instructions are here.](https://github.com/lipemat/js-boilerplate/wiki/Version-7-Migration)
-
 ## Usage
 Add the following to your package.json. (this may also be found in the `templates` directory.
 
@@ -84,9 +78,6 @@ Babel will automatically compile TypeScript files into the finished javascript, 
 ### Configuration Overrides
 All configurations are found in the `config` directory and may be extended by adding a matching file within your project directory.
 For instance is you want to adjust `webpack.dev.js` you may add a `config/webpack.dev.js` file in your project directory.
-
-**@note** The `jsPath` will be taken into account so if you specified a `jsPath` the `config` directory must be placed
-inside it. (e.g. `js/config/wepack.dev.js`).
 
 All declarations are merged in favor of the project config.
 

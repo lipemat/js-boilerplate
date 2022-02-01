@@ -17,7 +17,7 @@ const plugins = [
 	} ),
 ];
 
-// Loads a thread which verifies any TypeScripts on changes.
+// Loads a thread, which verifies any TypeScripts on changes.
 // Only use this if the project has a tsconfig.json file.
 if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {

@@ -8,19 +8,19 @@ const extensions = Object.keys( packageConfig.dependencies ).filter( name => nam
 /**
  * Check to see if a local config file exists.
  *
- * @param {string} $fileName
- * @param {boolean} $inRoot - Look in the root their project directory instead of their /config directory
+ * @param {string} fileName
+ * @param {boolean} inWorkingDirectory - Look in working directory instead of their /config directory
  *
  * @return {boolean}
  */
-function hasLocalOverride( $fileName, $inRoot = false ) {
+function hasLocalOverride( fileName, inWorkingDirectory = false ) {
 	let hasLocal = false;
 	try {
-		if ( $inRoot ) {
-			require( path.resolve( packageConfig.workingDirectory, $fileName ) );
+		if ( inWorkingDirectory ) {
+			require( path.resolve( packageConfig.workingDirectory, fileName ) );
 			hasLocal = true;
 		} else {
-			require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
+			require( path.resolve( packageConfig.packageDirectory + '/config', fileName ) );
 			hasLocal = true;
 		}
 	} catch ( e ) {
@@ -44,7 +44,7 @@ function hasLocalOverride( $fileName, $inRoot = false ) {
 function getConfig( $fileName ) {
 	let config = {...require( '../config/' + $fileName ), ...getExtensionsConfig( $fileName )};
 	try {
-		const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', $fileName ) );
+		const localConfig = require( path.resolve( packageConfig.packageDirectory + '/config', $fileName ) );
 		config = {...config, ...localConfig};
 	} catch ( e ) {
 	}
@@ -52,8 +52,8 @@ function getConfig( $fileName ) {
 }
 
 /**
- * Get a config from any existing extension's /config directory's
- * merged together into one.
+ * Get a config from any existing extension's /config directories
+ * merged into one.
  *
  * @param {string} $fileName
  *
