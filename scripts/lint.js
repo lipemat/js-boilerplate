@@ -26,6 +26,10 @@ const packageConfig = require( '../helpers/package-config' );
 
 	// 5. Output it.
 	console.log( resultText );
+	if ( '' === resultText ) {
+		console.log( '>> Linted JS files without errors.' );
+		console.log( '-----------------------------------' );
+	}
 }() ).catch( error => {
 	process.exitCode = 1;
 	console.error( error );
