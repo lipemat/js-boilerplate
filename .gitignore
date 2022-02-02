@@ -1,26 +1,23 @@
 # system/hidden files
+*.bak
+*.sublime-project
+*.sublime-workspace
+*.swp
 *~
 .DS_Store
 .DS_Store?
-.svn
-.cvs
-*.bak
-*.swp
-.sass-cache
-.project
-*.sublime-project
-*.sublime-workspace
-*.map
 .Trashes
-ehthumbs.db
+.cvs
+.phpunit.result.cache
+.project
+.ready
+.sass-cache
+.svn
 Thumbs.db
+ehthumbs.db
 
-# Logs
-logs
+# log files
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Runtime data
 pids
@@ -113,4 +110,3 @@ dist
 atlassian-ide-plugin.xml
 # Editor-based Rest Client
 .idea/httpRequests
-
