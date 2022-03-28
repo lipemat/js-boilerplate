@@ -8,7 +8,7 @@ const extensions = Object.keys( packageConfig.dependencies ).filter( name => nam
 /**
  * Check to see if a local config file exists.
  *
- * @param {string} fileName
+ * @param {string}  fileName
  * @param {boolean} inWorkingDirectory - Look in working directory instead of their /config directory
  *
  * @return {boolean}
@@ -89,7 +89,10 @@ const getDefaultBrowsersList = once( () => {
 	}
 
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		return require( '@wordpress/browserslist-config' );
+		return require( '@wordpress/browserslist-config' ).map( range => {
+			// Swap out "> 1%" for "> 2%".
+			return '> 1%' === range ? '> 2%' : range;
+		} );
 	}
 	return false;
 } );
