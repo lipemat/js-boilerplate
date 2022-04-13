@@ -73,8 +73,8 @@ function getExtensionsConfig( $fileName ) {
 }
 
 /**
- * If browserslist is not specified, we fallback to WordPress defaults
- * except for IE11 which we don't support by default.
+ * If browserslist is not specified, we fall back to WordPress defaults
+ * except for > 1% we don't support by default.
  *
  * Return false if a browserslist is specified in the current project.
  *

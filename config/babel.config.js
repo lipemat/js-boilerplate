@@ -9,10 +9,7 @@ const presetEnv = {
 };
 
 /**
- * If browserslist is not specified, we fallback to WordPress defaults
- * except for IE11 which we don't support by default.
- *
- * @link https://babeljs.io/docs/en/babel-preset-env#targets
+ * Use shared browserslist configurations.
  */
 if ( getDefaultBrowsersList() ) {
 	presetEnv.targets = getDefaultBrowsersList();
@@ -30,4 +27,3 @@ module.exports = {
 		'react-hot-loader/babel',
 	],
 };
-
