@@ -7,6 +7,9 @@ require( 'unfetch/polyfill' ); // So we can use window.fetch.
 
 configure( {adapter: new Adapter()} );
 
+// eslint-disable-next-line no-undef
+jest.spyOn( global.console, 'warn' ).mockImplementation( () => jest.fn() );
+
 // Mock environmental variables
 global.__TEST__ = true;
 window.CORE_CONFIG = {
