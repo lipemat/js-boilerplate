@@ -37,6 +37,22 @@ function hasLocalOverride( fileName, inWorkingDirectory = false ) {
  * we will merge the contents with our config/babel.config.js in favor of whatever
  * is specified with the project's file.
  *
+ * If the `module.exports` are a function, the existing configuration will be passed
+ * as the only argument. Otherwise, standard `module.exports` are also supported.
+ *
+ * @example ```ts
+ * // standard
+ * module.export = {
+ *     externals: {extra: 'Extra'}
+ * }
+ * // function
+ * module.exports = function( config ) {
+ *     return {
+ *         externals: {...config.externals, extra: 'Extra'}
+ *     }
+ * }
+ * ```
+ *
  * @param {string} $fileName
  *
  * @return {Object}
@@ -45,7 +61,11 @@ function getConfig( $fileName ) {
 	let config = {...require( '../config/' + $fileName ), ...getExtensionsConfig( $fileName )};
 	try {
 		const localConfig = require( path.resolve( packageConfig.packageDirectory + '/config', $fileName ) );
-		config = {...config, ...localConfig};
+		if ( 'function' === typeof localConfig ) {
+			config = {...config, ...localConfig( config )};
+		} else {
+			config = {...config, ...localConfig};
+		}
 	} catch ( e ) {
 	}
 	return config;
@@ -54,6 +74,8 @@ function getConfig( $fileName ) {
 /**
  * Get a config from any existing extension's /config directories
  * merged into one.
+ *
+ * @see getConfig
  *
  * @param {string} $fileName
  *
@@ -64,7 +86,11 @@ function getExtensionsConfig( $fileName ) {
 	extensions.forEach( extension => {
 		try {
 			const extensionConfig = require( extension + '/config/' + $fileName );
-			config = {...config, ...extensionConfig};
+			if ( 'function' === typeof extensionConfig ) {
+				config = {...config, ...extensionConfig( config )};
+			} else {
+				config = {...config, ...extensionConfig};
+			}
 		} catch ( e ) {
 		}
 	} );
