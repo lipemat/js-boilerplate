@@ -1,4 +1,5 @@
 const moduleHelpers = require( '../helpers/modules' );
+const {getLocalIdent} = require( '../helpers/css-classnames' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const fs = require( 'fs' );
@@ -102,6 +103,9 @@ module.exports = {
 							importLoaders: 1,
 							modules: {
 								exportLocalsConvention: 'camelCase',
+								// Use short CSS Classes if enabled.
+								...config.shortCssClasses ? {getLocalIdent} : {},
+								// Hash used when short CSS classes are not enabled.
 								localIdentName: '[contenthash:base64:5]',
 								// Default to :global for classes in "global" directories.
 								mode: resourcePath => {
