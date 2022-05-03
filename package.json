@@ -1,16 +1,21 @@
 {
   "name": "@lipemat/js-boilerplate",
-  "version": "8.4.0",
+  "version": "8.5.0",
   "description": "Dependencies and scripts for a no config JavaScript app",
   "author": "Mat Lipe",
   "license": "MIT",
   "engines": {
     "node": ">=14.17.6"
   },
+  "bugs": {
+    "url": "https://github.com/lipemat/js-boilerplate/issues"
+  },
+  "homepage": "https://github.com/lipemat/js-boilerplate#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lipemat/js-boilerplate.git"
   },
+  "sideEffects": false,
   "keywords": [
     "react",
     "boilerplate",
@@ -27,7 +32,6 @@
   "bin": {
     "lipemat-js-boilerplate": "bin/lipemat-js-boilerplate.js"
   },
-  "sideEffects": false,
   "scripts": {
     "test": "lipemat-js-boilerplate test --silent"
   },
@@ -84,9 +88,5 @@
     "webpack-dev-server": "^4.7.2",
     "webpack-subresource-integrity": "^1.5.2"
   },
-  "bugs": {
-    "url": "https://github.com/lipemat/js-boilerplate/issues"
-  },
-  "homepage": "https://github.com/lipemat/js-boilerplate#readme",
   "packageManager": "yarn@3.2.0"
 }
