@@ -2,6 +2,8 @@
   "name": "@lipemat/js-boilerplate",
   "version": "8.4.0",
   "description": "Dependencies and scripts for a no config JavaScript app",
+  "author": "Mat Lipe",
+  "license": "MIT",
   "engines": {
     "node": ">=14.17.6"
   },
@@ -25,9 +27,10 @@
   "bin": {
     "lipemat-js-boilerplate": "bin/lipemat-js-boilerplate.js"
   },
-  "author": "Mat Lipe",
-  "license": "MIT",
   "sideEffects": false,
+  "scripts": {
+    "test": "lipemat-js-boilerplate test --silent"
+  },
   "dependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
