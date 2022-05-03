@@ -39,6 +39,7 @@ Add the following to your package.json. (this may also be found in the `template
 ```
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
 
+* `shortCssClasses`: Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
 * `jsPath`: Path of JS application relative to `package.json`. If `package.json` is in same directory as the JS application, this may be omitted.
 * `themeUrlPath`: Path of `package.json` file relative to site's domain.
 

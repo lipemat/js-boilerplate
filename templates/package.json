@@ -4,6 +4,7 @@
   "description": "JS app for the core theme",
   "url": "http://starting-point.loc",
   "jsPath": "./js",
+  "shortCssClasses": true,
   "themeUrlPath": "/wp-content/themes/core/",
   "theme_path": "./",
   "scripts": {
