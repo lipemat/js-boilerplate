@@ -1,15 +1,18 @@
+const {getConfig} = require( '../helpers/config' );
 const moduleHelpers = require( '../helpers/modules' );
-const {getLocalIdent} = require( '../helpers/css-classnames' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const fs = require( 'fs' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const WebpackCleanupPlugin = require( '@lipemat/webpack-cleanup-plugin' );
-const config = require( '../helpers/package-config' );
-const postCSSOptions = require( '../helpers/config' ).getConfig( 'postcss.config.js' );
-const babelOptions = require( '../helpers/config' ).getConfig( 'babel.config.js' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const SriPlugin = require( 'webpack-subresource-integrity' );
+const config = require( '../helpers/package-config' );
+
+const postCSSOptions = getConfig( 'postcss.config.js' );
+const babelOptions = getConfig( 'babel.config.js' );
+const cssLoaderOptions = getConfig( 'css-loader.config.js' );
+
 
 const entry = {
 	master: [
@@ -99,21 +102,7 @@ module.exports = {
 					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
-						options: {
-							importLoaders: 1,
-							modules: {
-								exportLocalsConvention: 'camelCase',
-								// Use short CSS Classes if enabled.
-								...config.shortCssClasses ? {getLocalIdent} : {},
-								// Hash used when short CSS classes are not enabled.
-								localIdentName: '[contenthash:base64:5]',
-								// Default to :global for classes in "global" directories.
-								mode: resourcePath => {
-									return /globals?\//i.test( resourcePath.replace( /\\/g, '/' ) ) ? 'global' : 'local';
-								},
-							},
-							url: false,
-						},
+						options: cssLoaderOptions,
 					},
 					{
 						loader: '@lipemat/postcss-loader',

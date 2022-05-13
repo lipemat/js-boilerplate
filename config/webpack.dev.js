@@ -1,11 +1,13 @@
+const {getConfig, hasLocalOverride} = require( '../helpers/config' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const fs = require( 'fs' );
-const configHelper = require( '../helpers/config' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 const config = require( '../helpers/package-config' );
-const postCSSOptions = configHelper.getConfig( 'postcss.config.js' );
-const babelOptions = configHelper.getConfig( 'babel.config.js' );
+
+const postCSSOptions = getConfig( 'postcss.config.js' );
+const babelOptions = getConfig( 'babel.config.js' );
+const cssLoaderOptions = getConfig( 'css-loader.config.js' );
 
 // To allow line numbers to show up in console errors. @see React Error Boundaries.
 babelOptions.plugins.unshift( '@babel/plugin-transform-react-jsx-source' );
@@ -19,7 +21,7 @@ const plugins = [
 
 // Loads a thread, which verifies any TypeScripts on changes.
 // Only use this if the project has a tsconfig.json file.
-if ( configHelper.hasLocalOverride( 'tsconfig.json', true ) ) {
+if ( hasLocalOverride( 'tsconfig.json', true ) ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {
 		formatter: 'basic',
 		logger: {
@@ -92,19 +94,7 @@ module.exports = {
 					'style-loader',
 					{
 						loader: 'css-loader',
-						options: {
-							importLoaders: 1,
-							modules: {
-								exportLocalsConvention: 'camelCase',
-								localIdentName: 'Ⓜ[name]__[local]__[contenthash:base64:2]',
-								// Default to :global for classes in "global" directories.
-								mode: resourcePath => {
-									return /globals?\//i.test( resourcePath.replace( /\\/g, '/' ) ) ? 'global' : 'local';
-								},
-							},
-							sourceMap: true,
-							url: false,
-						},
+						options: cssLoaderOptions,
 					},
 					{
 						loader: '@lipemat/postcss-loader',
