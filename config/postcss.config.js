@@ -64,7 +64,7 @@ const config = {
 	parser: 'postcss-scss',
 };
 
-// For production we minify it.
+// For production, we minify it.
 if ( 'production' === process.env.NODE_ENV ) {
 	config.plugins.push( require( '../lib/postcss-clean' )( {
 		level: 2,
