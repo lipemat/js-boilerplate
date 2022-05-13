@@ -21,7 +21,6 @@ Add the following to your package.json. (this may also be found in the `template
 ```json
 {
   "jsPath": "./js",
-  "themeUrlPath": "/wp-content/themes/core/",
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",
@@ -41,7 +40,6 @@ Add the following to your package.json. (this may also be found in the `template
 
 * `shortCssClasses`: Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
 * `jsPath`: Path of JS application relative to `package.json`. If `package.json` is in same directory as the JS application, this may be omitted.
-* `themeUrlPath`: Path of `package.json` file relative to site's domain.
 
 ## Code Completion In PHPStorm
 Some `@types` have been specified in this library to assist with code completion and allow using the built-in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built-in TypeScript support).

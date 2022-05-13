@@ -59,7 +59,7 @@ module.exports = {
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
-		publicPath: path.posix.join( config.themeUrlPath, config.jsPath, 'dist/' ),
+		publicPath: 'auto', // Change this if you want to use an external CDN etc.
 		chunkFilename: '[name].[chunkhash].js',
 		crossOriginLoading: 'anonymous',
 	},

@@ -5,7 +5,6 @@
   "url": "http://starting-point.loc",
   "jsPath": "./js",
   "shortCssClasses": true,
-  "themeUrlPath": "/wp-content/themes/core/",
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",

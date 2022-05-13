@@ -7,7 +7,6 @@ packageConfig.es6Modules ||= [];
 packageConfig.jsPath ||= '';
 // Path of the package.json file (root).
 packageConfig.packageDirectory = workingDirectory;
-packageConfig.themeUrlPath ||= '/';
 packageConfig.url ||= 'http://localhost';
 // Path of JS application files.
 packageConfig.workingDirectory = packageConfig.jsPath !== '' ? path.resolve( packageConfig.jsPath ) : workingDirectory;
