@@ -6,7 +6,6 @@
   "jsPath": "./js",
   "shortCssClasses": true,
   "themeUrlPath": "/wp-content/themes/core/",
-  "theme_path": "./",
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",
