@@ -105,7 +105,7 @@ module.exports = {
 						options: cssLoaderOptions,
 					},
 					{
-						loader: '@lipemat/postcss-loader',
+						loader: 'postcss-loader',
 						options: postCSSOptions,
 					},
 				],
