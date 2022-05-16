@@ -1,24 +1,7 @@
 const postcssPresetEnv = require( 'postcss-preset-env' );
-const packageConfig = require( '../helpers/package-config' );
-const path = require( 'path' );
-const fs = require( 'fs' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
 
-/**
- * Files containing CSS properties to be provided to `postcss-preset-env`.
- * Allows rendering the values in the finished CSS for IE11.
- *
- * If none of the CSS files exist, or properties are not provided in them,
- * the variable won't work in IE11.
- *
- * @link https://github.com/csstools/postcss-preset-env#importfrom
- */
 const presetEnv = {
-	importFrom: [
-		path.resolve( packageConfig.workingDirectory, 'src/globals/pcss/variables.css' ),
-		path.resolve( packageConfig.workingDirectory, '../pcss/globals/variables.css' ),
-	].filter( filePath => fs.existsSync( filePath ) ),
-
 	features: {
 		/**
 		 * Fixes `focus-visible` feature for CSS modules (included by preset-env anywhere
