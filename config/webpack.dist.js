@@ -9,7 +9,7 @@ const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const SriPlugin = require( 'webpack-subresource-integrity' );
 const config = require( '../helpers/package-config' );
 
-const postCSSOptions = getConfig( 'postcss.config.js' );
+const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
 const cssLoaderOptions = getConfig( 'css-loader.config.js' );
 
@@ -105,8 +105,10 @@ module.exports = {
 						options: cssLoaderOptions,
 					},
 					{
-						loader: '@lipemat/postcss-loader',
-						options: postCSSOptions,
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions,
+						},
 					},
 				],
 			},
