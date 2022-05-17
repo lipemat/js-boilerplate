@@ -37,7 +37,8 @@ if ( getDefaultBrowsersList() ) {
 const config = {
 	plugins: [
 		require( 'postcss-import' ),
-		require( 'postcss-custom-media' ),
+		// Use until https://github.com/postcss/postcss-custom-media/pull/59 is merged.
+		require( 'postcss-custom-media-with-spaces' ),
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
