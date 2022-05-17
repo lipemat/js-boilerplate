@@ -1932,16 +1932,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lipemat/css-mqpacker@npm:^9.0.0-beta.1":
-  version: 9.0.0-beta.1
-  resolution: "@lipemat/css-mqpacker@npm:9.0.0-beta.1"
+"@lipemat/css-mqpacker@npm:^9.0.0-beta.2":
+  version: 9.0.0-beta.2
+  resolution: "@lipemat/css-mqpacker@npm:9.0.0-beta.2"
   dependencies:
     minimist: ^1.2.0
   peerDependencies:
     postcss: ^8.3.5
   bin:
     mqpacker: bin/mqpacker.js
-  checksum: 462edfc0277cca2191fec5ace44c4c01c736ea5fedd11d28bccb33668591fa2a09eff2c426c37a2dc15766de2475988ce550956e94b6b2c8f7680c23fc6f6b3d
+  checksum: b42158c4756396ea1c5b2752c22b83bbffe2e614949ebbadbda9bc2a20988c8c2b15d46b531ce6c36ddcc5f904e4a4696a448ef1fc856f2597a7f3d890688ed4
   languageName: node
   linkType: hard
 
@@ -1966,7 +1966,7 @@ __metadata:
     "@babel/preset-react": ^7.12.10
     "@babel/preset-typescript": ^7.12.7
     "@hot-loader/react-dom": ^17.0.1
-    "@lipemat/css-mqpacker": ^9.0.0-beta.1
+    "@lipemat/css-mqpacker": ^9.0.0-beta.2
     "@lipemat/eslint-config": ^2.0.1
     "@lipemat/webpack-cleanup-plugin": ^1.0.0
     "@types/lipemat__js-boilerplate": "lipemat/types-js-boilerplate#semver:^1.3.0"
