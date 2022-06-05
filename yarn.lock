@@ -1971,7 +1971,7 @@ __metadata:
     "@lipemat/webpack-cleanup-plugin": ^1.0.0
     "@types/lipemat__js-boilerplate": "lipemat/types-js-boilerplate#semver:^1.3.0"
     "@wojtekmaj/enzyme-adapter-react-17": ^0.6.7
-    "@wordpress/browserslist-config": ^4.1.3
+    "@wordpress/browserslist-config": ^4.1.0
     are-you-es5: ^2.1.1
     babel-jest: ^24.7.1
     babel-loader: ^8.2.2
@@ -1991,7 +1991,7 @@ __metadata:
     mini-css-extract-plugin: ^1.3.3
     postcss: ^8.4.13
     postcss-color-mod-function: ^3.0.3
-    postcss-custom-media-with-spaces: ^8.0.0
+    postcss-custom-media: ^8.0.0
     postcss-import: ^14.1.0
     postcss-loader: ^6.2.1
     postcss-nested: ^5.0.6
@@ -3103,13 +3103,6 @@ __metadata:
   version: 4.1.0
   resolution: "@wordpress/browserslist-config@npm:4.1.0"
   checksum: 9c1b15c0be844fd1c09cb262c149ffa2758c70200b01777cbdc4aad4f5d95315d5bba229c11ecc72671f5780972cf23af0e396fd32e35b23266bc4d6f212fe31
-  languageName: node
-  linkType: hard
-
-"@wordpress/browserslist-config@npm:^4.1.3":
-  version: 4.1.3
-  resolution: "@wordpress/browserslist-config@npm:4.1.3"
-  checksum: 1b744b332c36d10380f6c5d5131604244939d45c568732c0e3588702b9d86739e80dc5a9026619a83ca89a357d1b7686a8f9fe53ea7649e1c38be8005e906ab0
   languageName: node
   linkType: hard
 
@@ -9980,15 +9973,6 @@ __metadata:
   peerDependencies:
     postcss: ^8.3
   checksum: 7d734ac50769f2cf42ac1e58247e45dffa3cc5fb663e67fa5b8ca1a71e1e950603263aad2e98d1629db6058b173ade0c5b5de0390d51d240da8c8674c036c8c7
-  languageName: node
-  linkType: hard
-
-"postcss-custom-media-with-spaces@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "postcss-custom-media-with-spaces@npm:8.0.0"
-  peerDependencies:
-    postcss: ^8.1.0
-  checksum: facdabfed294921472cc93a4f69971d8204ea85f436e792efcc16e9cc2c286e37a9d43aa11091c7c7efa2b193ed59195cfacd0d77b12fc7b04fbc328eee650dc
   languageName: node
   linkType: hard
 
