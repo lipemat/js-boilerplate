@@ -8,6 +8,7 @@ const config = require( '../helpers/package-config' );
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
 const cssLoaderOptions = getConfig( 'css-loader.config.js' );
+const devServerOptions = getConfig( 'dev-server.config.js' );
 
 // To allow line numbers to show up in console errors. @see React Error Boundaries.
 babelOptions.plugins.unshift( '@babel/plugin-transform-react-jsx-source' );
@@ -56,7 +57,7 @@ module.exports = {
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
-		publicPath: config.url + ':3000/js/dist/',
+		publicPath: config.url + ':' + devServerOptions.port + '/js/dist/',
 		chunkFilename: '[name].js',
 	},
 	resolve: {
