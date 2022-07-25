@@ -53,14 +53,15 @@ function hasLocalOverride( fileName, inWorkingDirectory = false ) {
  * }
  * ```
  *
- * @param {string} $fileName
+ * @param {string} fileName
  *
  * @return {Object}
  */
-function getConfig( $fileName ) {
-	let config = {...require( '../config/' + $fileName ), ...getExtensionsConfig( $fileName )};
+function getConfig( fileName ) {
+	let config = require( '../config/' + fileName );
+	config = {...config, ...getExtensionsConfig( fileName, config )};
 	try {
-		const localConfig = require( path.resolve( packageConfig.packageDirectory + '/config', $fileName ) );
+		const localConfig = require( path.resolve( packageConfig.packageDirectory + '/config', fileName ) );
 		if ( 'function' === typeof localConfig ) {
 			config = {...config, ...localConfig( config )};
 		} else {
@@ -75,19 +76,21 @@ function getConfig( $fileName ) {
  * Get a config from any existing extension's /config directories
  * merged into one.
  *
- * @see getConfig
+ * @param {string} fileName
+ * @param {Object} defaultConfig - Default config from this package.
+ *                               Used for passing to an extension callback.
  *
- * @param {string} $fileName
+ * @see getConfig
  *
  * @return {Object}
  */
-function getExtensionsConfig( $fileName ) {
+function getExtensionsConfig( fileName, defaultConfig ) {
 	let config = {};
 	extensions.forEach( extension => {
 		try {
-			const extensionConfig = require( extension + '/config/' + $fileName );
+			const extensionConfig = require( extension + '/config/' + fileName );
 			if ( 'function' === typeof extensionConfig ) {
-				config = {...config, ...extensionConfig( config )};
+				config = {...config, ...extensionConfig( {...defaultConfig, ...config} )};
 			} else {
 				config = {...config, ...extensionConfig};
 			}
