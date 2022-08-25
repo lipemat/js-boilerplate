@@ -25,9 +25,6 @@ const plugins = [
 if ( hasLocalOverride( 'tsconfig.json', true ) ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {
 		formatter: 'basic',
-		logger: {
-			devServer: false,
-		},
 		typescript: {
 			configFile: config.workingDirectory + '/tsconfig.json',
 		},
