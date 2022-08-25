@@ -22,13 +22,12 @@ let jestConfig = {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
 	setupFilesAfterEnv: [ path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ) ],
-	snapshotSerializers: [ 'enzyme-to-json/serializer' ],
 };
 
 /**
  * Allows overriding configurations in the project `/config/jest.config.js` file.
  * We don't actually need to do this because `jest.config.js` in the project root
- * is already an override of this file but we support it anyway to keep things consistent.
+ * is already an override of this file, but we support it anyway to keep things consistent.
  */
 try {
 	const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', 'jest.config.js' ) );
