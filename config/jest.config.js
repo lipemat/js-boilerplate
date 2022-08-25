@@ -13,6 +13,7 @@ let jestConfig = {
 	},
 	moduleNameMapper: {
 		'\\.(pcss|less|css)$': 'identity-obj-proxy',
+		'is-plain-obj': 'identity-obj-proxy',
 	},
 	roots: [
 		'./tests',
