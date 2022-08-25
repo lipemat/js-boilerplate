@@ -18,6 +18,7 @@ let jestConfig = {
 	roots: [
 		'./tests',
 	],
+	testEnvironment: 'jsdom',
 	testEnvironmentOptions: {
 		url: packageConfig.url,
 	},
