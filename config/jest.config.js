@@ -17,7 +17,9 @@ let jestConfig = {
 	roots: [
 		'./tests',
 	],
-	testURL: packageConfig.url,
+	testEnvironmentOptions: {
+		url: packageConfig.url,
+	},
 	transform: {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
