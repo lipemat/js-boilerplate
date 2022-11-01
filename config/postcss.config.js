@@ -11,11 +11,11 @@ const presetEnv = {
 		 *
 		 * @link https://caniuse.com/css-focus-visible
 		 *
-		 * May be imported directly into index.js for SPA or site which loads JS app
+		 * May be imported directly into the index.js for sites, which loads JS app
 		 * on every page.
 		 * @link https://github.com/WICG/focus-visible
 		 *
-		 * Most often will need it site wide on pages which do and don't use the JS app.
+		 * Most will often need it site wide on pages, which do and don't use the JS app.
 		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
 		 */
 		'focus-visible-pseudo-class': {
@@ -25,7 +25,7 @@ const presetEnv = {
 };
 
 /**
- * If browserslist is not specified, we fallback to WordPress defaults.
+ * If browserslist is not specified, we fall back to WordPress defaults.
  *
  * @link https://github.com/csstools/postcss-preset-env#browsers
  */
@@ -36,7 +36,9 @@ if ( getDefaultBrowsersList() ) {
 
 const config = {
 	plugins: [
-		require( 'postcss-import' ),
+		require( 'postcss-import' )( {
+			skipDuplicates: false,
+		} ),
 		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
