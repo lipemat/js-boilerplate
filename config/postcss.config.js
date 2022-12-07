@@ -1,5 +1,8 @@
+const path = require( 'path' );
+const fs = require( 'fs' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
+const packageConfig = require( '../helpers/package-config' );
 
 const presetEnv = {
 	features: {
@@ -33,13 +36,23 @@ if ( getDefaultBrowsersList() ) {
 	presetEnv.browsers = getDefaultBrowsersList();
 }
 
+/**
+ * If a media-queries file exists, automatically load it.
+ *
+ * @notice Even with this `importFrom` you still must include the PCSS file in your app.
+ * @example `import './globals/pcss/media-queries.pcss';`
+ */
+const customMedia = {};
+if ( fs.existsSync( path.resolve( packageConfig.workingDirectory, 'src/globals/pcss/media-queries.pcss' ) ) ) {
+	customMedia.importFrom = path.resolve( packageConfig.workingDirectory, 'src/globals/pcss/media-queries.pcss' );
+}
 
 const config = {
 	plugins: [
 		require( 'postcss-import' )( {
 			skipDuplicates: false,
 		} ),
-		require( 'postcss-custom-media' ),
+		require( 'postcss-custom-media' )( customMedia ),
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
