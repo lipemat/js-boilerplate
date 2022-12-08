@@ -37,16 +37,31 @@ if ( getDefaultBrowsersList() ) {
 }
 
 /**
- * If a media-queries file exists, automatically load it.
+ * If a media-queries files exist, automatically load them.
  *
- * @notice Even with this `importFrom` you still must include the PCSS file in your app.
- * @example `import './globals/pcss/media-queries.pcss';`
+ * 1. pcss/globals/media-queries.pcss
+ * 2. js/src/pcss/media-queries.pcss
+ *
+ * @notice `@import` will not work inside the media-queries file so
+ *          there is no point in having a JS version if all it does is
+ *          import from the global pcss version.
  */
-const customMedia = {};
-if ( fs.existsSync( path.resolve( packageConfig.workingDirectory, 'src/globals/pcss/media-queries.pcss' ) ) ) {
-	customMedia.importFrom = path.resolve( packageConfig.workingDirectory, 'src/globals/pcss/media-queries.pcss' );
-}
+const customMedia = {
+	importFrom: [],
+};
+[
+	path.resolve( packageConfig.packageDirectory, 'pcss/globals/media-queries.pcss' ),
+	path.resolve( packageConfig.workingDirectory, 'src/pcss/media-queries.pcss' ),
+].forEach( possibleFile => {
+	if ( fs.existsSync( possibleFile ) ) {
+		customMedia.importFrom.push( possibleFile );
+	}
+} );
 
+
+/**
+ * Put the config together.
+ */
 const config = {
 	plugins: [
 		require( 'postcss-import' )( {
