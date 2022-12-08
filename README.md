@@ -106,15 +106,6 @@ Now you may write `jest` tests as desired and run them via `yarn run test`
 By default, IE11 is disabled via an internal Browserslist configuration. If you would like to support IE11, add it 
 as a target to your project's Browserslist configuration and all tooling will automatically support it.
 
-#### Custom properties
-
-IE11 (and some older browsers) do not support custom properties e.g. `--color-red: red;` natively. To make custom properties work with this
-library create `src/globals/pcss/variables.css` file and add any used custom properties to it.
-
-The app will automatically compile with fallback values for older browsers.
-
-An alternative/extra location is `../pcss/globals/variables.css`.
-
 #### ES6 Modules
 
 The app will automatically detect any packages in your `package.json` which do not support ES5 and add them to the list
