@@ -135,3 +135,11 @@ If you are using https in your local environment, you may point to the certifica
   }
 }
 ```
+
+## PostCSS Custom Media
+
+`@custom-media` declarations will automatically be loaded from the following locations.
+1. `pcss/globals/media-queries.pcss`.
+2. `<jsPath>/src/pcss/media-queries.pcss`.
+
+@notice `@import` do not work inside the `media-queries` files. 
