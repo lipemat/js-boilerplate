@@ -3,6 +3,7 @@ global.__TEST__ = true;
 
 const path = require( 'path' );
 const packageConfig = require( '../helpers/package-config' );
+const fs = require( 'fs' );
 
 const babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
@@ -26,7 +27,10 @@ let jestConfig = {
 	transform: {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
-	setupFilesAfterEnv: [ path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ) ],
+	setupFilesAfterEnv: [
+		path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ),
+		path.resolve( packageConfig.workingDirectory, 'tests/setup.ts' ),
+	].filter( fs.existsSync ),
 };
 
 /**
