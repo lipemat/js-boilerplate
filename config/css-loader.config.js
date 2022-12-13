@@ -14,9 +14,15 @@ let cssLoader = {
 	modules: {
 		exportLocalsConvention: 'camelCase',
 		localIdentName: 'Ⓜ[name]__[local]__[contenthash:base64:2]',
-		// Default to :global for classes in "global" directories.
+		// Default to :global for classes in "global" or "pcss" directories.
 		mode: resourcePath => {
-			return /globals?\//i.test( resourcePath.replace( /\\/g, '/' ) ) ? 'global' : 'local';
+			if ( /globals?\//i.test( resourcePath.replace( /\\/g, '/' ) ) ) {
+				return 'global';
+			}
+			if ( /pcss?\//i.test( resourcePath.replace( /\\/g, '/' ) ) ) {
+				return 'global';
+			}
+			return 'local';
 		},
 	},
 	sourceMap: true,
