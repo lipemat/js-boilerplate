@@ -88,6 +88,13 @@ module.exports = {
 				use: [ 'react-hot-loader/webpack' ],
 			},
 			{
+				test: /\.css$/,
+				use: [
+					'style-loader',
+					'css-loader',
+				],
+			},
+			{
 				test: /\.pcss$/,
 				use: [
 					'style-loader',

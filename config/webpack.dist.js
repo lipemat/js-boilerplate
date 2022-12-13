@@ -97,6 +97,13 @@ module.exports = {
 				options: babelOptions,
 			},
 			{
+				test: /\.css$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+				],
+			},
+			{
 				test: /\.pcss$/,
 				use: [
 					MiniCssExtractPlugin.loader,
