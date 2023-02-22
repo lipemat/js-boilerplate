@@ -82,7 +82,8 @@
     "webpack": "^5.72.1",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.7.2"
+    "webpack-dev-server": "^4.7.2",
+    "webpack-subresource-integrity": "^1.5.2"
   },
   "packageManager": "yarn@3.2.3"
 }

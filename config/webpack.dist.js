@@ -6,6 +6,7 @@ const crypto = require( 'node:crypto' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
+const SriPlugin = require( 'webpack-subresource-integrity' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
 
@@ -69,6 +70,9 @@ module.exports = {
 		new CleanWebpackPlugin( {
 			// Remove all files except the `.running` file created by "Start".
 			cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
+		} ),
+		new SriPlugin( {
+			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ],
 		} ),
 		new WebpackAssetsManifest( {
 			integrity: true,
