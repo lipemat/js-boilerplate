@@ -72,12 +72,13 @@ module.exports = {
 			cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
 		} ),
 		new SriPlugin( {
-			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ],
+			hashFuncNames: [ 'sha384' ],
 		} ),
 		new WebpackAssetsManifest( {
 			integrity: true,
+			integrityHashes: [ 'sha384' ],
 			output: 'manifest.json',
-			//Add a `hash` so every item in the manifest for browser cache flushing.
+			// Add a `hash` so every item in the manifest for browser cache flushing.
 			transform( assets ) {
 				Object.keys( assets ).forEach( item => {
 					assets[ item ].hash = crypto.createHash( 'md5' ).update( assets[ item ].integrity ).digest( 'hex' );
