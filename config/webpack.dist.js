@@ -3,6 +3,7 @@ const moduleHelpers = require( '../helpers/modules' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const fs = require( 'fs' );
+const crypto = require( 'node:crypto' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const WebpackCleanupPlugin = require( '@lipemat/webpack-cleanup-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
@@ -82,6 +83,12 @@ module.exports = {
 		new WebpackAssetsManifest( {
 			integrity: true,
 			output: 'manifest.json',
+			//Add a `hash` so every item in the manifest for browser cache flushing.
+			transform( assets ) {
+				Object.keys( assets ).forEach( item => {
+					assets[ item ].hash = crypto.createHash( 'md5' ).update( assets[ item ].integrity ).digest( 'hex' );
+				} );
+			},
 		} ),
 	],
 	module: {
