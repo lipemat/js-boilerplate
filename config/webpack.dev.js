@@ -1,9 +1,9 @@
 const {getConfig, hasLocalOverride} = require( '../helpers/config' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
-const fs = require( 'fs' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 const config = require( '../helpers/package-config' );
+const {getEntries} = require( '../helpers/entries' );
 
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
@@ -32,21 +32,9 @@ if ( hasLocalOverride( 'tsconfig.json', true ) ) {
 	} ) );
 }
 
-const entry = {
-	master: [
-		config.workingDirectory + '/src/index.js',
-	],
-};
-
-// Loads an admin.js file if it exists.
-if ( fs.existsSync( path.resolve( config.workingDirectory, 'src/admin.js' ) ) ) {
-	entry.admin = [ ...entry.master ];
-	entry.admin.splice( -1, 1, config.workingDirectory + '/src/admin.js' );
-}
-
 module.exports = {
 	devtool: 'eval-source-map',
-	entry,
+	entry: getEntries(),
 	mode: 'development',
 	stats: 'minimal',
 	externals: {

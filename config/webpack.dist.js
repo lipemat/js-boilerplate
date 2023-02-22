@@ -2,33 +2,20 @@ const {getConfig} = require( '../helpers/config' );
 const moduleHelpers = require( '../helpers/modules' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
-const fs = require( 'fs' );
 const crypto = require( 'node:crypto' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const config = require( '../helpers/package-config' );
+const {getEntries} = require( '../helpers/entries' );
 
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
 const cssLoaderOptions = getConfig( 'css-loader.config.js' );
 
-
-const entry = {
-	master: [
-		config.workingDirectory + '/src/index.js',
-	],
-};
-
-// Loads an admin.js file if it exists.
-if ( fs.existsSync( path.resolve( config.workingDirectory, 'src/admin.js' ) ) ) {
-	entry.admin = [ ...entry.master ];
-	entry.admin.splice( -1, 1, config.workingDirectory + '/src/admin.js' );
-}
-
 module.exports = {
 	devtool: false,
-	entry,
+	entry: getEntries(),
 	mode: 'production',
 	stats: {
 		assets: true,
