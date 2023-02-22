@@ -5,7 +5,7 @@ const path = require( 'path' );
 const fs = require( 'fs' );
 const crypto = require( 'node:crypto' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const WebpackCleanupPlugin = require( '@lipemat/webpack-cleanup-plugin' );
+const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const config = require( '../helpers/package-config' );
 
@@ -79,7 +79,10 @@ module.exports = {
 			filename: '[name].css',
 			chunkFilename: '[name].[chunkhash].css',
 		} ),
-		new WebpackCleanupPlugin(),
+		new CleanWebpackPlugin( {
+			// Remove all files except the `.running` file created by "Start".
+			cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
+		} ),
 		new WebpackAssetsManifest( {
 			integrity: true,
 			output: 'manifest.json',
