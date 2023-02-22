@@ -6,7 +6,6 @@ const fs = require( 'fs' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const WebpackCleanupPlugin = require( '@lipemat/webpack-cleanup-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
-const SriPlugin = require( 'webpack-subresource-integrity' );
 const config = require( '../helpers/package-config' );
 
 const postcssOptions = getConfig( 'postcss.config.js' );
@@ -80,9 +79,6 @@ module.exports = {
 			chunkFilename: '[name].[chunkhash].css',
 		} ),
 		new WebpackCleanupPlugin(),
-		new SriPlugin( {
-			hashFuncNames: [ 'sha256', 'sha384', 'sha512' ],
-		} ),
 		new WebpackAssetsManifest( {
 			integrity: true,
 			output: 'manifest.json',

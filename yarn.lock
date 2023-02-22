@@ -2277,7 +2277,6 @@ __metadata:
     webpack-assets-manifest: ^5.0.6
     webpack-cli: ^4.9.1
     webpack-dev-server: ^4.7.2
-    webpack-subresource-integrity: ^1.5.2
   bin:
     lipemat-js-boilerplate: bin/lipemat-js-boilerplate.js
   languageName: unknown
@@ -11581,7 +11580,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^1.1.0, webpack-sources@npm:^1.3.0":
+"webpack-sources@npm:^1.1.0":
   version: 1.4.3
   resolution: "webpack-sources@npm:1.4.3"
   dependencies:
@@ -11595,21 +11594,6 @@ __metadata:
   version: 3.2.3
   resolution: "webpack-sources@npm:3.2.3"
   checksum: 989e401b9fe3536529e2a99dac8c1bdc50e3a0a2c8669cbafad31271eadd994bc9405f88a3039cd2e29db5e6d9d0926ceb7a1a4e7409ece021fe79c37d9c4607
-  languageName: node
-  linkType: hard
-
-"webpack-subresource-integrity@npm:^1.5.2":
-  version: 1.5.2
-  resolution: "webpack-subresource-integrity@npm:1.5.2"
-  dependencies:
-    webpack-sources: ^1.3.0
-  peerDependencies:
-    html-webpack-plugin: ">= 2.21.0 < 5"
-    webpack: ">= 1.12.11 < 6"
-  peerDependenciesMeta:
-    html-webpack-plugin:
-      optional: true
-  checksum: ddb4dca747349da462c0828a2e4d7d08f58fee365733a2edf682c5cfe13497524fc2a40080522b3f67bdef547aca0acc0a125ae81535103119c8ae297c0b4b17
   languageName: node
   linkType: hard
 
