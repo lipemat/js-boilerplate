@@ -48,7 +48,7 @@ module.exports = {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
 		publicPath: 'auto', // Change this if you want to use an external CDN etc.
-		chunkFilename: '[name].[chunkhash].js',
+		chunkFilename: '[name].[contenthash].js',
 		crossOriginLoading: 'anonymous',
 	},
 	resolve: {
@@ -65,7 +65,7 @@ module.exports = {
 		} ),
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
-			chunkFilename: '[name].[chunkhash].css',
+			chunkFilename: '[name].[contenthash].css',
 		} ),
 		new CleanWebpackPlugin( {
 			// Remove all files except the `.running` file created by "Start".
