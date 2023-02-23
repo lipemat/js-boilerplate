@@ -36,6 +36,9 @@ module.exports = {
 		timings: false,
 		version: false,
 	},
+	optimization: {
+		moduleIds: 'deterministic',
+	},
 	// Displays warnings of size limits.
 	performance: {
 		hints: 'warning',
