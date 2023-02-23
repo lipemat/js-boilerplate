@@ -2278,7 +2278,7 @@ __metadata:
     webpack-assets-manifest: ^5.0.6
     webpack-cli: ^4.9.1
     webpack-dev-server: ^4.7.2
-    webpack-subresource-integrity: ^1.5.2
+    webpack-subresource-integrity: ^5.1.0
   bin:
     lipemat-js-boilerplate: bin/lipemat-js-boilerplate.js
   languageName: unknown
@@ -11316,6 +11316,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typed-assert@npm:^1.0.8":
+  version: 1.0.9
+  resolution: "typed-assert@npm:1.0.9"
+  checksum: 79351bd3ea184a552bf55a77bd3012f128741c841ed718d054c5abbbc8925362aa033ae2cdcc79e1f445a15112447c8a95a08ddf7ff8aeb04f805e92187f77c1
+  languageName: node
+  linkType: hard
+
 "typedarray-to-buffer@npm:^3.1.5":
   version: 3.1.5
   resolution: "typedarray-to-buffer@npm:3.1.5"
@@ -11743,7 +11750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^1.1.0, webpack-sources@npm:^1.3.0":
+"webpack-sources@npm:^1.1.0":
   version: 1.4.3
   resolution: "webpack-sources@npm:1.4.3"
   dependencies:
@@ -11760,18 +11767,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-subresource-integrity@npm:^1.5.2":
-  version: 1.5.2
-  resolution: "webpack-subresource-integrity@npm:1.5.2"
+"webpack-subresource-integrity@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "webpack-subresource-integrity@npm:5.1.0"
   dependencies:
-    webpack-sources: ^1.3.0
+    typed-assert: ^1.0.8
   peerDependencies:
-    html-webpack-plugin: ">= 2.21.0 < 5"
-    webpack: ">= 1.12.11 < 6"
+    html-webpack-plugin: ">= 5.0.0-beta.1 < 6"
+    webpack: ^5.12.0
   peerDependenciesMeta:
     html-webpack-plugin:
       optional: true
-  checksum: ddb4dca747349da462c0828a2e4d7d08f58fee365733a2edf682c5cfe13497524fc2a40080522b3f67bdef547aca0acc0a125ae81535103119c8ae297c0b4b17
+  checksum: 827c2c1170f52eaec9d68728d4c3910be5451253ffb24e7dbab35c48acc69c4b4ed6dcea2c29bd62b4cb4569c00eafa4e95d8aa00305656fe9c2a6aeb5415e1e
   languageName: node
   linkType: hard
 

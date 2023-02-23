@@ -1,12 +1,13 @@
-const {getConfig} = require( '../helpers/config' );
-const moduleHelpers = require( '../helpers/modules' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const crypto = require( 'node:crypto' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
-const SriPlugin = require( 'webpack-subresource-integrity' );
+const {SubresourceIntegrityPlugin} = require( 'webpack-subresource-integrity' );
+
+const {getConfig} = require( '../helpers/config' );
+const moduleHelpers = require( '../helpers/modules' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
 
@@ -74,7 +75,7 @@ module.exports = {
 			// Remove all files except the `.running` file created by "Start".
 			cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
 		} ),
-		new SriPlugin( {
+		new SubresourceIntegrityPlugin( {
 			hashFuncNames: [ 'sha384' ],
 		} ),
 		new WebpackAssetsManifest( {
