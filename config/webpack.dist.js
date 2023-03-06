@@ -1,11 +1,12 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
-const crypto = require( 'node:crypto' );
+require( 'node:crypto' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const {SubresourceIntegrityPlugin} = require( 'webpack-subresource-integrity' );
 
+const WebpackAssetsHash = require( '../helpers/WebpackAssetsHash' );
 const {getConfig} = require( '../helpers/config' );
 const moduleHelpers = require( '../helpers/modules' );
 const config = require( '../helpers/package-config' );
@@ -14,6 +15,12 @@ const {getEntries} = require( '../helpers/entries' );
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
 const cssLoaderOptions = getConfig( 'css-loader.config.js' );
+
+const ManifestPlugin = new WebpackAssetsManifest( {
+	integrity: true,
+	integrityHashes: [ 'sha384' ],
+	output: 'manifest.json',
+} );
 
 module.exports = {
 	devtool: false,
@@ -78,17 +85,8 @@ module.exports = {
 		new SubresourceIntegrityPlugin( {
 			hashFuncNames: [ 'sha384' ],
 		} ),
-		new WebpackAssetsManifest( {
-			integrity: true,
-			integrityHashes: [ 'sha384' ],
-			output: 'manifest.json',
-			// Add a `hash` so every item in the manifest for browser cache flushing.
-			transform( assets ) {
-				Object.keys( assets ).forEach( item => {
-					assets[ item ].hash = crypto.createHash( 'md5' ).update( assets[ item ].integrity ).digest( 'hex' );
-				} );
-			},
-		} ),
+		new WebpackAssetsHash( ManifestPlugin ),
+		ManifestPlugin,
 	],
 	module: {
 		rules: [
