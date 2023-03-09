@@ -1,6 +1,5 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
-require( 'node:crypto' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
@@ -119,7 +118,6 @@ module.exports = {
 					},
 				],
 			},
-
 		],
 	},
 };
