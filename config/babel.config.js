@@ -19,11 +19,13 @@ module.exports = {
 	cacheDirectory: true,
 	presets: [
 		[ '@babel/preset-env', presetEnv ],
-		'@babel/preset-react',
+		[ '@babel/preset-react', {
+			development: 'production' !== process.env.NODE_ENV,
+			runtime: 'automatic',
+		} ],
 		'@babel/preset-typescript',
 	],
 	plugins: [
 		'@babel/plugin-syntax-dynamic-import',
-		'react-hot-loader/babel',
 	],
 };
