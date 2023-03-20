@@ -1,9 +1,10 @@
-const {getConfig, hasLocalOverride} = require( '../helpers/config' );
 const webpack = require( 'webpack' );
+const ReactRefreshWebpackPlugin = require( '@pmmmwh/react-refresh-webpack-plugin' );
 const path = require( 'path' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
+const {getConfig, hasLocalOverride} = require( '../helpers/config' );
 
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
@@ -12,12 +13,15 @@ const devServerOptions = getConfig( 'dev-server.config.js' );
 
 // To allow line numbers to show up in console errors. @see React Error Boundaries.
 babelOptions.plugins.unshift( '@babel/plugin-transform-react-jsx-source' );
+// To support React Fast Refresh.
+babelOptions.plugins.unshift( 'react-refresh/babel' );
 
 const plugins = [
 	new webpack.ProvidePlugin( {
 		jQuery: 'jquery',
 		$: 'jquery',
 	} ),
+	new ReactRefreshWebpackPlugin(),
 ];
 
 // Loads a thread, which verifies any TypeScripts on changes.
@@ -47,9 +51,6 @@ module.exports = {
 		chunkFilename: '[name].js',
 	},
 	resolve: {
-		alias: {
-			'react-dom': '@hot-loader/react-dom',
-		},
 		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( config.workingDirectory, 'src' ),
@@ -73,7 +74,6 @@ module.exports = {
 			{
 				test: /\.[jt]sx?$/,
 				include: /node_modules/,
-				use: [ 'react-hot-loader/webpack' ],
 			},
 			{
 				test: /\.css$/,
