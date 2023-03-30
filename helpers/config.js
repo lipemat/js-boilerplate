@@ -3,7 +3,10 @@ const path = require( 'path' );
 const once = require( 'lodash/once' );
 const browserslist = require( 'browserslist' );
 
-const extensions = Object.keys( packageConfig.dependencies ).filter( name => name.includes( 'js-boilerplate-' ) );
+const extensions = [
+	...Object.keys( packageConfig.dependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
+	...Object.keys( packageConfig.devDependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
+];
 
 /**
  * Check to see if a local config file exists.
