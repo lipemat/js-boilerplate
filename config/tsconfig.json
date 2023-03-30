@@ -15,7 +15,11 @@
     "sourceMap": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "target": "es6"
+    "target": "es6",
+    "types": [
+      "webpack-env",
+      "lipemat__js-boilerplate"
+    ]
   },
   "exclude": [
     "node_modules"
