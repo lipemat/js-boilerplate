@@ -2226,8 +2226,6 @@ __metadata:
     "@lipemat/css-mqpacker": ^9.0.0
     "@lipemat/eslint-config": ^2.0.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.10
-    "@types/lipemat__js-boilerplate": "lipemat/types-js-boilerplate#semver:^2"
-    "@types/webpack-env": ^1.18.0
     "@wordpress/browserslist-config": ^4.1.0
     are-you-es5: ^2.1.1
     babel-jest: ^29.0.0
@@ -2471,15 +2469,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/codemirror@npm:^5.60.5":
-  version: 5.60.5
-  resolution: "@types/codemirror@npm:5.60.5"
-  dependencies:
-    "@types/tern": "*"
-  checksum: 423b6378b6415b626d9f54d37d69477f96940b30a695d4ec36402feb59a96f7ab42d1c17b8472fbb222a0966f6061deee234e37bcd3e34c75836e989dc95929d
-  languageName: node
-  linkType: hard
-
 "@types/connect-history-api-fallback@npm:^1.3.5":
   version: 1.3.5
   resolution: "@types/connect-history-api-fallback@npm:1.3.5"
@@ -2616,15 +2605,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:*, @types/jquery@npm:^3.5.5":
-  version: 3.5.13
-  resolution: "@types/jquery@npm:3.5.13"
-  dependencies:
-    "@types/sizzle": "*"
-  checksum: cb4e6aacaf36905049d5ac93da1fabed17da285fafe38c88feba89d7c9912e108c934ea05c908b87ae199f2830e5e002a72d0cc8aaef4a33539581d0a7a6abe8
-  languageName: node
-  linkType: hard
-
 "@types/jsdom@npm:^20.0.0":
   version: 20.0.0
   resolution: "@types/jsdom@npm:20.0.0"
@@ -2656,19 +2636,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: b5f8aa592cc21c16d99e69aec0976f12b893b055e4456d90148a610a6b6088e297b2ba5f38f8c8280cef006cfd8f9ec99e069905020882619dc5fc8aa46f5f27
-  languageName: node
-  linkType: hard
-
-"@types/lipemat__js-boilerplate@lipemat/types-js-boilerplate#semver:^2":
-  version: 2.0.1
-  resolution: "@types/lipemat__js-boilerplate@https://github.com/lipemat/types-js-boilerplate.git#commit=4daa283d02452860afb71af27f8d16e55b87cb34"
-  dependencies:
-    "@types/codemirror": ^5.60.5
-    "@types/jquery": ^3.5.5
-    "@types/react": ^16 || ^17 || ^18
-    "@types/react-dom": ^16 || ^17 || ^18
-    "@types/tinymce": ^4.5.23
-  checksum: 9600839ccdc7bb51d845910ace873a2900d54c56eae94f2e13b43118d8bd3c610abf499bcfafd27c8c32c406b6c0ca1cbd83ce79efa9c9accf6b3fa7ae912ade
   languageName: node
   linkType: hard
 
@@ -2728,15 +2695,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^16 || ^17 || ^18":
-  version: 18.0.11
-  resolution: "@types/react-dom@npm:18.0.11"
-  dependencies:
-    "@types/react": "*"
-  checksum: 579691e4d5ec09688087568037c35edf8cfb1ab3e07f6c60029280733ee7b5c06d66df6fcc90786702c93ac8cb13bc7ff16c79ddfc75d082938fbaa36e1cdbf4
-  languageName: node
-  linkType: hard
-
 "@types/react-dom@npm:^17.0.11":
   version: 17.0.11
   resolution: "@types/react-dom@npm:17.0.11"
@@ -2754,17 +2712,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 4079f4f959cd4a4bfaeda8b89fe8a1b1f8bdc9d87acfdc5f74a0b39cec9ec6a470724357c62778c0f063180b360c250e920c5a142f1dbcda67d9cc25a6d43a85
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^16 || ^17 || ^18":
-  version: 18.0.28
-  resolution: "@types/react@npm:18.0.28"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: e752df961105e5127652460504785897ca6e77259e0da8f233f694f9e8f451cde7fa0709d4456ade0ff600c8ce909cfe29f9b08b9c247fa9b734e126ec53edd7
   languageName: node
   linkType: hard
 
@@ -2810,13 +2757,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sizzle@npm:*":
-  version: 2.3.3
-  resolution: "@types/sizzle@npm:2.3.3"
-  checksum: 586a9fb1f6ff3e325e0f2cc1596a460615f0bc8a28f6e276ac9b509401039dd242fa8b34496d3a30c52f5b495873922d09a9e76c50c2ab2bcc70ba3fb9c4e160
-  languageName: node
-  linkType: hard
-
 "@types/sockjs@npm:^0.3.33":
   version: 0.3.33
   resolution: "@types/sockjs@npm:0.3.33"
@@ -2833,35 +2773,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/tern@npm:*":
-  version: 0.23.4
-  resolution: "@types/tern@npm:0.23.4"
-  dependencies:
-    "@types/estree": "*"
-  checksum: d8fd304f147ed08f1d075f09cb8d440b7f785f69c9ec5c30eadf98132fe3f58f3b1bbbd11283858bb261afac5a2039c1c255f290b0f6e4a47cd6a746f30a6aa8
-  languageName: node
-  linkType: hard
-
-"@types/tinymce@npm:^4.5.23":
-  version: 4.6.4
-  resolution: "@types/tinymce@npm:4.6.4"
-  dependencies:
-    "@types/jquery": "*"
-  checksum: 76b5d5b6e64c6467c6a3228be9e903a127e7095ef032f50efd45863475badcef643fad79f25a588e3cd0033866e409fbca7ced1b60f42189be7a444aeb8be962
-  languageName: node
-  linkType: hard
-
 "@types/tough-cookie@npm:*":
   version: 4.0.2
   resolution: "@types/tough-cookie@npm:4.0.2"
   checksum: e055556ffdaa39ad85ede0af192c93f93f986f4bd9e9426efdc2948e3e2632db3a4a584d4937dbf6d7620527419bc99e6182d3daf2b08685e710f2eda5291905
-  languageName: node
-  linkType: hard
-
-"@types/webpack-env@npm:^1.18.0":
-  version: 1.18.0
-  resolution: "@types/webpack-env@npm:1.18.0"
-  checksum: ecf4daa31cb37d474ac0ce058d83a3cadeb9881ca8107ae93c2299eaa9954943aae09b43e143c62ccbe4288a14db00c918c9debd707afe17c3998f873eaabc59
   languageName: node
   linkType: hard
 
