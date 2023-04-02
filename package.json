@@ -45,8 +45,6 @@
     "@lipemat/css-mqpacker": "^9.0.0",
     "@lipemat/eslint-config": "^2.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
-    "@types/lipemat__js-boilerplate": "lipemat/types-js-boilerplate#semver:^2",
-    "@types/webpack-env": "^1.18.0",
     "@wordpress/browserslist-config": "^4.1.0",
     "are-you-es5": "^2.1.1",
     "babel-jest": "^29.0.0",
