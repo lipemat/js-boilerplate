@@ -43,7 +43,7 @@
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@lipemat/css-mqpacker": "^9.0.0",
-    "@lipemat/eslint-config": "^2.0.1",
+    "@lipemat/eslint-config": "^3.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@wordpress/browserslist-config": "^4.1.0",
     "are-you-es5": "^2.1.1",

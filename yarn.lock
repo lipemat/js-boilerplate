@@ -2103,13 +2103,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lipemat/eslint-config@npm:^2.0.1":
-  version: 2.1.0
-  resolution: "@lipemat/eslint-config@npm:2.1.0"
+"@lipemat/eslint-config@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@lipemat/eslint-config@npm:3.0.1"
   dependencies:
     "@wordpress/eslint-plugin": ^12.2.0
     eslint: ^8.8.0
-  checksum: 936d1dac883987fbd18aaa25b27b4142a6c6f9e02280561d518ee2edbaa10e81e93c956bccf21d8f21f370fea003dadd42fabcda5304c4845d2bc58e0e432ce6
+  checksum: dd05f36b97581e0fbe0ee1fbe8963f721949879a9d5f1026126e985847e68ba48d53221be021e093bfdbf8f3f8c59aa8c406fb6649eb14aebdf0325c47ac4b59
   languageName: node
   linkType: hard
 
@@ -2124,7 +2124,7 @@ __metadata:
     "@babel/preset-react": ^7.12.10
     "@babel/preset-typescript": ^7.12.7
     "@lipemat/css-mqpacker": ^9.0.0
-    "@lipemat/eslint-config": ^2.0.1
+    "@lipemat/eslint-config": ^3.0.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.10
     "@wordpress/browserslist-config": ^4.1.0
     are-you-es5: ^2.1.1
