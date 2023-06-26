@@ -4,7 +4,7 @@ const path = require( 'path' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
-const {getConfig, hasLocalOverride} = require( '../helpers/config' );
+const {getConfig, getTsConfigFile} = require( '../helpers/config' );
 
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
@@ -24,14 +24,14 @@ const plugins = [
 	new ReactRefreshWebpackPlugin(),
 ];
 
-// Loads a thread, which verifies any TypeScripts on changes.
-// Only use this if the project has a tsconfig.json file.
-if ( hasLocalOverride( 'tsconfig.json', true ) ) {
+// Loads a thread, which verifies any TypeScripts on changes if the
+// project has a "tsconfig.json" file.
+if ( '' !== getTsConfigFile() ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {
 		devServer: false,
 		formatter: 'basic',
 		typescript: {
-			configFile: config.workingDirectory + '/tsconfig.json',
+			configFile: getTsConfigFile(),
 		},
 	} ) );
 }
