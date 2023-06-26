@@ -63,18 +63,18 @@ function hasLocalOverride( fileName, inWorkingDirectory = false, ) {
  * @return {Object}
  */
 function getConfig( fileName ) {
-	let config = require( '../config/' + fileName );
-	config = {...config, ...getExtensionsConfig( fileName, config )};
+	let mergedConfig = require( '../config/' + fileName );
+	mergedConfig = {...mergedConfig, ...getExtensionsConfig( fileName, mergedConfig )};
 	try {
 		const localConfig = require( path.resolve( packageConfig.packageDirectory + '/config', fileName ) );
 		if ( 'function' === typeof localConfig ) {
-			config = {...config, ...localConfig( config )};
+			mergedConfig = {...mergedConfig, ...localConfig( mergedConfig )};
 		} else {
-			config = {...config, ...localConfig};
+			mergedConfig = {...mergedConfig, ...localConfig};
 		}
 	} catch ( e ) {
 	}
-	return config;
+	return mergedConfig;
 }
 
 /**
@@ -90,20 +90,20 @@ function getConfig( fileName ) {
  * @return {Object}
  */
 function getExtensionsConfig( fileName, defaultConfig ) {
-	let config = {};
+	let mergedConfig = {};
 	extensions.forEach( extension => {
 		try {
 			const extensionConfig = require( extension + '/config/' + fileName );
 			if ( 'function' === typeof extensionConfig ) {
-				config = {...config, ...extensionConfig( {...defaultConfig, ...config} )};
+				mergedConfig = {...mergedConfig, ...extensionConfig( {...defaultConfig, ...mergedConfig} )};
 			} else {
-				config = {...config, ...extensionConfig};
+				mergedConfig = {...mergedConfig, ...extensionConfig};
 			}
 		} catch ( e ) {
 		}
 	} );
 
-	return config;
+	return mergedConfig;
 }
 
 /**
