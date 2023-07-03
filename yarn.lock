@@ -2126,7 +2126,7 @@ __metadata:
     "@lipemat/css-mqpacker": ^9.0.0
     "@lipemat/eslint-config": ^3.0.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.10
-    "@wordpress/browserslist-config": ^4.1.0
+    "@wordpress/browserslist-config": ^5.19.0
     are-you-es5: ^2.1.1
     babel-jest: ^29.0.0
     babel-loader: ^9.1.2
@@ -2147,7 +2147,7 @@ __metadata:
     postcss: ^8.4.13
     postcss-color-mod-function: ^3.0.3
     postcss-custom-media: ^8.0.1
-    postcss-import: ^14.1.0
+    postcss-import: ^15.1.0
     postcss-loader: ^6.2.1
     postcss-nested: ^5.0.6
     postcss-preset-env: ^7.5.0
@@ -3066,10 +3066,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wordpress/browserslist-config@npm:^4.1.0, @wordpress/browserslist-config@npm:^4.1.2":
+"@wordpress/browserslist-config@npm:^4.1.2":
   version: 4.1.3
   resolution: "@wordpress/browserslist-config@npm:4.1.3"
   checksum: 1b744b332c36d10380f6c5d5131604244939d45c568732c0e3588702b9d86739e80dc5a9026619a83ca89a357d1b7686a8f9fe53ea7649e1c38be8005e906ab0
+  languageName: node
+  linkType: hard
+
+"@wordpress/browserslist-config@npm:^5.19.0":
+  version: 5.19.0
+  resolution: "@wordpress/browserslist-config@npm:5.19.0"
+  checksum: 0f8a69b6b1631f679d679f30cfa79be7499741b6885f12b9ab11cb1871bd5dab1285c1e3266367ef570b880033ac9abacd2650ad7e11a446dbaef7a3fe260ebf
   languageName: node
   linkType: hard
 
@@ -9080,16 +9087,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-import@npm:^14.1.0":
-  version: 14.1.0
-  resolution: "postcss-import@npm:14.1.0"
+"postcss-import@npm:^15.1.0":
+  version: 15.1.0
+  resolution: "postcss-import@npm:15.1.0"
   dependencies:
     postcss-value-parser: ^4.0.0
     read-cache: ^1.0.0
     resolve: ^1.1.7
   peerDependencies:
     postcss: ^8.0.0
-  checksum: cd45d406e90f67cdab9524352e573cc6b4462b790934a05954e929a6653ebd31288ceebc8ce3c3ed7117ae672d9ebbec57df0bceec0a56e9b259c2e71d47ca86
+  checksum: 7bd04bd8f0235429009d0022cbf00faebc885de1d017f6d12ccb1b021265882efc9302006ba700af6cab24c46bfa2f3bc590be3f9aee89d064944f171b04e2a3
   languageName: node
   linkType: hard
 
