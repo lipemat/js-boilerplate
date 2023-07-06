@@ -1,5 +1,6 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
+const CompressionPlugin = require( 'compression-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
@@ -20,6 +21,41 @@ const ManifestPlugin = new WebpackAssetsManifest( {
 	integrityHashes: [ 'sha384' ],
 	output: 'manifest.json',
 } );
+
+const plugins = [
+	new webpack.ProvidePlugin( {
+		jQuery: 'jquery',
+		$: 'jquery',
+	} ),
+	new MiniCssExtractPlugin( {
+		filename: '[name].css',
+		chunkFilename: '[name].[contenthash].css',
+	} ),
+	new CleanWebpackPlugin( {
+		// Remove all files except the `.running` file created by "Start".
+		cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
+	} ),
+	new SubresourceIntegrityPlugin( {
+		hashFuncNames: [ 'sha384' ],
+	} ),
+	new WebpackAssetsHash( ManifestPlugin ),
+	ManifestPlugin,
+];
+
+/**
+ * Generate .br files if enabled.
+ *
+ * @note Will only generate files if 20% or more size is gained.
+ * @see https://webpack.js.org/plugins/compression-webpack-plugin/#using-brotli
+ */
+if ( config.brotliFiles ) {
+	plugins.push( new CompressionPlugin( {
+		algorithm: 'brotliCompress',
+		deleteOriginalAssets: false,
+		test: /\.(js|css)$/,
+	} ) );
+}
+
 
 module.exports = {
 	devtool: false,
@@ -68,25 +104,7 @@ module.exports = {
 			'node_modules',
 		],
 	},
-	plugins: [
-		new webpack.ProvidePlugin( {
-			jQuery: 'jquery',
-			$: 'jquery',
-		} ),
-		new MiniCssExtractPlugin( {
-			filename: '[name].css',
-			chunkFilename: '[name].[contenthash].css',
-		} ),
-		new CleanWebpackPlugin( {
-			// Remove all files except the `.running` file created by "Start".
-			cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
-		} ),
-		new SubresourceIntegrityPlugin( {
-			hashFuncNames: [ 'sha384' ],
-		} ),
-		new WebpackAssetsHash( ManifestPlugin ),
-		ManifestPlugin,
-	],
+	plugins,
 	module: {
 		rules: [
 			{

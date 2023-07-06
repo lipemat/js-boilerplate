@@ -3,6 +3,7 @@ const fs = require( 'fs' );
 
 const workingDirectory = fs.realpathSync( process.cwd() );
 let packageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
+packageConfig.brotliFiles ||= false;
 packageConfig.es6Modules ||= [];
 packageConfig.jsPath ||= '';
 // Path of the package.json file (root).
