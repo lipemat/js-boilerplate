@@ -14,10 +14,8 @@ async function build( config ) {
 			throw err;
 		}
 
-		const info = stats.toJson();
-
 		if ( stats.hasErrors() ) {
-			console.error( info.errors );
+			console.error( stats.toString( config.stats ) );
 			process.exit( 1 );
 		} else {
 			console.log( stats.toString( config.stats ) );
