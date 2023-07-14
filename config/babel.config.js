@@ -3,7 +3,7 @@ const {getDefaultBrowsersList} = require( '../helpers/config' );
 const presetEnv = {
 	bugfixes: true,
 	corejs: {
-		version: '3.8',
+		version: '3.31',
 	},
 	shippedProposals: true,
 	useBuiltIns: 'usage',
