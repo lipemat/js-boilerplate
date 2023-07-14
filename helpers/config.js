@@ -164,11 +164,6 @@ function getBrowsersList() {
  * @return {boolean | string[]}
  */
 const getDefaultBrowsersList = once( () => {
-	// JEST requires the default browsers list for JSDOM to work.
-	if ( typeof global.__TEST__ !== 'undefined' && global.__TEST__ ) {
-		return false;
-	}
-
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
 		return require( '@wordpress/browserslist-config' ).map( range => {
 			// Swap out "> 1%" for "> 2%".
