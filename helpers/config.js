@@ -159,8 +159,6 @@ function getBrowsersList() {
  * Used in cases where we can fall back to standard browserslist config if the project
  * has not specified one.
  *
- * @deprecated Use getBrowsersList instead.
- *
  * @link https://github.com/browserslist/browserslist#config-file
  *
  * @return {boolean | string[]}

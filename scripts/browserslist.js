@@ -1,5 +1,6 @@
 const browserslist = require( 'browserslist' );
-const {getBrowsersList} = require( '../helpers/config' );
+const {getBrowsersList, getDefaultBrowsersList} = require( '../helpers/config' );
+const path = require( 'path' );
 
 const help = `
 	List browsers being targeted by Babel and PostCSS.
@@ -18,7 +19,9 @@ if ( args[ 0 ] && ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) ) {
 }
 
 
-const provided = getBrowsersList();
+const provided = getDefaultBrowsersList() || browserslist.loadConfig( {
+	path: path.resolve( '.' ),
+} );
 
 console.log( '' );
 console.log( 'JS Provided Browserslist' );
