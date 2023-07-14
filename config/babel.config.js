@@ -1,4 +1,4 @@
-const {getDefaultBrowsersList} = require( '../helpers/config' );
+const {getBrowsersList} = require( '../helpers/config' );
 
 const presetEnv = {
 	bugfixes: true,
@@ -6,15 +6,12 @@ const presetEnv = {
 		version: '3.31',
 	},
 	shippedProposals: true,
+	targets: {
+		browsers: getBrowsersList(),
+	},
 	useBuiltIns: 'usage',
 };
 
-/**
- * Use shared browserslist configurations.
- */
-if ( getDefaultBrowsersList() ) {
-	presetEnv.targets = getDefaultBrowsersList();
-}
 
 module.exports = {
 	cacheDirectory: true,
