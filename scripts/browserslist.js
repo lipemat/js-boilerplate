@@ -1,5 +1,5 @@
 const browserslist = require( 'browserslist' );
-const {getBrowsersList, getDefaultBrowsersList} = require( '../helpers/config' );
+const {getDefaultBrowsersList} = require( '../helpers/config' );
 const path = require( 'path' );
 
 const help = `
