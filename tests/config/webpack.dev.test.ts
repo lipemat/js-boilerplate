@@ -5,9 +5,7 @@ afterAll( () => {
 describe( 'webpack.dev.test.ts', () => {
 	test( 'Browserslist config', () => {
 		const config = require( '../../config/webpack.dev' );
-		const wpBrowsers = require( '@wordpress/browserslist-config' ).map( range => {
-			return '> 1%' === range ? '> 2%' : range;
-		} )
+		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
 
 		jest.resetModules();

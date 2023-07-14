@@ -7,18 +7,14 @@ afterAll( () => {
 describe( 'babel.config.test.ts', () => {
 	test( 'Browserslist config', () => {
 		let config = require( '../../config/babel.config' );
-		const wpBrowsers = require( '@wordpress/browserslist-config' ).map( range => {
-			return '> 1%' === range ? '> 2%' : range;
-		} )
+		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.presets[ 0 ][ 1 ].targets.browsers ).toEqual( wpBrowsers );
 
 		global.__TEST__ = false;
 		jest.resetModules();
 		config = require( '../../config/babel.config' );
 		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
-			browsers: require( '@wordpress/browserslist-config' ).map( range => {
-				return '> 1%' === range ? '> 2%' : range;
-			} ),
+			browsers: wpBrowsers,
 		} );
 
 

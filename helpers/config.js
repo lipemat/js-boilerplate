@@ -141,10 +141,7 @@ function getTsConfigFile() {
 function getBrowsersList() {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
-		return require( '@wordpress/browserslist-config' ).map( range => {
-			// Swap out "> 1%" for "> 2%".
-			return '> 1%' === range ? '> 2%' : range;
-		} );
+		return require( '@wordpress/browserslist-config' );
 	}
 	return projectBrowsersList;
 }
@@ -165,10 +162,7 @@ function getBrowsersList() {
  */
 const getDefaultBrowsersList = once( () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		return require( '@wordpress/browserslist-config' ).map( range => {
-			// Swap out "> 1%" for "> 2%".
-			return '> 1%' === range ? '> 2%' : range;
-		} );
+		return require( '@wordpress/browserslist-config' );
 	}
 	return false;
 } );
