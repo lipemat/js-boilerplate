@@ -4,7 +4,7 @@ const path = require( 'path' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
-const {getConfig, getTsConfigFile} = require( '../helpers/config' );
+const {getConfig, getTsConfigFile, getDefaultBrowsersList} = require( '../helpers/config' );
 
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
@@ -44,6 +44,7 @@ module.exports = {
 	externals: {
 		jquery: 'jQuery',
 	},
+	target: 'browserslist:' + getDefaultBrowsersList().join( ', ' ),
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',
