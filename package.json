@@ -42,6 +42,7 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
+    "@csstools/postcss-global-data": "^2.0.0",
     "@lipemat/css-mqpacker": "^9.0.0",
     "@lipemat/eslint-config": "^3.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
@@ -88,5 +89,4 @@
     "@types/jest": "^29.5.3"
   },
   "packageManager": "yarn@3.6.0"
-
 }

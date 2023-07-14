@@ -1726,6 +1726,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/postcss-global-data@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@csstools/postcss-global-data@npm:2.0.0"
+  peerDependencies:
+    postcss: ^8.4
+  checksum: 86f0885ee91cc31e7659e2a33f3a5f8d091ab1f23fe1cb53b74a8e37af3df185cc8af9d1ce0bc4395d102bc1ed446af1c78c109118f0e058653ac63fb075eb28
+  languageName: node
+  linkType: hard
+
 "@csstools/postcss-hwb-function@npm:^1.0.2":
   version: 1.0.2
   resolution: "@csstools/postcss-hwb-function@npm:1.0.2"
@@ -2337,6 +2346,7 @@ __metadata:
     "@babel/preset-env": ^7.22.9
     "@babel/preset-react": ^7.12.10
     "@babel/preset-typescript": ^7.12.7
+    "@csstools/postcss-global-data": ^2.0.0
     "@lipemat/css-mqpacker": ^9.0.0
     "@lipemat/eslint-config": ^3.0.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.10

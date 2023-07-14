@@ -29,24 +29,25 @@ const presetEnv = {
 };
 
 /**
+ * Provide CSS properties and media queries to all postcss plugins.
+ *
  * If a media-queries files exist, automatically load them.
+ * If CSS variables exist, automatically load them.
  *
- * 1. pcss/globals/media-queries.pcss
- * 2. js/src/pcss/media-queries.pcss
- *
- * @notice `@import` will not work inside the media-queries file so
- *          there is no point in having a JS version if all it does is
- *          import from the global pcss version.
+ * 1. pcss/globals/variables.pcss
+ * 2. js/src/pcss/variables.pcss
+ * 3. pcss/globals/media-queries.pcss
+ * 4. js/src/pcss/media-queries.pcss
  */
-const customMedia = {
-	importFrom: [],
-};
+const externalFiles = [];
 [
 	path.resolve( packageConfig.packageDirectory, 'pcss/globals/media-queries.pcss' ),
+	path.resolve( packageConfig.packageDirectory, 'pcss/globals/variables.pcss' ),
 	path.resolve( packageConfig.workingDirectory, 'src/pcss/media-queries.pcss' ),
+	path.resolve( packageConfig.workingDirectory, 'src/pcss/variables.pcss' ),
 ].forEach( possibleFile => {
 	if ( fs.existsSync( possibleFile ) ) {
-		customMedia.importFrom.push( possibleFile );
+		externalFiles.push( possibleFile );
 	}
 } );
 
@@ -56,10 +57,13 @@ const customMedia = {
  */
 const config = {
 	plugins: [
+		require( '@csstools/postcss-global-data' )( {
+			files: externalFiles,
+		} ),
 		require( 'postcss-import' )( {
 			skipDuplicates: false,
 		} ),
-		require( 'postcss-custom-media' )( customMedia ),
+		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
