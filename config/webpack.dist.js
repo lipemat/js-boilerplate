@@ -8,7 +8,7 @@ const {SubresourceIntegrityPlugin} = require( 'webpack-subresource-integrity' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 
 const WebpackAssetsHash = require( '../helpers/WebpackAssetsHash' );
-const {getConfig, getTsConfigFile, getDefaultBrowsersList} = require( '../helpers/config' );
+const {getConfig, getTsConfigFile, getBrowsersList} = require( '../helpers/config' );
 const moduleHelpers = require( '../helpers/modules' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
@@ -96,7 +96,7 @@ module.exports = {
 	externals: {
 		jquery: 'jQuery',
 	},
-	target: 'browserslist:' + getDefaultBrowsersList().join( ', ' ),
+	target: 'browserslist:' + getBrowsersList().join( ', ' ),
 	output: {
 		path: path.resolve( config.workingDirectory, 'dist' ),
 		filename: '[name].js',

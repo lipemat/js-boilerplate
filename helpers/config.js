@@ -132,12 +132,34 @@ function getTsConfigFile() {
 	return tsConfig;
 }
 
+/**
+ * Get the browserslist from the current project.
+ *
+ * - If specified using standard browserslist config, we will use that.
+ * - Fallback to WordPress defaults except for "> 1%".
+ */
+function getBrowsersList() {
+	const projectBrowsersList = browserslist();
+	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
+		return require( '@wordpress/browserslist-config' ).map( range => {
+			// Swap out "> 1%" for "> 2%".
+			return '> 1%' === range ? '> 2%' : range;
+		} );
+	}
+	return projectBrowsersList;
+}
 
 /**
  * If browserslist is not specified, we fall back to WordPress defaults
  * except for > 1% we don't support by default.
  *
- * Return false if a browserslist is specified in the current project.
+ * - Return the default browserslist if the current project does not specify one.
+ * - Return false if a browserslist is specified, or JEST is running.
+ *
+ * Used in cases where we can fall back to standard browserslist config if the project
+ * has not specified one.
+ *
+ * @deprecated Use getBrowsersList instead.
  *
  * @link https://github.com/browserslist/browserslist#config-file
  *
@@ -160,6 +182,7 @@ const getDefaultBrowsersList = once( () => {
 
 
 module.exports = {
+	getBrowsersList,
 	getConfig,
 	getDefaultBrowsersList,
 	getExtensionsConfig,
