@@ -1,10 +1,19 @@
 const {getBrowsersList} = require( '../helpers/config' );
 
+/**
+ * Use Babel's preset-env to add support for target browsers.
+ *
+ * @note Set the `debug` option to `true` to debug the included polyfills and plugins.
+ *
+ * @see https://babeljs.io/docs/en/babel-preset-env
+ */
 const presetEnv = {
 	bugfixes: true,
 	corejs: {
-		version: '3.30',
+		// Use the core-js version currently installed in the project.
+		version: require( 'core-js/package.json' ).version,
 	},
+	debug: false,
 	shippedProposals: true,
 	targets: {
 		browsers: getBrowsersList(),
