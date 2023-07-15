@@ -1,4 +1,4 @@
-afterAll( () => {
+afterEach( () => {
 	delete process.env.BROWSERSLIST;
 } );
 

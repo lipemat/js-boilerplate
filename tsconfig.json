@@ -1,6 +1,7 @@
 {
   "extends": "./config/tsconfig.json",
   "include": [
+    "jest.config.js",
     "config/**/*",
     "helpers/**/*",
     "tests/**/*",

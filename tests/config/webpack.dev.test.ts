@@ -1,4 +1,4 @@
-afterAll( () => {
+afterEach( () => {
 	delete process.env.BROWSERSLIST;
 } );
 
@@ -10,7 +10,6 @@ describe( 'webpack.dev.test.ts', () => {
 
 		jest.resetModules();
 		process.env.BROWSERSLIST = 'chrome 71';
-
 		const config2 = require( '../../config/webpack.dev' );
 		expect( config2.target ).toEqual( 'browserslist:chrome 71' );
 	} );
