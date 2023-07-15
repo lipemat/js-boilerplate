@@ -10,7 +10,6 @@ describe( 'babel.config.test.ts', () => {
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.presets[ 0 ][ 1 ].targets.browsers ).toEqual( wpBrowsers );
 
-		global.__TEST__ = false;
 		jest.resetModules();
 		config = require( '../../config/babel.config' );
 		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
@@ -27,7 +26,5 @@ describe( 'babel.config.test.ts', () => {
 				'firefox 60',
 			],
 		} );
-
-		global.__TEST__ = true;
 	} );
 } );
