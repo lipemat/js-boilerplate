@@ -2147,7 +2147,7 @@ __metadata:
     clean-css: ^5.3.0
     clean-webpack-plugin: ^4.0.0
     compression-webpack-plugin: ^10.0.0
-    core-js: ~3.30.2
+    core-js: ^3.31.1
     cross-spawn: ^6.0.5
     css-loader: 6.7.1
     fork-ts-checker-webpack-plugin: ^7.2.13
@@ -4472,17 +4472,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.19.1":
+"core-js@npm:^3.19.1, core-js@npm:^3.31.1":
   version: 3.31.1
   resolution: "core-js@npm:3.31.1"
   checksum: 14519213a63c55cf188bdd2f4dece54583feaf6b90e75d6c65e07f509cd487055bf64898aeda7c97c36029ac1ea2f2ed8e4b02281553f6a257e7143a32a14015
-  languageName: node
-  linkType: hard
-
-"core-js@npm:~3.30.2":
-  version: 3.30.2
-  resolution: "core-js@npm:3.30.2"
-  checksum: 73d47e2b9d9f502800973982d08e995bbf04832e20b04e04be31dd7607247158271315e9328788a2408190e291c7ffbefad141167b1e57dea9f983e1e723541e
   languageName: node
   linkType: hard
 
