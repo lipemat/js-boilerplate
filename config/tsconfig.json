@@ -1,6 +1,8 @@
 {
   "//": "@see ./templates/tsconfig.json to use/extend this configuration in your project",
   "//": "PHPStorm will only see changes to the file, if you re-save the project root's tsconfig.json file",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "JS Boilerplate",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
