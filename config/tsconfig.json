@@ -1,6 +1,6 @@
 {
-  "//": "@see ./templates/tsconfig.json to use/extend this configuration in your project",
-  "//": "PHPStorm will only see changes to the file, if you re-save the project root's tsconfig.json file",
+  "//~": "@see ./templates/tsconfig.json to use/extend this configuration in your project",
+  "//~~": "PHPStorm will only see changes to the file, if you re-save the project root's tsconfig.json file",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "JS Boilerplate",
   "compilerOptions": {
@@ -10,14 +10,16 @@
       "dom",
       "es2018"
     ],
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "sourceMap": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "target": "es6"
+    "target": "es6",
+    "verbatimModuleSyntax": false
   },
   "exclude": [
     "node_modules"
