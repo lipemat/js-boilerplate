@@ -30,8 +30,6 @@ try {
 function getPackageConfig() {
 	return packageConfig;
 }
+packageConfig.getPackageConfig = getPackageConfig;
 
-module.exports = {
-	...packageConfig,
-	getPackageConfig,
-};
+module.exports = packageConfig;
