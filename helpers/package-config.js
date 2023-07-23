@@ -19,4 +19,19 @@ try {
 } catch ( e ) {
 }
 
-module.exports = packageConfig;
+/**
+ * Helper function to get the results of `packageConfig`.
+ *
+ * - Allows mocking the results of `packageConfig` for testing.
+ * - Allows getting the config through a callback instead of an import.
+ *
+ * @since 10.3.0
+ */
+function getPackageConfig() {
+	return packageConfig;
+}
+
+module.exports = {
+	...packageConfig,
+	getPackageConfig,
+};
