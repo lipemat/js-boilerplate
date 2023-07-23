@@ -1,5 +1,4 @@
-const config = require( '../helpers/package-config' );
-const {getLocalIdent} = require( '../helpers/css-classnames' );
+const {getLocalIdent, usingShortCssClasses} = require( '../helpers/css-classnames' );
 
 /**
  * Options for the Webpack `css-loader`.
@@ -40,7 +39,7 @@ if ( 'production' === process.env.NODE_ENV ) {
 		modules: {
 			exportLocalsConvention: 'camelCase',
 			// Use short CSS Classes if enabled.
-			...config.shortCssClasses ? {getLocalIdent} : {},
+			...usingShortCssClasses() ? {getLocalIdent} : {},
 			// Hash used when short CSS classes are not enabled.
 			localIdentName: '[contenthash:base64:5]',
 			mode,

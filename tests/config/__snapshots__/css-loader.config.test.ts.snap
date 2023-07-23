@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`css-loader.config.test.ts Develop config: develop 1`] = `
+{
+  "importLoaders": 1,
+  "modules": {
+    "exportLocalsConvention": "camelCase",
+    "localIdentName": "Ⓜ[name]__[local]__[contenthash:base64:2]",
+    "mode": [Function],
+  },
+  "sourceMap": true,
+  "url": false,
+}
+`;
+
+exports[`css-loader.config.test.ts Production config: production CSS modules disabled 1`] = `
+{
+  "importLoaders": 1,
+  "modules": {
+    "exportLocalsConvention": "camelCase",
+    "localIdentName": "[contenthash:base64:5]",
+    "mode": [Function],
+  },
+  "url": false,
+}
+`;
+
+exports[`css-loader.config.test.ts Production config: production CSS modules enabled 1`] = `
+{
+  "importLoaders": 1,
+  "modules": {
+    "exportLocalsConvention": "camelCase",
+    "getLocalIdent": [MockFunction] {
+      "calls": [
+        [],
+        [],
+      ],
+      "results": [
+        {
+          "type": "return",
+          "value": "__TEST_CSS__",
+        },
+        {
+          "type": "return",
+          "value": "__TEST_CSS__",
+        },
+      ],
+    },
+    "localIdentName": "[contenthash:base64:5]",
+    "mode": [Function],
+  },
+  "url": false,
+}
+`;

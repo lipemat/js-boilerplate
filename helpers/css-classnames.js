@@ -1,8 +1,21 @@
+const {getPackageConfig} = require( './package-config' );
+
 const SHORT_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 const classes = {};
 let counters = [ -1 ];
+
+/**
+ * Check if short CSS classes are enabled.
+ *
+ * Using a helper function to allow for future enhancements.
+ *
+ * @since 10.3.0
+ */
+function usingShortCssClasses() {
+	return getPackageConfig().shortCssClasses;
+}
 
 /**
  * Reset all counters.
@@ -102,5 +115,6 @@ module.exports = {
 	SHORT_ALPHABET,
 	getLocalIdent,
 	getNextClass,
+	usingShortCssClasses,
 	resetCounters,
 };
