@@ -136,6 +136,8 @@ function getTsConfigFile() {
  * Get the browserslist from the current project.
  *
  * - If specified using standard browserslist config, we will use that.
+ *
+ *  @link https://github.com/browserslist/browserslist#config-file
  */
 function getBrowsersList() {
 	const projectBrowsersList = browserslist();
@@ -146,15 +148,15 @@ function getBrowsersList() {
 }
 
 /**
- * If browserslist is not specified, we fall back to WordPress defaults
- * except for > 1% we don't support by default.
+ * If browserslist is not specified, we fall back to WordPress defaults.
  *
  * - Return the default browserslist if the current project does not specify one.
- * - Return false if a browserslist is specified, or JEST is running.
+ * - Return false if a browserslist is specified.
  *
  * Used in cases where we can fall back to standard browserslist config if the project
  * has not specified one.
  *
+ * @deprecated Use getBrowsersList instead.
  * @link https://github.com/browserslist/browserslist#config-file
  *
  * @return {boolean | string[]}
