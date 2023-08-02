@@ -136,7 +136,6 @@ function getTsConfigFile() {
  * Get the browserslist from the current project.
  *
  * - If specified using standard browserslist config, we will use that.
- * - Fallback to WordPress defaults except for "> 1%".
  */
 function getBrowsersList() {
 	const projectBrowsersList = browserslist();
