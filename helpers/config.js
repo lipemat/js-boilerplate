@@ -1,6 +1,5 @@
 const packageConfig = require( './package-config' );
 const path = require( 'path' );
-const once = require( 'lodash/once' );
 const browserslist = require( 'browserslist' );
 const fs = require( 'fs' );
 const config = require( './package-config' );
@@ -142,7 +141,9 @@ function getTsConfigFile() {
 function getBrowsersList() {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
-		return require( '@wordpress/browserslist-config' );
+		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
+		wp.push( 'not and_uc 15.5' );
+		return wp;
 	}
 	return projectBrowsersList;
 }
@@ -161,12 +162,14 @@ function getBrowsersList() {
  *
  * @return {boolean | string[]}
  */
-const getDefaultBrowsersList = once( () => {
+const getDefaultBrowsersList = () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		return require( '@wordpress/browserslist-config' );
+		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
+		wp.push( 'not and_uc 15.5' );
+		return wp;
 	}
 	return false;
-} );
+};
 
 
 module.exports = {
