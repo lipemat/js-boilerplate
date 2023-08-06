@@ -6,9 +6,9 @@ const {dirname, basename} = require( 'path' );
  * This is needed because the snapshots contain references to the current path.
  * Hash the file names based on the path of the project.
  *
- * If we try to name the snapshot files with the hash, we get "snapshot obsolete"
+ * If we try to name the snapshot cases with the hash, we get "snapshot obsolete"
  * errors when running. Instead, we use this custom resolver to change the path to
- * the snapshots.
+ * the snapshots files themselves.
  *
  * @version 1.0.0
  *
@@ -18,7 +18,7 @@ const {dirname, basename} = require( 'path' );
  * @link https://jestjs.io/docs/configuration#snapshotresolver-string
  *
  * @note I had to add the '.js' extension to the snapshot file name in order for the
- *       snapshots to not be considered obsolete.
+ *       snapshots to not be detected and considered obsolete when JEST runs.
  */
 
 
