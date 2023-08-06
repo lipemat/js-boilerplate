@@ -7,13 +7,13 @@ describe( 'webpack.dev.test.ts', () => {
 		const config = require( '../../config/webpack.dev' );
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) + ', not and_uc 15.5' );
-		expect( config ).toMatchSnapshot();
+		expect( config ).toMatchSnapshot( 'Default Browsers' );
 
 
 		jest.resetModules();
 		process.env.BROWSERSLIST = 'chrome 71';
 		const config2 = require( '../../config/webpack.dev' );
 		expect( config2.target ).toEqual( 'browserslist:chrome 71' );
-		expect( config ).toMatchSnapshot();
+		expect( config ).toMatchSnapshot( 'Chrome 71' );
 	} );
 } );
