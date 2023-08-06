@@ -21,6 +21,14 @@ const {dirname, basename} = require( 'path' );
  *       snapshots to not be detected and considered obsolete when JEST runs.
  */
 
+/**
+ * Limit the files that will be hashed to the ones that include the current path.
+ */
+const filesWithPaths = [
+	'webpack.dev.test.ts',
+	'webpack.dist.test.ts',
+];
+
 
 /**
  * Hash the current path to get a unique name for the snapshot.
@@ -30,7 +38,7 @@ const {dirname, basename} = require( 'path' );
  * path will change, and the snapshots will fail.
  */
 function getCurrentDirectoryHash( dir: string ) {
-	return require( 'crypto' ).createHash( 'md5' ).update( dir ).digest( 'hex' );
+	return require( 'crypto' ).createHash( 'md4' ).update( dir ).digest( 'hex' );
 }
 
 
@@ -39,25 +47,44 @@ module.exports = {
 	 * Convert the test file path to the path of its snapshot.
 	 */
 	resolveSnapshotPath: ( testPath, snapshotExtension ) => {
-		const hash = getCurrentDirectoryHash( dirname( testPath ) );
+		const normalizedPath = testPath.replace( /\\/g, '/' );
+		const filePath = dirname( normalizedPath ) + '/__snapshots__/' + basename( normalizedPath );
+		if ( filesWithPaths.includes( basename( testPath ) ) ) {
+			return filePath + '.' + getCurrentDirectoryHash( dirname( normalizedPath ) ) + snapshotExtension + '.js';
+		}
 
-		return dirname( testPath ) + '/__snapshots__/' + basename( testPath ) + '.' + hash + snapshotExtension + '.js';
+		return filePath + snapshotExtension;
 	},
 
 	/**
 	 * Convert the path of a snapshot to the path of the original test file.
 	 */
 	resolveTestPath: ( snapshotFilePath, snapshotExtension ) => {
-		const hash = getCurrentDirectoryHash( dirname( snapshotFilePath.replace( '__snapshots__/', '' ) ) );
+		const normalizedPath = snapshotFilePath.replace( /\\/g, '/' );
+		const hash = getCurrentDirectoryHash( dirname( normalizedPath.replace( '__snapshots__/', '' ) ) );
 
-		let newPath = snapshotFilePath
-			.replace( '__snapshots__/', '' )
-			.slice( 0, -snapshotExtension.length - 3);
-		return newPath.replace( '.' + hash, '' );
+		let newPath = normalizedPath
+			.replace( '__snapshots__/', '' );
+
+		const fileWithoutHash = basename( newPath )
+			.replace( '.' + hash, '' )
+			.slice( 0, -snapshotExtension.length - 3 )
+
+		if ( filesWithPaths.includes( fileWithoutHash ) ) {
+			newPath = newPath
+				.replace( '.' + hash, '' )
+				.slice( 0, -snapshotExtension.length -3 );
+		} else {
+			newPath = newPath
+				.slice( 0, -snapshotExtension.length );
+		}
+
+
+		return newPath;
 	},
 
 	/**
 	 * Test to make sure the resolves are mapping back and forth correctly.
 	 */
-	testPathForConsistencyCheck: 'some/__tests__/example.test.js',
-}
+	testPathForConsistencyCheck: 'some/__tests__/webpack.dist.test.ts',
+};
