@@ -2,17 +2,21 @@
 
 /**
  * When using PNP loose mode, we get warnings for every module
- * we access which is not strictly declared.
+ * we access, not strictly declared.
  *
- * There is no built in way in Yarn to disable the warnings.
- * This script modifies the generate .pnp.js file to suppress
+ * No built-in way in Yarn to disable the warnings.
+ * This script modifies to generate .pnp.js file to suppress
  * all loose module warnings unless the environmental variable
  * it set to display all warnings.
  *
- * @example "scripts": {
-    "postinstall": "lipemat-js-boilerplate fix-pnp"
-  },
- *
+ * @example
+ * ```json
+ * {
+ *      "scripts": {
+ *           "postinstall": "lipemat-js-boilerplate fix-pnp"
+ *      }
+ *  }
+ * ```
  */
 
 const fs = require( 'fs' );
@@ -20,6 +24,7 @@ const fs = require( 'fs' );
 const PNP_FILES = [
 	'./.pnp.js',
 	'./.pnp.cjs',
+	'./.pnp.mjs',
 ];
 
 PNP_FILES.forEach( PNP_FILE => {
