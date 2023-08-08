@@ -23,7 +23,7 @@ switch ( script ) {
 	case 'start':
 	case 'test': {
 		const result = spawn.sync(
-			'npx ts-node',
+			'npm exec ts-node -y',
 			nodeArgs
 				.concat( require.resolve( '../scripts/' + script ) )
 				.concat( args.slice( scriptIndex + 1 ) ),
