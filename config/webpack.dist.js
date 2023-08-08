@@ -6,8 +6,8 @@ const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const {SubresourceIntegrityPlugin} = require( 'webpack-subresource-integrity' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
-
 const WebpackAssetsHash = require( '../helpers/WebpackAssetsHash' );
+
 const {getConfig, getTsConfigFile, getBrowsersList} = require( '../helpers/config' );
 const moduleHelpers = require( '../helpers/modules' );
 const config = require( '../helpers/package-config' );

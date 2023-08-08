@@ -78,6 +78,7 @@ if ( 'production' === process.env.NODE_ENV ) {
 		level: 2,
 	} ) );
 } else {
+	config.plugins.push( require( '../lib/postcss-pretty' ) );
 	config.sourceMap = true;
 }
 
