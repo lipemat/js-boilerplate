@@ -23,11 +23,11 @@ function getDepth( node ) {
 }
 
 function indent( node, depth, position = 'before' ) {
-	const indentStr = '\t'.repeat( depth );
-	if ( !node.raws[ position ] )  {
+	if ( node.raws[ position ] === undefined ) {
 		return;
 	}
-	node.raws[ position ] = node.raws[ position].trim().concat( `\n${indentStr}` )
+	const indentStr = '\t'.repeat( depth );
+	node.raws[ position ] = node.raws[ position ].trim().concat( `\n${indentStr}` )
 }
 
 function processCss( node ) {
@@ -35,7 +35,7 @@ function processCss( node ) {
 	indent( node, nodeDepth, 'before' );
 	indent( node, nodeDepth, 'after' );
 
-	if ( nodeDepth === 0 ) {
+	if ( 0 === nodeDepth ) {
 		node.raws.before += '\n'
 	}
 }
@@ -45,7 +45,7 @@ module.exports = () => {
 		postcssPlugin: 'js-boilerplate/postcss-pretty',
 		OnceExit( css ) {
 			css.walk( processCss );
-			if ( css.first && css.first.raws ) {
+			if ( css.first !== undefined && css.first.raws !== undefined ) {
 				css.first.raws.before = ''
 			}
 		},
