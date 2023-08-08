@@ -87,6 +87,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "eslint": "^8",
+    "glob": "^10.3.3",
     "memfs": "^3.5.3",
     "setimmediate": "^1.0.5"
   },
