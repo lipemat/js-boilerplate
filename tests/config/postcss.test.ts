@@ -1,22 +1,46 @@
-// @ts-ignore
+import {readFileSync} from 'fs';
+import {basename} from 'path';
+import postcss, {AcceptedPlugin} from 'postcss';
+import compileWithWebpack, {Fixture} from '../test-helpers/compileWithWebpack';
+
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 
 type Config = {
-	plugins: Array<{
+	plugins: Array<AcceptedPlugin & {
 		plugins?: Array<{
 			postcssPlugin: string,
 		}>
-	}>,
-	parser: string,
-	sourceMap?: boolean,
+	}>;
+	parser: string;
+	sourceMap?: boolean;
 }
 
-
+/**
+ * @notice We can't reset the modules of MiniCssExtractPlugin conflicts with
+ *         itself. Instead, we isolate other configurations to allow them to
+ *         load fresh each time.
+ */
 function getPostCSSConfig(): Config {
-	jest.resetModules();
-	return require( '../../config/postcss.config.js' );
+	// @ts-ignore
+	let config: Config = {};
+	jest.isolateModules(() => {
+		config = require( '../../config/postcss.config.js' );
+	} );
+	return config;
 }
+
+// Create a data provider for fixtures.
+const fixtures: Fixture[] = require( 'glob' ).sync( 'tests/fixtures/postcss/*.pcss' )
+	.map( file => {
+			return {
+				basename: basename( file ),
+				input: file,
+				output: file.replace( '.pcss', '.css' ),
+			};
+		}
+	);
+
 
 afterEach( () => {
 	process.env.NODE_ENV = 'test';
@@ -84,5 +108,36 @@ describe( 'postcss.js', () => {
 		expect( getPostCSSConfig().plugins[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
+	} );
+
+
+	test.each( fixtures )( 'PostCSS fixtures ( $basename )', async fixture => {
+		const input = readFileSync( fixture.input, 'utf8' );
+		let output = readFileSync( fixture.output.replace( '.css', '.raw.css' ), 'utf8' );
+		let result = await postcss( getPostCSSConfig().plugins ).process( input, {
+			from: fixture.input,
+			parser: require( getPostCSSConfig().parser ),
+		} );
+		expect( result.css.trim() ).toEqual( output.trim() );
+
+		process.env.NODE_ENV = 'production';
+		result = await postcss( getPostCSSConfig().plugins ).process( input, {
+			from: fixture.input,
+			parser: require( getPostCSSConfig().parser ),
+		} );
+		output = readFileSync( fixture.output.replace( '.css', '.raw.min.css' ), 'utf8' );
+		expect( result.css.trim() ).toEqual( output.trim() );
+	} );
+
+
+	test.each( fixtures )( 'Webpack compiled fixtures ( $basename )', async fixture => {
+		let output = readFileSync( fixture.output, 'utf8' );
+		let webpackResult = await compileWithWebpack( fixture );
+		expect( webpackResult ).toEqual( output.trim() );
+
+		process.env.NODE_ENV = 'production';
+		output = readFileSync( fixture.output.replace( '.css', '.min.css' ), 'utf8' );
+		webpackResult = await compileWithWebpack( fixture );
+		expect( webpackResult ).toEqual( output.trim() );
 	} );
 } );

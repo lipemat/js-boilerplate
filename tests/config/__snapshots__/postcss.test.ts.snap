@@ -136,6 +136,7 @@ exports[`postcss.js PostCSS config: develop 1`] = `
     },
     [Function],
     [Function],
+    [Function],
   ],
   "sourceMap": true,
 }
