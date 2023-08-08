@@ -60,14 +60,14 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
       {
         "test": /\\\\\\.css\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "E:\\SVN\\the-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
         ],
       },
       {
         "test": /\\\\\\.pcss\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "E:\\SVN\\the-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           {
             "loader": "css-loader",
             "options": {
@@ -407,14 +407,14 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
       {
         "test": /\\\\\\.css\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "E:\\SVN\\the-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
         ],
       },
       {
         "test": /\\\\\\.pcss\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "E:\\SVN\\the-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           {
             "loader": "css-loader",
             "options": {

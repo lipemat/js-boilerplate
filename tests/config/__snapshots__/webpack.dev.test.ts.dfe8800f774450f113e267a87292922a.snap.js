@@ -258,8 +258,8 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
         "exclude": /node_modules/i,
         "include": /\\\\\\.\\(\\[cm\\]js\\|\\[jt\\]sx\\?\\|flow\\)\\$/i,
         "overlay": {
-          "entry": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\client\\ErrorOverlayEntry.js",
-          "module": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\overlay\\index.js",
+          "entry": "E:\\SVN\\the-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\client\\ErrorOverlayEntry.js",
+          "module": "E:\\SVN\\the-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\overlay\\index.js",
           "sockIntegration": "wds",
         },
       },
@@ -551,8 +551,8 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
         "exclude": /node_modules/i,
         "include": /\\\\\\.\\(\\[cm\\]js\\|\\[jt\\]sx\\?\\|flow\\)\\$/i,
         "overlay": {
-          "entry": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\client\\ErrorOverlayEntry.js",
-          "module": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\overlay\\index.js",
+          "entry": "E:\\SVN\\the-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\client\\ErrorOverlayEntry.js",
+          "module": "E:\\SVN\\the-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\overlay\\index.js",
           "sockIntegration": "wds",
         },
       },
