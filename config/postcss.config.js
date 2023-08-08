@@ -10,7 +10,7 @@ const packageConfig = require( '../helpers/package-config' );
  */
 const presetEnv = {
 	browsers: getBrowsersList(),
-	features: {}
+	features: {},
 };
 
 // Get a list of included postcss plugins based no the browsers list.
@@ -29,10 +29,11 @@ if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
 		 *
 		 * Requires `focus-visible` polyfill to be loaded externally.
 		 * Most will often need it site wide on pages, which do and don't use the JS app.
+		 *
 		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
 		 */
-		replaceWith: ':global(.focus-visible)'
-	}
+		replaceWith: ':global(.focus-visible)',
+	};
 }
 
 /**

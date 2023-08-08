@@ -119,8 +119,7 @@ describe( 'postcss.js', () => {
 				},
 			} ) ) );
 
-
-		// @notice If this fails, we can probably remove the override in favor of default wp.
+		// @notice If this fails, we can probably remove the getBrowsersList() override in favor of default wp.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		expect( getPostCSSConfig().plugins[ 4 ]?.plugins?.filter( plugin => {
