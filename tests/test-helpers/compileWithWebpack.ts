@@ -16,6 +16,7 @@ export type Fixture = {
 	input: string;
 	output: string;
 	basename: string;
+	description: string;
 }
 
 /**

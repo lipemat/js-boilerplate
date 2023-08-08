@@ -46,6 +46,7 @@ const fixtures: Fixture[] = require( 'glob' )
 			basename: basename( file ),
 			input: file,
 			output: file.replace( '.pcss', '.css' ),
+			description: file.replace( /\\/g, '/' ).replace( 'tests/fixtures/', '' ),
 		};
 	} );
 
@@ -130,7 +131,7 @@ describe( 'postcss.js', () => {
 	} );
 
 
-	test.each( fixtures )( 'PostCSS fixtures ( $basename )', async fixture => {
+	test.each( fixtures )( 'PostCSS fixtures ( $description )', async fixture => {
 		if ( fixture.input.includes( 'safari-15' ) ) {
 			process.env.BROWSERSLIST = 'safari 15';
 		}
@@ -147,14 +148,14 @@ describe( 'postcss.js', () => {
 	} );
 
 
-	test.each( fixtures )( 'Webpack compiled fixtures ( $basename )', async fixture => {
+	test.each( fixtures )( 'Webpack compiled fixtures ( $description )', async fixture => {
 		if ( fixture.input.includes( 'safari-15' ) ) {
 			process.env.BROWSERSLIST = 'safari 15';
 		}
 
 		let output = readFileSync( fixture.output, 'utf8' );
 		let webpackResult = await compileWithWebpack( fixture );
-		expect( webpackResult ).toEqual( output.trim() );
+		expect( webpackResult ).toEqual( output.trim() )
 
 		process.env.NODE_ENV = 'production';
 		output = readFileSync( fixture.output.replace( '.css', '.min.css' ), 'utf8' );
