@@ -1,16 +1,14 @@
 import {readFileSync} from 'fs';
 import {basename} from 'path';
-import postcss, {AcceptedPlugin} from 'postcss';
+import postcss, {Plugin} from 'postcss';
 import compileWithWebpack, {Fixture} from '../test-helpers/compileWithWebpack';
 
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 
 type Config = {
-	plugins: Array<AcceptedPlugin & {
-		plugins?: Array<{
-			postcssPlugin: string,
-		}>
+	plugins: Array<Plugin & {
+		plugins?: Plugin[];
 	}>;
 	parser: string;
 	sourceMap?: boolean;
