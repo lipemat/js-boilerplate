@@ -4,29 +4,36 @@ const postcssPresetEnv = require( 'postcss-preset-env' );
 const {getBrowsersList} = require( '../helpers/config' );
 const packageConfig = require( '../helpers/package-config' );
 
+/**
+ * Base postcss-presets-env config.
+ *
+ */
 const presetEnv = {
 	browsers: getBrowsersList(),
-	features: {
+	features: {}
+};
+
+// Get a list of included postcss plugins based no the browsers list.
+const includedPlugins = postcssPresetEnv( presetEnv )
+	.plugins
+	.map( plugin => plugin.postcssPlugin );
+
+
+if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
+	presetEnv.features[ 'focus-visible-pseudo-class' ] = {
 		/**
-		 * Fixes `focus-visible` feature for CSS modules (included by preset-env anywhere
-		 * Safari is supported).
+		 * Fixes `focus-visible` feature for CSS modules.
 		 *
-		 * Requires `focus-visible` polyfill to be loaded externally to support Safari.
+		 * Only needed if our browsers list includes non-supported browsers
+		 * such as Safari 15.3 and below.
 		 *
-		 * @link https://caniuse.com/css-focus-visible
-		 *
-		 * May be imported directly into the index.js for sites, which loads JS app
-		 * on every page.
-		 * @link https://github.com/WICG/focus-visible
-		 *
+		 * Requires `focus-visible` polyfill to be loaded externally.
 		 * Most will often need it site wide on pages, which do and don't use the JS app.
 		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
 		 */
-		'focus-visible-pseudo-class': {
-			replaceWith: ':global(.focus-visible)',
-		},
-	},
-};
+		replaceWith: ':global(.focus-visible)'
+	}
+}
 
 /**
  * Provide CSS properties and media queries to all postcss plugins.

@@ -148,10 +148,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                       },
                       {
                         "Rule": [Function],
-                        "postcssPlugin": "postcss-focus-visible",
-                      },
-                      {
-                        "Rule": [Function],
                         "postcssPlugin": "postcss-dir-pseudo-class",
                       },
                       {
@@ -438,10 +434,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                       {
                         "Rule": [Function],
                         "postcssPlugin": "postcss-nesting",
-                      },
-                      {
-                        "Rule": [Function],
-                        "postcssPlugin": "postcss-focus-visible",
                       },
                       {
                         "Rule": [Function],

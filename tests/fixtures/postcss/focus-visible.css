@@ -2,10 +2,6 @@
 	--color: lemonchiffon;
 }
 
-.Ⓜfocus-visible__focused__Lr.focus-visible {
-	outline: var(--color);
-}
-
 .Ⓜfocus-visible__focused__Lr:focus-visible {
 	outline: var(--color);
 }

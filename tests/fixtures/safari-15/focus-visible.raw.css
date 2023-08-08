@@ -2,6 +2,10 @@
 	--color: lemonchiffon;
 }
 
+.focused:global(.focus-visible) {
+	outline: var(--color);
+}
+
 .focused:focus-visible {
 	outline: var(--color);
 }

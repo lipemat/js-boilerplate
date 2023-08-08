@@ -58,10 +58,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
         },
         {
           "Rule": [Function],
-          "postcssPlugin": "postcss-focus-visible",
-        },
-        {
-          "Rule": [Function],
           "postcssPlugin": "postcss-dir-pseudo-class",
         },
         {
@@ -197,10 +193,6 @@ exports[`postcss.js PostCSS config: production 1`] = `
         {
           "Rule": [Function],
           "postcssPlugin": "postcss-nesting",
-        },
-        {
-          "Rule": [Function],
-          "postcssPlugin": "postcss-focus-visible",
         },
         {
           "Rule": [Function],

@@ -30,8 +30,18 @@ function getPostCSSConfig(): Config {
 	return config;
 }
 
+function processPostCSS( input: string): Promise<postcss.Result> {
+	const config = getPostCSSConfig();
+	return postcss( config.plugins ).process( input, {
+		from: 'test.css',
+		parser: require( config.parser ),
+	} );
+}
+
+
+
 // Create a data provider for fixtures.
-const fixtures: Fixture[] = require( 'glob' ).sync( 'tests/fixtures/postcss/*.pcss' )
+const fixtures: Fixture[] = require( 'glob' ).sync( 'tests/fixtures/{postcss,safari-15}/*.pcss' )
 	.map( file => {
 			return {
 				basename: basename( file ),
@@ -40,7 +50,6 @@ const fixtures: Fixture[] = require( 'glob' ).sync( 'tests/fixtures/postcss/*.pc
 			};
 		}
 	);
-
 
 afterEach( () => {
 	process.env.NODE_ENV = 'test';
@@ -71,14 +80,10 @@ describe( 'postcss.js', () => {
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		expectedBrowsers.push( 'not and_uc 15.5' );
-		const creator = browsers => {
+		const creator = ( browsers, features = {}) => {
 			return postcssPresetEnv( {
 				browsers,
-				features: {
-					'focus-visible-pseudo-class': {
-						replaceWith: ':global(.focus-visible)',
-					},
-				},
+				features: {...features},
 			} );
 		};
 
@@ -87,6 +92,9 @@ describe( 'postcss.js', () => {
 		// if a user did not provided a custom browserslist to override.
 		expect( config.plugins[ 4 ].plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
+		} ).length ).toEqual( 0 );
+		expect( config.plugins[ 4 ].plugins?.filter( plugin => {
+			return 'postcss-focus-visible' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
 
 		expect( JSON.stringify( config.plugins[ 4 ] ) )
@@ -101,6 +109,19 @@ describe( 'postcss.js', () => {
 		expect( JSON.stringify( config2.plugins[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
 
+		// Safari 15 requires postcss-focus-visible.
+		process.env.BROWSERSLIST = 'safari 15';
+		const config3 = getPostCSSConfig();
+		expect( config3.plugins[ 4 ]?.plugins?.filter( plugin => {
+			return 'postcss-focus-visible' === plugin.postcssPlugin;
+		} ).length ).toEqual( 1 );
+		expect( JSON.stringify( config3.plugins[ 4 ] ) )
+			.toEqual( JSON.stringify( creator( [ 'safari 15' ], {
+				'focus-visible-pseudo-class': {
+					replaceWith: ':global(.focus-visible)',
+				},
+			} ) ) );
+
 
 		// @notice If this fails, we can probably remove the override in favor of default wp.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
@@ -112,25 +133,27 @@ describe( 'postcss.js', () => {
 
 
 	test.each( fixtures )( 'PostCSS fixtures ( $basename )', async fixture => {
+		if ( fixture.input.includes( 'safari-15' ) ) {
+			process.env.BROWSERSLIST = 'safari 15';
+		}
+
 		const input = readFileSync( fixture.input, 'utf8' );
 		let output = readFileSync( fixture.output.replace( '.css', '.raw.css' ), 'utf8' );
-		let result = await postcss( getPostCSSConfig().plugins ).process( input, {
-			from: fixture.input,
-			parser: require( getPostCSSConfig().parser ),
-		} );
+		let result = await processPostCSS( input );
 		expect( result.css.trim() ).toEqual( output.trim() );
 
 		process.env.NODE_ENV = 'production';
-		result = await postcss( getPostCSSConfig().plugins ).process( input, {
-			from: fixture.input,
-			parser: require( getPostCSSConfig().parser ),
-		} );
+		result = await processPostCSS( input );
 		output = readFileSync( fixture.output.replace( '.css', '.raw.min.css' ), 'utf8' );
 		expect( result.css.trim() ).toEqual( output.trim() );
 	} );
 
 
 	test.each( fixtures )( 'Webpack compiled fixtures ( $basename )', async fixture => {
+		if ( fixture.input.includes( 'safari-15' ) ) {
+			process.env.BROWSERSLIST = 'safari 15';
+		}
+
 		let output = readFileSync( fixture.output, 'utf8' );
 		let webpackResult = await compileWithWebpack( fixture );
 		expect( webpackResult ).toEqual( output.trim() );
