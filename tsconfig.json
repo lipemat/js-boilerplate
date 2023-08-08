@@ -5,7 +5,12 @@
     "bin/**/*",
     "config/**/*",
     "helpers/**/*",
+    "lib/**/*",
     "tests/**/*",
     "scripts/**/*"
-  ]
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "CommonJS"
+  }
 }
