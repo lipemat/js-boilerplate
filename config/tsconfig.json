@@ -5,6 +5,7 @@
   "display": "JS Boilerplate",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "lib": [
       "dom",
