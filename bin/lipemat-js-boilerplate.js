@@ -22,12 +22,19 @@ switch ( script ) {
 	case 'lint':
 	case 'start':
 	case 'test': {
+		// If the ts-node command is not available install it globally.
+		if ( spawn.sync( 'ts-node', [ '-v' ] ).error ) {
+			console.log( 'Installing ts-node globally.' );
+			spawn.sync( 'npm', [ 'install', '-g', 'ts-node' ] );
+		}
+
+		// Run the script.
 		const result = spawn.sync(
-			'npm exec ts-node -y',
+			'ts-node',
 			nodeArgs
-				.concat( require.resolve( '../scripts/' + script ) )
+				.concat( require.resolve( '../scripts/' + script + '.ts' ) )
 				.concat( args.slice( scriptIndex + 1 ) ),
-			{stdio: 'inherit'},
+			{stdio: 'inherit'}
 		);
 		if ( result.error ) {
 			console.log( result.error );
