@@ -85,7 +85,7 @@ module.exports = {
 		new ForkTsCheckerWebpackPlugin( {
 			formatter: 'basic',
 			typescript: {
-				configFile: getTsConfigFile(),
+				configFile: config.workingDirectory + '/tsconfig.json',
 			},
 		} ),
 		new SubresourceIntegrityPlugin( {
