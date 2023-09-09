@@ -32,7 +32,7 @@ switch ( script ) {
 		const result = spawn.sync(
 			'ts-node',
 			nodeArgs
-				.concat( require.resolve( '../scripts/' + script + '.ts' ) )
+				.concat( require.resolve( '../scripts/' + script ) )
 				.concat( args.slice( scriptIndex + 1 ) ),
 			{stdio: 'inherit'}
 		);
