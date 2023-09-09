@@ -4,9 +4,10 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
 const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
 const {SubresourceIntegrityPlugin} = require( 'webpack-subresource-integrity' );
+const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 
 const WebpackAssetsHash = require( '../helpers/WebpackAssetsHash' );
-const {getConfig} = require( '../helpers/config' );
+const {getConfig, getTsConfigFile} = require( '../helpers/config' );
 const moduleHelpers = require( '../helpers/modules' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
@@ -80,6 +81,12 @@ module.exports = {
 		new CleanWebpackPlugin( {
 			// Remove all files except the `.running` file created by "Start".
 			cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
+		} ),
+		new ForkTsCheckerWebpackPlugin( {
+			formatter: 'basic',
+			typescript: {
+				configFile: getTsConfigFile(),
+			},
 		} ),
 		new SubresourceIntegrityPlugin( {
 			hashFuncNames: [ 'sha384' ],
