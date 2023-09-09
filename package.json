@@ -23,6 +23,7 @@
     "no-config"
   ],
   "files": [
+    "tsconfig.json",
     "bin/",
     "config/",
     "helpers/",
