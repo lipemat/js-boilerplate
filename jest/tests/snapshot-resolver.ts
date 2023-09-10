@@ -73,7 +73,7 @@ module.exports = {
 		if ( filesWithPaths.includes( fileWithoutHash ) ) {
 			newPath = newPath
 				.replace( '.' + hash, '' )
-				.slice( 0, -snapshotExtension.length -3 );
+				.slice( 0, -snapshotExtension.length - 3 );
 		} else {
 			newPath = newPath
 				.slice( 0, -snapshotExtension.length );

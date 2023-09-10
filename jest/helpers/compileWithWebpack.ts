@@ -69,12 +69,12 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	jest.isolateModules( () => {
 		fullConfig.module.rules[ 2 ].use[ 1 ].options = getConfig( 'css-loader.config.js' );
 		fullConfig.module.rules[ 2 ].use[ 2 ].options.postcssOptions = getConfig( 'postcss.config.js' );
-	});
+	} );
 
 	// Point a single entry to the fixture file.
 	const entry = basename( fixture.input, extname( fixture.input ) );
 	fullConfig.entry = {
-		[ entry ]: resolve( __dirname, '../../', fixture.input )
+		[ entry ]: resolve( __dirname, '../../', fixture.input ),
 	};
 	fullConfig.context = resolve( __dirname, '../fixtures' );
 
@@ -88,4 +88,4 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	compiler.outputFileSystem = createFsFromVolume( new Volume() );
 
 	return compile( compiler, fixture );
-};
+}

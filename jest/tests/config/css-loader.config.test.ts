@@ -1,20 +1,20 @@
-const {getLocalIdent} = require( '../../helpers/css-classnames' );
+const {getLocalIdent} = require( '../../../helpers/css-classnames' );
 
 // Change this variable during tests.
 let mockShortCssEnabled = false;
 
 // Change the result of the getPackageConfig function so we can change shortCssClasses.
-jest.mock( '../../helpers/package-config.js', () => ( {
-	...jest.requireActual( '../../helpers/package-config.js' ),
+jest.mock( '../../../helpers/package-config.js', () => ( {
+	...jest.requireActual( '../../../helpers/package-config.js' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../helpers/package-config.js' ),
+		...jest.requireActual( '../../../helpers/package-config.js' ),
 		// Change this variable during the test.
 		shortCssClasses: mockShortCssEnabled,
 	} ),
 } ) );
 // Change the result of the getLocalIdent function to something we can verify.
-jest.mock( '../../helpers/css-classnames.js', () => ( {
-	...jest.requireActual( '../../helpers/css-classnames.js' ),
+jest.mock( '../../../helpers/css-classnames.js', () => ( {
+	...jest.requireActual( '../../../helpers/css-classnames.js' ),
 	getLocalIdent: jest.fn().mockReturnValue( '__TEST_CSS__' ),
 } ) );
 
@@ -30,7 +30,7 @@ afterEach( () => {
 
 describe( 'css-loader.config.test.ts', () => {
 	test( 'Develop config', () => {
-		const config = require( '../../config/css-loader.config' );
+		const config = require( '../../../config/css-loader.config' );
 		expect( config.importLoaders ).toEqual( 1 );
 		expect( config.modules.exportLocalsConvention ).toEqual( 'camelCase' );
 		expect( config.modules.localIdentName ).toEqual( 'Ⓜ[name]__[local]__[contenthash:base64:2]' );
@@ -45,7 +45,7 @@ describe( 'css-loader.config.test.ts', () => {
 
 	test( 'Production config', () => {
 		process.env.NODE_ENV = 'production';
-		const config = require( '../../config/css-loader.config' );
+		const config = require( '../../../config/css-loader.config' );
 		expect( config.importLoaders ).toEqual( 1 );
 		expect( config.modules.exportLocalsConvention ).toEqual( 'camelCase' );
 		expect( config.modules.localIdentName ).toEqual( '[contenthash:base64:5]' );
@@ -56,7 +56,7 @@ describe( 'css-loader.config.test.ts', () => {
 
 		jest.resetModules();
 		mockShortCssEnabled = true;
-		const cssEnabled = require( '../../config/css-loader.config' );
+		const cssEnabled = require( '../../../config/css-loader.config' );
 		expect( cssEnabled.modules.getLocalIdent ).toBeDefined();
 		expect( cssEnabled.modules.getLocalIdent() ).toEqual( '__TEST_CSS__' );
 		expect( cssEnabled.modules.getLocalIdent() ).toEqual( getLocalIdent() );

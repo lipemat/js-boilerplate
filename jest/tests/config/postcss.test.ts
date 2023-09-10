@@ -1,7 +1,7 @@
 import {readFileSync} from 'fs';
 import {basename} from 'path';
 import postcss, {Plugin} from 'postcss';
-import compileWithWebpack, {Fixture} from '../test-helpers/compileWithWebpack';
+import compileWithWebpack, {Fixture} from '../../helpers/compileWithWebpack';
 
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
@@ -23,7 +23,7 @@ function getPostCSSConfig(): Config {
 	// @ts-ignore
 	let config: Config = {};
 	jest.isolateModules( () => {
-		config = require( '../../config/postcss.config.js' );
+		config = require( '../../../config/postcss.config.js' );
 	} );
 	return config;
 }
@@ -38,13 +38,13 @@ function processPostCSS( input: string ): Promise<postcss.Result> {
 
 // Create a data provider for fixtures.
 const fixtures: Fixture[] = require( 'glob' )
-	.sync( 'tests/fixtures/{postcss,safari-15}/*.pcss' )
+	.sync( 'jest/fixtures/{postcss,safari-15}/*.pcss' )
 	.map( file => {
 		return {
 			basename: basename( file ),
 			input: file,
 			output: file.replace( '.pcss', '.css' ),
-			description: file.replace( /\\/g, '/' ).replace( 'tests/fixtures/', '' ),
+			description: file.replace( /\\/g, '/' ).replace( 'jest/fixtures/', '' ),
 		};
 	} );
 

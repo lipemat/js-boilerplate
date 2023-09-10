@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import {readFileSync} from 'fs';
 import path from 'path';
 
-import babelPresetDefault from '../../config/babel.config';
+import babelPresetDefault from '../../../config/babel.config';
 
 
 function translate( config ) {
@@ -27,13 +27,13 @@ afterEach( () => {
 
 describe( 'babel.config.test.ts', () => {
 	test( 'Browserslist config', () => {
-		let config = require( '../../config/babel.config' );
+		let config = require( '../../../config/babel.config' );
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		const expectedBrowsers = [ ...wpBrowsers, 'not and_uc 15.5' ];
 		expect( config.presets[ 0 ][ 1 ].targets.browsers ).toEqual( expectedBrowsers );
 
 		jest.resetModules();
-		config = require( '../../config/babel.config' );
+		config = require( '../../../config/babel.config' );
 		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
 			browsers: expectedBrowsers,
 		} );
@@ -41,7 +41,7 @@ describe( 'babel.config.test.ts', () => {
 
 		jest.resetModules();
 		fs.writeFileSync( './.browserslistrc', 'chrome 68' + '\n' + 'firefox 60' );
-		config = require( '../../config/babel.config' );
+		config = require( '../../../config/babel.config' );
 		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
 			browsers: [
 				'chrome 68',
