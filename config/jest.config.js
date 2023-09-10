@@ -28,8 +28,12 @@ let jestConfig = {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
 	setupFilesAfterEnv: [
+		// @todo Remove old "tests" directory on next major release.
 		path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ),
 		path.resolve( packageConfig.workingDirectory, 'tests/setup.ts' ),
+
+		// New location.
+		path.resolve( packageConfig.workingDirectory, 'jest/setup.ts' ),
 	].filter( fs.existsSync ),
 };
 
