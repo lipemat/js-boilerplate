@@ -16,8 +16,8 @@ const extensions = [
  *
  * @return {boolean}
  */
-function hasLocalOverride( fileName, inWorkingDirectory = false, ) {
-	let hasLocal = false;
+function hasLocalOverride( fileName: string, inWorkingDirectory = false, ) {
+	let hasLocal: boolean = false;
 	const packageConfig = getPackageConfig();
 	try {
 		if ( inWorkingDirectory ) {
@@ -61,7 +61,7 @@ function hasLocalOverride( fileName, inWorkingDirectory = false, ) {
  *
  * @return {Object}
  */
-function getConfig( fileName ) {
+export function getConfig( fileName: string ) {
 	const packageConfig = getPackageConfig();
 	let mergedConfig = require( '../config/' + fileName );
 	mergedConfig = {...mergedConfig, ...getExtensionsConfig( fileName, mergedConfig )};
@@ -89,8 +89,8 @@ function getConfig( fileName ) {
  *
  * @return {Object}
  */
-function getExtensionsConfig( fileName, defaultConfig ) {
-	let mergedConfig = {};
+function getExtensionsConfig( fileName: string, defaultConfig: Record<string, any> ) {
+	let mergedConfig: Record<string, any> = {};
 	extensions.forEach( extension => {
 		try {
 			const extensionConfig = require( extension + '/config/' + fileName );
@@ -173,6 +173,10 @@ const getDefaultBrowsersList = () => {
 	return false;
 };
 
+/**
+ * @notice This module must remain CommonJS for use with Jest.
+ *         It is loaded before TS is loaded by Jest.
+ */
 module.exports = {
 	getBrowsersList,
 	getConfig,

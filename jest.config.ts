@@ -1,4 +1,4 @@
-const config = require( './config/jest.config' );
+const config = require( './config/jest.config.ts' );
 config.testEnvironment = 'node';
 
 // Custom snapshot resolver for the boilerplate.

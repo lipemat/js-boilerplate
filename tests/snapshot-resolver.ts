@@ -12,7 +12,7 @@ const {dirname, basename} = require( 'path' );
  *
  * @version 1.0.0
  *
- * @see jest.config.js
+ * @see jest.config.ts
  *
  * @link https://brunoscheufler.com/blog/2020-03-08-configuring-jest-snapshot-resolvers
  * @link https://jestjs.io/docs/configuration#snapshotresolver-string
@@ -73,7 +73,7 @@ module.exports = {
 		if ( filesWithPaths.includes( fileWithoutHash ) ) {
 			newPath = newPath
 				.replace( '.' + hash, '' )
-				.slice( 0, -snapshotExtension.length -3 );
+				.slice( 0, -snapshotExtension.length - 3 );
 		} else {
 			newPath = newPath
 				.slice( 0, -snapshotExtension.length );

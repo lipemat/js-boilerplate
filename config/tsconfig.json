@@ -5,18 +5,20 @@
   "display": "JS Boilerplate",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "lib": [
       "dom",
       "es2018"
     ],
-    "module": "ESNext",
+    "module": "Node16",
     "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "sourceMap": true,
+    "strict": false,
     "strictBindCallApply": true,
     "strictNullChecks": true,
     "target": "es6",

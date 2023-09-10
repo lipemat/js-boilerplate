@@ -88,7 +88,7 @@ This is useful when you have often reused overrides to support a particular libr
 
 ### Testing
 To use the built in testing, copy the following items from `templates` into your project root:
-1. `jest.config.js`
+1. `jest.config.ts`
 2. `tests`
 
 Now you may write `jest` tests as desired and run them via `yarn run test` 
@@ -96,7 +96,7 @@ Now you may write `jest` tests as desired and run them via `yarn run test`
 
 **Alternatively you may create a [run configuration](https://www.jetbrains.com/help/phpstorm/running-unit-tests-on-jest.html#createRunConfigJest) in PHPStorm for an interactive testing experience.**
 1. __Jest package__: `<project root>/node_modules/jest-cli`
-2. __Working directory__: root of your app which contains the `jest.config.js`.
+2. __Working directory__: root of your app which contains the `jest.config.ts`.
 3. "All tests" to run an entire directory of tests.
 4. "Suite" to run a particular file of tests.
 

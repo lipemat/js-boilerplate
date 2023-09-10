@@ -3,14 +3,13 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "JS Boilerplate",
   "include": [
+    "jest.config.js",
+    "jest.config.ts",
     "bin/**/*",
     "config/**/*",
     "helpers/**/*",
     "lib/**/*",
-    "scripts/**/*"
-  ],
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "module": "CommonJS"
-  }
+    "scripts/**/*",
+    "tests/**/*",
+  ]
 }

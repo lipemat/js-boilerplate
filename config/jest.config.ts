@@ -2,7 +2,7 @@ import type {Config} from 'jest';
 import {resolve} from 'path';
 const {getPackageConfig} = require( '../helpers/package-config' );
 const {existsSync} = require( 'fs' );
-const {getConfig} = require( '../helpers/config' );
+import {getConfig} from '../helpers/config';
 
 const packageConfig = getPackageConfig();
 const babelConfig = getConfig( 'babel.config' );
@@ -43,9 +43,9 @@ let jestConfig: Config = {
  * @todo Remove in version 11.
  */
 try {
-	const localConfig = require( resolve( packageConfig.workingDirectory + '/config', 'jest.config.js' ) );
+	const localConfig = require( resolve( packageConfig.workingDirectory + '/config', 'jest.config.ts' ) );
 	jestConfig = {...jestConfig, ...localConfig};
 } catch ( e ) {
 }
 
-module.exports = jestConfig;
+export default jestConfig;

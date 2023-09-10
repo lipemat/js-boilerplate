@@ -1,4 +1,4 @@
-import {resolve} from 'path';
+const {resolve} = require( 'path' );
 import {realpathSync} from 'fs';
 
 const workingDirectory = realpathSync( process.cwd() );
@@ -30,8 +30,7 @@ try {
 export function getPackageConfig() {
 	return packageConfig;
 }
+
 packageConfig.getPackageConfig = getPackageConfig;
 
-// Leaving old export structure for backwards compatibility.
-// @todo Remove in favor of default export in version 11.
 module.exports = packageConfig;

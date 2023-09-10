@@ -1,16 +1,19 @@
-import path from 'path';
-import fs from 'fs';
+const {resolve: pathResolve} = require( 'path' );
+const {existsSync} = require( 'fs' );
 
-const packageConfig = require( '../helpers/package-config' );
+import {getPackageConfig} from '../helpers/package-config';
+
+const packageConfig = getPackageConfig();
 
 const possibleConfig = [
 	// @todo Remove pulling from the root on next major release.
-	path.resolve( packageConfig.workingDirectory + '/jest.config.js' ),
+	pathResolve( packageConfig.workingDirectory + '/jest.config.ts' ),
+	pathResolve( packageConfig.workingDirectory + '/jest.config.js' ),
 
 	// New location.
-	path.resolve( packageConfig.workingDirectory + '/jest/jest.config.js' ),
-	path.resolve( packageConfig.workingDirectory + '/jest/jest.config.ts' ),
-].filter( fs.existsSync );
+	pathResolve( packageConfig.workingDirectory + '/jest/jest.config.ts' ),
+	pathResolve( packageConfig.workingDirectory + '/jest/jest.config.js' ),
+].filter( existsSync );
 
 if ( possibleConfig.length < 1 ) {
 	throw new Error( 'You must have a `jest.config.[tj]s` file in the root of your project or in the `jest` folder.' );

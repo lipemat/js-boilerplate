@@ -1,5 +1,5 @@
-const areYouES5 = require( 'are-you-es5' );
-const regexBuilder = require( 'are-you-es5/dist/babel-loader-regex-builder' );
+import {checkModules} from 'are-you-es5';
+import {getBabelLoaderIgnoreRegex} from 'are-you-es5/dist/babel-loader-regex-builder';
 const config = require( './package-config' );
 
 /**
@@ -13,15 +13,11 @@ const config = require( './package-config' );
  *
  * @return {RegExp}
  */
-function getBabelExcludeRegex() {
-	const nonES5 = areYouES5.checkModules( {} );
+export function getBabelExcludeRegex() {
+	const nonES5 = checkModules( {} );
 	// Support specifying additional es5Modules in package.json.
-	const regex = regexBuilder.getBabelLoaderIgnoreRegex( [ ...nonES5.es6Modules, ...config.es6Modules ] );
+	const regex = getBabelLoaderIgnoreRegex( [ ...nonES5.es6Modules, ...config.es6Modules ] );
 
 	// We must strip off the leading and trailing '/'.
 	return new RegExp( regex.replace( /^\/|\/$/g, '' ) );
 }
-
-module.exports = {
-	getBabelExcludeRegex,
-};
