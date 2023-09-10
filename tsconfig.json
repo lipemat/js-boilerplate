@@ -3,12 +3,10 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "JS Boilerplate",
   "include": [
-    "jest.config.js",
     "bin/**/*",
     "config/**/*",
     "helpers/**/*",
     "lib/**/*",
-    "tests/**/*",
     "scripts/**/*"
   ],
   "compilerOptions": {

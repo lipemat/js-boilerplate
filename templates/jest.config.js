@@ -1,3 +1,5 @@
+// Necessary because some of the boilerplate code is written in TypeScript.
+require( 'ts-node/register' );
 /**
  * @notice This file is required in the root of the JS project to allow `jest` to run.
  *

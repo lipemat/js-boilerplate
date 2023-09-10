@@ -15,6 +15,10 @@ const scriptIndex = args.findIndex(
 const script = -1 === scriptIndex ? args[ 0 ] : args[ scriptIndex ];
 const nodeArgs = scriptIndex > 0 ? args.slice( 0, scriptIndex ) : [];
 
+const TS_CONVERTED = [
+	'test',
+];
+
 switch ( script ) {
 	case 'browserslist':
 	case 'dist':
@@ -32,7 +36,7 @@ switch ( script ) {
 		const result = spawn.sync(
 			'ts-node',
 			nodeArgs
-				.concat( require.resolve( '../scripts/' + script ) )
+				.concat( require.resolve( '../scripts/' + script + ( TS_CONVERTED.includes( script ) ? '.ts' : '.js' ) ) )
 				.concat( args.slice( scriptIndex + 1 ) ),
 			{stdio: 'inherit'}
 		);

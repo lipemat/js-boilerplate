@@ -1,8 +1,8 @@
-const path = require( 'path' );
-const fs = require( 'fs' );
+import {resolve} from 'path';
+import {realpathSync} from 'fs';
 
-const workingDirectory = fs.realpathSync( process.cwd() );
-let packageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
+const workingDirectory = realpathSync( process.cwd() );
+let packageConfig = require( resolve( workingDirectory, 'package.json' ) );
 packageConfig.brotliFiles ||= false;
 packageConfig.es6Modules ||= [];
 packageConfig.jsPath ||= '';
@@ -10,11 +10,11 @@ packageConfig.jsPath ||= '';
 packageConfig.packageDirectory = workingDirectory;
 packageConfig.url ||= 'http://localhost';
 // Path of JS application files.
-packageConfig.workingDirectory = packageConfig.jsPath !== '' ? path.resolve( packageConfig.jsPath ) : workingDirectory;
+packageConfig.workingDirectory = packageConfig.jsPath !== '' ? resolve( packageConfig.jsPath ) : workingDirectory;
 packageConfig.shortCssClasses ||= false;
 
 try {
-	const localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );
+	const localConfig = require( resolve( workingDirectory, './local-config.json' ) );
 	packageConfig = {...packageConfig, ...localConfig};
 } catch ( e ) {
 }
@@ -27,9 +27,11 @@ try {
  *
  * @since 10.3.0
  */
-function getPackageConfig() {
+export function getPackageConfig() {
 	return packageConfig;
 }
 packageConfig.getPackageConfig = getPackageConfig;
 
+// Leaving old export structure for backwards compatibility.
+// @todo Remove in favor of default export in version 11.
 module.exports = packageConfig;

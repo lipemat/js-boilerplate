@@ -1,12 +1,11 @@
-const packageConfig = require( './package-config' );
+import {getPackageConfig} from './package-config';
 const path = require( 'path' );
 const browserslist = require( 'browserslist' );
 const fs = require( 'fs' );
-const config = require( './package-config' );
 
 const extensions = [
-	...Object.keys( packageConfig.dependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
-	...Object.keys( packageConfig.devDependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
+	...Object.keys( getPackageConfig().dependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
+	...Object.keys( getPackageConfig().devDependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
 ];
 
 /**
@@ -19,6 +18,7 @@ const extensions = [
  */
 function hasLocalOverride( fileName, inWorkingDirectory = false, ) {
 	let hasLocal = false;
+	const packageConfig = getPackageConfig();
 	try {
 		if ( inWorkingDirectory ) {
 			require( path.resolve( packageConfig.workingDirectory, fileName ) );
@@ -62,6 +62,7 @@ function hasLocalOverride( fileName, inWorkingDirectory = false, ) {
  * @return {Object}
  */
 function getConfig( fileName ) {
+	const packageConfig = getPackageConfig();
 	let mergedConfig = require( '../config/' + fileName );
 	mergedConfig = {...mergedConfig, ...getExtensionsConfig( fileName, mergedConfig )};
 	try {
@@ -117,14 +118,15 @@ function getExtensionsConfig( fileName, defaultConfig ) {
  * @return {string}
  */
 function getTsConfigFile() {
+	const packageConfig = getPackageConfig();
 	const possibles = [
 		// Backward compatible for before @lipemat/eslint-config version 3.
-		path.resolve( config.workingDirectory + '/tsconfig.json' ),
-		path.resolve( config.packageDirectory + '/tsconfig.json' ),
+		path.resolve( packageConfig.workingDirectory + '/tsconfig.json' ),
+		path.resolve( packageConfig.packageDirectory + '/tsconfig.json' ),
 	];
 	let tsConfig = '';
 	possibles.forEach( filePath => {
-		if ( fs.existsSync( filePath ) ) {
+		if ( Boolean( fs.existsSync( filePath ) ) ) {
 			tsConfig = filePath;
 		}
 	} );
@@ -170,7 +172,6 @@ const getDefaultBrowsersList = () => {
 	}
 	return false;
 };
-
 
 module.exports = {
 	getBrowsersList,

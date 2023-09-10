@@ -1,21 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
+exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
 {
-  "devtool": false,
+  "devtool": "eval-source-map",
   "entry": {},
   "externals": {
     "jquery": "jQuery",
   },
-  "mode": "production",
+  "mode": "development",
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /node_modules/,
+        "include": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
           "plugins": [
+            "react-refresh/babel",
+            "@babel/plugin-transform-react-jsx-source",
             "@babel/plugin-syntax-dynamic-import",
           ],
           "presets": [
@@ -58,16 +61,20 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
       },
       {
+        "include": /node_modules/,
+        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
+      },
+      {
         "test": /\\\\\\.css\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "style-loader",
           "css-loader",
         ],
       },
       {
         "test": /\\\\\\.pcss\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "style-loader",
           {
             "loader": "css-loader",
             "options": {
@@ -226,17 +233,14 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
     ],
   },
   "optimization": {
-    "moduleIds": "deterministic",
+    "emitOnErrors": false,
+    "moduleIds": "named",
   },
   "output": {
-    "chunkFilename": "[name].[contenthash].js",
-    "crossOriginLoading": "anonymous",
+    "chunkFilename": "[name].js",
     "filename": "[name].js",
     "path": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\dist",
-    "publicPath": "auto",
-  },
-  "performance": {
-    "hints": "warning",
+    "publicPath": "http://localhost:3000/js/dist/",
   },
   "plugins": [
     ProvidePlugin {
@@ -245,67 +249,26 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         "jQuery": "jquery",
       },
     },
-    MiniCssExtractPlugin {
-      "_sortedModulesCache": WeakMap {},
+    ReactRefreshPlugin {
       "options": {
-        "chunkFilename": "[name].[contenthash].css",
-        "experimentalUseImportModule": false,
-        "filename": "[name].css",
-        "ignoreOrder": false,
+        "exclude": /node_modules/i,
+        "include": /\\\\\\.\\(\\[cm\\]js\\|\\[jt\\]sx\\?\\|flow\\)\\$/i,
+        "overlay": {
+          "entry": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\client\\ErrorOverlayEntry.js",
+          "module": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\overlay\\index.js",
+          "sockIntegration": "wds",
+        },
       },
-      "runtimeOptions": {
-        "attributes": undefined,
-        "insert": undefined,
-        "linkType": "text/css",
-      },
-    },
-    CleanWebpackPlugin {
-      "apply": [Function],
-      "cleanAfterEveryBuildPatterns": [],
-      "cleanOnceBeforeBuildPatterns": [
-        "**/*",
-        "!.running",
-      ],
-      "cleanStaleWebpackAssets": true,
-      "currentAssets": [],
-      "dangerouslyAllowCleanPatternsOutsideProject": false,
-      "dry": false,
-      "handleDone": [Function],
-      "handleInitial": [Function],
-      "initialClean": false,
-      "outputPath": "",
-      "protectWebpackAssets": true,
-      "removeFiles": [Function],
-      "verbose": false,
     },
     ForkTsCheckerWebpackPlugin {
       "options": {
+        "devServer": false,
         "formatter": "basic",
         "typescript": {
           "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
         },
       },
     },
-    SubresourceIntegrityPlugin {
-      "options": {
-        "enabled": "auto",
-        "hashFuncNames": [
-          "sha384",
-        ],
-        "hashLoading": "eager",
-      },
-      "setup": [Function],
-      "validateHashFuncName": [Function],
-      "validateHashFuncNames": [Function],
-      "validateHashLoading": [Function],
-      "validateOptions": [Function],
-      "warnStandardHashFunc": [Function],
-    },
-    WebpackAssetsHash {
-      "assets": {},
-      "manifest": {},
-    },
-    {},
   ],
   "resolve": {
     "extensions": [
@@ -321,44 +284,30 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
       "node_modules",
     ],
   },
-  "stats": {
-    "assets": true,
-    "assetsSort": "size",
-    "assetsSpace": 100,
-    "cached": false,
-    "cachedAssets": true,
-    "children": false,
-    "colors": true,
-    "groupAssetsByChunk": false,
-    "groupAssetsByEmitStatus": false,
-    "groupAssetsByExtension": false,
-    "groupAssetsByInfo": false,
-    "groupAssetsByPath": false,
-    "hash": false,
-    "modules": false,
-    "timings": false,
-    "version": false,
-  },
+  "stats": "minimal",
   "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not and_uc 15.5",
 }
 `;
 
-exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
+exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
 {
-  "devtool": false,
+  "devtool": "eval-source-map",
   "entry": {},
   "externals": {
     "jquery": "jQuery",
   },
-  "mode": "production",
+  "mode": "development",
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /node_modules/,
+        "include": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
           "plugins": [
+            "react-refresh/babel",
+            "@babel/plugin-transform-react-jsx-source",
             "@babel/plugin-syntax-dynamic-import",
           ],
           "presets": [
@@ -401,16 +350,20 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
       },
       {
+        "include": /node_modules/,
+        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
+      },
+      {
         "test": /\\\\\\.css\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "style-loader",
           "css-loader",
         ],
       },
       {
         "test": /\\\\\\.pcss\\$/,
         "use": [
-          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "style-loader",
           {
             "loader": "css-loader",
             "options": {
@@ -569,17 +522,14 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
     ],
   },
   "optimization": {
-    "moduleIds": "deterministic",
+    "emitOnErrors": false,
+    "moduleIds": "named",
   },
   "output": {
-    "chunkFilename": "[name].[contenthash].js",
-    "crossOriginLoading": "anonymous",
+    "chunkFilename": "[name].js",
     "filename": "[name].js",
     "path": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\dist",
-    "publicPath": "auto",
-  },
-  "performance": {
-    "hints": "warning",
+    "publicPath": "http://localhost:3000/js/dist/",
   },
   "plugins": [
     ProvidePlugin {
@@ -588,67 +538,26 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "jQuery": "jquery",
       },
     },
-    MiniCssExtractPlugin {
-      "_sortedModulesCache": WeakMap {},
+    ReactRefreshPlugin {
       "options": {
-        "chunkFilename": "[name].[contenthash].css",
-        "experimentalUseImportModule": false,
-        "filename": "[name].css",
-        "ignoreOrder": false,
+        "exclude": /node_modules/i,
+        "include": /\\\\\\.\\(\\[cm\\]js\\|\\[jt\\]sx\\?\\|flow\\)\\$/i,
+        "overlay": {
+          "entry": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\client\\ErrorOverlayEntry.js",
+          "module": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\overlay\\index.js",
+          "sockIntegration": "wds",
+        },
       },
-      "runtimeOptions": {
-        "attributes": undefined,
-        "insert": undefined,
-        "linkType": "text/css",
-      },
-    },
-    CleanWebpackPlugin {
-      "apply": [Function],
-      "cleanAfterEveryBuildPatterns": [],
-      "cleanOnceBeforeBuildPatterns": [
-        "**/*",
-        "!.running",
-      ],
-      "cleanStaleWebpackAssets": true,
-      "currentAssets": [],
-      "dangerouslyAllowCleanPatternsOutsideProject": false,
-      "dry": false,
-      "handleDone": [Function],
-      "handleInitial": [Function],
-      "initialClean": false,
-      "outputPath": "",
-      "protectWebpackAssets": true,
-      "removeFiles": [Function],
-      "verbose": false,
     },
     ForkTsCheckerWebpackPlugin {
       "options": {
+        "devServer": false,
         "formatter": "basic",
         "typescript": {
           "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
         },
       },
     },
-    SubresourceIntegrityPlugin {
-      "options": {
-        "enabled": "auto",
-        "hashFuncNames": [
-          "sha384",
-        ],
-        "hashLoading": "eager",
-      },
-      "setup": [Function],
-      "validateHashFuncName": [Function],
-      "validateHashFuncNames": [Function],
-      "validateHashLoading": [Function],
-      "validateOptions": [Function],
-      "warnStandardHashFunc": [Function],
-    },
-    WebpackAssetsHash {
-      "assets": {},
-      "manifest": {},
-    },
-    {},
   ],
   "resolve": {
     "extensions": [
@@ -664,24 +573,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
       "node_modules",
     ],
   },
-  "stats": {
-    "assets": true,
-    "assetsSort": "size",
-    "assetsSpace": 100,
-    "cached": false,
-    "cachedAssets": true,
-    "children": false,
-    "colors": true,
-    "groupAssetsByChunk": false,
-    "groupAssetsByEmitStatus": false,
-    "groupAssetsByExtension": false,
-    "groupAssetsByInfo": false,
-    "groupAssetsByPath": false,
-    "hash": false,
-    "modules": false,
-    "timings": false,
-    "version": false,
-  },
+  "stats": "minimal",
   "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not and_uc 15.5",
 }
 `;

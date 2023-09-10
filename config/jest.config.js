@@ -1,11 +1,21 @@
-// So we have something to check against for adjusting things like babel.config.js.
-global.__TEST__ = true;
+/**
+ * Kept here for backward compatibility.
+ *
+ * @deprecated
+ *
+ * @todo Remove on next major release.
+ *
+ * @see jest.config.ts
+ */
+
+// Necessary because some of the boilerplate code is written in TypeScript.
+require( 'ts-node/register' );
 
 const path = require( 'path' );
-const packageConfig = require( '../helpers/package-config' );
+const packageConfig = require( '../helpers/package-config.ts' );
 const fs = require( 'fs' );
 
-const babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
+const babelConfig = require( '../helpers/config.ts' ).getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
 
 let jestConfig = {
@@ -30,12 +40,13 @@ let jestConfig = {
 	setupFilesAfterEnv: [
 		path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ),
 		path.resolve( packageConfig.workingDirectory, 'tests/setup.ts' ),
+		path.resolve( packageConfig.workingDirectory, 'jest/setup.ts' ),
 	].filter( fs.existsSync ),
 };
 
 /**
  * Allows overriding configurations in the project `/config/jest.config.js` file.
- * We don't actually need to do this because `jest.config.js` in the project root
+ * We don't actually need to do this because `jest.config.[tj]s` in the project root
  * is already an override of this file, but we support it anyway to keep things consistent.
  */
 try {
