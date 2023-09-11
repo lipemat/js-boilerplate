@@ -22,6 +22,36 @@ const ManifestPlugin = new WebpackAssetsManifest( {
 	output: 'manifest.json',
 } );
 
+const plugins = [
+	new webpack.ProvidePlugin( {
+		jQuery: 'jquery',
+		$: 'jquery',
+	} ),
+	new MiniCssExtractPlugin( {
+		filename: '[name].css',
+		chunkFilename: '[name].[contenthash].css',
+	} ),
+	new CleanWebpackPlugin( {
+		// Remove all files except the `.running` file created by "Start".
+		cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
+	} ),
+	new SubresourceIntegrityPlugin( {
+		hashFuncNames: [ 'sha384' ],
+	} ),
+	new WebpackAssetsHash( ManifestPlugin ),
+	ManifestPlugin,
+];
+
+if ( '' !== getTsConfigFile() ) {
+	plugins.push( new ForkTsCheckerWebpackPlugin( {
+		formatter: 'basic',
+		typescript: {
+			configFile: getTsConfigFile(),
+		},
+	} ) );
+}
+
+
 module.exports = {
 	devtool: false,
 	entry: getEntries(),
@@ -69,31 +99,7 @@ module.exports = {
 			'node_modules',
 		],
 	},
-	plugins: [
-		new webpack.ProvidePlugin( {
-			jQuery: 'jquery',
-			$: 'jquery',
-		} ),
-		new MiniCssExtractPlugin( {
-			filename: '[name].css',
-			chunkFilename: '[name].[contenthash].css',
-		} ),
-		new CleanWebpackPlugin( {
-			// Remove all files except the `.running` file created by "Start".
-			cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
-		} ),
-		new ForkTsCheckerWebpackPlugin( {
-			formatter: 'basic',
-			typescript: {
-				configFile: config.workingDirectory + '/tsconfig.json',
-			},
-		} ),
-		new SubresourceIntegrityPlugin( {
-			hashFuncNames: [ 'sha384' ],
-		} ),
-		new WebpackAssetsHash( ManifestPlugin ),
-		ManifestPlugin,
-	],
+	plugins,
 	module: {
 		rules: [
 			{

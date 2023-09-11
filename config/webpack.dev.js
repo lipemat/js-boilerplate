@@ -1,4 +1,4 @@
-const {getConfig, hasLocalOverride} = require( '../helpers/config' );
+const {getConfig, getTsConfigFile} = require( '../helpers/config' );
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
@@ -22,12 +22,12 @@ const plugins = [
 
 // Loads a thread, which verifies any TypeScripts on changes.
 // Only use this if the project has a tsconfig.json file.
-if ( hasLocalOverride( 'tsconfig.json', true ) ) {
+if ( '' !== getTsConfigFile() ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {
 		devServer: false,
 		formatter: 'basic',
 		typescript: {
-			configFile: config.workingDirectory + '/tsconfig.json',
+			configFile: getTsConfigFile(),
 		},
 	} ) );
 }

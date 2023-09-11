@@ -1,5 +1,6 @@
 const packageConfig = require( './package-config' );
 const path = require( 'path' );
+const fs = require( 'fs' );
 const once = require( 'lodash/once' );
 const browserslist = require( 'browserslist' );
 
@@ -105,6 +106,32 @@ function getExtensionsConfig( fileName, defaultConfig ) {
 }
 
 /**
+ * Get the path to the "tsconfig.json" file if it exists.
+ *
+ * 1. The working directory.
+ * 2. The package directory.
+ *
+ * The package directory takes priority over the working directory.
+ *
+ *
+ * @return {string}
+ */
+function getTsConfigFile() {
+	const possibles = [
+		// Backward compatible for before @lipemat/eslint-config version 3.
+		path.resolve( packageConfig.workingDirectory + '/tsconfig.json' ),
+		path.resolve( packageConfig.packageDirectory + '/tsconfig.json' ),
+	];
+	let tsConfig = '';
+	possibles.forEach( filePath => {
+		if ( fs.existsSync( filePath ) ) {
+			tsConfig = filePath;
+		}
+	} );
+	return tsConfig;
+}
+
+/**
  * If browserslist is not specified, we fall back to WordPress defaults
  * except for > 1% we don't support by default.
  *
@@ -135,4 +162,5 @@ module.exports = {
 	getDefaultBrowsersList,
 	getExtensionsConfig,
 	hasLocalOverride,
+	getTsConfigFile,
 };
