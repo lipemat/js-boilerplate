@@ -278,14 +278,6 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
       "removeFiles": [Function],
       "verbose": false,
     },
-    ForkTsCheckerWebpackPlugin {
-      "options": {
-        "formatter": "basic",
-        "typescript": {
-          "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
-        },
-      },
-    },
     SubresourceIntegrityPlugin {
       "options": {
         "enabled": "auto",
@@ -306,6 +298,14 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
       "manifest": {},
     },
     {},
+    ForkTsCheckerWebpackPlugin {
+      "options": {
+        "formatter": "basic",
+        "typescript": {
+          "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
+        },
+      },
+    },
   ],
   "resolve": {
     "extensions": [
@@ -621,14 +621,6 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
       "removeFiles": [Function],
       "verbose": false,
     },
-    ForkTsCheckerWebpackPlugin {
-      "options": {
-        "formatter": "basic",
-        "typescript": {
-          "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
-        },
-      },
-    },
     SubresourceIntegrityPlugin {
       "options": {
         "enabled": "auto",
@@ -649,6 +641,14 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
       "manifest": {},
     },
     {},
+    ForkTsCheckerWebpackPlugin {
+      "options": {
+        "formatter": "basic",
+        "typescript": {
+          "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
+        },
+      },
+    },
   ],
   "resolve": {
     "extensions": [

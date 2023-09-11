@@ -36,18 +36,22 @@ const plugins = [
 		// Remove all files except the `.running` file created by "Start".
 		cleanOnceBeforeBuildPatterns: [ '**/*', '!.running' ],
 	} ),
-	new ForkTsCheckerWebpackPlugin( {
-		formatter: 'basic',
-		typescript: {
-			configFile: getTsConfigFile(),
-		},
-	} ),
 	new SubresourceIntegrityPlugin( {
 		hashFuncNames: [ 'sha384' ],
 	} ),
 	new WebpackAssetsHash( ManifestPlugin ),
 	ManifestPlugin,
 ];
+
+// Loads a thread, which verifies any TypeScripts if project has a "tsconfig.json" file.
+if ( '' !== getTsConfigFile() ) {
+	plugins.push( new ForkTsCheckerWebpackPlugin( {
+		formatter: 'basic',
+		typescript: {
+			configFile: getTsConfigFile(),
+		},
+	} ) );
+}
 
 /**
  * Generate .br files if enabled.
