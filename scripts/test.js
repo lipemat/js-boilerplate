@@ -1,9 +1,7 @@
 const {resolve: pathResolve} = require( 'path' );
 const {existsSync} = require( 'fs' );
 
-const {getPackageConfig} = require( '../helpers/package-config' );
-
-const packageConfig = getPackageConfig();
+const packageConfig = require( '../helpers/package-config' );
 
 const possibleConfig = [
 	// @todo Remove pulling from the root on next major release.
