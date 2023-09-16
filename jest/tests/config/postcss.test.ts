@@ -77,6 +77,7 @@ describe( 'postcss.js', () => {
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		expectedBrowsers.push( 'not and_uc 15.5' );
+		expectedBrowsers.push( 'not op_mini all' );
 		const creator = ( browsers, features = {} ) => {
 			return postcssPresetEnv( {
 				browsers,

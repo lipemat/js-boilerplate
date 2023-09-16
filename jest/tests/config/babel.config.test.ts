@@ -29,7 +29,7 @@ describe( 'babel.config.test.ts', () => {
 	test( 'Browserslist config', () => {
 		let config = require( '../../../config/babel.config' );
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
-		const expectedBrowsers = [ ...wpBrowsers, 'not and_uc 15.5' ];
+		const expectedBrowsers = [ ...wpBrowsers, 'not and_uc 15.5', 'not op_mini all' ];
 		expect( config.presets[ 0 ][ 1 ].targets.browsers ).toEqual( expectedBrowsers );
 
 		jest.resetModules();
