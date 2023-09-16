@@ -11,7 +11,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
@@ -354,7 +354,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
