@@ -12,8 +12,13 @@ const args = process.argv.slice( 2 );
 const scriptIndex = args.findIndex(
 	x => 'browserslist' === x || 'start' === x || 'dist' === x || 'test' === x || 'lint' === x || 'fix-pnp' === x,
 );
-const script = -1 === scriptIndex ? args[ 0 ] : args[ scriptIndex ];
+let script = -1 === scriptIndex ? args[ 0 ] : args[ scriptIndex ];
 const nodeArgs = scriptIndex > 0 ? args.slice( 0, scriptIndex ) : [];
+
+
+const TS_CONVERTED_SCRIPTS = [
+	'test',
+];
 
 switch ( script ) {
 	case 'browserslist':
@@ -26,6 +31,10 @@ switch ( script ) {
 		if ( spawn.sync( 'ts-node', [ '-v' ] ).error ) {
 			console.log( 'Installing ts-node globally.' );
 			spawn.sync( 'npm', [ 'install', '-g', 'ts-node' ] );
+		}
+
+		if ( TS_CONVERTED_SCRIPTS.includes( script ) ) {
+			script = script + '.ts';
 		}
 
 		// Run the script.

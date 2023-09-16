@@ -1,12 +1,14 @@
-// So we have something to check against for adjusting things like babel.config.js.
-global.__TEST__ = true;
-
 const path = require( 'path' );
 const packageConfig = require( '../helpers/package-config' );
 const fs = require( 'fs' );
 
 const babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
+
+/**
+ * @todo Rename this file to `jest.config.ts` in version 11.
+ *
+ */
 
 let jestConfig = {
 	globals: {
@@ -28,7 +30,7 @@ let jestConfig = {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
 	setupFilesAfterEnv: [
-		// @todo Remove old "tests" directory on next major release.
+		// @todo Remove old "tests" directory in version 11.
 		path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ),
 		path.resolve( packageConfig.workingDirectory, 'tests/setup.ts' ),
 
@@ -41,6 +43,8 @@ let jestConfig = {
  * Allows overriding configurations in the project `/config/jest.config.js` file.
  * We don't actually need to do this because `jest.config.js` in the project root
  * is already an override of this file, but we support it anyway to keep things consistent.
+ *
+ * @todo Remove in version 11.
  */
 try {
 	const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', 'jest.config.js' ) );
