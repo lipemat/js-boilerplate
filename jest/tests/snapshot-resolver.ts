@@ -38,7 +38,7 @@ const filesWithPaths = [
  * path will change, and the snapshots will fail.
  */
 function getCurrentDirectoryHash( dir: string ) {
-	return require( 'crypto' ).createHash( 'md4' ).update( dir ).digest( 'hex' );
+	return require( 'crypto' ).createHash( 'md5' ).update( dir ).digest( 'hex' );
 }
 
 
