@@ -51,7 +51,7 @@ class WebpackAssetsHash {
 	 */
 	storeContentHash( compilation ) {
 		for ( const asset of compilation.getAssets() ) {
-			this.assets[ asset.name ] = crypto.createHash( 'md4' )
+			this.assets[ asset.name ] = crypto.createHash( 'md5' )
 				.update( asset.source.source() )
 				.digest( 'hex' )
 				.substring( 0, 20 );
