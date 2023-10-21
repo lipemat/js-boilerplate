@@ -34,6 +34,7 @@
     "lipemat-js-boilerplate": "bin/lipemat-js-boilerplate.js"
   },
   "scripts": {
+    "browserslist": "lipemat-js-boilerplate browserslist",
     "test": "lipemat-js-boilerplate test"
   },
   "dependencies": {
