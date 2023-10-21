@@ -76,7 +76,6 @@ describe( 'postcss.js', () => {
 
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not and_uc 15.5' );
 		expectedBrowsers.push( 'not op_mini all' );
 		const creator = ( browsers, features = {} ) => {
 			return postcssPresetEnv( {
@@ -98,14 +97,14 @@ describe( 'postcss.js', () => {
 		expect( JSON.stringify( config.plugins[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
 
-		// and_uc 15.5 requires postcss-custom-properties.
-		process.env.BROWSERSLIST = 'and_uc 15.5';
+		// op_mini all requires postcss-custom-properties.
+		process.env.BROWSERSLIST = 'op_mini all';
 		const config2 = getPostCSSConfig();
 		expect( config2.plugins[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 		expect( JSON.stringify( config2.plugins[ 4 ] ) )
-			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
+			.toEqual( JSON.stringify( creator( [ 'op_mini all' ] ) ) );
 
 		// Safari 15 requires postcss-focus-visible.
 		process.env.BROWSERSLIST = 'safari 15';
