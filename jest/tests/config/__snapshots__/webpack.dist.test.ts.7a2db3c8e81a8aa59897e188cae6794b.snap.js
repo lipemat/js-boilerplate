@@ -24,7 +24,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
               {
                 "bugfixes": true,
                 "corejs": {
-                  "version": "3.31.1",
+                  "version": "3.33.1",
                 },
                 "debug": false,
                 "shippedProposals": true,
@@ -366,7 +366,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
               {
                 "bugfixes": true,
                 "corejs": {
-                  "version": "3.31.1",
+                  "version": "3.33.1",
                 },
                 "debug": false,
                 "shippedProposals": true,
