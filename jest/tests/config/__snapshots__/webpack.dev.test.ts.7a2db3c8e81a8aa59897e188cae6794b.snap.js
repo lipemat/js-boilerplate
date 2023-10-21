@@ -42,7 +42,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                     "last 2 iOS versions",
                     "last 2 Edge versions",
                     "last 2 Opera versions",
-                    "not and_uc 15.5",
                     "not op_mini all",
                   ],
                 },
@@ -186,7 +185,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                           "last 2 iOS versions",
                           "last 2 Edge versions",
                           "last 2 Opera versions",
-                          "not and_uc 15.5",
                           "not op_mini all",
                         ],
                         "info": [Function],
@@ -201,7 +199,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                             "last 2 iOS versions",
                             "last 2 Edge versions",
                             "last 2 Opera versions",
-                            "not and_uc 15.5",
                             "not op_mini all",
                           ],
                         },
@@ -284,7 +281,7 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
     ],
   },
   "stats": "minimal",
-  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not and_uc 15.5, not op_mini all",
+  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not op_mini all",
 }
 `;
 
@@ -330,7 +327,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                     "last 2 iOS versions",
                     "last 2 Edge versions",
                     "last 2 Opera versions",
-                    "not and_uc 15.5",
                     "not op_mini all",
                   ],
                 },
@@ -474,7 +470,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                           "last 2 iOS versions",
                           "last 2 Edge versions",
                           "last 2 Opera versions",
-                          "not and_uc 15.5",
                           "not op_mini all",
                         ],
                         "info": [Function],
@@ -489,7 +484,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                             "last 2 iOS versions",
                             "last 2 Edge versions",
                             "last 2 Opera versions",
-                            "not and_uc 15.5",
                             "not op_mini all",
                           ],
                         },
@@ -572,6 +566,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
     ],
   },
   "stats": "minimal",
-  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not and_uc 15.5, not op_mini all",
+  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not op_mini all",
 }
 `;
