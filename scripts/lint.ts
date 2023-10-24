@@ -1,5 +1,17 @@
-const {ESLint} = require( 'eslint' );
-const packageConfig = require( '../helpers/package-config' );
+import {ESLint} from 'eslint';
+
+import packageConfig from '../helpers/package-config';
+
+/**
+ * ESLint does not have a utility method for detecting if
+ * any error has occurred, nor does it set the exit code.
+ *
+ * We can use this function to determine if any error has
+ * occurred and set the exit code accordingly.
+ */
+function errorOccurred( results: ESLint.LintResult[] ): boolean {
+	return results.some( result => result.errorCount > 0 || result.warningCount > 0 );
+}
 
 /**
  * Use the public API to run the eslint commands.
@@ -13,7 +25,7 @@ const packageConfig = require( '../helpers/package-config' );
 	} );
 
 	// 2. Lint files. This doesn't modify target files.
-	const results = await eslint.lintFiles( [
+	const results: ESLint.LintResult[] = await eslint.lintFiles( [
 		packageConfig.workingDirectory + '/src/**/*.{js,jsx,ts,tsx}',
 	] );
 
@@ -29,6 +41,8 @@ const packageConfig = require( '../helpers/package-config' );
 	if ( '' === resultText ) {
 		console.log( '>> Linted JS files without errors.' );
 		console.log( '-----------------------------------' );
+	} else if ( errorOccurred( results ) ) {
+		process.exitCode = 1;
 	}
 }() ).catch( error => {
 	process.exitCode = 1;
