@@ -85,7 +85,6 @@ dist
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
-yarn.lock
 
 # PHPStorm files
 # https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
