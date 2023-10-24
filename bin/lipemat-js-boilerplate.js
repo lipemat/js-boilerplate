@@ -18,6 +18,7 @@ const nodeArgs = scriptIndex > 0 ? args.slice( 0, scriptIndex ) : [];
 
 const TS_CONVERTED_SCRIPTS = [
 	'test',
+	'lint',
 ];
 
 switch ( script ) {
