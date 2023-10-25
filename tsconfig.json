@@ -1,0 +1,17 @@
+{
+  "extends": "./config/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "JS Boilerplate",
+  "include": [
+    "bin/**/*",
+    "config/**/*",
+    "helpers/**/*",
+    "lib/**/*",
+    "jest/**/*",
+    "scripts/**/*"
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "CommonJS"
+  }
+}

@@ -84,5 +84,12 @@
     "webpack-dev-server": "^4.7.2",
     "webpack-subresource-integrity": "^5.1.0"
   },
-  "packageManager": "yarn@3.2.3"
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "eslint": "^8",
+    "glob": "^10.3.3",
+    "memfs": "^3.5.3",
+    "setimmediate": "^1.0.5"
+  },
+  "packageManager": "yarn@3.6.4"
 }
