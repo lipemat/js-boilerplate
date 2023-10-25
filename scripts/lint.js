@@ -21,6 +21,8 @@ function errorOccurred( results ) {
 	// 1. Create an instance with the `fix` option.
 	const eslint = new ESLint( {
 		fix: true,
+		cache: true,
+		cacheStrategy: 'content',
 	} );
 
 	// 2. Lint files. This doesn't modify target files.
