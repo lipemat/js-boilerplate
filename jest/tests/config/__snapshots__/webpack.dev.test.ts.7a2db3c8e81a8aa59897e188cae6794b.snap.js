@@ -569,3 +569,133 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
   "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not op_mini all",
 }
 `;
+
+exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
+{
+  "devtool": "eval-source-map",
+  "entry": {},
+  "externals": {
+    "jquery": "jQuery",
+  },
+  "mode": "development",
+  "module": {
+    "rules": [
+      {
+        "exclude": /node_modules/,
+        "include": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+        "loader": "babel-loader",
+        "options": {
+          "cacheDirectory": true,
+          "plugins": [
+            "react-refresh/babel",
+            "@babel/plugin-transform-react-jsx-source",
+            "@babel/plugin-syntax-dynamic-import",
+          ],
+          "presets": [
+            [
+              "@babel/preset-env",
+              {
+                "bugfixes": true,
+                "corejs": {
+                  "version": "3.33.1",
+                },
+                "debug": false,
+                "shippedProposals": true,
+                "targets": {
+                  "browsers": [
+                    "> 1%",
+                    "last 1 Android versions",
+                    "last 1 ChromeAndroid versions",
+                    "last 2 Chrome versions",
+                    "last 2 Firefox versions",
+                    "last 2 Safari versions",
+                    "last 2 iOS versions",
+                    "last 2 Edge versions",
+                    "last 2 Opera versions",
+                    "not op_mini all",
+                  ],
+                },
+                "useBuiltIns": "usage",
+              },
+            ],
+            [
+              "@babel/preset-react",
+              {
+                "development": true,
+                "runtime": "automatic",
+              },
+            ],
+            "@babel/preset-typescript",
+          ],
+        },
+        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
+      },
+      {
+        "include": /node_modules/,
+        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
+      },
+      {
+        "test": /\\\\\\.css\\$/,
+        "use": [
+          "style-loader",
+          "css-loader",
+        ],
+      },
+    ],
+  },
+  "optimization": {
+    "emitOnErrors": false,
+    "moduleIds": "named",
+  },
+  "output": {
+    "chunkFilename": "[name].js",
+    "filename": "[name].js",
+    "path": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\dist",
+    "publicPath": "http://localhost:3000/js/dist/",
+  },
+  "plugins": [
+    ProvidePlugin {
+      "definitions": {
+        "$": "jquery",
+        "jQuery": "jquery",
+      },
+    },
+    ReactRefreshPlugin {
+      "options": {
+        "exclude": /node_modules/i,
+        "include": /\\\\\\.\\(\\[cm\\]js\\|\\[jt\\]sx\\?\\|flow\\)\\$/i,
+        "overlay": {
+          "entry": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\client\\ErrorOverlayEntry.js",
+          "module": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\@pmmmwh\\react-refresh-webpack-plugin\\overlay\\index.js",
+          "sockIntegration": "wds",
+        },
+      },
+    },
+    ForkTsCheckerWebpackPlugin {
+      "options": {
+        "devServer": false,
+        "formatter": "basic",
+        "typescript": {
+          "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
+        },
+      },
+    },
+  ],
+  "resolve": {
+    "extensions": [
+      ".ts",
+      ".tsx",
+      ".js",
+      ".jsx",
+      ".json",
+      ".pcss",
+    ],
+    "modules": [
+      "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+      "node_modules",
+    ],
+  },
+  "stats": "minimal",
+  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not op_mini all",
+}
+`;
