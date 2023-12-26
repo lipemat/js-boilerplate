@@ -45,7 +45,7 @@ describe( 'webpack.dev.test.ts', () => {
 		loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
 		expect( loaders[ 1 ].loader ).toEqual( '@teamsupercell/typings-for-css-modules-loader' );
-		expect( loaders[ 1 ].options.prettierConfigFile ).toEqual( require.resolve( '../../../.prettierrc' ) );
+		expect( loaders[ 1 ].options.prettierConfigFile ).toEqual( require.resolve( '../../../helpers/.prettierrc.json' ) );
 		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
 		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
 
