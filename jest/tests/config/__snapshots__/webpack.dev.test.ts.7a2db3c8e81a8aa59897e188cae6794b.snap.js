@@ -30,6 +30,7 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                   "version": "3.33.1",
                 },
                 "debug": false,
+                "ignoreBrowserslistConfig": true,
                 "shippedProposals": true,
                 "targets": {
                   "browsers": [
@@ -315,6 +316,7 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                   "version": "3.33.1",
                 },
                 "debug": false,
+                "ignoreBrowserslistConfig": true,
                 "shippedProposals": true,
                 "targets": {
                   "browsers": [
@@ -600,6 +602,7 @@ exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
                   "version": "3.33.1",
                 },
                 "debug": false,
+                "ignoreBrowserslistConfig": true,
                 "shippedProposals": true,
                 "targets": {
                   "browsers": [

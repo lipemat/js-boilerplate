@@ -13,7 +13,10 @@ const presetEnv = {
 		// Use the core-js version currently installed in the project.
 		version: require( 'core-js/package.json' ).version,
 	},
+	// Enable the `debug` option to debug the included polyfills and plugins.
 	debug: false,
+	// Ignore any external browserslist in favor of `getBrowsersList()`.
+	ignoreBrowserslistConfig: true,
 	shippedProposals: true,
 	targets: {
 		browsers: getBrowsersList(),

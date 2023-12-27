@@ -27,6 +27,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
                   "version": "3.33.1",
                 },
                 "debug": false,
+                "ignoreBrowserslistConfig": true,
                 "shippedProposals": true,
                 "targets": {
                   "browsers": [
@@ -366,6 +367,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                   "version": "3.33.1",
                 },
                 "debug": false,
+                "ignoreBrowserslistConfig": true,
                 "shippedProposals": true,
                 "targets": {
                   "browsers": [
