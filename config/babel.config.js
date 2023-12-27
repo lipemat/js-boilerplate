@@ -17,7 +17,7 @@ const presetEnv = {
 	debug: false,
 	// Ignore any external browserslist in favor of `getBrowsersList()`.
 	ignoreBrowserslistConfig: true,
-	shippedProposals: true,
+	shippedProposals: false,
 	targets: {
 		browsers: getBrowsersList(),
 	},
