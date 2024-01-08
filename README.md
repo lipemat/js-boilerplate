@@ -44,7 +44,7 @@ Add the following to your package.json. (this may also be found in the `template
 * `cssTsFiles : {bool}` Enable auto generation of TypeScript definitions for CSS modules. 
 
 ## Code Completion In PHPStorm
-Some `@types` have been specified in this library to assist with code completion and allow using the built-in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built-in TypeScript support).
+Some `@types` have been specified in this library to help with code completion and allow using the built-in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built-in TypeScript support).
 
 
 ## ESLint
@@ -72,7 +72,7 @@ The console will display a list of browsers targeted by your [browserslist confi
 To use the built-in TypeScript, copy the following items from `templates` into your project root:
 1. `tsconfig.json`
 
-TypeScript will run a validator during dev and output any errors in the console. These same errors will display within PHPStorm if you copied tsconfig.json file in step 1. You technically don't have to fix any issues to compile but it's recommended. 
+TypeScript will run a validator during dev and output any errors in the console. These same errors will display within PHPStorm if you copied tsconfig.json file in step 1. You technically don't have to fix any issues to compile, but it's recommended. 
 
 Babel will automatically compile TypeScript files into the finished javascript, and will ignore errors. 
 
@@ -88,7 +88,7 @@ To create a package which extends any of the files within the `config` directory
 This is useful when you have often reused overrides to support a particular library. [Here is an example](https://github.com/lipemat/js-boilerplate-gutenberg)
 
 ### Testing
-To use the built in testing, copy the following items from `templates` into your project root:
+To use the built-in testing, copy the following items from `templates` into your project root:
 1. `jest.config.js`
 2. `tests`
 
@@ -102,11 +102,6 @@ Now you may write `jest` tests as desired and run them via `yarn run test`
 4. "Suite" to run a particular file of tests.
 
 ## Legacy Browsers Support
-
-#### IE11
-
-By default, IE11 is disabled via an internal Browserslist configuration. If you would like to support IE11, add it 
-as a target to your project's Browserslist configuration and all tooling will automatically support it.
 
 #### ES6 Modules
 
