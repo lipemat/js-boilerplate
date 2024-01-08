@@ -30,14 +30,12 @@ describe( 'config', () => {
 		expect( getBrowsersList() ).toEqual( expectedBrowsers );
 		expect( getBrowsersList() ).toEqual( getDefaultBrowsersList() );
 
-
-		// @notice If this fails, we can probably remove the override in favor of default wp.
 		const wpDefaultBrowsers = browserslist( require( '@wordpress/browserslist-config' ), {
 			env: 'production',
 		} );
-		// See if we can remove the override in favor of default wp.
 		expect( wpDefaultBrowsers.includes( 'and_uc 15.5' ) ).toBe( false );
-		expect( wpDefaultBrowsers.includes( 'op_mini all' ) ).toBe( true );
+		// @notice If this fails, we can probably remove the @todo from adjustBrowserslist and change toBe to `true`.
+		expect( wpDefaultBrowsers.includes( 'op_mini all' ) ).toBe( false );
 		expect( browserslist( getBrowsersList() ).includes( 'and_uc 15.5' ) ).toBe( false );
 		expect( browserslist( getBrowsersList() ).includes( 'op_mini all' ) ).toBe( false );
 

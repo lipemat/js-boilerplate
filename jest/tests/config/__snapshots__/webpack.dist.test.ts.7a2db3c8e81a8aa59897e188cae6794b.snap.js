@@ -24,7 +24,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
               {
                 "bugfixes": true,
                 "corejs": {
-                  "version": "3.33.1",
+                  "version": "3.35.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -126,15 +126,12 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
                         "postcssPlugin": "postcss-custom-media",
                       },
                       {
-                        "AtRule": {
-                          "custom-media": [Function],
-                          "media": [Function],
-                        },
-                        "postcssPlugin": "postcss-media-minmax",
+                        "Rule": [Function],
+                        "postcssPlugin": "postcss-nesting",
                       },
                       {
                         "Rule": [Function],
-                        "postcssPlugin": "postcss-nesting",
+                        "postcssPlugin": "postcss-selector-not",
                       },
                       {
                         "Rule": [Function],
@@ -364,7 +361,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
               {
                 "bugfixes": true,
                 "corejs": {
-                  "version": "3.33.1",
+                  "version": "3.35.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -466,15 +463,12 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                         "postcssPlugin": "postcss-custom-media",
                       },
                       {
-                        "AtRule": {
-                          "custom-media": [Function],
-                          "media": [Function],
-                        },
-                        "postcssPlugin": "postcss-media-minmax",
+                        "Rule": [Function],
+                        "postcssPlugin": "postcss-nesting",
                       },
                       {
                         "Rule": [Function],
-                        "postcssPlugin": "postcss-nesting",
+                        "postcssPlugin": "postcss-selector-not",
                       },
                       {
                         "Rule": [Function],
