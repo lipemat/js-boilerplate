@@ -19,6 +19,7 @@ const nodeArgs = scriptIndex > 0 ? args.slice( 0, scriptIndex ) : [];
 const TS_CONVERTED_SCRIPTS = [
 	'test',
 	'lint',
+	'validate-css-modules',
 ];
 
 switch ( script ) {
@@ -27,7 +28,8 @@ switch ( script ) {
 	case 'fix-pnp':
 	case 'lint':
 	case 'start':
-	case 'test': {
+	case 'test':
+	case 'validate-css-modules': {
 		// If the ts-node command is not available install it globally.
 		if ( spawn.sync( 'ts-node', [ '-v' ] ).error ) {
 			console.log( 'Installing ts-node globally.' );

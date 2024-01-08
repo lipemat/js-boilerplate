@@ -12,6 +12,7 @@ const {getConfig, getTsConfigFile, getBrowsersList} = require( '../helpers/confi
 const moduleHelpers = require( '../helpers/modules' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
+const {getPackageConfig} = require( '../helpers/package-config' );
 
 const postcssOptions = getConfig( 'postcss.config.js' );
 const babelOptions = getConfig( 'babel.config.js' );
@@ -136,6 +137,13 @@ module.exports = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
+						loader: '@teamsupercell/typings-for-css-modules-loader',
+						options: {
+							disableLocalsExport: true,
+							prettierConfigFile: path.resolve( __dirname, '../helpers/.prettierrc.json' ),
+						},
+					},
+					{
 						loader: 'css-loader',
 						options: cssLoaderOptions,
 					},
@@ -145,7 +153,12 @@ module.exports = {
 							postcssOptions,
 						},
 					},
-				],
+				].filter( loader => {
+					if ( ! getPackageConfig().cssTsFiles ) {
+						return loader.loader !== '@teamsupercell/typings-for-css-modules-loader';
+					}
+					return true;
+				} ),
 			},
 		],
 	},

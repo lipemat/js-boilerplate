@@ -4,6 +4,7 @@ export interface PackageConfig {
 	certificates?: Certificates;
 	combinedJson: boolean;
 	css_folder: string;
+	cssTsFiles: boolean;
 	dependencies: Dependencies;
 	description?: string;
 	devDependencies: Dependencies;
@@ -39,5 +40,7 @@ export interface Scripts {
 	test: string;
 }
 
-declare const packageConfig: PackageConfig;
+declare const packageConfig: PackageConfig & {
+	getPackageConfig: () => PackageConfig;
+};
 export default packageConfig;

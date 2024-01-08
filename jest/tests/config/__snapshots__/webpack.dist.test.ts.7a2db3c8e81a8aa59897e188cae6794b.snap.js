@@ -11,7 +11,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|prettier\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
@@ -24,10 +24,11 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
               {
                 "bugfixes": true,
                 "corejs": {
-                  "version": "3.33.1",
+                  "version": "3.35.0",
                 },
                 "debug": false,
-                "shippedProposals": true,
+                "ignoreBrowserslistConfig": true,
+                "shippedProposals": false,
                 "targets": {
                   "browsers": [
                     "> 1%",
@@ -125,15 +126,12 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
                         "postcssPlugin": "postcss-custom-media",
                       },
                       {
-                        "AtRule": {
-                          "custom-media": [Function],
-                          "media": [Function],
-                        },
-                        "postcssPlugin": "postcss-media-minmax",
+                        "Rule": [Function],
+                        "postcssPlugin": "postcss-nesting",
                       },
                       {
                         "Rule": [Function],
-                        "postcssPlugin": "postcss-nesting",
+                        "postcssPlugin": "postcss-selector-not",
                       },
                       {
                         "Rule": [Function],
@@ -350,7 +348,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/css-mqpacker\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|prettier\\|ts-node\\|typescript\\|update-notifier\\)\\[\\\\\\\\/\\]\\)/,
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
@@ -363,10 +361,11 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
               {
                 "bugfixes": true,
                 "corejs": {
-                  "version": "3.33.1",
+                  "version": "3.35.0",
                 },
                 "debug": false,
-                "shippedProposals": true,
+                "ignoreBrowserslistConfig": true,
+                "shippedProposals": false,
                 "targets": {
                   "browsers": [
                     "> 1%",
@@ -464,15 +463,12 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                         "postcssPlugin": "postcss-custom-media",
                       },
                       {
-                        "AtRule": {
-                          "custom-media": [Function],
-                          "media": [Function],
-                        },
-                        "postcssPlugin": "postcss-media-minmax",
+                        "Rule": [Function],
+                        "postcssPlugin": "postcss-nesting",
                       },
                       {
                         "Rule": [Function],
-                        "postcssPlugin": "postcss-nesting",
+                        "postcssPlugin": "postcss-selector-not",
                       },
                       {
                         "Rule": [Function],

@@ -12,6 +12,7 @@ packageConfig.url ||= 'http://localhost';
 // Path of JS application files.
 packageConfig.workingDirectory = packageConfig.jsPath !== '' ? path.resolve( packageConfig.jsPath ) : workingDirectory;
 packageConfig.shortCssClasses ||= false;
+packageConfig.tsCssModules ||= false;
 
 try {
 	const localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );

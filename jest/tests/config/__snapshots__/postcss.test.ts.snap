@@ -42,15 +42,12 @@ exports[`postcss.js PostCSS config: develop 1`] = `
           "postcssPlugin": "postcss-custom-media",
         },
         {
-          "AtRule": {
-            "custom-media": [Function],
-            "media": [Function],
-          },
-          "postcssPlugin": "postcss-media-minmax",
+          "Rule": [Function],
+          "postcssPlugin": "postcss-nesting",
         },
         {
           "Rule": [Function],
-          "postcssPlugin": "postcss-nesting",
+          "postcssPlugin": "postcss-selector-not",
         },
         {
           "Rule": [Function],
@@ -176,15 +173,12 @@ exports[`postcss.js PostCSS config: production 1`] = `
           "postcssPlugin": "postcss-custom-media",
         },
         {
-          "AtRule": {
-            "custom-media": [Function],
-            "media": [Function],
-          },
-          "postcssPlugin": "postcss-media-minmax",
+          "Rule": [Function],
+          "postcssPlugin": "postcss-nesting",
         },
         {
           "Rule": [Function],
-          "postcssPlugin": "postcss-nesting",
+          "postcssPlugin": "postcss-selector-not",
         },
         {
           "Rule": [Function],

@@ -3,8 +3,8 @@ import {basename} from 'path';
 import postcss, {Plugin} from 'postcss';
 import compileWithWebpack, {Fixture} from '../../helpers/compileWithWebpack';
 
-const browserslist = require( 'browserslist' );
-const postcssPresetEnv = require( 'postcss-preset-env' );
+import browserslist from 'browserslist';
+import postcssPresetEnv from 'postcss-preset-env';
 
 type Config = {
 	plugins: Array<Plugin & {
@@ -119,12 +119,13 @@ describe( 'postcss.js', () => {
 				},
 			} ) ) );
 
-		// @notice If this fails, we can probably remove the getBrowsersList() override in favor of default wp.
+		// @notice If this fails, we can probably remove the @todo from adjustBrowserslist and the toEqual to `1`.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
+		// @ts-ignore
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		expect( getPostCSSConfig().plugins[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
-		} ).length ).toEqual( 1 );
+		} ).length ).toEqual( 0 );
 	} );
 
 

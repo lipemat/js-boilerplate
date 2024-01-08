@@ -1,6 +1,10 @@
 import {ESLint} from 'eslint';
+import minimist from 'minimist';
 
 import packageConfig from '../helpers/package-config';
+
+// Command line arguments.
+const flags = minimist( process.argv.slice( 2 ) );
 
 /**
  * ESLint does not have a utility method for detecting if
@@ -19,9 +23,9 @@ function errorOccurred( results: ESLint.LintResult[] ): boolean {
  * @link https://eslint.org/docs/developer-guide/nodejs-api
  */
 ( async function main() {
-	// 1. Create an instance with the `fix` option.
+	// 1. Create an instance with the `fix` and `cache` options.
 	const eslint = new ESLint( {
-		fix: true,
+		fix: ( flags.fix ?? true ) !== 'false',
 		cache: true,
 		cacheStrategy: 'content',
 	} );

@@ -171,6 +171,8 @@ const getDefaultBrowsersList = () => {
 
 /**
  * Adjust the browserslist to include our defaults.
+ *
+ * @todo Remove `not op_mini all` after 3/8/2024 if it does not creep back in to the defaults.
  */
 function adjustBrowserslist( browserRules ) {
 	browserRules.push( 'not op_mini all' );
