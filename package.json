@@ -49,6 +49,7 @@
     "@lipemat/eslint-config": "^3.1.3",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@teamsupercell/typings-for-css-modules-loader": "^2.5.2",
+    "@types/babel__preset-env": "^7.9.6",
     "@types/node": "^16",
     "@wordpress/browserslist-config": "^5.19.0",
     "are-you-es5": "^2.1.1",

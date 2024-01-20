@@ -14,9 +14,9 @@ const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
 const {getPackageConfig} = require( '../helpers/package-config' );
 
-const postcssOptions = getConfig( 'postcss.config.js' );
-const babelOptions = getConfig( 'babel.config.js' );
-const cssLoaderOptions = getConfig( 'css-loader.config.js' );
+const postcssOptions = getConfig( 'postcss.config' );
+const babelOptions = getConfig( 'babel.config' );
+const cssLoaderOptions = getConfig( 'css-loader.config' );
 
 const ManifestPlugin = new WebpackAssetsManifest( {
 	integrity: true,

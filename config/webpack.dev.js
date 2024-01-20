@@ -6,10 +6,10 @@ const {getPackageConfig} = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
 const {getConfig, getTsConfigFile, getBrowsersList} = require( '../helpers/config' );
 
-const postcssOptions = getConfig( 'postcss.config.js' );
-const babelOptions = getConfig( 'babel.config.js' );
-const cssLoaderOptions = getConfig( 'css-loader.config.js' );
-const devServerOptions = getConfig( 'dev-server.config.js' );
+const postcssOptions = getConfig( 'postcss.config' );
+const babelOptions = getConfig( 'babel.config' );
+const cssLoaderOptions = getConfig( 'css-loader.config' );
+const devServerOptions = getConfig( 'dev-server.config' );
 
 // To allow line numbers to show up in console errors. @see React Error Boundaries.
 babelOptions.plugins.unshift( '@babel/plugin-transform-react-jsx-source' );

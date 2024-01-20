@@ -2,7 +2,7 @@ process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const webpack = require( 'webpack' );
-const webpackConfig = require( '../helpers/config' ).getConfig( 'webpack.dist.js' );
+const webpackConfig = require( '../helpers/config' ).getConfig( 'webpack.dist' );
 
 async function build( config ) {
 	// Compiler Instance.
