@@ -1,5 +1,6 @@
 import {ESLint} from 'eslint';
 import minimist from 'minimist';
+import chalk from 'chalk';
 
 import packageConfig from '../helpers/package-config';
 
@@ -30,6 +31,8 @@ function errorOccurred( results: ESLint.LintResult[] ): boolean {
 		cacheStrategy: 'content',
 	} );
 
+	console.log( chalk.underline( 'Running "js-boilerplate:lint" (eslint) task' ) );
+
 	// 2. Lint files. This doesn't modify target files.
 	const results: ESLint.LintResult[] = await eslint.lintFiles( [
 		packageConfig.workingDirectory + '/src/**/*.{js,jsx,ts,tsx}',
@@ -43,13 +46,15 @@ function errorOccurred( results: ESLint.LintResult[] ): boolean {
 	const resultText = formatter.format( results );
 
 	// 5. Output it.
-	console.log( resultText );
 	if ( '' === resultText ) {
-		console.log( '>> Linted JS files without errors.' );
-		console.log( '-----------------------------------' );
-	} else if ( errorOccurred( results ) ) {
-		process.exitCode = 1;
+		console.log( `>> Linted ${results.length} files without errors` );
+	} else {
+		console.log( resultText );
+		if ( errorOccurred( results ) ) {
+			process.exitCode = 1;
+		}
 	}
+	console.log( '' );
 }() ).catch( error => {
 	process.exitCode = 1;
 	console.error( error );

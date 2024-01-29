@@ -2160,6 +2160,7 @@ __metadata:
     babel-jest: "npm:^29.0.0"
     babel-loader: "npm:9.1.2"
     browserslist: "npm:^4.21.9"
+    chalk: "npm:^4.0"
     clean-css: "npm:^5.3.0"
     clean-webpack-plugin: "npm:^4.0.0"
     compression-webpack-plugin: "npm:^10.0.0"
