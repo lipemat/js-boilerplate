@@ -3,7 +3,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const {getConfig} = require( './config' );
 
-const entries = getConfig( 'entries.config.js' );
+const entries = getConfig( 'entries.config' );
 
 
 /**

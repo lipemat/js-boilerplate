@@ -22,6 +22,7 @@ Add the following to your package.json. (this may also be found in the `template
 {
   "jsPath": "./js",
   "scripts": {
+    "analyze": "lipemat-js-boilerplate analyze",
     "browserslist": "lipemat-js-boilerplate browserslist",
     "dist": "lipemat-js-boilerplate dist",
     "lint": "lipemat-js-boilerplate lint",

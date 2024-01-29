@@ -17,12 +17,14 @@ const nodeArgs = scriptIndex > 0 ? args.slice( 0, scriptIndex ) : [];
 
 
 const TS_CONVERTED_SCRIPTS = [
+	'analyze',
 	'test',
 	'lint',
 	'validate-css-modules',
 ];
 
 switch ( script ) {
+	case 'analyze':
 	case 'browserslist':
 	case 'dist':
 	case 'fix-pnp':

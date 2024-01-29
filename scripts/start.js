@@ -7,8 +7,8 @@ const {unlinkSync, writeFile} = require( 'fs' );
 const WebpackDevServer = require( 'webpack-dev-server' );
 const configHelper = require( '../helpers/config' );
 const path = require( 'path' );
-const webpackConfig = configHelper.getConfig( 'webpack.dev.js' );
-const devServerConfig = configHelper.getConfig( 'dev-server.config.js' );
+const webpackConfig = configHelper.getConfig( 'webpack.dev' );
+const devServerConfig = configHelper.getConfig( 'dev-server.config' );
 
 const server = new WebpackDevServer( devServerConfig, webpack( webpackConfig ) );
 
