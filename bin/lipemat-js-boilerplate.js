@@ -42,15 +42,9 @@ switch ( script ) {
 			script = script + '.ts';
 		}
 
-		let command = 'ts-node';
-		// Jest runs ts-node behind the scenes and will double compile the TypeScript.
-		if ( 'test.ts' === script ) {
-			command = 'node';
-		}
-
 		// Run the script.
 		const result = spawn.sync(
-			command,
+			'ts-node',
 			nodeArgs
 				.concat( require.resolve( '../scripts/' + script ) )
 				.concat( args.slice( scriptIndex + 1 ) ),

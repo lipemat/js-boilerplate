@@ -1,17 +1,9 @@
-import {getBrowsersList} from '../helpers/config';
-import type {TransformOptions} from '@babel/core';
-import type {Options} from '@babel/preset-env';
+const {getBrowsersList} = require( '../helpers/config' );
 
 /**
- * @link https://webpack.js.org/loaders/babel-loader/#options
+ * This file must NOT be a TS file because JEST will not transform
+ * a config file within node_modules.
  */
-export type BabelLoader = {
-	cacheDirectory?: boolean | string;
-	cacheIdentifier?: string;
-	cacheCompression?: boolean;
-	customize?: string;
-	metadataSubscribers?: string[];
-}
 
 /**
  * Use Babel's preset-env to add support for target browsers.
@@ -20,7 +12,7 @@ export type BabelLoader = {
  *
  * @see https://babeljs.io/docs/en/babel-preset-env
  */
-const presetEnv: Options = {
+const presetEnv = {
 	bugfixes: true,
 	corejs: {
 		// Use the core-js version currently installed in the project.
@@ -39,7 +31,7 @@ const presetEnv: Options = {
 };
 
 
-const babelConfig: TransformOptions & BabelLoader = {
+module.exports = {
 	cacheDirectory: true,
 	presets: [
 		[ '@babel/preset-env', presetEnv ],
@@ -53,5 +45,3 @@ const babelConfig: TransformOptions & BabelLoader = {
 		'@babel/plugin-syntax-dynamic-import',
 	],
 };
-
-module.exports = babelConfig;
