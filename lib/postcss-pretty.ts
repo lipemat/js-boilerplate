@@ -10,8 +10,8 @@
 
 
 import {Container, Root} from 'postcss';
-import {ChildNode} from 'postcss/lib/node';
-import {AtRuleRaws} from 'postcss/lib/at-rule';
+import type {ChildNode} from 'postcss/lib/node';
+import type {AtRuleRaws} from 'postcss/lib/at-rule';
 
 /**
  * Get the depth of the current node.
