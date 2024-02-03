@@ -30,6 +30,9 @@ let jestConfig = {
 	transform: {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
+	transformIgnorePatterns: [
+		'node_modules/(?!@lipemat)',
+	],
 	setupFilesAfterEnv: [
 		// @todo Remove old "tests" directory in version 11.
 		path.resolve( packageConfig.workingDirectory, 'tests/setup.js' ),
