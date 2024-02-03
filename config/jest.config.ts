@@ -1,16 +1,14 @@
-const path = require( 'path' );
-const packageConfig = require( '../helpers/package-config' );
-const fs = require( 'fs' );
+import path from 'path';
+import type {Config} from 'jest';
+const {getPackageConfig} = require( '../helpers/package-config' );
+import fs from 'fs';
 
+const packageConfig = getPackageConfig();
 const babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
 
-/**
- * @todo Rename this file to `jest.config.ts` in version 11.
- *
- */
 
-let jestConfig = {
+const jestConfig: Config = {
 	globals: {
 		__TEST__: true,
 	},
@@ -39,17 +37,4 @@ let jestConfig = {
 	].filter( fs.existsSync ),
 };
 
-/**
- * Allows overriding configurations in the project `/config/jest.config.js` file.
- * We don't actually need to do this because `jest.config.js` in the project root
- * is already an override of this file, but we support it anyway to keep things consistent.
- *
- * @todo Remove in version 11.
- */
-try {
-	const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', 'jest.config.js' ) );
-	jestConfig = {...jestConfig, ...localConfig};
-} catch ( e ) {
-}
-
-module.exports = jestConfig;
+export default jestConfig;
