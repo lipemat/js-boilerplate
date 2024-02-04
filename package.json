@@ -103,5 +103,5 @@
     "memfs": "^3.5.3",
     "setimmediate": "^1.0.5"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.1.0"
 }
