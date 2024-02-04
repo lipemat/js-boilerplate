@@ -1,6 +1,6 @@
-const config = require( '../config/jest.config' );
+import config from '../config/jest.config';
 
 // Custom snapshot resolver for the boilerplate.
-config.snapshotResolver = './tests/snapshot-resolver.ts';
+config.snapshotResolver = require.resolve( './snapshot-resolver.ts' );
 
-module.exports = config;
+export default config;

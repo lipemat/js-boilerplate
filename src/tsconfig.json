@@ -1,0 +1,14 @@
+{
+  "extends": "../config/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "JS Boilerplate Source Files",
+  "include": [
+    "*.ts"
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "module": "CommonJS",
+    "outDir": "../config",
+    "sourceMap": false,
+  }
+}
