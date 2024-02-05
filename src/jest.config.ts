@@ -6,11 +6,12 @@
  */
 import {resolve} from 'path';
 import type {Config} from 'jest';
-const {getPackageConfig} = require( '../helpers/package-config' );
+import packageConfig from '../helpers/package-config';
+import {getConfig} from '../helpers/config';
 import {existsSync} from 'fs';
 
-const packageConfig = getPackageConfig();
-const babelConfig = require( '../helpers/config' ).getConfig( 'babel.config' );
+const {workingDirectory} = packageConfig.getPackageConfig();
+const babelConfig = getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
 
 
@@ -38,10 +39,10 @@ const jestConfig: Config = {
 	],
 	setupFilesAfterEnv: [
 		// @todo Remove old "tests" directory in version 11.
-		resolve( packageConfig.workingDirectory, 'tests/setup.js' ),
-		resolve( packageConfig.workingDirectory, 'tests/setup.ts' ),
+		resolve( workingDirectory, 'tests/setup.js' ),
+		resolve( workingDirectory, 'tests/setup.ts' ),
 		// New location.
-		resolve( packageConfig.workingDirectory, 'jest/setup.ts' ),
+		resolve( workingDirectory, 'jest/setup.ts' ),
 	].filter( existsSync ),
 };
 

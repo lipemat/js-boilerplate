@@ -8,6 +8,9 @@ import {getBrowsersList} from '../helpers/config';
 import type {TransformOptions} from '@babel/core';
 import type {Options} from '@babel/preset-env';
 
+// Using empty omit to convert the interface to a type, so it supports Record<string, unknown>.
+export type BabelConfig = Omit<TransformOptions, ''> & BabelLoader;
+
 /**
  * @link https://webpack.js.org/loaders/babel-loader/#options
  */
@@ -45,7 +48,7 @@ const presetEnv: Options = {
 };
 
 
-const babelConfig: TransformOptions & BabelLoader = {
+const babelConfig: BabelConfig = {
 	cacheDirectory: true,
 	presets: [
 		[ '@babel/preset-env', presetEnv ],

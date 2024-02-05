@@ -32,5 +32,6 @@ function getPackageConfig() {
 	return packageConfig;
 }
 packageConfig.getPackageConfig = getPackageConfig;
+packageConfig.default = packageConfig;
 
 module.exports = packageConfig;

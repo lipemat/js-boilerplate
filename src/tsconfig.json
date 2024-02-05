@@ -10,5 +10,6 @@
     "module": "CommonJS",
     "outDir": "../config",
     "sourceMap": false,
+    "strict": true,
   }
 }
