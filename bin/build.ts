@@ -1,7 +1,6 @@
 import {execSync} from 'node:child_process';
 import {ESLint} from 'eslint';
 import chalk from 'chalk';
-import {getPackageConfig} from '../helpers/package-config';
 
 const FILES = [
 	'config/babel.config',
@@ -26,7 +25,7 @@ FILES.forEach( async file => {
 
 	// 2. Lint files. This doesn't modify target files.
 	const results: ESLint.LintResult[] = await eslint.lintFiles( [
-		getPackageConfig().workingDirectory + '/src/**/*.{js,jsx,ts,tsx}',
+		file + '*.{js,jsx,ts,tsx}',
 	] );
 
 	// 3. Modify the files with the fixed code.
