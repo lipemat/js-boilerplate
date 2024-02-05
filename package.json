@@ -36,7 +36,8 @@
     "browserslist": "lipemat-js-boilerplate browserslist",
     "build": "ts-node ./bin/build.ts",
     "prepublishOnly": "yarn run build",
-    "test": "lipemat-js-boilerplate test"
+    "test": "lipemat-js-boilerplate test",
+    "watch": "ts-node ./bin/watch.ts"
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
@@ -98,6 +99,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/minimist": "^1",
+    "chokidar": "^3.5.3",
     "eslint": "^8",
     "glob": "^10.3.3",
     "memfs": "^3.5.3",
