@@ -13,16 +13,18 @@ import {execSync} from 'node:child_process';
 
 
 const FILES = [
-	'babel.config',
-	'jest.config',
+	'config/babel.config',
+	'config/jest.config',
+	'helpers/config',
+	'helpers/package-config',
 ];
 
 console.log( 'Compiling the files from the src directory into \'node_modules/\@_js-boilerplate\'.' );
 execSync( 'tsc -p src', {stdio: 'inherit'} );
 
 FILES.forEach( file => {
-	const source = `node_modules/\@_js-boilerplate/src/${file}`;
-	const destination = `config/${file}`;
+	const source = `node_modules/\@_js-boilerplate/${file}`;
+	const destination = `${file}`;
 
 	console.log( `Moving '${source}' to '${destination}'` );
 	renameSync( `${source}.js`, `${destination}.js` );

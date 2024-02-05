@@ -1,25 +1,15 @@
-import {existsSync} from 'fs';
-import {resolve} from 'path';
-import browserslist from 'browserslist';
-// @ts-ignore
-import type {BabelConfig} from '../config/babel.config';
-import type {JestConfig} from '../config/jest.config';
-import packageConfig from './package-config';
-
-type Configs = {
-	'babel.config': BabelConfig;
-	'jest.config': JestConfig;
-};
-
-
-const {dependencies, devDependencies, workingDirectory, packageDirectory} = packageConfig.getPackageConfig();
-
+'use strict';
+Object.defineProperty( exports, '__esModule', {value: true} );
+exports.adjustBrowserslist = exports.getDefaultBrowsersList = exports.getBrowsersList = exports.getTsConfigFile = exports.getExtensionsConfig = exports.getConfig = exports.hasLocalOverride = void 0;
+const fs_1 = require( 'fs' );
+const path_1 = require( 'path' );
+const browserslist = require( 'browserslist' );
+const package_config_1 = require( './package-config' );
+const {dependencies, devDependencies, workingDirectory, packageDirectory} = ( 0, package_config_1.getPackageConfig )();
 const extensions = [
-	...Object.keys( dependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
-	...Object.keys( devDependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
+	...Object.keys( dependencies !== null && dependencies !== void 0 ? dependencies : {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
+	...Object.keys( devDependencies !== null && devDependencies !== void 0 ? devDependencies : {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
 ];
-
-
 /**
  * Check to see if a local config file exists.
  *
@@ -28,23 +18,21 @@ const extensions = [
  *
  * @return {boolean}
  */
-export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean = false ): boolean {
+function hasLocalOverride( fileName, inWorkingDirectory = false ) {
 	let hasLocal = false;
 	try {
 		if ( inWorkingDirectory ) {
-			require( resolve( workingDirectory, fileName ) );
+			require( ( 0, path_1.resolve )( workingDirectory, fileName ) );
 			hasLocal = true;
 		} else {
-			require( resolve( packageDirectory + '/config', fileName ) );
+			require( ( 0, path_1.resolve )( packageDirectory + '/config', fileName ) );
 			hasLocal = true;
 		}
 	} catch ( e ) {
 	}
-
 	return hasLocal;
 }
-
-
+exports.hasLocalOverride = hasLocalOverride;
 /**
  * Get a config from our /config directory merged with any
  * matching configuration from the project directory.
@@ -73,22 +61,21 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
  *
  * @return {Object}
  */
-export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
-	let mergedConfig = require( '../config/' + fileName ) as Configs[T];
-	mergedConfig = {...mergedConfig, ...getExtensionsConfig<Configs[T]>( fileName, mergedConfig )};
+function getConfig( fileName ) {
+	let mergedConfig = require( '../config/' + fileName );
+	mergedConfig = Object.assign( Object.assign( {}, mergedConfig ), getExtensionsConfig( fileName, mergedConfig ) );
 	try {
-		const localConfig = require( resolve( packageDirectory + '/config', fileName ) );
+		const localConfig = require( ( 0, path_1.resolve )( packageDirectory + '/config', fileName ) );
 		if ( 'function' === typeof localConfig ) {
-			mergedConfig = {...mergedConfig, ...localConfig( mergedConfig )};
+			mergedConfig = Object.assign( Object.assign( {}, mergedConfig ), localConfig( mergedConfig ) );
 		} else {
-			mergedConfig = {...mergedConfig, ...localConfig};
+			mergedConfig = Object.assign( Object.assign( {}, mergedConfig ), localConfig );
 		}
 	} catch ( e ) {
 	}
 	return mergedConfig;
 }
-
-
+exports.getConfig = getConfig;
 /**
  * Get a config from any existing extension's /config directories
  * merged into one.
@@ -101,24 +88,22 @@ export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
  *
  * @return {Object}
  */
-export function getExtensionsConfig<T extends object>( fileName: string, defaultConfig: T ): T {
-	let mergedConfig: T = {} as T;
+function getExtensionsConfig( fileName, defaultConfig ) {
+	let mergedConfig = {};
 	extensions.forEach( extension => {
 		try {
 			const extensionConfig = require( extension + '/config/' + fileName );
 			if ( 'function' === typeof extensionConfig ) {
-				mergedConfig = {...mergedConfig, ...extensionConfig( {...defaultConfig, ...mergedConfig} )};
+				mergedConfig = Object.assign( Object.assign( {}, mergedConfig ), extensionConfig( Object.assign( Object.assign( {}, defaultConfig ), mergedConfig ) ) );
 			} else {
-				mergedConfig = {...mergedConfig, ...extensionConfig};
+				mergedConfig = Object.assign( Object.assign( {}, mergedConfig ), extensionConfig );
 			}
 		} catch ( e ) {
 		}
 	} );
-
 	return mergedConfig;
 }
-
-
+exports.getExtensionsConfig = getExtensionsConfig;
 /**
  * Get the path to the "tsconfig.json" file if it exists.
  *
@@ -130,21 +115,19 @@ export function getExtensionsConfig<T extends object>( fileName: string, default
  *
  * @return {string}
  */
-export function getTsConfigFile(): string {
+function getTsConfigFile() {
 	const possibles = [
 		// Backward compatible for before @lipemat/eslint-config version 3.
-		resolve( workingDirectory + '/tsconfig.json' ),
-		resolve( packageDirectory + '/tsconfig.json' ),
-	].filter( existsSync );
-
+		( 0, path_1.resolve )( workingDirectory + '/tsconfig.json' ),
+		( 0, path_1.resolve )( packageDirectory + '/tsconfig.json' ),
+	].filter( fs_1.existsSync );
 	let tsConfig = '';
 	possibles.forEach( filePath => {
 		tsConfig = filePath;
 	} );
 	return tsConfig;
 }
-
-
+exports.getTsConfigFile = getTsConfigFile;
 /**
  * Get the browserslist from the current project.
  *
@@ -152,7 +135,7 @@ export function getTsConfigFile(): string {
  *
  *  @link https://github.com/browserslist/browserslist#config-file
  */
-export function getBrowsersList(): readonly string[] {
+function getBrowsersList() {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
 		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
@@ -160,8 +143,7 @@ export function getBrowsersList(): readonly string[] {
 	}
 	return projectBrowsersList;
 }
-
-
+exports.getBrowsersList = getBrowsersList;
 /**
  * If browserslist is not specified, we fall back to WordPress defaults.
  *
@@ -177,21 +159,21 @@ export function getBrowsersList(): readonly string[] {
  *
  * @return {boolean | string[]}
  */
-export const getDefaultBrowsersList = (): false | string[] => {
+const getDefaultBrowsersList = () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
 		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
 		return adjustBrowserslist( wp );
 	}
 	return false;
 };
-
-
+exports.getDefaultBrowsersList = getDefaultBrowsersList;
 /**
  * Adjust the browserslist to include our defaults.
  *
  * @todo Remove `not op_mini all` after 3/8/2024 if it does not creep back in to the defaults.
  */
-export function adjustBrowserslist( browserRules: string[] ): string[] {
+function adjustBrowserslist( browserRules ) {
 	browserRules.push( 'not op_mini all' );
 	return browserRules;
 }
+exports.adjustBrowserslist = adjustBrowserslist;

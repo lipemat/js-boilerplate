@@ -7,13 +7,13 @@
 import {resolve} from 'path';
 import type {Config} from 'jest';
 import {existsSync} from 'fs';
-import packageConfig from '../helpers/package-config';
+import {getPackageConfig} from '../helpers/package-config';
 import {getConfig} from '../helpers/config';
 
 
 export type JestConfig = Pick<Config, 'globals' | 'moduleNameMapper' | 'roots' | 'testEnvironment' | 'testEnvironmentOptions' | 'transform' | 'transformIgnorePatterns' | 'setupFilesAfterEnv'>;
 
-const {workingDirectory} = packageConfig.getPackageConfig();
+const {workingDirectory, url} = getPackageConfig();
 const babelConfig = getConfig( 'babel.config' );
 delete babelConfig.cacheDirectory;
 
@@ -32,7 +32,7 @@ const jestConfig: Config = {
 	],
 	testEnvironment: 'jsdom',
 	testEnvironmentOptions: {
-		url: packageConfig.url,
+		url,
 	},
 	transform: {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],

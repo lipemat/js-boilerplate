@@ -10,7 +10,7 @@ const path_1 = require( 'path' );
 const fs_1 = require( 'fs' );
 const package_config_1 = require( '../helpers/package-config' );
 const config_1 = require( '../helpers/config' );
-const {workingDirectory} = package_config_1.default.getPackageConfig();
+const {workingDirectory, url} = ( 0, package_config_1.getPackageConfig )();
 const babelConfig = ( 0, config_1.getConfig )( 'babel.config' );
 delete babelConfig.cacheDirectory;
 const jestConfig = {
@@ -27,7 +27,7 @@ const jestConfig = {
 	],
 	testEnvironment: 'jsdom',
 	testEnvironmentOptions: {
-		url: package_config_1.default.url,
+		url,
 	},
 	transform: {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
