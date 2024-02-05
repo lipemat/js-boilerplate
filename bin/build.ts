@@ -1,4 +1,7 @@
 import {execSync} from 'node:child_process';
+import {ESLint} from 'eslint';
+import chalk from 'chalk';
+import {getPackageConfig} from '../helpers/package-config';
 
 const FILES = [
 	'config/babel.config',
@@ -7,11 +10,25 @@ const FILES = [
 	'helpers/package-config',
 ];
 
-console.log( 'Compiling the files from the src directory.' );
+console.log( chalk.blue( '[TS] ' ) + ' Compiling the files from the src directory.' );
 execSync( 'tsc -p src', {stdio: 'inherit'} );
 
-FILES.forEach( file => {
+FILES.forEach( async file => {
 	const destination = `${file}`;
-	console.log( `Reformatting ${destination}.js with ESLint.` );
-	execSync( `eslint ${destination}* --fix`, {stdio: 'inherit'} );
+	console.log( chalk.blueBright( '[ESLint] ' ) + `Reformatting ${destination}.js.` );
+
+	// 1. Create an instance with the `fix` and `cache` options.
+	const eslint = new ESLint( {
+		fix: true,
+		cache: true,
+		cacheStrategy: 'content',
+	} );
+
+	// 2. Lint files. This doesn't modify target files.
+	const results: ESLint.LintResult[] = await eslint.lintFiles( [
+		getPackageConfig().workingDirectory + '/src/**/*.{js,jsx,ts,tsx}',
+	] );
+
+	// 3. Modify the files with the fixed code.
+	await ESLint.outputFixes( results );
 } );

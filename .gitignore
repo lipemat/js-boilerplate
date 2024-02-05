@@ -19,6 +19,7 @@ helpers/package-config.*
 .ready
 .sass-cache
 .svn
+tsconfig.tsbuildinfo
 Thumbs.db
 ehthumbs.db
 
