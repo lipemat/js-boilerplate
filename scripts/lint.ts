@@ -2,7 +2,7 @@ import {ESLint} from 'eslint';
 import minimist from 'minimist';
 import chalk from 'chalk';
 
-import packageConfig from '../helpers/package-config';
+import {getPackageConfig} from '../helpers/package-config';
 
 // Command line arguments.
 const flags = minimist( process.argv.slice( 2 ) );
@@ -35,7 +35,7 @@ function errorOccurred( results: ESLint.LintResult[] ): boolean {
 
 	// 2. Lint files. This doesn't modify target files.
 	const results: ESLint.LintResult[] = await eslint.lintFiles( [
-		packageConfig.workingDirectory + '/src/**/*.{js,jsx,ts,tsx}',
+		getPackageConfig().workingDirectory + '/src/**/*.{js,jsx,ts,tsx}',
 	] );
 
 	// 3. Modify the files with the fixed code.

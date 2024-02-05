@@ -1,5 +1,18 @@
 {
-	"extends": [
-		"@lipemat"
-	]
+  "extends": [
+    "@lipemat"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "config/babel.config.js",
+        "config/jest.config.js",
+        "helpers/config.js",
+        "helpers/package-config.js",
+      ],
+      "rules": {
+        "camelcase": "off"
+      }
+    }
+  ]
 }

@@ -1,0 +1,17 @@
+{
+  "extends": "../config/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "JS Boilerplate Source Files",
+  "include": [
+    "./**/*.ts"
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "incremental": true,
+    "module": "CommonJS",
+    "outDir": "../",
+    "sourceMap": false,
+    "strict": true,
+    "target": "ES2022"
+  }
+}
