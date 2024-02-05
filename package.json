@@ -34,8 +34,7 @@
   },
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
-    "build": "cd src && tsc && cd .. && eslint 'config/*.config.*' --fix --rule 'camelcase: 0'",
-    "prepublishOnly": "yarn run build",
+    "build": "ts-node ./bin/build.ts",
     "test": "lipemat-js-boilerplate test"
   },
   "dependencies": {

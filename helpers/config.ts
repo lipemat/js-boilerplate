@@ -1,6 +1,7 @@
 import {existsSync} from 'fs';
 import {resolve} from 'path';
 import browserslist from 'browserslist';
+// @ts-ignore
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config';
 import packageConfig from './package-config';

@@ -3,13 +3,13 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "JS Boilerplate Source Files",
   "include": [
-    "*.ts"
+    "./*.ts"
   ],
   "compilerOptions": {
     "declaration": true,
     "module": "CommonJS",
-    "outDir": "../config",
+    "outDir": "../node_modules/@_js-boilerplate",
     "sourceMap": false,
-    "strict": true,
+    "strict": true
   }
 }
