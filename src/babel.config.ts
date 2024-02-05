@@ -8,8 +8,8 @@ import {getBrowsersList} from '../helpers/config';
 import type {TransformOptions} from '@babel/core';
 import type {Options} from '@babel/preset-env';
 
-// Using empty omit to convert the interface to a type, so it supports Record<string, unknown>.
-export type BabelConfig = Omit<TransformOptions, ''> & BabelLoader;
+export type BabelConfig = Pick<BabelFull, 'presets' | 'plugins' | 'cacheDirectory'>;
+export type BabelFull = Partial<TransformOptions> & BabelLoader;
 
 /**
  * @link https://webpack.js.org/loaders/babel-loader/#options

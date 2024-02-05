@@ -6,9 +6,12 @@
  */
 import {resolve} from 'path';
 import type {Config} from 'jest';
+import {existsSync} from 'fs';
 import packageConfig from '../helpers/package-config';
 import {getConfig} from '../helpers/config';
-import {existsSync} from 'fs';
+
+
+export type JestConfig = Pick<Config, 'globals' | 'moduleNameMapper' | 'roots' | 'testEnvironment' | 'testEnvironmentOptions' | 'transform' | 'transformIgnorePatterns' | 'setupFilesAfterEnv'>;
 
 const {workingDirectory} = packageConfig.getPackageConfig();
 const babelConfig = getConfig( 'babel.config' );
