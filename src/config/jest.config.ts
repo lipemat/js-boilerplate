@@ -1,9 +1,3 @@
-/**
- * Generated from the `src` directory to compile TS to JS because JEST
- * does not support using TS files as part of the JEST configuration when
- * located in a `node_modules directory.
- *
- */
 import {resolve} from 'path';
 import type {Config} from 'jest';
 import {existsSync} from 'fs';

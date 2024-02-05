@@ -35,6 +35,7 @@
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
     "build": "ts-node ./bin/build.ts",
+    "prepublishOnly": "yarn run build",
     "test": "lipemat-js-boilerplate test"
   },
   "dependencies": {

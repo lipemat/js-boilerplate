@@ -8,8 +8,9 @@
   "compilerOptions": {
     "declaration": true,
     "module": "CommonJS",
-    "outDir": "../node_modules/@_js-boilerplate",
+    "outDir": "../",
     "sourceMap": false,
     "strict": true,
+    "target": "ES2022"
   }
 }

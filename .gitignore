@@ -1,3 +1,9 @@
+# Build files
+config/babel.config.*
+config/jest.config.*
+helpers/config.*
+helpers/package-config.*
+
 # system/hidden files
 *.bak
 *.sublime-project
