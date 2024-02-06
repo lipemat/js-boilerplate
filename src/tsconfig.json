@@ -7,7 +7,6 @@
   ],
   "compilerOptions": {
     "declaration": true,
-    "incremental": true,
     "module": "CommonJS",
     "outDir": "../",
     "sourceMap": false,
