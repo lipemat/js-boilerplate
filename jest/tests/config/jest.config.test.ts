@@ -6,4 +6,10 @@ describe( 'jest.config.test.ts', () => {
 		expect( config ).toMatchSnapshot();
 		expect( config ).toStrictEqual( getConfig( 'jest.config' ) );
 	} );
+
+	test( 'Build files', () => {
+		const TS = require( '../../../config/jest.config.ts' );
+		const JS = require( '../../../config/jest.config.js' );
+		expect( TS ).toStrictEqual( JS );
+	} );
 } );

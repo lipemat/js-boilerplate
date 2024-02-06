@@ -1,4 +1,3 @@
-// @ts-ignore
 const browserslist = require( 'browserslist' );
 
 const {getDefaultBrowsersList, getBrowsersList} = require( '../../../helpers/config' );

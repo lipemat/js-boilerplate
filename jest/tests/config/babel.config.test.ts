@@ -65,4 +65,10 @@ describe( 'babel.config.test.ts', () => {
 		expect( ie11 ).not.toEqual( defaultBrowsers );
 		expect( ie11 ).not.toEqual( chrome50 );
 	} );
+
+	test( 'Build files', () => {
+		const TS = require( '../../../config/babel.config.ts' );
+		const JS = require( '../../../config/babel.config.js' );
+		expect( TS ).toStrictEqual( JS );
+	} );
 } );
