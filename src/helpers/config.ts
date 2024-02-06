@@ -8,6 +8,7 @@ import {getPackageConfig} from './package-config';
 type Configs = {
 	'babel.config': BabelConfig;
 	'jest.config': JestConfig;
+	'entries.config': { [ file: string ]: string[]};
 };
 
 const {dependencies, devDependencies, workingDirectory, packageDirectory} = getPackageConfig();
