@@ -1,14 +1,18 @@
 import {existsSync} from 'fs';
 import {resolve} from 'path';
-import * as browserslist from 'browserslist';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config';
 import {getPackageConfig} from './package-config';
+import type {EntriesConfig} from '../config/entries.config';
+
+// Must be required to avoid issues with browserslist.
+const browserslist = require( 'browserslist' );
+
 
 type Configs = {
 	'babel.config': BabelConfig;
 	'jest.config': JestConfig;
-	'entries.config': { [ file: string ]: string[]};
+	'entries.config': EntriesConfig;
 };
 
 const {dependencies, devDependencies, workingDirectory, packageDirectory} = getPackageConfig();

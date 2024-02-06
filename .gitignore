@@ -1,8 +1,8 @@
 # Build files
-config/babel.config.*
-config/jest.config.*
-helpers/config.*
-helpers/package-config.*
+config/babel.config.js
+config/jest.config.js
+helpers/config.js
+helpers/package-config.js
 
 # system/hidden files
 *.bak

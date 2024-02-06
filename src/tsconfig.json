@@ -3,12 +3,12 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "JS Boilerplate Source Files",
   "include": [
-    "./**/*.ts"
+    "../config/*.ts",
+    "../helpers/*.ts"
   ],
   "compilerOptions": {
-    "declaration": true,
+    "declaration": false,
     "module": "CommonJS",
-    "outDir": "../",
     "sourceMap": false,
     "strict": true,
     "target": "ES2022"

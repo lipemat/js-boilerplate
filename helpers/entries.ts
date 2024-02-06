@@ -4,7 +4,7 @@ import {existsSync} from 'fs';
 import {resolve} from 'path';
 import type {EntriesConfig} from '../config/entries.config';
 
-const entries = getConfig( 'entries.config' );
+const entries: EntriesConfig = getConfig( 'entries.config' );
 
 /**
  * Entry points to be loaded by Webpack.
@@ -14,8 +14,8 @@ const entries = getConfig( 'entries.config' );
  *
  * @see entries.config.js
  */
-export function getEntries(): EntriesConfig {
-	const matches = {};
+export function getEntries(): { [ name: string ]: string } {
+	const matches: {[name: string]: string} = {};
 	Object.keys( entries ).forEach( name => {
 		entries[ name ].some( possibleFile => {
 			const filePath = getPackageConfig().workingDirectory + '/src/' + possibleFile;

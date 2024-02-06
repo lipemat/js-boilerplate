@@ -2,10 +2,8 @@
 
 Some files cannot be TS because JEST will fail to load them when they are included in the JEST configuration generation.
 
-To update the finished file, run the `build` command.
+As part of the build process, JS versions of the TS files are generated in the following directories.
+- config
+- helpers
 
-The built files are committed to the repository because the definitions within them are required by the `config` helper which fails during build if the files are not present.
-
-## Troubleshooting
-
-We are using caching via `incremental` in TS. If files are not generating, delete the `tsconfig.tsbuildinfo` file and try again.
+The tsconfig.json in this directory is used to generate the JS files.
