@@ -1,8 +1,10 @@
 # Build files
 config/babel.config.js
+config/entries.config.js
 config/jest.config.js
 helpers/config.js
 helpers/package-config.js
+lib/postcss-pretty.js
 
 # system/hidden files
 *.bak
