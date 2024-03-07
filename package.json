@@ -38,6 +38,7 @@
     "build": "ts-node ./bin/build.ts",
     "prepublishOnly": "yarn run build",
     "test": "lipemat-js-boilerplate test",
+    "validate-ts": "tsc --noEmit",
     "watch": "ts-node ./bin/watch.ts"
   },
   "dependencies": {
