@@ -1,5 +1,6 @@
 import {existsSync} from 'fs';
 import {resolve} from 'path';
+import webpack from 'webpack';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config';
 import {getPackageConfig} from './package-config';
@@ -13,6 +14,7 @@ type Configs = {
 	'babel.config': BabelConfig;
 	'jest.config': JestConfig;
 	'entries.config': EntriesConfig;
+	'webpack.dist': webpack.Configuration;
 };
 
 const {dependencies, devDependencies, workingDirectory, packageDirectory} = getPackageConfig();
