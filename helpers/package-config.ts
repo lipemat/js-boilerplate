@@ -52,7 +52,7 @@ const defaults: Partial<PackageConfig> = {
 	brotliFiles: false,
 	cssTsFiles: false,
 	es6Modules: [],
-	jsPath: '',
+	jsPath: './',
 	packageDirectory: workingDirectory,
 	shortCssClasses: false,
 	url: 'http://localhost',
