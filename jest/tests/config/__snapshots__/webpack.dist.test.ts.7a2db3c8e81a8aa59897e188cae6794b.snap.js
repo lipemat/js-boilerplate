@@ -64,6 +64,13 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         "use": [
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
+          {
+            "loader": "clean-css-loader",
+            "options": {
+              "level": 2,
+              "sourceMap": false,
+            },
+          },
         ],
       },
       {
@@ -402,6 +409,13 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "use": [
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
+          {
+            "loader": "clean-css-loader",
+            "options": {
+              "level": 2,
+              "sourceMap": false,
+            },
+          },
         ],
       },
       {

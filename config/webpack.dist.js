@@ -130,6 +130,13 @@ module.exports = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader',
+					{
+						loader: 'clean-css-loader',
+						options: {
+							level: 2,
+							sourceMap: false,
+						},
+					},
 				],
 			},
 			{
