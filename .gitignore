@@ -1,3 +1,11 @@
+# Build files
+config/babel.config.js
+config/entries.config.js
+config/jest.config.js
+helpers/config.js
+helpers/package-config.js
+lib/postcss-pretty.js
+
 # system/hidden files
 *.bak
 *.sublime-project
@@ -13,6 +21,7 @@
 .ready
 .sass-cache
 .svn
+tsconfig.tsbuildinfo
 Thumbs.db
 ehthumbs.db
 
@@ -94,6 +103,8 @@ dist
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/csv-editor.xml
+.idea/csv-plugin.xml
 .idea/php.xml
 .idea/sshConfigs.xml
 # Generated files
@@ -110,3 +121,5 @@ dist
 atlassian-ide-plugin.xml
 # Editor-based Rest Client
 .idea/httpRequests
+# Copilot
+.idea/copilot

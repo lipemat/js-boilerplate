@@ -6,7 +6,12 @@
  *
  * @see getEntries
  */
-module.exports = {
+
+export type EntriesConfig = {
+	[file: string]: string[];
+};
+
+const entries: EntriesConfig = {
 	master: [
 		'index.js',
 		'index.ts',
@@ -18,3 +23,5 @@ module.exports = {
 		'admin.tsx',
 	],
 };
+
+module.exports = entries;

@@ -19,7 +19,7 @@ Usage: lipemat-js-boilerplate analyze [--stats-only|--help]
 const flags = minimist( process.argv.slice( 2 ) );
 const workingDirectory = fs.realpathSync( process.cwd() );
 const statsDir = workingDirectory + '/node_modules/.cache/statoscope';
-const webpackConfig = getConfig<webpack.Configuration>( 'webpack.dist' );
+const webpackConfig = getConfig( 'webpack.dist' );
 
 if ( true === flags.h || true === flags.help ) {
 	console.log( help );

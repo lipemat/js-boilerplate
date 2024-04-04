@@ -8,7 +8,8 @@
     "helpers/**/*",
     "lib/**/*",
     "jest/**/*",
-    "scripts/**/*"
+    "scripts/**/*",
+    "src/**/*"
   ],
   "compilerOptions": {
     "esModuleInterop": true,

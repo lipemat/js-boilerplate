@@ -23,7 +23,7 @@ if ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) {
 }
 
 async function validate() {
-	let webpackConfig = getConfig<webpack.Configuration>( 'webpack.dist' );
+	let webpackConfig = getConfig( 'webpack.dist' );
 	webpackConfig.stats = 'errors-warnings';
 
 	// Add CSS module typings generation to webpack config.
@@ -59,7 +59,7 @@ async function validate() {
 	console.log( '>>> CSS Module definitions generated.' );
 
 	// A fresh config for CSS validation.
-	webpackConfig = getConfig( 'webpack.dist.js' );
+	webpackConfig = getConfig( 'webpack.dist' );
 	webpackConfig.stats = 'errors-warnings';
 	webpack( webpackConfig ).run( ( err, stats ) => {
 		if ( err ) {
