@@ -216,7 +216,10 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                     "postcssPlugin": "postcss-preset-env",
                   },
                   [Function],
-                  [Function],
+                  {
+                    "OnceExit": [Function],
+                    "postcssPlugin": "postcss-sort-media-queries",
+                  },
                   {
                     "OnceExit": [Function],
                     "postcssPlugin": "js-boilerplate/postcss-pretty",
@@ -503,7 +506,10 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                     "postcssPlugin": "postcss-preset-env",
                   },
                   [Function],
-                  [Function],
+                  {
+                    "OnceExit": [Function],
+                    "postcssPlugin": "postcss-sort-media-queries",
+                  },
                   {
                     "OnceExit": [Function],
                     "postcssPlugin": "js-boilerplate/postcss-pretty",

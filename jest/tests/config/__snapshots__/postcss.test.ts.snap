@@ -124,7 +124,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
       "postcssPlugin": "postcss-preset-env",
     },
     [Function],
-    [Function],
+    {
+      "OnceExit": [Function],
+      "postcssPlugin": "postcss-sort-media-queries",
+    },
     {
       "OnceExit": [Function],
       "postcssPlugin": "js-boilerplate/postcss-pretty",
@@ -258,7 +261,10 @@ exports[`postcss.js PostCSS config: production 1`] = `
       "postcssPlugin": "postcss-preset-env",
     },
     [Function],
-    [Function],
+    {
+      "OnceExit": [Function],
+      "postcssPlugin": "postcss-sort-media-queries",
+    },
     {
       "OnceExit": [Function],
       "postcssPlugin": "clean",

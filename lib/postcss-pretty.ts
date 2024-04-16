@@ -9,10 +9,9 @@
  */
 
 
-import type {Container, Root} from 'postcss';
+import type {Container, Plugin, Root} from 'postcss';
 import type {ChildNode} from 'postcss/lib/node';
 import type {AtRuleRaws} from 'postcss/lib/at-rule';
-import type {ConfigPlugin} from 'postcss-load-config';
 
 /**
  * Get the depth of the current node.
@@ -51,7 +50,7 @@ function processCss( node: ChildNode ) {
 	}
 }
 
-const plugin: ConfigPlugin = {
+const plugin: Plugin = {
 	postcssPlugin: 'js-boilerplate/postcss-pretty',
 	OnceExit( css: Root ) {
 		css.walk( processCss );

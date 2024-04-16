@@ -7,10 +7,14 @@ import {getPackageConfig} from '../helpers/package-config';
 import PrettyPlugin from '../lib/postcss-pretty';
 import type {Config, ConfigPlugin} from 'postcss-load-config';
 import type {LoaderContext} from 'webpack';
+import type {Plugin} from 'postcss';
 
 const postcssPresetEnv = require( 'postcss-preset-env' );
 
-type PostCSSConfig = Config & Partial<LoaderContext<Config>>;
+export type PostCSSConfig = Config & Partial<LoaderContext<Config>> & {
+	plugins: Plugin[];
+	parser: string;
+}
 
 function isPluginsArray( value: unknown ): value is ConfigPlugin[] {
 	return Array.isArray( value );
@@ -89,7 +93,13 @@ const config: PostCSSConfig = {
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
-		require( '@lipemat/css-mqpacker' ),
+		require( 'postcss-sort-media-queries' )( {
+			onlyTopLevel: true,
+			sort: 'mobile-first',
+			configuration: {
+				unitlessMqAlwaysFirst: true,
+			},
+		} ),
 	],
 	parser: 'postcss-scss',
 };
