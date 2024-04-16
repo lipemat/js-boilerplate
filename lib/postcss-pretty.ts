@@ -9,9 +9,10 @@
  */
 
 
-import {Container, Root} from 'postcss';
+import type {Container, Root} from 'postcss';
 import type {ChildNode} from 'postcss/lib/node';
 import type {AtRuleRaws} from 'postcss/lib/at-rule';
+import type {ConfigPlugin} from 'postcss-load-config';
 
 /**
  * Get the depth of the current node.
@@ -50,16 +51,14 @@ function processCss( node: ChildNode ) {
 	}
 }
 
-module.exports = () => {
-	return {
-		postcssPlugin: 'js-boilerplate/postcss-pretty',
-		OnceExit( css: Root ) {
-			css.walk( processCss );
-			if ( css.first !== undefined && css.first.raws !== undefined ) {
-				css.first.raws.before = '';
-			}
-		},
-	};
+const plugin: ConfigPlugin = {
+	postcssPlugin: 'js-boilerplate/postcss-pretty',
+	OnceExit( css: Root ) {
+		css.walk( processCss );
+		if ( css.first !== undefined && css.first.raws !== undefined ) {
+			css.first.raws.before = '';
+		}
+	},
 };
 
-module.exports.postcss = true;
+export default plugin;
