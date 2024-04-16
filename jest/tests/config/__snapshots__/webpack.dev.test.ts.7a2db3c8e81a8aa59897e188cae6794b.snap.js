@@ -162,10 +162,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                         "postcssPlugin": "postcss-font-variant",
                       },
                       {
-                        "Rule": [Function],
-                        "postcssPlugin": "css-has-pseudo",
-                      },
-                      {
                         "Declaration": [Function],
                         "postcssPlugin": "postcss-stepped-value-functions",
                       },
@@ -450,10 +446,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                       {
                         "Once": [Function],
                         "postcssPlugin": "postcss-font-variant",
-                      },
-                      {
-                        "Rule": [Function],
-                        "postcssPlugin": "css-has-pseudo",
                       },
                       {
                         "Declaration": [Function],

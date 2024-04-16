@@ -70,10 +70,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
           "postcssPlugin": "postcss-font-variant",
         },
         {
-          "Rule": [Function],
-          "postcssPlugin": "css-has-pseudo",
-        },
-        {
           "Declaration": [Function],
           "postcssPlugin": "postcss-stepped-value-functions",
         },
@@ -205,10 +201,6 @@ exports[`postcss.js PostCSS config: production 1`] = `
         {
           "Once": [Function],
           "postcssPlugin": "postcss-font-variant",
-        },
-        {
-          "Rule": [Function],
-          "postcssPlugin": "css-has-pseudo",
         },
         {
           "Declaration": [Function],
