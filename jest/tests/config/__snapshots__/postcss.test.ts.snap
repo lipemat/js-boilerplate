@@ -125,7 +125,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
     },
     [Function],
     [Function],
-    [Function],
+    {
+      "OnceExit": [Function],
+      "postcssPlugin": "js-boilerplate/postcss-pretty",
+    },
   ],
   "sourceMap": true,
 }

@@ -2163,6 +2163,8 @@ __metadata:
     "@types/jest": "npm:^29.5.3"
     "@types/minimist": "npm:^1"
     "@types/node": "npm:^16"
+    "@types/postcss-load-config": "npm:^3.0.1"
+    "@types/postcss-preset-env": "npm:^7.7.0"
     "@wordpress/browserslist-config": "npm:^5.19.0"
     are-you-es5: "npm:^2.1.1"
     babel-jest: "npm:^29.0.0"
@@ -2188,13 +2190,13 @@ __metadata:
     memfs: "npm:^3.5.3"
     mini-css-extract-plugin: "npm:^1.3.3"
     minimist: "npm:^1.2.8"
-    postcss: "npm:^8.4.13"
+    postcss: "npm:^8.4.38"
     postcss-color-mod-function: "npm:^3.0.3"
     postcss-custom-media: "npm:^8.0.1"
     postcss-import: "npm:^15.1.0"
-    postcss-loader: "npm:^6.2.1"
+    postcss-loader: "npm:^8.1.1"
     postcss-nested: "npm:^5.0.6"
-    postcss-preset-env: "npm:^7.5.0"
+    postcss-preset-env: "npm:^7.8.3"
     postcss-scss: "npm:^4.0.4"
     prettier: "npm:^3.1.1"
     react: "npm:^18.2.0"
@@ -2920,6 +2922,25 @@ __metadata:
   version: 4.0.2
   resolution: "@types/parse-json@npm:4.0.2"
   checksum: 10c0/b1b863ac34a2c2172fbe0807a1ec4d5cb684e48d422d15ec95980b81475fac4fdb3768a8b13eef39130203a7c04340fc167bae057c7ebcafd7dec9fe6c36aeb1
+  languageName: node
+  linkType: hard
+
+"@types/postcss-load-config@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@types/postcss-load-config@npm:3.0.1"
+  dependencies:
+    postcss-load-config: "npm:*"
+  checksum: 10c0/d54c9e38e06e74e5baed791d8893a1c80733ac4d6a7957e811dcdefe2dcc8a18ded721acbb2da00e4cd7e551a8582a0dae7b97eb4a5851fba555b8692753ca44
+  languageName: node
+  linkType: hard
+
+"@types/postcss-preset-env@npm:^7.7.0":
+  version: 7.7.0
+  resolution: "@types/postcss-preset-env@npm:7.7.0"
+  dependencies:
+    autoprefixer: "npm:^10.4.7"
+    postcss: "npm:^8.4.14"
+  checksum: 10c0/d13e72f165021f9e2efc77e5df695c4166b7eab6a773a67f4d6a22988e1865cfeff9a973ae1159b5f0378252f7bad3f9b871f87e2a3cdf8ef12b9bc2fd78b302
   languageName: node
   linkType: hard
 
@@ -4003,6 +4024,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"autoprefixer@npm:^10.4.7":
+  version: 10.4.19
+  resolution: "autoprefixer@npm:10.4.19"
+  dependencies:
+    browserslist: "npm:^4.23.0"
+    caniuse-lite: "npm:^1.0.30001599"
+    fraction.js: "npm:^4.3.7"
+    normalize-range: "npm:^0.1.2"
+    picocolors: "npm:^1.0.0"
+    postcss-value-parser: "npm:^4.2.0"
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: 10c0/fe0178eb8b1da4f15c6535cd329926609b22d1811e047371dccce50563623f8075dd06fb167daff059e4228da651b0bdff6d9b44281541eaf0ce0b79125bfd19
+  languageName: node
+  linkType: hard
+
 "available-typed-arrays@npm:^1.0.5":
   version: 1.0.5
   resolution: "available-typed-arrays@npm:1.0.5"
@@ -4274,6 +4313,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browserslist@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "browserslist@npm:4.23.0"
+  dependencies:
+    caniuse-lite: "npm:^1.0.30001587"
+    electron-to-chromium: "npm:^1.4.668"
+    node-releases: "npm:^2.0.14"
+    update-browserslist-db: "npm:^1.0.13"
+  bin:
+    browserslist: cli.js
+  checksum: 10c0/8e9cc154529062128d02a7af4d8adeead83ca1df8cd9ee65a88e2161039f3d68a4d40fea7353cab6bae4c16182dec2fdd9a1cf7dc2a2935498cee1af0e998943
+  languageName: node
+  linkType: hard
+
 "bser@npm:2.1.1":
   version: 2.1.1
   resolution: "bser@npm:2.1.1"
@@ -4385,6 +4438,13 @@ __metadata:
   version: 1.0.30001576
   resolution: "caniuse-lite@npm:1.0.30001576"
   checksum: 10c0/79cf666f9139c542bdf75eab76171534dc638d2f8efacd325649c8ec6be59de400f0e9d6dc02504f12125626b306c0a848fe86904c01722218b2a479be82a9c1
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001587, caniuse-lite@npm:^1.0.30001599":
+  version: 1.0.30001610
+  resolution: "caniuse-lite@npm:1.0.30001610"
+  checksum: 10c0/015956a0bf2e3e233da3dc00c5632bbb4d416bcd6ced2f839e33e45b197a856234f97cb046e7427b83d7e3a3d6df314dfab1c86eb9d970970e00ad85a50b4933
   languageName: node
   linkType: hard
 
@@ -4859,6 +4919,23 @@ __metadata:
     path-type: "npm:^4.0.0"
     yaml: "npm:^1.10.0"
   checksum: 10c0/b923ff6af581638128e5f074a5450ba12c0300b71302398ea38dbeabd33bbcaa0245ca9adbedfcf284a07da50f99ede5658c80bb3e39e2ce770a99d28a21ef03
+  languageName: node
+  linkType: hard
+
+"cosmiconfig@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "cosmiconfig@npm:9.0.0"
+  dependencies:
+    env-paths: "npm:^2.2.1"
+    import-fresh: "npm:^3.3.0"
+    js-yaml: "npm:^4.1.0"
+    parse-json: "npm:^5.2.0"
+  peerDependencies:
+    typescript: ">=4.9.5"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/1c1703be4f02a250b1d6ca3267e408ce16abfe8364193891afc94c2d5c060b69611fdc8d97af74b7e6d5d1aac0ab2fb94d6b079573146bc2d756c2484ce5f0ee
   languageName: node
   linkType: hard
 
@@ -5411,6 +5488,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"electron-to-chromium@npm:^1.4.668":
+  version: 1.4.737
+  resolution: "electron-to-chromium@npm:1.4.737"
+  checksum: 10c0/af407082035aac17e1c4c99b1bd44f6b4dc359c2be538d04508c7a4013badd894c6fc79333c7d80e2de19baac4e9da6061b95b09765868c5278180f02dfe31c1
+  languageName: node
+  linkType: hard
+
 "emittery@npm:^0.13.1":
   version: 0.13.1
   resolution: "emittery@npm:0.13.1"
@@ -5488,7 +5572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"env-paths@npm:^2.2.0":
+"env-paths@npm:^2.2.0, env-paths@npm:^2.2.1":
   version: 2.2.1
   resolution: "env-paths@npm:2.2.1"
   checksum: 10c0/285325677bf00e30845e330eec32894f5105529db97496ee3f598478e50f008c5352a41a30e5e72ec9de8a542b5a570b85699cd63bd2bc646dbcb9f311d83bc4
@@ -6361,7 +6445,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fraction.js@npm:^4.3.6":
+"fraction.js@npm:^4.3.6, fraction.js@npm:^4.3.7":
   version: 4.3.7
   resolution: "fraction.js@npm:4.3.7"
   checksum: 10c0/df291391beea9ab4c263487ffd9d17fed162dbb736982dee1379b2a8cc94e4e24e46ed508c6d278aded9080ba51872f1bc5f3a5fd8d7c74e5f105b508ac28711
@@ -7050,7 +7134,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-fresh@npm:^3.2.1":
+"import-fresh@npm:^3.2.1, import-fresh@npm:^3.3.0":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
   dependencies:
@@ -8161,6 +8245,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jiti@npm:^1.20.0":
+  version: 1.21.0
+  resolution: "jiti@npm:1.21.0"
+  bin:
+    jiti: bin/jiti.js
+  checksum: 10c0/7f361219fe6c7a5e440d5f1dba4ab763a5538d2df8708cdc22561cf25ea3e44b837687931fca7cdd8cdd9f567300e90be989dd1321650045012d8f9ed6aab07f
+  languageName: node
+  linkType: hard
+
 "jora@npm:1.0.0-beta.8":
   version: 1.0.0-beta.8
   resolution: "jora@npm:1.0.0-beta.8"
@@ -8383,13 +8476,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"klona@npm:^2.0.5":
-  version: 2.0.6
-  resolution: "klona@npm:2.0.6"
-  checksum: 10c0/94eed2c6c2ce99f409df9186a96340558897b3e62a85afdc1ee39103954d2ebe1c1c4e9fe2b0952771771fa96d70055ede8b27962a7021406374fdb695fd4d01
-  languageName: node
-  linkType: hard
-
 "language-subtag-registry@npm:^0.3.20":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -8439,6 +8525,13 @@ __metadata:
     prelude-ls: "npm:^1.2.1"
     type-check: "npm:~0.4.0"
   checksum: 10c0/effb03cad7c89dfa5bd4f6989364bfc79994c2042ec5966cb9b95990e2edee5cd8969ddf42616a0373ac49fac1403437deaf6e9050fbbaa3546093a59b9ac94e
+  languageName: node
+  linkType: hard
+
+"lilconfig@npm:^3.0.0":
+  version: 3.1.1
+  resolution: "lilconfig@npm:3.1.1"
+  checksum: 10c0/311b559794546894e3fe176663427326026c1c644145be9e8041c58e268aa9328799b8dfe7e4dd8c6a4ae305feae95a1c9e007db3569f35b42b6e1bc8274754c
   languageName: node
   linkType: hard
 
@@ -9753,17 +9846,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-loader@npm:^6.2.1":
-  version: 6.2.1
-  resolution: "postcss-loader@npm:6.2.1"
+"postcss-load-config@npm:*":
+  version: 5.0.3
+  resolution: "postcss-load-config@npm:5.0.3"
   dependencies:
-    cosmiconfig: "npm:^7.0.0"
-    klona: "npm:^2.0.5"
-    semver: "npm:^7.3.5"
+    lilconfig: "npm:^3.0.0"
+    yaml: "npm:^2.3.4"
   peerDependencies:
+    jiti: ">=1.21.0"
+    postcss: ">=8.0.9"
+  peerDependenciesMeta:
+    jiti:
+      optional: true
+    postcss:
+      optional: true
+  checksum: 10c0/decb5363cead7dc72f664a7943f1cd88e252107b289261f50925101e864c7bb80a5c479e876609d8146c1ab6b52b961abb91cbb41768edc416eb9729555f0643
+  languageName: node
+  linkType: hard
+
+"postcss-loader@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "postcss-loader@npm:8.1.1"
+  dependencies:
+    cosmiconfig: "npm:^9.0.0"
+    jiti: "npm:^1.20.0"
+    semver: "npm:^7.5.4"
+  peerDependencies:
+    "@rspack/core": 0.x || 1.x
     postcss: ^7.0.0 || ^8.0.1
     webpack: ^5.0.0
-  checksum: 10c0/736a1bf43a3e09e2351b5cc97cc26790a1c3261412c9dee063f3f6f2969a6ff7d8d194d9adcad01cee1afd1de071482318d9699e6157b67d46b3dccf3be1b58b
+  peerDependenciesMeta:
+    "@rspack/core":
+      optional: true
+    webpack:
+      optional: true
+  checksum: 10c0/86cde94cd4c7c39892ef9bd4bf09342f422a21789654038694cf2b23c37c0ed9550c73608f656426a6631f0ade1eca82022781831e93d5362afe2f191388b85e
   languageName: node
   linkType: hard
 
@@ -9892,7 +10009,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:^7.5.0":
+"postcss-preset-env@npm:^7.8.3":
   version: 7.8.3
   resolution: "postcss-preset-env@npm:7.8.3"
   dependencies:
@@ -10029,7 +10146,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.13, postcss@npm:^8.4.7":
+"postcss@npm:^8.4.14, postcss@npm:^8.4.38":
+  version: 8.4.38
+  resolution: "postcss@npm:8.4.38"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.2.0"
+  checksum: 10c0/955407b8f70cf0c14acf35dab3615899a2a60a26718a63c848cf3c29f2467b0533991b985a2b994430d890bd7ec2b1963e36352b0774a19143b5f591540f7c06
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.7":
   version: 8.4.33
   resolution: "postcss@npm:8.4.33"
   dependencies:
@@ -11089,6 +11217,13 @@ __metadata:
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: 10c0/32f2dfd1e9b7168f9a9715eb1b4e21905850f3b50cf02cf476e47e4eebe8e6b762b63a64357896aa29b37e24922b4282df0f492e0d2ace572b43d15525976ff8
+  languageName: node
+  linkType: hard
+
+"source-map-js@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "source-map-js@npm:1.2.0"
+  checksum: 10c0/7e5f896ac10a3a50fe2898e5009c58ff0dc102dcb056ed27a354623a0ece8954d4b2649e1a1b2b52ef2e161d26f8859c7710350930751640e71e374fe2d321a4
   languageName: node
   linkType: hard
 
@@ -12518,6 +12653,15 @@ __metadata:
   version: 1.10.2
   resolution: "yaml@npm:1.10.2"
   checksum: 10c0/5c28b9eb7adc46544f28d9a8d20c5b3cb1215a886609a2fd41f51628d8aaa5878ccd628b755dbcd29f6bb4921bd04ffbc6dcc370689bb96e594e2f9813d2605f
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^2.3.4":
+  version: 2.4.1
+  resolution: "yaml@npm:2.4.1"
+  bin:
+    yaml: bin.mjs
+  checksum: 10c0/816057dbaea16a7dfb0b868ace930f143dece96bbb4c4fbb6f38aa389166f897240d9fa535dbfd6b1b0d9442416f4abcc698e63f82394d0c67b329aa6c2be576
   languageName: node
   linkType: hard
 

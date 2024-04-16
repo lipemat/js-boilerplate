@@ -50,7 +50,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
             [
               "@babel/preset-react",
               {
-                "development": true,
+                "development": false,
                 "runtime": "automatic",
               },
             ],
@@ -83,10 +83,9 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
               "importLoaders": 1,
               "modules": {
                 "exportLocalsConvention": "camelCase",
-                "localIdentName": "Ⓜ[name]__[local]__[contenthash:base64:2]",
+                "localIdentName": "[contenthash:base64:5]",
                 "mode": [Function],
               },
-              "sourceMap": true,
               "url": false,
             },
           },
@@ -217,9 +216,11 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
                   },
                   [Function],
                   [Function],
-                  [Function],
+                  {
+                    "OnceExit": [Function],
+                    "postcssPlugin": "clean",
+                  },
                 ],
-                "sourceMap": true,
               },
             },
           },
@@ -395,7 +396,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
             [
               "@babel/preset-react",
               {
-                "development": true,
+                "development": false,
                 "runtime": "automatic",
               },
             ],
@@ -428,10 +429,9 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
               "importLoaders": 1,
               "modules": {
                 "exportLocalsConvention": "camelCase",
-                "localIdentName": "Ⓜ[name]__[local]__[contenthash:base64:2]",
+                "localIdentName": "[contenthash:base64:5]",
                 "mode": [Function],
               },
-              "sourceMap": true,
               "url": false,
             },
           },
@@ -562,9 +562,11 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                   },
                   [Function],
                   [Function],
-                  [Function],
+                  {
+                    "OnceExit": [Function],
+                    "postcssPlugin": "clean",
+                  },
                 ],
-                "sourceMap": true,
               },
             },
           },

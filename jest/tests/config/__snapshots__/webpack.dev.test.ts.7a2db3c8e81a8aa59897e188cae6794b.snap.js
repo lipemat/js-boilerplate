@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[ `webpack.dev.test.ts Browserslist config: Chrome 71 1` ] = `
+exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
 {
   "devtool": "eval-source-map",
   "entry": {},
@@ -217,7 +217,10 @@ exports[ `webpack.dev.test.ts Browserslist config: Chrome 71 1` ] = `
                   },
                   [Function],
                   [Function],
-                  [Function],
+                  {
+                    "OnceExit": [Function],
+                    "postcssPlugin": "js-boilerplate/postcss-pretty",
+                  },
                 ],
                 "sourceMap": true,
               },
@@ -284,7 +287,7 @@ exports[ `webpack.dev.test.ts Browserslist config: Chrome 71 1` ] = `
 }
 `;
 
-exports[ `webpack.dev.test.ts Browserslist config: Default Browsers 1` ] = `
+exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
 {
   "devtool": "eval-source-map",
   "entry": {},
@@ -501,7 +504,10 @@ exports[ `webpack.dev.test.ts Browserslist config: Default Browsers 1` ] = `
                   },
                   [Function],
                   [Function],
-                  [Function],
+                  {
+                    "OnceExit": [Function],
+                    "postcssPlugin": "js-boilerplate/postcss-pretty",
+                  },
                 ],
                 "sourceMap": true,
               },
@@ -568,7 +574,7 @@ exports[ `webpack.dev.test.ts Browserslist config: Default Browsers 1` ] = `
 }
 `;
 
-exports[ `webpack.dev.test.ts cssTsFiles: cssTsFiles 1` ] = `
+exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
 {
   "devtool": "eval-source-map",
   "entry": {},

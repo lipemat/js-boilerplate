@@ -1,6 +1,6 @@
 import {readFileSync} from 'fs';
 import {basename} from 'path';
-import postcss, {Plugin} from 'postcss';
+import postcss, {type Plugin} from 'postcss';
 import compileWithWebpack, {Fixture} from '../../helpers/compileWithWebpack';
 
 import browserslist from 'browserslist';
@@ -23,7 +23,7 @@ function getPostCSSConfig(): Config {
 	// @ts-ignore
 	let config: Config = {};
 	jest.isolateModules( () => {
-		config = require( '../../../config/postcss.config.js' );
+		config = require( '../../../config/postcss.config.ts' );
 	} );
 	return config;
 }

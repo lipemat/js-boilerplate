@@ -1,9 +1,11 @@
 afterEach( () => {
 	delete process.env.BROWSERSLIST;
+	process.env.NODE_ENV = 'test';
 } );
 
 describe( 'webpack.dist.test.ts', () => {
 	test( 'Browserslist config', () => {
+		process.env.NODE_ENV = 'production';
 		const config = require( '../../../config/webpack.dist' );
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) + ', not op_mini all' );
