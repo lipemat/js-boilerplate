@@ -1,11 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-// Update notifier.
-const updateNotifier = require( 'update-notifier' );
-const pkg = require( '../package.json' );
-updateNotifier( {pkg, shouldNotifyInNpmScript: true} ).notify();
-
 const spawn = require( 'cross-spawn' );
 const args = process.argv.slice( 2 );
 
