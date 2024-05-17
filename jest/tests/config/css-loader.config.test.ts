@@ -13,8 +13,8 @@ jest.mock( '../../../helpers/package-config.js', () => ( {
 	} ),
 } ) );
 // Change the result of the getLocalIdent function to something we can verify.
-jest.mock( '../../../helpers/css-classnames.js', () => ( {
-	...jest.requireActual( '../../../helpers/css-classnames.js' ),
+jest.mock( '../../../helpers/css-classnames', () => ( {
+	...jest.requireActual( '../../../helpers/css-classnames' ),
 	getLocalIdent: jest.fn().mockReturnValue( '__TEST_CSS__' ),
 } ) );
 

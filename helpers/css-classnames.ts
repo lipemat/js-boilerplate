@@ -1,9 +1,14 @@
-const {getPackageConfig} = require( './package-config' );
+import {getPackageConfig} from './package-config';
 
-const SHORT_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+export const SHORT_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+export const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
-const classes = {};
+const classes: {
+	[ filename: string ]: {
+		[ className: string ]: string
+	}
+} = {};
+
 let counters = [ -1 ];
 
 /**
@@ -11,10 +16,10 @@ let counters = [ -1 ];
  *
  * Using a helper function to allow for future enhancements.
  *
- * @since 10.3.0
+ * @since 4.6.0
  */
-function usingShortCssClasses() {
-	return getPackageConfig().shortCssClasses;
+export function usingShortCssClasses(): boolean {
+	return Boolean( getPackageConfig().shortCssClasses );
 }
 
 /**
@@ -22,20 +27,20 @@ function usingShortCssClasses() {
  *
  * @notice Mostly here for unit tests.
  */
-function resetCounters() {
+export function resetCounters(): void {
 	counters = [ -1 ];
 }
 
 /**
  * Get the next class is sequence based on:
- * 1. Single character from SHORT_ALPHABET (prevent conflicts with CSS boilerplate).
+ * 1. Single character from SHORT_ALPHABET (prevent conflicts with JS boilerplate).
  * 2. Incremented character from the `ALPHABET`.
  *      1. Used once require 2+ characters.
  *      2. Grows to 3+ characters as needed.
  *
  * @return {string}
  */
-function getNextClass() {
+export function getNextClass(): string {
 	const last = counters.length - 1;
 	let totalLetters = ALPHABET.length - 1;
 
@@ -104,17 +109,8 @@ function incrementParent() {
  *
  * @link https://webpack.js.org/loaders/css-loader/#getlocalident
  */
-const getLocalIdent = ( {resourcePath}, _, localName ) => {
+export const getLocalIdent = ( {resourcePath}, _, localName: string ): string => {
 	classes[ resourcePath ] ||= {};
 	classes[ resourcePath ][ localName ] ||= getNextClass();
 	return classes[ resourcePath ][ localName ];
-};
-
-module.exports = {
-	ALPHABET,
-	SHORT_ALPHABET,
-	getLocalIdent,
-	getNextClass,
-	usingShortCssClasses,
-	resetCounters,
 };
