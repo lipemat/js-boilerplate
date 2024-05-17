@@ -1,4 +1,8 @@
-const {getLocalIdent, usingShortCssClasses} = require( '../helpers/css-classnames' );
+import {getLocalIdent, usingShortCssClasses} from '../helpers/css-classnames';
+import type {Config, Mode} from 'css-loader';
+import type {AtLeast} from '../types/utility';
+
+export type CssLoaderConfig = AtLeast<Config, 'importLoaders' | 'modules' | 'sourceMap' | 'url'>
 
 /**
  * Options for the Webpack `css-loader`.
@@ -12,7 +16,7 @@ const {getLocalIdent, usingShortCssClasses} = require( '../helpers/css-classname
  * @param {string} resourcePath
  * @return {string}
  */
-const mode = resourcePath => {
+const mode = ( resourcePath: string ): Mode => {
 	if ( /globals?\//i.test( resourcePath.replace( /\\/g, '/' ) ) ) {
 		return 'global';
 	}
@@ -22,7 +26,7 @@ const mode = resourcePath => {
 	return 'local';
 };
 
-let cssLoader = {
+const cssLoader: CssLoaderConfig = {
 	importLoaders: 1,
 	modules: {
 		exportLocalsConvention: 'camelCase',
@@ -34,18 +38,15 @@ let cssLoader = {
 };
 
 if ( 'production' === process.env.NODE_ENV ) {
-	cssLoader = {
-		importLoaders: 1,
-		modules: {
-			exportLocalsConvention: 'camelCase',
-			// Use short CSS Classes if enabled.
-			...usingShortCssClasses() ? {getLocalIdent} : {},
-			// Hash used when short CSS classes are not enabled.
-			localIdentName: '[contenthash:base64:5]',
-			mode,
-		},
-		url: false,
-	};
+	cssLoader.modules = {
+		exportLocalsConvention: 'camelCase',
+		// Use short CSS Classes if enabled.
+		...usingShortCssClasses() ? {getLocalIdent} : {},
+		// Hash used when short CSS classes are not enabled.
+		localIdentName: '[contenthash:base64:5]',
+		mode,
+	}
+	cssLoader.sourceMap = false;
 }
 
 module.exports = cssLoader;

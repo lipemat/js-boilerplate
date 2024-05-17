@@ -28,7 +28,8 @@
     "config/",
     "helpers/",
     "lib/",
-    "scripts/"
+    "scripts/",
+    "types/"
   ],
   "bin": {
     "lipemat-js-boilerplate": "bin/lipemat-js-boilerplate.js"

@@ -21,6 +21,7 @@ exports[`css-loader.config.test.ts Production config: production CSS modules dis
     "localIdentName": "[contenthash:base64:5]",
     "mode": [Function],
   },
+  "sourceMap": false,
   "url": false,
 }
 `;
@@ -49,6 +50,7 @@ exports[`css-loader.config.test.ts Production config: production CSS modules ena
     "localIdentName": "[contenthash:base64:5]",
     "mode": [Function],
   },
+  "sourceMap": false,
   "url": false,
 }
 `;

@@ -9,7 +9,8 @@
     "lib/**/*",
     "jest/**/*",
     "scripts/**/*",
-    "src/**/*"
+    "src/**/*",
+    "types/**/*",
   ],
   "compilerOptions": {
     "esModuleInterop": true,
