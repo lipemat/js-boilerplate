@@ -46,6 +46,9 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
 			hasLocal = true;
 		}
 	} catch ( e ) {
+		if ( 'MODULE_NOT_FOUND' !== e.code ) {
+			console.error( e );
+		}
 	}
 
 	return hasLocal;
@@ -91,6 +94,9 @@ export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
 			mergedConfig = {...mergedConfig, ...localConfig};
 		}
 	} catch ( e ) {
+		if ( 'MODULE_NOT_FOUND' !== e.code ) {
+			console.error( e );
+		}
 	}
 	return mergedConfig;
 }
@@ -119,6 +125,9 @@ export function getExtensionsConfig<T extends object>( fileName: string, default
 				mergedConfig = {...mergedConfig, ...extensionConfig};
 			}
 		} catch ( e ) {
+			if ( 'MODULE_NOT_FOUND' !== e.code ) {
+				console.error( e );
+			}
 		}
 	} );
 
