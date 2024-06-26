@@ -1,4 +1,5 @@
 import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
+import {LoaderContext} from 'webpack';
 
 // Change this variable during tests.
 let mockShortCssEnabled = false;
@@ -12,6 +13,12 @@ jest.mock( '../../../helpers/package-config.js', () => ( {
 		shortCssClasses: mockShortCssEnabled,
 	} ),
 } ) );
+
+function makeResource( path: string ): LoaderContext<{ resourcePath: string }> {
+	return {
+		resourcePath: path,
+	} as LoaderContext<{ resourcePath: string }>;
+}
 
 describe( 'Test CSS Classname Generation', () => {
 	beforeEach( () => {
@@ -39,26 +46,13 @@ describe( 'Test CSS Classname Generation', () => {
 	} );
 
 	it( 'getLocalIdent', () => {
-		// @ts-ignore
-		expect( getLocalIdent( {
-			resourcePath: 'E:/SVN/js-boilerplate/tests/fake.pcss',
-		}, '', 'a-class' ) ).toEqual( 'A' );
-		// @ts-ignore
-		expect( getLocalIdent( {
-			resourcePath: 'E:/SVN/js-boilerplate/tests/other.pcss',
-		}, '', 'a-class' ) ).toEqual( 'B' );
-		// @ts-ignore
-		expect( getLocalIdent( {
-			resourcePath: 'E:/SVN/js-boilerplate/tests/other.pcss',
-		}, '', 'b-class' ) ).toEqual( 'C' );
-		// @ts-ignore
-		expect( getLocalIdent( {
-			resourcePath: 'E:/SVN/js-boilerplate/tests/fake.pcss',
-		}, '', 'a-class' ) ).toEqual( 'A' );
-		// @ts-ignore
-		expect( getLocalIdent( {
-			resourcePath: 'E:/SVN/js-boilerplate/tests/other.pcss',
-		}, '', 'b-class' ) ).toEqual( 'C' );
+		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/fake.pcss' ), '', 'a-class' ) ).toEqual( 'A' );
+		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/other.pcss',
+		), '', 'a-class' ) ).toEqual( 'B' );
+		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/other.pcss',
+		), '', 'b-class' ) ).toEqual( 'C' );
+		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/fake.pcss' ), '', 'a-class' ) ).toEqual( 'A' );
+		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/other.pcss' ), '', 'b-class' ) ).toEqual( 'C' );
 	} );
 
 	test( 'Alphabet Length', () => {

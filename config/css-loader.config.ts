@@ -1,5 +1,5 @@
 import {getLocalIdent, usingShortCssClasses} from '../helpers/css-classnames';
-import type {Config, Mode} from 'css-loader';
+import type {Config, Mode} from '../types/css-loader';
 import type {AtLeast} from '../types/utility';
 
 export type CssLoaderConfig = AtLeast<Config, 'importLoaders' | 'modules' | 'sourceMap' | 'url'>
