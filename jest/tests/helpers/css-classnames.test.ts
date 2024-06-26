@@ -39,18 +39,23 @@ describe( 'Test CSS Classname Generation', () => {
 	} );
 
 	it( 'getLocalIdent', () => {
+		// @ts-ignore
 		expect( getLocalIdent( {
 			resourcePath: 'E:/SVN/js-boilerplate/tests/fake.pcss',
 		}, '', 'a-class' ) ).toEqual( 'A' );
+		// @ts-ignore
 		expect( getLocalIdent( {
 			resourcePath: 'E:/SVN/js-boilerplate/tests/other.pcss',
 		}, '', 'a-class' ) ).toEqual( 'B' );
+		// @ts-ignore
 		expect( getLocalIdent( {
 			resourcePath: 'E:/SVN/js-boilerplate/tests/other.pcss',
 		}, '', 'b-class' ) ).toEqual( 'C' );
+		// @ts-ignore
 		expect( getLocalIdent( {
 			resourcePath: 'E:/SVN/js-boilerplate/tests/fake.pcss',
 		}, '', 'a-class' ) ).toEqual( 'A' );
+		// @ts-ignore
 		expect( getLocalIdent( {
 			resourcePath: 'E:/SVN/js-boilerplate/tests/other.pcss',
 		}, '', 'b-class' ) ).toEqual( 'C' );

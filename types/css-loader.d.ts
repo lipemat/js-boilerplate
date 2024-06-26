@@ -8,6 +8,12 @@ declare module 'css-loader' {
 
 	export type Mode = 'local' | 'global' | 'pure' | 'icss';
 
+	export type ResourcePath = LoaderContext<{
+		resourcePath: string
+	}>;
+
+	export type GetLocalIdent = ( context: ResourcePath, localIdentName: string, localName: string ) => string;
+
 	export type Modules =
 		| boolean
 		| 'local'
@@ -23,9 +29,7 @@ declare module 'css-loader' {
 		localIdentHashFunction: string;
 		localIdentHashDigest: string;
 		localIdentRegExp: string | RegExp;
-		getLocalIdent: ( context: LoaderContext<{
-			resourcePath: string
-		}>, localIdentName: string, localName: string ) => string;
+		getLocalIdent: GetLocalIdent;
 		namedExport: boolean;
 		exportGlobals: boolean;
 		exportLocalsConvention:

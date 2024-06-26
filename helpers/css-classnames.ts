@@ -1,4 +1,5 @@
 import {getPackageConfig} from './package-config';
+import type {GetLocalIdent, ResourcePath} from 'css-loader';
 
 export const SHORT_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 export const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -109,7 +110,7 @@ function incrementParent() {
  *
  * @link https://webpack.js.org/loaders/css-loader/#getlocalident
  */
-export const getLocalIdent = ( {resourcePath}, _, localName: string ): string => {
+export const getLocalIdent: GetLocalIdent = ( {resourcePath}: ResourcePath, _: string, localName: string ): string => {
 	classes[ resourcePath ] ||= {};
 	classes[ resourcePath ][ localName ] ||= getNextClass();
 	return classes[ resourcePath ][ localName ];
