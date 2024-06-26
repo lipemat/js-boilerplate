@@ -28,7 +28,7 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.35.0",
+                  "version": "3.37.1",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -314,7 +314,7 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.35.0",
+                  "version": "3.37.1",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -600,7 +600,7 @@ exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.35.0",
+                  "version": "3.37.1",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,

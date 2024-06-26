@@ -1,17 +1,13 @@
 import {basename, extname, join, resolve} from 'path';
-import webpack, {type Compiler} from 'webpack';
+import webpack, {type Compiler, OutputFileSystem} from 'webpack';
 import 'setimmediate';
 import {createFsFromVolume, IFs, Volume} from 'memfs';
 
-const {getConfig} = require( '../../helpers/config' );
+import {getConfig} from '../../helpers/config';
 
 /**
  * Compile a file using webpack.
- *
- *
  */
-
-
 export type Fixture = {
 	input: string;
 	output: string;
@@ -25,7 +21,7 @@ export type Fixture = {
  *
  */
 function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
-	return new Promise( ( resolve, reject ) => {
+	return new Promise( ( promiseResolve, reject ) => {
 		compiler.run( ( error, stats ) => {
 			if ( error || 'undefined' === typeof stats ) {
 				reject( error );
@@ -39,7 +35,7 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
 				const usedFs = compiler.outputFileSystem as IFs;
 				const outputPath = stats.compilation.outputOptions.path ?? '';
 				const data = usedFs.readFileSync( join( outputPath, basename( fixture.output ) ) ).toString();
-				resolve( data.trim() );
+				promiseResolve( data.trim() );
 			} catch ( e ) {
 				if ( stats.compilation.errors.length > 0 ) {
 					reject( stats.compilation.errors );
@@ -85,7 +81,7 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	const compiler = webpack( fullConfig );
 
 	// Use a memory cache for the compiler file system.
-	compiler.outputFileSystem = createFsFromVolume( new Volume() );
+	compiler.outputFileSystem = createFsFromVolume( new Volume() ) as OutputFileSystem;
 
 	return compile( compiler, fixture );
 }

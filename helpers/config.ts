@@ -6,6 +6,7 @@ import type {JestConfig} from '../config/jest.config';
 import {getPackageConfig} from './package-config';
 import type {EntriesConfig} from '../config/entries.config';
 import type {Config as PostCSSConfig} from 'postcss-load-config';
+import type {CssLoaderConfig} from '../config/css-loader.config';
 
 // Must be required to avoid issues with browserslist.
 const browserslist = require( 'browserslist' );
@@ -13,6 +14,7 @@ const browserslist = require( 'browserslist' );
 
 type Configs = {
 	'babel.config': BabelConfig;
+	'css-loader.config': CssLoaderConfig;
 	'entries.config': EntriesConfig;
 	'jest.config': JestConfig;
 	'postcss.config': PostCSSConfig;
