@@ -9,7 +9,6 @@ const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 const WebpackAssetsHash = require( '../helpers/WebpackAssetsHash' );
 
 const {getConfig, getTsConfigFile, getBrowsersList} = require( '../helpers/config' );
-const moduleHelpers = require( '../helpers/modules' );
 const config = require( '../helpers/package-config' );
 const {getEntries} = require( '../helpers/entries' );
 const {getPackageConfig} = require( '../helpers/package-config' );
@@ -122,7 +121,7 @@ module.exports = {
 			{
 				test: /\.[jt]sx?$/,
 				loader: 'babel-loader',
-				exclude: moduleHelpers.getBabelExcludeRegex(),
+				exclude: /node_modules/,
 				options: babelOptions,
 			},
 			{

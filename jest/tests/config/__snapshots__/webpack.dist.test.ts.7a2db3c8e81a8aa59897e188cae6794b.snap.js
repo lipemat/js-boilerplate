@@ -11,7 +11,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|chalk\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|postcss-sort-media-queries\\|prettier\\|ts-node\\|typescript\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /node_modules/,
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
@@ -357,7 +357,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
   "module": {
     "rules": [
       {
-        "exclude": /\\[\\\\\\\\/\\]node_modules\\[\\\\\\\\/\\]\\(\\?!\\(@csstools\\\\/postcss-global-data\\|@lipemat\\\\/eslint-config\\|are-you-es5\\|chalk\\|cross-spawn\\|jest\\|jest-environment-jsdom\\|postcss\\|postcss-color-mod-function\\|postcss-custom-media\\|postcss-import\\|postcss-nested\\|postcss-preset-env\\|postcss-scss\\|postcss-sort-media-queries\\|prettier\\|ts-node\\|typescript\\)\\[\\\\\\\\/\\]\\)/,
+        "exclude": /node_modules/,
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,

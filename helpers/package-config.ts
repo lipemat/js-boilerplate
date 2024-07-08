@@ -12,7 +12,6 @@ export interface PackageConfig {
 	dependencies: Dependencies;
 	description?: string;
 	devDependencies: Dependencies;
-	es6Modules: string[];
 	getPackageConfig: () => PackageConfig;
 	jsPath: string;
 	license?: string;
@@ -51,7 +50,6 @@ const workingDirectory = realpathSync( process.cwd() );
 const defaults: Partial<PackageConfig> = {
 	brotliFiles: false,
 	cssTsFiles: false,
-	es6Modules: [],
 	jsPath: './',
 	packageDirectory: workingDirectory,
 	shortCssClasses: false,
