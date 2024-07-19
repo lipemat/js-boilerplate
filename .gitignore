@@ -9,7 +9,7 @@ helpers/css-classnames.js
 helpers/entries.js
 helpers/modules.js
 helpers/package-config.js
-lib/postcss-pretty.js
+lib/*.js
 
 # system/hidden files
 *.bak

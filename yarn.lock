@@ -2160,6 +2160,7 @@ __metadata:
     "@statoscope/webpack-plugin": "npm:^5.28.2"
     "@teamsupercell/typings-for-css-modules-loader": "npm:^2.5.2"
     "@types/babel__preset-env": "npm:^7.9.6"
+    "@types/clean-css": "npm:^4.2.11"
     "@types/jest": "npm:^29.5.3"
     "@types/minimist": "npm:^1"
     "@types/node": "npm:~20.11.0"
@@ -2637,6 +2638,16 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/eebedbca185ac3c39dd5992ef18d9e2a9f99e7f3c2f52f5561f90e9ed482c5d224c7962db95362712f580ed5713264e777a98d8f0bd8747f4eadf62937baed16
+  languageName: node
+  linkType: hard
+
+"@types/clean-css@npm:^4.2.11":
+  version: 4.2.11
+  resolution: "@types/clean-css@npm:4.2.11"
+  dependencies:
+    "@types/node": "npm:*"
+    source-map: "npm:^0.6.0"
+  checksum: 10c0/bd9848821982500854fed36e672981d9ff286a4cf37b8a7d15a51bbb3f3a3e90676ec18e29e0e753a4c1785c108ca0c30939209cc7dd72712a32fa9d727ea601
   languageName: node
   linkType: hard
 

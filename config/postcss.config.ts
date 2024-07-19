@@ -5,6 +5,7 @@ import type Processor from 'postcss/lib/processor';
 import {getBrowsersList} from '../helpers/config';
 import {getPackageConfig} from '../helpers/package-config';
 import PrettyPlugin from '../lib/postcss-pretty';
+import cleanCSS from '../lib/postcss-clean';
 import type {Config, ConfigPlugin} from 'postcss-load-config';
 import type {LoaderContext} from 'webpack';
 import type {Plugin} from 'postcss';
@@ -16,7 +17,7 @@ export type PostCSSConfig = Config & Partial<LoaderContext<Config>> & {
 	parser: string;
 }
 
-function isPluginsArray( value: unknown ): value is ConfigPlugin[] {
+function isPluginsArray( value: ConfigPlugin[]|false ): value is ConfigPlugin[] {
 	return Array.isArray( value );
 }
 
@@ -108,7 +109,7 @@ const config: PostCSSConfig = {
 if ( isPluginsArray( config.plugins ) ) {
 	if ( 'production' === process.env.NODE_ENV ) {
 		// For production, we minify it.
-		config.plugins.push( require( '../lib/postcss-clean' )( {
+		config.plugins.push( cleanCSS( {
 			level: 2,
 		} ) );
 	} else {
