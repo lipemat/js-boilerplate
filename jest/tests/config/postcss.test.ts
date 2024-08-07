@@ -6,6 +6,7 @@ import compileWithWebpack, {Fixture} from '../../helpers/compileWithWebpack';
 import browserslist from 'browserslist';
 import postcssPresetEnv from 'postcss-preset-env';
 import type {PostCSSConfig} from '../../../config/postcss.config';
+import {getBrowsersList} from '../../../helpers/config';
 
 /**
  * @notice We can't reset the modules of MiniCssExtractPlugin conflicts with
@@ -29,7 +30,36 @@ function processPostCSS( input: string ): Promise<postcss.Result> {
 	} );
 }
 
+type FromPresetEnv = Plugin & {
+	plugins: Plugin[];
+}
+
+const getPresetEnv = ( browsers: string[], features = {} ): FromPresetEnv => {
+	return postcssPresetEnv( {
+		browsers,
+		features: {...features},
+	} ) as FromPresetEnv;
+};
+
+/**
+ * Get a list of browsers that require a specific plugin.
+ */
+function getBrowsersRequiringPlugin( browserPlugin: string ): string[] {
+	const matchingBrowsers: string[] = [];
+	const w = getBrowsersList();
+	browserslist( getBrowsersList() ).forEach( browser => {
+		const requiresCustomProperties = getPresetEnv( [ browser ] ).plugins.some( plugin => browserPlugin === plugin.postcssPlugin );
+
+		if ( requiresCustomProperties ) {
+			matchingBrowsers.push( browser );
+		}
+	} );
+	return matchingBrowsers;
+}
+
+
 function getBrowsersPlugin( plugins: Plugin[] ): {plugins: Plugin[]} {
+	// eslint-disable-next-line @typescript-eslint/ban-types
 	return plugins.find( plugin => 'postcss-preset-env' === plugin.postcssPlugin ) as unknown as {
 		plugins: Plugin[]
 	};
@@ -75,13 +105,7 @@ describe( 'postcss.js', () => {
 
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not op_mini all' );
-		const creator = ( browsers, features = {} ) => {
-			return postcssPresetEnv( {
-				browsers,
-				features: {...features},
-			} );
-		};
+		expectedBrowsers.push( 'not and_uc 15.5' );
 
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
@@ -94,7 +118,7 @@ describe( 'postcss.js', () => {
 		} ).length ).toEqual( 0 );
 
 		expect( JSON.stringify( config.plugins[ 4 ] ) )
-			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
+			.toEqual( JSON.stringify( getPresetEnv( expectedBrowsers ) ) );
 
 		// op_mini all requires postcss-custom-properties.
 		process.env.BROWSERSLIST = 'op_mini all';
@@ -103,7 +127,7 @@ describe( 'postcss.js', () => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 		expect( JSON.stringify( getBrowsersPlugin( config2.plugins ) ) )
-			.toEqual( JSON.stringify( creator( [ 'op_mini all' ] ) ) );
+			.toEqual( JSON.stringify( getPresetEnv( [ 'op_mini all' ] ) ) );
 
 		// Safari 15 requires postcss-focus-visible.
 		process.env.BROWSERSLIST = 'safari 15';
@@ -112,19 +136,19 @@ describe( 'postcss.js', () => {
 			return 'postcss-focus-visible' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 		expect( JSON.stringify( getBrowsersPlugin( config3.plugins ) ) )
-			.toEqual( JSON.stringify( creator( [ 'safari 15' ], {
+			.toEqual( JSON.stringify( getPresetEnv( [ 'safari 15' ], {
 				'focus-visible-pseudo-class': {
 					replaceWith: ':global(.focus-visible)',
 				},
 			} ) ) );
 
-		// @notice If this fails, we can probably remove the @todo from adjustBrowserslist and the toEqual to `1`.
+		// @notice If this fails, we can probably change the toEqual to 0 as WP is now up-to-date.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		// @ts-ignore
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		expect( getBrowsersPlugin( getPostCSSConfig().plugins ).plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
-		} ).length ).toEqual( 0 );
+		} ).length ).toEqual( 1 );
 	} );
 
 

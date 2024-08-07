@@ -20,7 +20,7 @@ describe( 'webpack.dev.test.ts', () => {
 	test( 'Browserslist config', () => {
 		const config = require( '../../../config/webpack.dev' );
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
-		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) + ', not op_mini all' );
+		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) + ', not and_uc 15.5' );
 		expect( config ).toMatchSnapshot( 'Default Browsers' );
 
 

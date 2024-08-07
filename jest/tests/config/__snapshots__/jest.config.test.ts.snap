@@ -48,7 +48,7 @@ exports[`jest.config.test.ts should match the snapshot 1`] = `
                   "last 2 iOS versions",
                   "last 2 Edge versions",
                   "last 2 Opera versions",
-                  "not op_mini all",
+                  "not and_uc 15.5",
                 ],
               },
               "useBuiltIns": "usage",

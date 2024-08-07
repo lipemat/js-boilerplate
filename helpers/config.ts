@@ -212,10 +212,8 @@ export const getDefaultBrowsersList = (): false | string[] => {
 
 /**
  * Adjust the browserslist to include our defaults.
- *
- * @todo Remove `not op_mini all` after 3/8/2024 if it does not creep back in to the defaults.
  */
 export function adjustBrowserslist( browserRules: string[] ): string[] {
-	browserRules.push( 'not op_mini all' );
+	browserRules.push( 'not and_uc 15.5' );
 	return browserRules;
 }
