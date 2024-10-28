@@ -92,7 +92,7 @@
     "style-loader": "^3.3.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.5.2",
-    "webpack": "^5.72.1",
+    "webpack": "^5.95.0",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.2",
@@ -108,5 +108,5 @@
     "memfs": "^3.5.3",
     "setimmediate": "^1.0.5"
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.5.1"
 }
