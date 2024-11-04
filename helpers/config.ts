@@ -5,7 +5,7 @@ import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config';
 import {getPackageConfig} from './package-config';
 import type {EntriesConfig} from '../config/entries.config';
-import type {Config as PostCSSConfig} from 'postcss-load-config';
+import type {PostCSSConfig} from '../config/postcss.config';
 import type {CssLoaderConfig} from '../config/css-loader.config';
 
 // Must be required to avoid issues with browserslist.
