@@ -108,5 +108,8 @@
     "memfs": "^3.5.3",
     "setimmediate": "^1.0.5"
   },
+  "resolutions": {
+    "@types/eslint": "^8.0.0"
+  },
   "packageManager": "yarn@4.5.1"
 }
