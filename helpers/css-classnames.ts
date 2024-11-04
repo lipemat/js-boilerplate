@@ -1,5 +1,6 @@
 import {getPackageConfig} from './package-config';
-import type {GetLocalIdent, Resource} from '../types/css-loader';
+import type {GetLocalIdent} from '../types/css-loader';
+import {AtLeast} from '../types/utility';
 
 export const SHORT_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 export const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -99,6 +100,8 @@ function incrementParent() {
 	counters.push( 0 );
 }
 
+type LocalIdentParams = Parameters<GetLocalIdent>;
+
 /**
  * Return a single character unique CSS class name based on WebPack
  * css-loader's `getLocalIdentName` callback.
@@ -110,7 +113,7 @@ function incrementParent() {
  *
  * @link https://webpack.js.org/loaders/css-loader/#getlocalident
  */
-export const getLocalIdent: GetLocalIdent = ( {resourcePath}: Resource, _: string, localName: string ): string => {
+export const getLocalIdent = ( {resourcePath}: AtLeast<LocalIdentParams[0], 'resourcePath'>, _: LocalIdentParams[1], localName: LocalIdentParams[2] ): ReturnType<GetLocalIdent> => {
 	classes[ resourcePath ] ||= {};
 	classes[ resourcePath ][ localName ] ||= getNextClass();
 	return classes[ resourcePath ][ localName ];

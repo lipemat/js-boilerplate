@@ -2,7 +2,6 @@ import {readFileSync} from 'fs';
 import {basename} from 'path';
 import postcss, {type Plugin} from 'postcss';
 import compileWithWebpack, {Fixture} from '../../helpers/compileWithWebpack';
-
 import browserslist from 'browserslist';
 import postcssPresetEnv from 'postcss-preset-env';
 import type {PostCSSConfig} from '../../../config/postcss.config';
@@ -44,9 +43,9 @@ const getPresetEnv = ( browsers: string[], features = {} ): FromPresetEnv => {
 /**
  * Get a list of browsers that require a specific plugin.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 function getBrowsersRequiringPlugin( browserPlugin: string ): string[] {
 	const matchingBrowsers: string[] = [];
-	const w = getBrowsersList();
 	browserslist( getBrowsersList() ).forEach( browser => {
 		const requiresCustomProperties = getPresetEnv( [ browser ] ).plugins.some( plugin => browserPlugin === plugin.postcssPlugin );
 
