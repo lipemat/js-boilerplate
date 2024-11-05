@@ -5,6 +5,7 @@
   "display": "JS Boilerplate",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "lib": [
