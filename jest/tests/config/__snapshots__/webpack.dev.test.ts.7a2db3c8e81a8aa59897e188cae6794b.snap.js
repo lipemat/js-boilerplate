@@ -63,10 +63,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
         "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
       },
       {
-        "include": /node_modules/,
-        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
-      },
-      {
         "test": /\\\\\\.css\\$/,
         "use": [
           "style-loader",
@@ -349,10 +345,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
         "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
       },
       {
-        "include": /node_modules/,
-        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
-      },
-      {
         "test": /\\\\\\.css\\$/,
         "use": [
           "style-loader",
@@ -632,10 +624,6 @@ exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
             "@babel/preset-typescript",
           ],
         },
-        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
-      },
-      {
-        "include": /node_modules/,
         "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
       },
       {

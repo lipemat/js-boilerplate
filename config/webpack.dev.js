@@ -73,10 +73,6 @@ module.exports = {
 				options: babelOptions,
 			},
 			{
-				test: /\.[jt]sx?$/,
-				include: /node_modules/,
-			},
-			{
 				test: /\.css$/,
 				use: [
 					'style-loader',
