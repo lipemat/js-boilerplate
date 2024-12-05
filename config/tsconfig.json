@@ -20,7 +20,6 @@
     "sourceMap": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "skipLibCheck": true,
     "target": "es6",
     "verbatimModuleSyntax": false
   },
