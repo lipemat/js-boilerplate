@@ -35,7 +35,7 @@ function errorOccurred( results: ESLint.LintResult[] ): boolean {
 
 	// 2. Lint files. This doesn't modify target files.
 	const results: ESLint.LintResult[] = await eslint.lintFiles( [
-		getPackageConfig().workingDirectory + '/src/**/*.{js,jsx,ts,tsx}',
+		getPackageConfig().workingDirectory + '/src/**/*.{js,jsx,ts,tsx,svelte}',
 	] );
 
 	// 3. Modify the files with the fixed code.
