@@ -49,7 +49,6 @@
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
     "@csstools/postcss-global-data": "2.0.0",
-    "@lipemat/eslint-config": "^3.4.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@statoscope/webpack-plugin": "^5.28.2",
     "@teamsupercell/typings-for-css-modules-loader": "^2.5.2",
@@ -98,11 +97,12 @@
     "webpack-subresource-integrity": "^5.1.0"
   },
   "devDependencies": {
+    "@lipemat/eslint-config": "^4.0.1",
     "@types/jest": "^29.5.3",
     "@types/minimist": "^1",
     "@types/node": "~20.11.0",
     "chokidar": "^3.5.3",
-    "eslint": "^8",
+    "eslint": "^9",
     "glob": "^10.3.3",
     "memfs": "^3.5.3",
     "setimmediate": "^1.0.5"
