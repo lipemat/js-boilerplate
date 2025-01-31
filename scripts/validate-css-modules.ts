@@ -8,7 +8,7 @@ Validate CSS modules using .d.ts definition files for each CSS module.
 - Generates .d.ts files for each CSS module.
 - Runs \`dist\` to validate compilation using TS.
 	
-@notice PHPStorm will not support click through to CSS modules if the .pcss.d.ts files are present so this script should only be run in CI.
+@deprecated Not needed anymore now PHPStorm supports .d.ts files for CSS modules.
 
 @see .github/workflows/pull-request-lint-action.yml
 
