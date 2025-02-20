@@ -46,7 +46,11 @@ function processCss( node: ChildNode ) {
 	indent( node, nodeDepth, 'after' );
 
 	if ( 0 === nodeDepth ) {
-		node.raws.before += '\n';
+		if ( 'undefined' === typeof node.raws.before ) {
+			node.raws.before = '\n\n';
+		} else {
+			node.raws.before += '\n';
+		}
 	}
 }
 
