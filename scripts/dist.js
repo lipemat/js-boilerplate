@@ -14,7 +14,7 @@ async function build( config ) {
 			throw err;
 		}
 
-		if ( stats.hasErrors() ) {
+		if ( stats.hasErrors() || stats.hasWarnings() ) {
 			console.error( stats.toString( config.stats ) );
 			process.exit( 1 );
 		} else {
