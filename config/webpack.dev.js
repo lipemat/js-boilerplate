@@ -64,6 +64,7 @@ module.exports = {
 		emitOnErrors: false,
 	},
 	module: {
+		strictExportPresence: true,
 		rules: [
 			{
 				test: /\.[jt]sx?$/,

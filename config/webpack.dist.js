@@ -117,6 +117,7 @@ module.exports = {
 	},
 	plugins,
 	module: {
+		strictExportPresence: true,
 		rules: [
 			{
 				test: /\.[jt]sx?$/,

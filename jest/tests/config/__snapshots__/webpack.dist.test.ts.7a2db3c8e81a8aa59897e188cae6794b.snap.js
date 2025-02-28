@@ -227,6 +227,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         ],
       },
     ],
+    "strictExportPresence": true,
   },
   "optimization": {
     "moduleIds": "deterministic",
@@ -573,6 +574,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         ],
       },
     ],
+    "strictExportPresence": true,
   },
   "optimization": {
     "moduleIds": "deterministic",
