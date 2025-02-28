@@ -32,8 +32,8 @@ describe( 'config', () => {
 		const wpDefaultBrowsers = browserslist( require( '@wordpress/browserslist-config' ), {
 			env: 'production',
 		} );
-		// @notice If this fails, we can probably the push from adjustBrowserslist
-		expect( wpDefaultBrowsers.includes( 'and_uc 15.5' ) ).toBe( true );
+		// @notice If this fails, we can probably add 'not and_uc 15.5' to adjustBrowserslist.
+		expect( wpDefaultBrowsers.includes( 'and_uc 15.5' ) ).toBe( false );
 		expect( wpDefaultBrowsers.includes( 'op_mini all' ) ).toBe( false );
 		expect( browserslist( getBrowsersList() ).includes( 'and_uc 15.5' ) ).toBe( false );
 		expect( browserslist( getBrowsersList() ).includes( 'op_mini all' ) ).toBe( false );

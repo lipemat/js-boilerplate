@@ -2432,7 +2432,7 @@ __metadata:
     "@types/node": "npm:~20.11.0"
     "@types/postcss-load-config": "npm:^3.0.1"
     "@types/postcss-preset-env": "npm:^7.7.0"
-    "@wordpress/browserslist-config": "npm:^5.19.0"
+    "@wordpress/browserslist-config": "npm:^6.19.0"
     babel-jest: "npm:^29.0.0"
     babel-loader: "npm:9.1.2"
     browserslist: "npm:^4.21.9"
@@ -3915,17 +3915,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wordpress/browserslist-config@npm:^5.19.0":
-  version: 5.41.0
-  resolution: "@wordpress/browserslist-config@npm:5.41.0"
-  checksum: 10c0/cf9be582251645c6f27c61c6db6d6141574c0848abcfdfcf80c42c543e408f7a70f11727be0a4a43a5d6e37b42235a4d2a3c678ca66819f9192e95abf4c68518
-  languageName: node
-  linkType: hard
-
 "@wordpress/browserslist-config@npm:^6.15.0":
   version: 6.15.0
   resolution: "@wordpress/browserslist-config@npm:6.15.0"
   checksum: 10c0/9d0510a6239d04c71d3b479d923084d53f87890a2dc4e6b379891b1afcb6c97c927e8d8c8a19048337d34cf86cd5338efe7310a08e469bcc81c0b0baafe83119
+  languageName: node
+  linkType: hard
+
+"@wordpress/browserslist-config@npm:^6.19.0":
+  version: 6.19.0
+  resolution: "@wordpress/browserslist-config@npm:6.19.0"
+  checksum: 10c0/25ab05c63ef4aa0cd5ffb5080dbe910619dff88bc0ffcc4694870311423789552e2843c4a3e21187e4ce458728099d031f8c82ed8c70e34b2d1a610907fe1349
   languageName: node
   linkType: hard
 
@@ -4806,17 +4806,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001669":
-  version: 1.0.30001677
-  resolution: "caniuse-lite@npm:1.0.30001677"
-  checksum: 10c0/22b4aa738b213b5d0bc820c26ba23fa265ca90a5c59776e1a686b9ab6fff9120d0825fd920c0a601a4b65056ef40d01548405feb95c8dd6083255f50c71a0864
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001688":
-  version: 1.0.30001690
-  resolution: "caniuse-lite@npm:1.0.30001690"
-  checksum: 10c0/646bd469032afa90400a84dec30a2b00a6eda62c03ead358117e3f884cda8aacec02ec058a6dbee5eaf9714f83e483b9b0eb4fb42febb8076569f5ca40f1d347
+"caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001669, caniuse-lite@npm:^1.0.30001688":
+  version: 1.0.30001701
+  resolution: "caniuse-lite@npm:1.0.30001701"
+  checksum: 10c0/a814bd4dd8b49645ca51bc6ee42120660a36394bb54eb6084801d3f2bbb9471e5e1a9a8a25f44f83086a032d46e66b33031e2aa345f699b90a7e84a9836b819c
   languageName: node
   linkType: hard
 

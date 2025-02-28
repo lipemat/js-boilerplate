@@ -43,7 +43,7 @@ const getPresetEnv = ( browsers: string[], features = {} ): FromPresetEnv => {
 /**
  * Get a list of browsers that require a specific plugin.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getBrowsersRequiringPlugin( browserPlugin: string ): string[] {
 	const matchingBrowsers: string[] = [];
 	browserslist( getBrowsersList() ).forEach( browser => {
@@ -141,13 +141,13 @@ describe( 'postcss.js', () => {
 				},
 			} ) ) );
 
-		// @notice If this fails, we can probably change the toEqual to 0 as WP is now up-to-date.
+		// @notice If this fails, we can probably change the toEqual to 1 as WP is now out of date.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		// @ts-ignore
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		expect( getBrowsersPlugin( getPostCSSConfig().plugins ).plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
-		} ).length ).toEqual( 1 );
+		} ).length ).toEqual( 0 );
 	} );
 
 

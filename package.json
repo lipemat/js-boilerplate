@@ -56,7 +56,7 @@
     "@types/clean-css": "^4.2.11",
     "@types/postcss-load-config": "^3.0.1",
     "@types/postcss-preset-env": "^7.7.0",
-    "@wordpress/browserslist-config": "^5.19.0",
+    "@wordpress/browserslist-config": "^6.19.0",
     "babel-jest": "^29.0.0",
     "babel-loader": "9.1.2",
     "browserslist": "^4.21.9",
