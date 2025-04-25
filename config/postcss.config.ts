@@ -32,7 +32,7 @@ const presetEnv: pluginOptions = {
 	features: {},
 };
 
-// Get a list of included postcss plugins based no the browsers list.
+// Get a list of included postcss plugins based on the browsers list.
 const includedPlugins: string[] = postcssPresetEnv( presetEnv ).plugins.map( ( plugin: Processor['plugins'][number] ) => {
 	return 'postcssPlugin' in plugin ? plugin.postcssPlugin : '';
 } );
