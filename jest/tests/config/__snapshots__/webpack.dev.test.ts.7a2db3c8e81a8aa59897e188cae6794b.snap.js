@@ -105,14 +105,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                   {
                     "plugins": [
                       {
-                        "Declaration": [Function],
-                        "postcssPlugin": "postcss-color-function",
-                      },
-                      {
-                        "postcssPlugin": "postcss-normalize-display-values",
-                        "prepare": [Function],
-                      },
-                      {
                         "AtRule": [Function],
                         "postcssPlugin": "postcss-font-format-keywords",
                       },
@@ -160,10 +152,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                       {
                         "Declaration": [Function],
                         "postcssPlugin": "postcss-stepped-value-functions",
-                      },
-                      {
-                        "Declaration": [Function],
-                        "postcssPlugin": "postcss-trigonometric-functions",
                       },
                       {
                         "browsers": [
@@ -388,14 +376,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                   {
                     "plugins": [
                       {
-                        "Declaration": [Function],
-                        "postcssPlugin": "postcss-color-function",
-                      },
-                      {
-                        "postcssPlugin": "postcss-normalize-display-values",
-                        "prepare": [Function],
-                      },
-                      {
                         "AtRule": [Function],
                         "postcssPlugin": "postcss-font-format-keywords",
                       },
@@ -443,10 +423,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                       {
                         "Declaration": [Function],
                         "postcssPlugin": "postcss-stepped-value-functions",
-                      },
-                      {
-                        "Declaration": [Function],
-                        "postcssPlugin": "postcss-trigonometric-functions",
                       },
                       {
                         "browsers": [
