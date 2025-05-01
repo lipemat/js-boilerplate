@@ -64,6 +64,11 @@ describe( 'babel.config.test.ts', () => {
 		expect( ie11 ).toMatchSnapshot( 'IE 11' );
 		expect( ie11 ).not.toEqual( defaultBrowsers );
 		expect( ie11 ).not.toEqual( chrome50 );
+
+		babelPresetDefault.presets[ 0 ][ 1 ].targets.browsers = [ 'chrome 130' ];
+		const chrome130 = translate( babelPresetDefault );
+		expect( chrome130 ).toMatchSnapshot( 'Chrome 130' );
+		expect( chrome130 ).not.toEqual( chrome50 );
 	} );
 
 	test( 'Build files', () => {

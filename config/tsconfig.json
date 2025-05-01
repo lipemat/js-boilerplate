@@ -9,8 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "lib": [
-      "dom",
-      "es2018"
+      "DOM",
+      "ES2018"
     ],
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -20,7 +20,7 @@
     "sourceMap": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "target": "es6",
+    "target": "ES2018",
     "verbatimModuleSyntax": false
   },
   "exclude": [
