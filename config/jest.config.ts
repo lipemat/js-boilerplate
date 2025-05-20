@@ -21,6 +21,9 @@ const jestConfig: Config = {
 		'is-plain-obj': 'identity-obj-proxy',
 		uuid: 'identity-obj-proxy',
 	},
+	// Does not support prettier 3 until version 30.
+	// @link https://github.com/jestjs/jest/issues/14305
+	prettierPath: null,
 	roots: [
 		'./tests',
 	],
