@@ -41,7 +41,6 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
                     "last 2 iOS versions",
                     "last 2 Edge versions",
                     "last 2 Opera versions",
-                    "not and_uc 15.5",
                   ],
                 },
                 "useBuiltIns": "usage",
@@ -168,7 +167,6 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
                           "last 2 iOS versions",
                           "last 2 Edge versions",
                           "last 2 Opera versions",
-                          "not and_uc 15.5",
                         ],
                         "info": [Function],
                         "options": {
@@ -182,7 +180,6 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
                             "last 2 iOS versions",
                             "last 2 Edge versions",
                             "last 2 Opera versions",
-                            "not and_uc 15.5",
                           ],
                         },
                         "postcssPlugin": "autoprefixer",
@@ -331,7 +328,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
     "timings": false,
     "version": false,
   },
-  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not and_uc 15.5",
+  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions",
 }
 `;
 
@@ -376,7 +373,6 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                     "last 2 iOS versions",
                     "last 2 Edge versions",
                     "last 2 Opera versions",
-                    "not and_uc 15.5",
                   ],
                 },
                 "useBuiltIns": "usage",
@@ -503,7 +499,6 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                           "last 2 iOS versions",
                           "last 2 Edge versions",
                           "last 2 Opera versions",
-                          "not and_uc 15.5",
                         ],
                         "info": [Function],
                         "options": {
@@ -517,7 +512,6 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                             "last 2 iOS versions",
                             "last 2 Edge versions",
                             "last 2 Opera versions",
-                            "not and_uc 15.5",
                           ],
                         },
                         "postcssPlugin": "autoprefixer",
@@ -666,6 +660,6 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
     "timings": false,
     "version": false,
   },
-  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions, not and_uc 15.5",
+  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions",
 }
 `;

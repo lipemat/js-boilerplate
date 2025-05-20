@@ -8,7 +8,7 @@ describe( 'webpack.dist.test.ts', () => {
 		process.env.NODE_ENV = 'production';
 		const config = require( '../../../config/webpack.dist' );
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
-		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) + ', not and_uc 15.5' );
+		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
 		expect( config ).toMatchSnapshot( 'Default Browsers' );
 
 		jest.resetModules();

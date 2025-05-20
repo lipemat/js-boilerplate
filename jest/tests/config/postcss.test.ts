@@ -104,7 +104,6 @@ describe( 'postcss.js', () => {
 
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not and_uc 15.5' );
 
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included

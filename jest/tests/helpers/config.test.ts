@@ -9,7 +9,6 @@ afterEach( () => {
 describe( 'config', () => {
 	test( 'getDefaultBrowsersList', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not and_uc 15.5' );
 
 		expect( getDefaultBrowsersList() ).toEqual( expectedBrowsers );
 		expect( getDefaultBrowsersList() ).toEqual( getBrowsersList() );
@@ -20,7 +19,6 @@ describe( 'config', () => {
 
 	test( 'getBrowsersList', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not and_uc 15.5' );
 
 		// Check if the browserslist results change, which may explain other failures.
 		expect( browserslist( getBrowsersList() ) ).toMatchSnapshot( 'browserslist' );
