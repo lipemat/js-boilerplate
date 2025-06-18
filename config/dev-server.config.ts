@@ -40,6 +40,5 @@ const config: Configuration = {
 	static: false,
 }
 
-
-module.exports.default = config;
 module.exports = config;
+module.exports.default = config;
