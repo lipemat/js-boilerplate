@@ -1,31 +1,33 @@
-const webpack = require( 'webpack' );
-const ReactRefreshWebpackPlugin = require( '@pmmmwh/react-refresh-webpack-plugin' );
-const path = require( 'path' );
-const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
-const {getPackageConfig} = require( '../helpers/package-config' );
-const {getEntries} = require( '../helpers/entries' );
-const {getConfig, getTsConfigFile, getBrowsersList} = require( '../helpers/config' );
+import {type Configuration as WebpackConfig, ProvidePlugin, WebpackPluginInstance} from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import path from 'path';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+
+import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config';
+import {getEntries} from '../helpers/entries';
+import {getPackageConfig} from '../helpers/package-config';
+import type {BabelConfig} from './babel.config';
 
 const postcssOptions = getConfig( 'postcss.config' );
-const babelOptions = getConfig( 'babel.config' );
+const babelOptions: BabelConfig = getConfig( 'babel.config' );
 const cssLoaderOptions = getConfig( 'css-loader.config' );
 const devServerOptions = getConfig( 'dev-server.config' );
 
 // To allow line numbers to show up in console errors. @see React Error Boundaries.
-babelOptions.plugins.unshift( '@babel/plugin-transform-react-jsx-source' );
+babelOptions.plugins?.unshift( '@babel/plugin-transform-react-jsx-source' );
 // To support React Fast Refresh.
-babelOptions.plugins.unshift( 'react-refresh/babel' );
+babelOptions.plugins?.unshift( 'react-refresh/babel' );
 
-const plugins = [
-	new webpack.ProvidePlugin( {
+
+const plugins: WebpackPluginInstance[] = [
+	new ProvidePlugin( {
 		jQuery: 'jquery',
 		$: 'jquery',
 	} ),
 	new ReactRefreshWebpackPlugin(),
 ];
 
-// Loads a thread, which verifies any TypeScripts on changes if the
-// project has a "tsconfig.json" file.
+// Loads a thread, which verifies any TypeScript on changes if the project has a "tsconfig.json" file.
 if ( '' !== getTsConfigFile() ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {
 		devServer: false,
@@ -36,7 +38,7 @@ if ( '' !== getTsConfigFile() ) {
 	} ) );
 }
 
-module.exports = {
+const config: WebpackConfig = {
 	devtool: 'eval-source-map',
 	entry: getEntries(),
 	mode: 'development',
@@ -103,7 +105,7 @@ module.exports = {
 						},
 					},
 				].filter( loader => {
-					if ( ! getPackageConfig().cssTsFiles ) {
+					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
 						return loader.loader !== '@teamsupercell/typings-for-css-modules-loader';
 					}
 					return true;
@@ -113,3 +115,6 @@ module.exports = {
 		],
 	},
 };
+
+export default config;
+module.exports = config;

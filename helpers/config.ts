@@ -1,6 +1,7 @@
 import {existsSync} from 'fs';
 import {resolve} from 'path';
 import {type Configuration as WebpackConfig} from 'webpack';
+import type {Configuration as DevServerConfig} from 'webpack-dev-server';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config';
 import {getPackageConfig} from './package-config';
@@ -15,6 +16,7 @@ const browserslist = require( 'browserslist' );
 type Configs = {
 	'babel.config': BabelConfig;
 	'css-loader.config': CssLoaderConfig;
+	'dev-server.config': DevServerConfig;
 	'entries.config': EntriesConfig;
 	'jest.config': JestConfig;
 	'postcss.config': PostCSSConfig;
