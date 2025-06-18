@@ -76,7 +76,7 @@ module.exports = {
 		assets: true,
 		assetsSort: 'size',
 		assetsSpace: 100,
-		cached: false,
+		cachedModules: false,
 		cachedAssets: true,
 		children: false,
 		colors: {
