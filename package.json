@@ -100,7 +100,6 @@
     "@lipemat/eslint-config": "^4.0.1",
     "@types/jest": "^29.5.3",
     "@types/minimist": "^1",
-    "@types/node": "~20.11.0",
     "chokidar": "^3.5.3",
     "eslint": "^9",
     "glob": "^10.3.3",
