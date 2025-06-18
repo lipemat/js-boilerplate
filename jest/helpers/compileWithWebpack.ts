@@ -55,10 +55,9 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
  * @notice We can't reset the modules of MiniCssExtractPlugin conflicts with
  *         itself. Instead, we isolate other configurations to allow them to
  *         load fresh each time.
- *
  */
 export default function compileWithWebpack( fixture: Fixture, config = {} ): Promise<string> {
-	const fullConfig = {...require( '../../config/webpack.dist.js' ), ...config};
+	const fullConfig = {...require( '../../config/webpack.dist' ), ...config};
 
 	// Isolate the css-loader and postcss config, so it is loaded fresh each time.
 	// Allow differenicate between production and development.

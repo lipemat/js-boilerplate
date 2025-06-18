@@ -5,11 +5,8 @@ config/dev-server.config.js
 config/entries.config.js
 config/jest.config.js
 config/postcss.config.js
-helpers/config.js
-helpers/css-classnames.js
-helpers/entries.js
-helpers/modules.js
-helpers/package-config.js
+config/webpack.dist.js
+helpers/*.js
 lib/*.js
 
 # system/hidden files

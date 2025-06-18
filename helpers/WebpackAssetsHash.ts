@@ -1,22 +1,20 @@
-const crypto = require( 'node:crypto' );
-const {Compilation, Compiler} = require( 'webpack' );
-const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
+import crypto from 'node:crypto';
+import {Compilation, type Compiler, WebpackPluginInstance} from 'webpack';
+import type {AssetsStorage, WebpackAssetsManifest} from 'webpack-assets-manifest';
 
 /**
  * Webpack plugin for injecting the content hash into
  * the manifest.json created by the `webpack-assets-manifest` plugin.
- *
- *
  */
-class WebpackAssetsHash {
+class WebpackAssetsHash implements WebpackPluginInstance {
+	private readonly manifest: WebpackAssetsManifest;
+	private readonly assets: { [ key: string ]: string } = {};
+
 	/**
 	 * Pass the same constructed plugin provide to Webpack via
 	 * the `webpack.dist` script.
-	 *
-	 * @param {WebpackAssetsManifest} manifest
 	 */
-	constructor( manifest ) {
-		this.assets = {};
+	constructor( manifest: WebpackAssetsManifest ) {
 		this.manifest = manifest;
 	}
 
@@ -24,10 +22,8 @@ class WebpackAssetsHash {
 	 * WebPack plugin entrypoint.
 	 *
 	 * @link https://webpack.js.org/contribute/writing-a-plugin/
-	 *
-	 * @param {Compiler} compiler
 	 */
-	apply( compiler ) {
+	apply( compiler: Compiler ) {
 		this.manifest.hooks.transform.tap( 'WebpackAssetsHash', this.addHashToManifest.bind( this ) );
 
 		compiler.hooks.thisCompilation.tap( 'WebpackAssetsHash', compilation => {
@@ -46,10 +42,8 @@ class WebpackAssetsHash {
 	 * can inject it into the manifest.json file.
 	 *
 	 * Hash matches Webpack [contenthash].
-	 *
-	 * @param {Compilation} compilation
 	 */
-	storeContentHash( compilation ) {
+	storeContentHash( compilation: Compilation ) {
 		for ( const asset of compilation.getAssets() ) {
 			this.assets[ asset.name ] = crypto.createHash( 'md5' )
 				.update( asset.source.source() )
@@ -64,12 +58,12 @@ class WebpackAssetsHash {
 	 *
 	 * @param {Object} assets
 	 */
-	addHashToManifest( assets ) {
-		Object.keys( assets ).forEach( item => {
-			if ( this.assets[ item ] ) {
+	addHashToManifest( assets: AssetsStorage ): AssetsStorage {
+		Object.keys( assets ).forEach( ( item: string ): void => {
+			if ( item in this.assets && this.assets[ item ] !== '' ) {
 				assets[ item ].hash = this.assets[ item ];
-			} else {
-				// If the content hash was added to the asset name prior to storing.
+			} else if ( assets[ item ].src in this.assets && this.assets[ assets[ item ].src ] !== '' ) {
+				// If the content hash was added to the asset name before storing.
 				assets[ item ].hash = this.assets[ assets[ item ].src ];
 			}
 		} );
@@ -78,3 +72,4 @@ class WebpackAssetsHash {
 }
 
 module.exports = WebpackAssetsHash;
+export default WebpackAssetsHash;

@@ -1,17 +1,16 @@
-const webpack = require( 'webpack' );
-const path = require( 'path' );
-const CompressionPlugin = require( 'compression-webpack-plugin' );
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const {CleanWebpackPlugin} = require( 'clean-webpack-plugin' );
-const WebpackAssetsManifest = require( 'webpack-assets-manifest' );
-const {SubresourceIntegrityPlugin} = require( 'webpack-subresource-integrity' );
-const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
-const WebpackAssetsHash = require( '../helpers/WebpackAssetsHash' );
+import path from 'path';
+import CompressionPlugin from 'compression-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
+import {WebpackAssetsManifest} from 'webpack-assets-manifest';
+import {SubresourceIntegrityPlugin} from 'webpack-subresource-integrity';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import WebpackAssetsHash from '../helpers/WebpackAssetsHash';
+import {type Configuration as WebpackConfig, ProvidePlugin, WebpackPluginInstance} from 'webpack';
 
-const {getConfig, getTsConfigFile, getBrowsersList} = require( '../helpers/config' );
-const config = require( '../helpers/package-config' );
-const {getEntries} = require( '../helpers/entries' );
-const {getPackageConfig} = require( '../helpers/package-config' );
+import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config';
+import {getEntries} from '../helpers/entries';
+import {getPackageConfig} from '../helpers/package-config';
 
 const postcssOptions = getConfig( 'postcss.config' );
 const babelOptions = getConfig( 'babel.config' );
@@ -23,8 +22,8 @@ const ManifestPlugin = new WebpackAssetsManifest( {
 	output: 'manifest.json',
 } );
 
-const plugins = [
-	new webpack.ProvidePlugin( {
+const plugins: WebpackPluginInstance[] = [
+	new ProvidePlugin( {
 		jQuery: 'jquery',
 		$: 'jquery',
 	} ),
@@ -43,7 +42,7 @@ const plugins = [
 	ManifestPlugin,
 ];
 
-// Loads a thread, which verifies any TypeScripts if project has a "tsconfig.json" file.
+// Loads a thread, which verifies any TypeScript if a project has a "tsconfig.json" file.
 if ( '' !== getTsConfigFile() ) {
 	plugins.push( new ForkTsCheckerWebpackPlugin( {
 		formatter: 'basic',
@@ -59,7 +58,7 @@ if ( '' !== getTsConfigFile() ) {
  * @note Will only generate files if 20% or more size is gained.
  * @see https://webpack.js.org/plugins/compression-webpack-plugin/#using-brotli
  */
-if ( config.brotliFiles ) {
+if ( getPackageConfig().brotliFiles ) {
 	plugins.push( new CompressionPlugin( {
 		algorithm: 'brotliCompress',
 		deleteOriginalAssets: false,
@@ -68,7 +67,7 @@ if ( config.brotliFiles ) {
 }
 
 
-module.exports = {
+const config: WebpackConfig = {
 	devtool: false,
 	entry: getEntries(),
 	mode: 'production',
@@ -105,7 +104,7 @@ module.exports = {
 	},
 	target: 'browserslist:' + getBrowsersList().join( ', ' ),
 	output: {
-		path: path.resolve( config.workingDirectory, 'dist' ),
+		path: path.resolve( getPackageConfig().workingDirectory, 'dist' ),
 		filename: '[name].js',
 		publicPath: 'auto', // Change this if you want to use an external CDN etc.
 		chunkFilename: '[name].[contenthash].js',
@@ -114,7 +113,7 @@ module.exports = {
 	resolve: {
 		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
-			path.resolve( config.workingDirectory, 'src' ),
+			path.resolve( getPackageConfig().workingDirectory, 'src' ),
 			'node_modules',
 		],
 	},
@@ -165,7 +164,7 @@ module.exports = {
 						},
 					},
 				].filter( loader => {
-					if ( ! getPackageConfig().cssTsFiles ) {
+					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
 						return loader.loader !== '@teamsupercell/typings-for-css-modules-loader';
 					}
 					return true;
@@ -174,3 +173,6 @@ module.exports = {
 		],
 	},
 };
+
+export default config;
+module.exports = config;

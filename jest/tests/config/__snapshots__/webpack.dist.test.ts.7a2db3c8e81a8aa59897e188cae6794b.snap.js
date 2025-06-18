@@ -238,9 +238,10 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
       "_sortedModulesCache": WeakMap {},
       "options": {
         "chunkFilename": "[name].[contenthash].css",
-        "experimentalUseImportModule": false,
+        "experimentalUseImportModule": undefined,
         "filename": "[name].css",
         "ignoreOrder": false,
+        "runtime": true,
       },
       "runtimeOptions": {
         "attributes": undefined,
@@ -572,9 +573,10 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
       "_sortedModulesCache": WeakMap {},
       "options": {
         "chunkFilename": "[name].[contenthash].css",
-        "experimentalUseImportModule": false,
+        "experimentalUseImportModule": undefined,
         "filename": "[name].css",
         "ignoreOrder": false,
+        "runtime": true,
       },
       "runtimeOptions": {
         "attributes": undefined,
