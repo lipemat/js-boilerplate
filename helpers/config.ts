@@ -1,6 +1,6 @@
 import {existsSync} from 'fs';
 import {resolve} from 'path';
-import webpack from 'webpack';
+import {type Configuration as WebpackConfig} from 'webpack';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config';
 import {getPackageConfig} from './package-config';
@@ -18,7 +18,7 @@ type Configs = {
 	'entries.config': EntriesConfig;
 	'jest.config': JestConfig;
 	'postcss.config': PostCSSConfig;
-	'webpack.dist': webpack.Configuration;
+	'webpack.dist': WebpackConfig;
 };
 
 const {dependencies, devDependencies, workingDirectory, packageDirectory} = getPackageConfig();
@@ -63,11 +63,11 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
  * Get a config from our /config directory merged with any
  * matching configuration from the project directory.
  *
- * For instance if we have a file named config/babel.config.js in our project
+ * For instance, if we have a file named config/babel.config.js in our project,
  * we will merge the contents with our config/babel.config.js in favor of whatever
  * is specified with the project's file.
  *
- * If the `module.exports` are a function, the existing configuration will be passed
+ * If the `module.exports` is a function, the existing configuration will be passed
  * as the only argument. Otherwise, standard `module.exports` are also supported.
  *
  * @example ```ts
@@ -76,7 +76,7 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
  *     externals: {extra: 'Extra'}
  * }
  * // function
- * module.exports = function( config ) {
+ * module.exports = function(config) {
  *     return {
  *         externals: {...config.externals, extra: 'Extra'}
  *     }
@@ -187,7 +187,7 @@ export function getBrowsersList(): readonly string[] {
 
 
 /**
- * If browserslist is not specified, we fall back to WordPress defaults.
+ * If the browserslist is not specified, we fall back to WordPress defaults.
  *
  * - Return the default browserslist if the current project does not specify one.
  * - Return false if a browserslist is specified.
