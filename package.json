@@ -106,5 +106,8 @@
     "memfs": "^3.5.3",
     "setimmediate": "^1.0.5"
   },
+  "resolutions": {
+    "type-fest": "^4.41.0"
+  },
   "packageManager": "yarn@4.9.2"
 }
