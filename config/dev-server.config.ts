@@ -1,9 +1,12 @@
-const fs = require( 'fs' );
-const packageConfig = require( '../helpers/package-config' );
+import fs from 'fs';
+import {getPackageConfig} from '../helpers/package-config';
+import type {Configuration} from 'webpack-dev-server';
+
+const packageConfig = getPackageConfig();
 
 const url = new URL( packageConfig.url );
 
-let server = 'https:' === url.protocol ? 'https' : 'http';
+let server: Configuration['server'] = 'https:' === url.protocol ? 'https' : 'http';
 // Load local certificates for https during development.
 if ( 'object' === typeof ( packageConfig.certificates ) ) {
 	server = {
@@ -15,7 +18,8 @@ if ( 'object' === typeof ( packageConfig.certificates ) ) {
 	};
 }
 
-module.exports = {
+
+const config: Configuration = {
 	allowedHosts: 'all',
 	client: {
 		logging: 'warn',
@@ -34,4 +38,8 @@ module.exports = {
 	port: 3000,
 	server,
 	static: false,
-};
+}
+
+
+module.exports.default = config;
+module.exports = config;

@@ -1,6 +1,7 @@
 # Build files
 config/babel.config.js
 config/css-loader.config.js
+config/dev-server.config.js
 config/entries.config.js
 config/jest.config.js
 config/postcss.config.js

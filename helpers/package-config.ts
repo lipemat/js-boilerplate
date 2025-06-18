@@ -74,7 +74,7 @@ try {
  *
  * @since 10.3.0
  */
-export function getPackageConfig() {
+export function getPackageConfig(): PackageConfig {
 	return packageConfig;
 }
 packageConfig.getPackageConfig = getPackageConfig;
