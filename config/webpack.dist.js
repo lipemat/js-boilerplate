@@ -79,7 +79,10 @@ module.exports = {
 		cached: false,
 		cachedAssets: true,
 		children: false,
-		colors: true,
+		colors: {
+			// Change green to yellow, as my default terminal color is green.
+			green: '\u001b[93m',
+		},
 		hash: false,
 		groupAssetsByChunk: false,
 		groupAssetsByEmitStatus: false,
