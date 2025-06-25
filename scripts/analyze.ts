@@ -9,8 +9,9 @@ Uses Statoscope to visualize the size of the project's output files.
 
 Usage: lipemat-js-boilerplate analyze [--stats-only|--help]
 
-  --help, -h Show help menu.
-  --stats-only Generate stats.json file for use with https://statoscope.tech for comparing diffs between builds.
+  --help, -h : Show the help menu.
+  --stats-only: Generate a stats.json file for use with 
+                https://statoscope.tech for comparing diffs between builds.
 	
 `;
 
@@ -22,15 +23,17 @@ const statsDir = workingDirectory + '/node_modules/.cache/statoscope';
 const webpackConfig = getConfig( 'webpack.dist' );
 
 if ( true === flags.h || true === flags.help ) {
-	console.log( help );
+	console.debug( help );
 	process.exit( 0 );
 }
 
 
 function analyze() {
+	const statsOnly: boolean = true === ( flags[ 'stats-only' ] ?? false );
+
 	webpackConfig.plugins?.push( new StatoscopeWebpackPlugin( {
-		saveOnlyStats: true === ( flags[ 'stats-only' ] ?? false ),
-		saveStatsTo: statsDir + '/stats-[hash].json',
+		saveOnlyStats: statsOnly,
+		saveStatsTo: statsOnly ? workingDirectory + '/stats-[hash].json' : statsDir + '/stats-[hash].json',
 		saveReportTo: statsDir + '/stats-[hash].html',
 	} ) );
 
