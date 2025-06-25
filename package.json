@@ -97,7 +97,7 @@
     "webpack-subresource-integrity": "^5.1.0"
   },
   "devDependencies": {
-    "@lipemat/eslint-config": "^4.0.1",
+    "@lipemat/eslint-config": "^4.0.4",
     "@types/jest": "^29.5.3",
     "@types/minimist": "^1",
     "chokidar": "^3.5.3",
