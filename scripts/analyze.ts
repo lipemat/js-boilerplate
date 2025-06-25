@@ -4,6 +4,7 @@ import StatoscopeWebpackPlugin from '@statoscope/webpack-plugin';
 import fs from 'fs';
 import minimist from 'minimist';
 
+
 const help = `
 Uses Statoscope to visualize the size of the project's output files.
 
@@ -15,6 +16,8 @@ Usage: lipemat-js-boilerplate analyze [--stats-only|--help]
 	
 `;
 
+process.env.BABEL_ENV = 'production';
+process.env.NODE_ENV = 'production';
 
 // Command line arguments.
 const flags = minimist( process.argv.slice( 2 ) );
