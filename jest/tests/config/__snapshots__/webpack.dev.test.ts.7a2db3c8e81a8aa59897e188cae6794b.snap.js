@@ -28,7 +28,7 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.39.0",
+                  "version": "3.44.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -104,6 +104,10 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                   {
                     "plugins": [
                       {
+                        "postcssPlugin": "postcss-normalize-display-values",
+                        "prepare": [Function],
+                      },
+                      {
                         "AtRule": [Function],
                         "postcssPlugin": "postcss-font-format-keywords",
                       },
@@ -123,10 +127,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
                       {
                         "Rule": [Function],
                         "postcssPlugin": "postcss-nesting",
-                      },
-                      {
-                        "Rule": [Function],
-                        "postcssPlugin": "postcss-selector-not",
                       },
                       {
                         "Rule": [Function],
@@ -296,7 +296,7 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.39.0",
+                  "version": "3.44.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -372,6 +372,10 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                   {
                     "plugins": [
                       {
+                        "postcssPlugin": "postcss-normalize-display-values",
+                        "prepare": [Function],
+                      },
+                      {
                         "AtRule": [Function],
                         "postcssPlugin": "postcss-font-format-keywords",
                       },
@@ -391,10 +395,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
                       {
                         "Rule": [Function],
                         "postcssPlugin": "postcss-nesting",
-                      },
-                      {
-                        "Rule": [Function],
-                        "postcssPlugin": "postcss-selector-not",
                       },
                       {
                         "Rule": [Function],
@@ -564,7 +564,7 @@ exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.39.0",
+                  "version": "3.44.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,

@@ -32,6 +32,7 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
 			}
 
 			try {
+				// @ts-expect-error TS2352 IFs is not assignable to OutputFileSystem.
 				const usedFs = compiler.outputFileSystem as IFs;
 				const outputPath = stats.compilation.outputOptions.path ?? '';
 				const data = usedFs.readFileSync( join( outputPath, basename( fixture.output ) ) ).toString();
@@ -60,7 +61,7 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	const fullConfig = {...require( '../../config/webpack.dist' ), ...config};
 
 	// Isolate the css-loader and postcss config, so it is loaded fresh each time.
-	// Allow differenicate between production and development.
+	// Allow differentiation between production and development.
 	jest.isolateModules( () => {
 		fullConfig.module.rules[ 2 ].use[ 1 ].options = getConfig( 'css-loader.config' );
 		fullConfig.module.rules[ 2 ].use[ 2 ].options.postcssOptions = getConfig( 'postcss.config' );
@@ -77,9 +78,10 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	delete fullConfig.plugins[ 6 ];
 
 	// Create a compiler with the fixture config.
-	const compiler = webpack( fullConfig );
+	const compiler: Compiler = webpack( fullConfig );
 
 	// Use a memory cache for the compiler file system.
+	// @ts-expect-error TS2322 IFs are not assignable to OutputFileSystem.
 	compiler.outputFileSystem = createFsFromVolume( new Volume() ) as OutputFileSystem;
 
 	return compile( compiler, fixture );

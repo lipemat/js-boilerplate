@@ -17,6 +17,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
     {
       "plugins": [
         {
+          "postcssPlugin": "postcss-normalize-display-values",
+          "prepare": [Function],
+        },
+        {
           "AtRule": [Function],
           "postcssPlugin": "postcss-font-format-keywords",
         },
@@ -36,10 +40,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
         {
           "Rule": [Function],
           "postcssPlugin": "postcss-nesting",
-        },
-        {
-          "Rule": [Function],
-          "postcssPlugin": "postcss-selector-not",
         },
         {
           "Rule": [Function],
@@ -136,6 +136,10 @@ exports[`postcss.js PostCSS config: production 1`] = `
     {
       "plugins": [
         {
+          "postcssPlugin": "postcss-normalize-display-values",
+          "prepare": [Function],
+        },
+        {
           "AtRule": [Function],
           "postcssPlugin": "postcss-font-format-keywords",
         },
@@ -155,10 +159,6 @@ exports[`postcss.js PostCSS config: production 1`] = `
         {
           "Rule": [Function],
           "postcssPlugin": "postcss-nesting",
-        },
-        {
-          "Rule": [Function],
-          "postcssPlugin": "postcss-selector-not",
         },
         {
           "Rule": [Function],
