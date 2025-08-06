@@ -2432,7 +2432,6 @@ __metadata:
     "@lipemat/eslint-config": "npm:^4.0.4"
     "@pmmmwh/react-refresh-webpack-plugin": "npm:^0.6.0"
     "@statoscope/webpack-plugin": "npm:^5.29.0"
-    "@teamsupercell/typings-for-css-modules-loader": "npm:^2.5.2"
     "@types/babel__preset-env": "npm:^7.9.6"
     "@types/clean-css": "npm:^4.2.11"
     "@types/jest": "npm:^29.5.3"

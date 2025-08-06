@@ -2,7 +2,6 @@ import path from 'path';
 import type {PackageConfig} from '../../../helpers/package-config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-
 const mockPackageConfig: Partial<PackageConfig> = {};
 // Change the result of the getPackageConfig function, so we can change anything.
 jest.mock( '../../../helpers/package-config.js', () => ( {
@@ -37,20 +36,20 @@ describe( 'webpack.dist.test.ts', () => {
 		let config = require( '../../../config/webpack.dist' );
 		let loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( MiniCssExtractPlugin.loader );
-		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
-		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
+		expect( loaders[ 1 ].loader ).toEqual( 'css-loader' );
+		expect( loaders[ 2 ].loader ).toEqual( 'postcss-loader' );
+
+		expect( config ).toMatchSnapshot( 'cssTsFiles No types' );
 
 		mockPackageConfig.cssTsFiles = true;
 		jest.resetModules();
 		config = require( '../../../config/webpack.dist' );
 		loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( MiniCssExtractPlugin.loader );
-		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/format-css-module-typings.ts' ) );
-		expect( loaders[ 2 ].loader ).toEqual( '@teamsupercell/typings-for-css-modules-loader' );
-		expect( loaders[ 2 ].options.formatter ).toEqual( 'none' );
-		expect( loaders[ 3 ].loader ).toEqual( 'css-loader' );
-		expect( loaders[ 4 ].loader ).toEqual( 'postcss-loader' );
+		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/css-module-types.ts' ) );
+		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
+		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
 
-		expect( config ).toMatchSnapshot( 'cssTsFiles' );
+		expect( config ).toMatchSnapshot( 'cssTsFiles With Types' );
 	} );
 } );

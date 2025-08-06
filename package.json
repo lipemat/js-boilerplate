@@ -51,7 +51,6 @@
     "@csstools/postcss-global-data": "2.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",
     "@statoscope/webpack-plugin": "^5.29.0",
-    "@teamsupercell/typings-for-css-modules-loader": "^2.5.2",
     "@types/babel__preset-env": "^7.9.6",
     "@types/clean-css": "^4.2.11",
     "@types/postcss-load-config": "^3.0.1",

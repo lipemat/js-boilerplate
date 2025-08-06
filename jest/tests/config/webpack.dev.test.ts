@@ -19,7 +19,7 @@ afterEach( () => {
 
 describe( 'webpack.dev.test.ts', () => {
 	test( 'Browserslist config', () => {
-		const config = require( '../../../config/webpack.dev' );
+		const config = require( '../../../config/webpack.dev.ts' );
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
 		expect( config ).toMatchSnapshot( 'Default Browsers' );
@@ -27,29 +27,27 @@ describe( 'webpack.dev.test.ts', () => {
 
 		jest.resetModules();
 		process.env.BROWSERSLIST = 'chrome 71';
-		const config2 = require( '../../../config/webpack.dev' );
+		const config2 = require( '../../../config/webpack.dev.ts' );
 		expect( config2.target ).toEqual( 'browserslist:chrome 71' );
 		expect( config ).toMatchSnapshot( 'Chrome 71' );
 	} );
 
 
 	test( 'cssTsFiles', () => {
-		let config = require( '../../../config/webpack.dev' );
+		let config = require( '../../../config/webpack.dev.ts' );
 		let loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
-		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
-		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
+		expect( loaders[ 1 ].loader ).toEqual( 'css-loader' );
+		expect( loaders[ 2 ].loader ).toEqual( 'postcss-loader' );
 
 		mockPackageConfig.cssTsFiles = true;
 		jest.resetModules();
-		config = require( '../../../config/webpack.dev' );
+		config = require( '../../../config/webpack.dev.ts' );
 		loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
-		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/format-css-module-typings.ts' ) );
-		expect( loaders[ 2 ].loader ).toEqual( '@teamsupercell/typings-for-css-modules-loader' );
-		expect( loaders[ 2 ].options.formatter ).toEqual( 'none' );
-		expect( loaders[ 3 ].loader ).toEqual( 'css-loader' );
-		expect( loaders[ 4 ].loader ).toEqual( 'postcss-loader' );
+		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/css-module-types.ts' ) );
+		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
+		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
 
 		expect( config ).toMatchSnapshot( 'cssTsFiles' );
 	} );
