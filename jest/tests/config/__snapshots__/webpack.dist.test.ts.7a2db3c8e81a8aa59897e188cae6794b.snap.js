@@ -77,6 +77,9 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         "use": [
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           {
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\format-css-module-typings.ts",
+          },
+          {
             "loader": "css-loader",
             "options": {
               "importLoaders": 1,
@@ -412,6 +415,9 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "use": [
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           {
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\format-css-module-typings.ts",
+          },
+          {
             "loader": "css-loader",
             "options": {
               "importLoaders": 1,
@@ -542,6 +548,202 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                   },
                 ],
               },
+            },
+          },
+        ],
+      },
+    ],
+    "strictExportPresence": true,
+  },
+  "optimization": {
+    "moduleIds": "deterministic",
+  },
+  "output": {
+    "chunkFilename": "[name].[contenthash].js",
+    "crossOriginLoading": "anonymous",
+    "filename": "[name].js",
+    "path": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\dist",
+    "publicPath": "auto",
+  },
+  "performance": {
+    "hints": "warning",
+  },
+  "plugins": [
+    ProvidePlugin {
+      "definitions": {
+        "$": "jquery",
+        "jQuery": "jquery",
+      },
+    },
+    MiniCssExtractPlugin {
+      "_sortedModulesCache": WeakMap {},
+      "options": {
+        "chunkFilename": "[name].[contenthash].css",
+        "experimentalUseImportModule": undefined,
+        "filename": "[name].css",
+        "ignoreOrder": false,
+        "runtime": true,
+      },
+      "runtimeOptions": {
+        "attributes": undefined,
+        "insert": undefined,
+        "linkType": "text/css",
+      },
+    },
+    CleanWebpackPlugin {
+      "apply": [Function],
+      "cleanAfterEveryBuildPatterns": [],
+      "cleanOnceBeforeBuildPatterns": [
+        "**/*",
+        "!.running",
+      ],
+      "cleanStaleWebpackAssets": true,
+      "currentAssets": [],
+      "dangerouslyAllowCleanPatternsOutsideProject": false,
+      "dry": false,
+      "handleDone": [Function],
+      "handleInitial": [Function],
+      "initialClean": false,
+      "outputPath": "",
+      "protectWebpackAssets": true,
+      "removeFiles": [Function],
+      "verbose": false,
+    },
+    SubresourceIntegrityPlugin {
+      "options": {
+        "enabled": "auto",
+        "hashFuncNames": [
+          "sha384",
+        ],
+        "hashLoading": "eager",
+      },
+      "setup": [Function],
+      "validateHashFuncName": [Function],
+      "validateHashFuncNames": [Function],
+      "validateHashLoading": [Function],
+      "validateOptions": [Function],
+      "warnStandardHashFunc": [Function],
+    },
+    WebpackAssetsHash {
+      "assets": {},
+      "manifest": {},
+    },
+    {},
+    ForkTsCheckerWebpackPlugin {
+      "options": {
+        "formatter": "basic",
+        "typescript": {
+          "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
+        },
+      },
+    },
+  ],
+  "resolve": {
+    "extensions": [
+      ".ts",
+      ".tsx",
+      ".js",
+      ".jsx",
+      ".json",
+      ".pcss",
+    ],
+    "modules": [
+      "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+      "node_modules",
+    ],
+  },
+  "stats": {
+    "assets": true,
+    "assetsSort": "size",
+    "assetsSpace": 100,
+    "cachedAssets": true,
+    "cachedModules": false,
+    "children": false,
+    "colors": {
+      "green": "[93m",
+    },
+    "groupAssetsByChunk": false,
+    "groupAssetsByEmitStatus": false,
+    "groupAssetsByExtension": false,
+    "groupAssetsByInfo": false,
+    "groupAssetsByPath": false,
+    "hash": false,
+    "modules": false,
+    "timings": false,
+    "version": false,
+  },
+  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions",
+}
+`;
+
+exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles 1`] = `
+{
+  "devtool": false,
+  "entry": {},
+  "externals": {
+    "jquery": "jQuery",
+  },
+  "mode": "production",
+  "module": {
+    "rules": [
+      {
+        "exclude": /node_modules/,
+        "loader": "babel-loader",
+        "options": {
+          "cacheDirectory": true,
+          "plugins": [
+            "@babel/plugin-syntax-dynamic-import",
+          ],
+          "presets": [
+            [
+              "@babel/preset-env",
+              {
+                "bugfixes": true,
+                "corejs": {
+                  "proposals": false,
+                  "version": "3.44.0",
+                },
+                "debug": false,
+                "ignoreBrowserslistConfig": true,
+                "shippedProposals": false,
+                "targets": {
+                  "browsers": [
+                    "> 1%",
+                    "last 1 Android versions",
+                    "last 1 ChromeAndroid versions",
+                    "last 2 Chrome versions",
+                    "last 2 Firefox versions",
+                    "last 2 Safari versions",
+                    "last 2 iOS versions",
+                    "last 2 Edge versions",
+                    "last 2 Opera versions",
+                  ],
+                },
+                "useBuiltIns": "usage",
+              },
+            ],
+            [
+              "@babel/preset-react",
+              {
+                "development": true,
+                "runtime": "automatic",
+              },
+            ],
+            "@babel/preset-typescript",
+          ],
+        },
+        "test": /\\\\\\.\\[jt\\]sx\\?\\$/,
+      },
+      {
+        "test": /\\\\\\.css\\$/,
+        "use": [
+          "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
+          "css-loader",
+          {
+            "loader": "clean-css-loader",
+            "options": {
+              "level": 2,
+              "sourceMap": false,
             },
           },
         ],

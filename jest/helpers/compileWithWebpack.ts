@@ -63,8 +63,8 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	// Isolate the css-loader and postcss config, so it is loaded fresh each time.
 	// Allow differentiation between production and development.
 	jest.isolateModules( () => {
-		fullConfig.module.rules[ 2 ].use[ 1 ].options = getConfig( 'css-loader.config' );
-		fullConfig.module.rules[ 2 ].use[ 2 ].options.postcssOptions = getConfig( 'postcss.config' );
+		fullConfig.module.rules[ 2 ].use[ 2 ].options = getConfig( 'css-loader.config' );
+		fullConfig.module.rules[ 2 ].use[ 3 ].options.postcssOptions = getConfig( 'postcss.config' );
 	} );
 
 	// Point a single entry to the fixture file.

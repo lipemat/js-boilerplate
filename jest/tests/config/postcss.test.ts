@@ -58,7 +58,7 @@ function getBrowsersRequiringPlugin( browserPlugin: string ): string[] {
 
 
 function getBrowsersPlugin( plugins: Plugin[] ): {plugins: Plugin[]} {
-	// eslint-disable-next-line @typescript-eslint/ban-types
+	// eslint-disable-next-line @typescript-eslint/no-restricted-types
 	return plugins.find( plugin => 'postcss-preset-env' === plugin.postcssPlugin ) as unknown as {
 		plugins: Plugin[]
 	};

@@ -1,4 +1,5 @@
 import {type PackageConfig} from '../../../helpers/package-config';
+import path from 'path';
 
 const mockPackageConfig: Partial<PackageConfig> = {};
 // Change the result of the getPackageConfig function, so we can change anything.
@@ -36,18 +37,19 @@ describe( 'webpack.dev.test.ts', () => {
 		let config = require( '../../../config/webpack.dev' );
 		let loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
-		expect( loaders[ 1 ].loader ).toEqual( 'css-loader' );
-		expect( loaders[ 2 ].loader ).toEqual( 'postcss-loader' );
+		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
+		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
 
 		mockPackageConfig.cssTsFiles = true;
 		jest.resetModules();
 		config = require( '../../../config/webpack.dev' );
 		loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
-		expect( loaders[ 1 ].loader ).toEqual( '@teamsupercell/typings-for-css-modules-loader' );
-		expect( loaders[ 1 ].options.prettierConfigFile ).toEqual( require.resolve( '../../../helpers/.prettierrc.json' ) );
-		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
-		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
+		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/format-css-module-typings.ts' ) );
+		expect( loaders[ 2 ].loader ).toEqual( '@teamsupercell/typings-for-css-modules-loader' );
+		expect( loaders[ 2 ].options.formatter ).toEqual( 'none' );
+		expect( loaders[ 3 ].loader ).toEqual( 'css-loader' );
+		expect( loaders[ 4 ].loader ).toEqual( 'postcss-loader' );
 
 		expect( config ).toMatchSnapshot( 'cssTsFiles' );
 	} );

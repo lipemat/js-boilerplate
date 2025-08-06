@@ -43,7 +43,7 @@ if ( 'object' === typeof presetEnv.features && includedPlugins.includes( 'postcs
 		/**
 		 * Fixes `focus-visible` feature for CSS modules.
 		 *
-		 * Only needed if our browsers list includes non-supported browsers
+		 * Only needed if our browser list includes non-supported browsers
 		 * such as Safari 15.3 and below.
 		 *
 		 * Requires `focus-visible` polyfill to be loaded externally.
