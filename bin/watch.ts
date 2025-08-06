@@ -5,6 +5,7 @@ import chalk from 'chalk';
 const toWatch = [
 	'config/*.ts',
 	'helpers/*.ts',
+	'lib/*.ts',
 ];
 
 /**
@@ -12,15 +13,15 @@ const toWatch = [
  */
 chokidar.watch( toWatch, {ignored: /(^|[\/\\])\../} )
 	.on( 'change', path => {
-		console.log( chalk.yellowBright( '[watch]' ), `${path} changed` );
+		console.debug( chalk.yellowBright( '[watch]' ), `${path} changed` );
 		exec( 'yarn run build', ( err, stdout ) => {
 			if ( err ) {
 				console.error( chalk.red( stdout ) );
 			} else {
-				console.log( stdout );
+				console.debug( stdout );
 			}
 		} );
 	} )
 	.once( 'ready', () => {
-		console.log( chalk.greenBright( '[watch]' ), 'Watching for changes…' );
+		console.debug( chalk.greenBright( '[watch]' ), 'Watching for changes…' );
 	} )
