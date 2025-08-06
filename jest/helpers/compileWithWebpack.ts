@@ -78,7 +78,10 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	delete fullConfig.plugins[ 6 ];
 
 	// Create a compiler with the fixture config.
-	const compiler: Compiler = webpack( fullConfig );
+	const compiler: Compiler | null = webpack( fullConfig );
+	if ( null === compiler ) {
+		throw new Error( 'Failed to create the webpack compiler.' );
+	}
 
 	// Use a memory cache for the compiler file system.
 	// @ts-expect-error TS2322 IFs are not assignable to OutputFileSystem.

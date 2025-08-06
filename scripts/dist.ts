@@ -1,12 +1,15 @@
 import {getConfig} from '../helpers/config';
-import webpack, {type Configuration, type Stats} from 'webpack';
+import webpack, {type Compiler, type Configuration, type Stats} from 'webpack';
 
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const config: Configuration = getConfig( 'webpack.dist' );
 
-const compiler = webpack( config );
+const compiler: Compiler | null = webpack( config );
+if ( null === compiler ) {
+	throw new Error( 'Failed to create the webpack compiler.' );
+}
 compiler.run( ( err: Error | null, stats: Stats ) => {
 	if ( err ) {
 		throw err;

@@ -43,7 +43,7 @@ function analyze() {
 	// Use the default webpack stats configuration.
 	delete webpackConfig.stats;
 
-	webpack( webpackConfig ).run( ( err, stats ) => {
+	webpack( webpackConfig )?.run( ( err, stats ) => {
 		if ( err ) {
 			throw err;
 		}

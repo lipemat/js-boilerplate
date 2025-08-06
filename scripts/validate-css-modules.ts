@@ -14,11 +14,11 @@ Validate CSS modules using .d.ts definition files for each CSS module.
 
 Usage: lipemat-js-boilerplate validate-css-modules
 
---help, -h Show help menu.`;
+--help, -h Show the help menu.`;
 
 const args = process.argv.slice( 3 );
 if ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) {
-	console.log( help );
+	console.debug( help );
 	process.exit( 0 );
 }
 
@@ -41,9 +41,9 @@ async function validate() {
 		return rule;
 	} )
 
-	// Wait for generation to finish before continuing.
+	// Wait for the generation to finish before continuing.
 	await new Promise( ( resolve, reject ) => {
-		webpack( webpackConfig ).run( ( err, stats ) => {
+		webpack( webpackConfig )?.run( ( err, stats ) => {
 			if ( err ) {
 				reject( err );
 			}
@@ -56,12 +56,12 @@ async function validate() {
 		} );
 	} );
 
-	console.log( '>>> CSS Module definitions generated.' );
+	console.debug( '>>> CSS Module definitions generated.' );
 
 	// A fresh config for CSS validation.
 	webpackConfig = getConfig( 'webpack.dist' );
 	webpackConfig.stats = 'errors-warnings';
-	webpack( webpackConfig ).run( ( err, stats ) => {
+	webpack( webpackConfig )?.run( ( err, stats ) => {
 		if ( err ) {
 			throw err;
 		}
@@ -70,7 +70,7 @@ async function validate() {
 			console.error( stats.toString( webpackConfig.stats ) );
 			process.exit( 1 );
 		}
-		console.log( '>>> CSS validation completed.' );
+		console.debug( '>>> CSS validation completed.' );
 	} );
 }
 
