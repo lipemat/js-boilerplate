@@ -48,11 +48,13 @@ const mockLoaderContext: LoaderContext<Record<string, never>> = {
 describe( 'Format CSS Module Typings', () => {
 	beforeEach( () => {
 		jest.clearAllMocks();
+		// @ts-expect-error TS2339: Property change does not exist on type PackageConfig
+		getPackageConfig().change( {cssTsFiles: true} );
 	} );
 
 	test.each( sync( 'jest/fixtures/postcss-modules/raw/*.pcss' ).map( pcssFile => {
 		const filename = basename( pcssFile );
-		const cleanFile = join( 'jest/fixtures/postcss-modules/clean', filename.replace( /\.pcss$/, '.pcss.d.ts' ) );
+		const cleanFile = join( 'jest/fixtures/postcss-modules/results', filename.replace( /\.pcss$/, '.pcss.d.ts' ) );
 
 		return {
 			description: `Formats CSS types for ${filename}`,
@@ -62,9 +64,6 @@ describe( 'Format CSS Module Typings', () => {
 	} ) )( '$description', async ( {pcssFile, cleanFile} ) => {
 		const expectedContent = fs.readFileSync( cleanFile, 'utf8' );
 		const postCSSContent = fs.readFileSync( pcssFile, 'utf8' );
-
-		// @ts-expect-error TS2339: Property change does not exist on type PackageConfig
-		getPackageConfig().change( {cssTsFiles: true} );
 
 		await compileWithWebpack( {
 			basename: basename( pcssFile ),
