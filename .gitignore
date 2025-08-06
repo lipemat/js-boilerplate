@@ -100,6 +100,7 @@ dist
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/copilotDiffState.xml
 .idea/csv-editor.xml
 .idea/csv-plugin.xml
 .idea/php.xml
