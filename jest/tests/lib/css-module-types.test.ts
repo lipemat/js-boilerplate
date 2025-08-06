@@ -52,7 +52,26 @@ describe( 'Format CSS Module Typings', () => {
 		getPackageConfig().change( {cssTsFiles: true} );
 	} );
 
-	test.each( sync( 'jest/fixtures/postcss-modules/raw/*.pcss' ).map( pcssFile => {
+
+	test( 'Empty files are not generated', async () => {
+		const pcssFile = join( 'jest/fixtures/postcss-modules/default.pcss' );
+		const postCSSContent = fs.readFileSync( pcssFile, 'utf8' );
+
+		await compileWithWebpack( {
+			basename: basename( pcssFile ),
+			description: pcssFile.replace( /\\/g, '/' ).replace( 'jest/fixtures/', '' ),
+			input: pcssFile,
+			output: pcssFile.replace( '.pcss', '.css' ),
+		} );
+
+		expect( fs.writeFileSync ).not.toHaveBeenCalled();
+		mockLoaderContext.resourcePath = pcssFile;
+		createCssModuleTypings.call( mockLoaderContext, postCSSContent );
+		expect( mockLoaderContext.callback ).toHaveBeenCalledWith( null, postCSSContent );
+	} );
+
+
+	test.each( sync( 'jest/fixtures/postcss-modules/source/*.pcss' ).map( pcssFile => {
 		const filename = basename( pcssFile );
 		const cleanFile = join( 'jest/fixtures/postcss-modules/results', filename.replace( /\.pcss$/, '.pcss.d.ts' ) );
 

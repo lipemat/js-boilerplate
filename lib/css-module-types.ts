@@ -24,7 +24,9 @@ function createCssModuleTypings( this: LoaderContext<Record<string, never>>, con
 		const cssModuleKeys = -1 === indexOfLocals ? [] : getCssModuleKeys( content.substring( indexOfLocals ) );
 		const cssModuleDefinition = generateModuleTypeDefinition( cssModuleKeys, camelCase( basename( fileName ), true ) );
 
-		writeTypingsFile( typingsPath, cssModuleDefinition );
+		if ( 0 < cssModuleKeys.length ) {
+			writeTypingsFile( typingsPath, cssModuleDefinition );
+		}
 
 		this.callback( null, content, ...args );
 	} catch ( error ) {
