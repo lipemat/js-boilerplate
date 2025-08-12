@@ -15,9 +15,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
-          "plugins": [
-            "@babel/plugin-syntax-dynamic-import",
-          ],
+          "plugins": [],
           "presets": [
             [
               "@babel/preset-env",
@@ -350,9 +348,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
-          "plugins": [
-            "@babel/plugin-syntax-dynamic-import",
-          ],
+          "plugins": [],
           "presets": [
             [
               "@babel/preset-env",
@@ -685,9 +681,7 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles No types 1`] = `
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
-          "plugins": [
-            "@babel/plugin-syntax-dynamic-import",
-          ],
+          "plugins": [],
           "presets": [
             [
               "@babel/preset-env",
@@ -874,9 +868,7 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles With Types 1`] = `
         "loader": "babel-loader",
         "options": {
           "cacheDirectory": true,
-          "plugins": [
-            "@babel/plugin-syntax-dynamic-import",
-          ],
+          "plugins": [],
           "presets": [
             [
               "@babel/preset-env",

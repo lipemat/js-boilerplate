@@ -1,5 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`babel.config.test.ts Included plugins 1`] = `
+[
+  "jsx",
+  "explicitResourceManagement",
+  "classStaticBlock",
+  "privateIn",
+  "classProperties",
+  "numericSeparator",
+  "nullishCoalescingOperator",
+  "optionalChaining",
+  "jsonStrings",
+  "optionalCatchBinding",
+  "asyncGenerators",
+  "objectRestSpread",
+  "exportNamespaceFrom",
+  "dynamicImport",
+  "topLevelAwait",
+  "importMeta",
+]
+`;
+
 exports[`babel.config.test.ts Transforming works properly: Chrome 50 1`] = `
 ""use strict";
 

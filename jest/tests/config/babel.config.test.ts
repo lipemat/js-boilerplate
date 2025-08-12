@@ -71,6 +71,26 @@ describe( 'babel.config.test.ts', () => {
 		expect( chrome130 ).not.toEqual( chrome50 );
 	} );
 
+
+	test( 'Included plugins', () => {
+		const config = require( '../../../config/babel.config' );
+		const babel = require( '@babel/core' );
+
+		const result = babel.transform( '', {
+			presets: config.presets,
+			plugins: config.plugins,
+			filename: Date.now().toString(),
+			configFile: false,
+			envName: 'production',
+			code: false,
+			ast: false,
+		} );
+
+		expect( result.options.parserOpts.plugins ).toMatchSnapshot();
+		expect( result.options.parserOpts.plugins ).toContain( 'dynamicImport' );
+	} );
+
+
 	test( 'Build files', () => {
 		const TS = require( '../../../config/babel.config.ts' );
 		const JS = require( '../../../config/babel.config.js' );

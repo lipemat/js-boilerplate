@@ -52,9 +52,7 @@ const babelConfig: BabelConfig = {
 		} ],
 		'@babel/preset-typescript',
 	],
-	plugins: [
-		'@babel/plugin-syntax-dynamic-import',
-	],
+	plugins: [],
 };
 
 export default babelConfig;

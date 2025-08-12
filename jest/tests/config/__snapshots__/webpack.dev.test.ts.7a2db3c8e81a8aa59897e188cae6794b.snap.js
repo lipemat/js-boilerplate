@@ -19,7 +19,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
           "plugins": [
             "react-refresh/babel",
             "@babel/plugin-transform-react-jsx-source",
-            "@babel/plugin-syntax-dynamic-import",
           ],
           "presets": [
             [
@@ -287,7 +286,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
           "plugins": [
             "react-refresh/babel",
             "@babel/plugin-transform-react-jsx-source",
-            "@babel/plugin-syntax-dynamic-import",
           ],
           "presets": [
             [
@@ -555,7 +553,6 @@ exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
           "plugins": [
             "react-refresh/babel",
             "@babel/plugin-transform-react-jsx-source",
-            "@babel/plugin-syntax-dynamic-import",
           ],
           "presets": [
             [

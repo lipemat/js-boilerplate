@@ -23,9 +23,7 @@ exports[`jest.config.test.ts should match the snapshot 1`] = `
     "^.+\\.[tj]sx?$": [
       "babel-jest",
       {
-        "plugins": [
-          "@babel/plugin-syntax-dynamic-import",
-        ],
+        "plugins": [],
         "presets": [
           [
             "@babel/preset-env",
