@@ -2471,7 +2471,7 @@ __metadata:
     postcss-scss: "npm:^4.0.4"
     postcss-sort-media-queries: "npm:^5.2.0"
     react: "npm:^18.2.0"
-    react-refresh: "npm:^0.14.0"
+    react-refresh: "npm:^0.17.0"
     setimmediate: "npm:^1.0.5"
     style-loader: "npm:^3.3.1"
     ts-node: "npm:^10.9.1"
@@ -10535,6 +10535,13 @@ __metadata:
   version: 0.14.2
   resolution: "react-refresh@npm:0.14.2"
   checksum: 10c0/875b72ef56b147a131e33f2abd6ec059d1989854b3ff438898e4f9310bfcc73acff709445b7ba843318a953cb9424bcc2c05af2b3d80011cee28f25aef3e2ebb
+  languageName: node
+  linkType: hard
+
+"react-refresh@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "react-refresh@npm:0.17.0"
+  checksum: 10c0/002cba940384c9930008c0bce26cac97a9d5682bc623112c2268ba0c155127d9c178a9a5cc2212d560088d60dfd503edd808669a25f9b377f316a32361d0b23c
   languageName: node
   linkType: hard
 
