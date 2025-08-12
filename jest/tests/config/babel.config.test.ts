@@ -5,19 +5,21 @@ import babelPresetDefault, {type BabelConfig} from '../../../config/babel.config
 
 
 function translate( config: BabelConfig ) {
-	const filename = path.join( __dirname, '../core/transform.test.ts' );
+	return runThroughBabel( config, 'production', path.join( __dirname, '../core/transform.test.ts' ) )?.code;
+}
+
+function runThroughBabel( config: BabelConfig, mode: 'production' | 'development' = 'production', filename: string ) {
 	const input = readFileSync( filename );
 	delete config.cacheDirectory;
 	jest.resetModules();
 
 	delete require.cache[ require.resolve( '@babel/core' ) ];
-	const output = require( '@babel/core' ).transform( input.toString(), {
-		filename: Date.now().toString(),
+	return require( '@babel/core' ).transform( input.toString(), {
+		filename: path.basename( filename ),
 		configFile: false,
-		envName: 'production',
+		envName: mode,
 		presets: [ config ],
 	} );
-	return output?.code;
 }
 
 describe( 'babel.config.test.ts', () => {
@@ -73,21 +75,27 @@ describe( 'babel.config.test.ts', () => {
 
 
 	test( 'Included plugins', () => {
-		const config = require( '../../../config/babel.config' );
-		const babel = require( '@babel/core' );
+		const rootDir = path.resolve( '../' ).replace( /\\/g, '\\\\' );
+		const fileName = path.join( __dirname, '../../fixtures/react-component/share.tsx' );
 
-		const result = babel.transform( '', {
-			presets: config.presets,
-			plugins: config.plugins,
-			filename: Date.now().toString(),
-			configFile: false,
-			envName: 'production',
-			code: false,
-			ast: false,
-		} );
+		process.env.NODE_ENV = 'production';
+		const distConfig = require( '../../../config/babel.config' );
+		const distResult = runThroughBabel( distConfig, 'production', fileName );
 
-		expect( result.options.parserOpts.plugins ).toMatchSnapshot();
-		expect( result.options.parserOpts.plugins ).toContain( 'dynamicImport' );
+		expect( distResult.code.replace( rootDir, '' ) ).toMatchSnapshot();
+		expect( distResult.options.parserOpts.plugins ).toMatchSnapshot();
+		expect( distResult.options.parserOpts.plugins ).toContain( 'dynamicImport' );
+
+		process.env.NODE_ENV = 'development';
+		const developConfig = require( '../../../config/babel.config' );
+		const devResult = runThroughBabel( developConfig, 'development', fileName )
+		expect( devResult.code.replace( rootDir, '' ) ).toMatchSnapshot();
+		expect( devResult.options.parserOpts.plugins ).toMatchSnapshot();
+		//expect( devResult.options.parserOpts.plugins ).toContain( 'transformReactSource' );
+		expect( distResult.options.parserOpts.plugins ).toContain( 'dynamicImport' );
+
+		expect( distResult.options.parserOpts.plugins ).toStrictEqual( devResult.options.parserOpts.plugins );
+		expect( distResult.code ).not.toBe( devResult.code );
 	} );
 
 

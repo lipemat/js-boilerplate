@@ -13,8 +13,6 @@ const babelOptions: BabelConfig = getConfig( 'babel.config' );
 const cssLoaderOptions = getConfig( 'css-loader.config' );
 const devServerOptions = getConfig( 'dev-server.config' );
 
-// To allow line numbers to show up in console errors. @see React Error Boundaries.
-babelOptions.plugins?.unshift( '@babel/plugin-transform-react-jsx-source' );
 // To support React Fast Refresh.
 babelOptions.plugins?.unshift( 'react-refresh/babel' );
 

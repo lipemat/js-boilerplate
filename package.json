@@ -43,7 +43,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.24.7",
-    "@babel/plugin-transform-react-jsx-source": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
@@ -97,10 +96,12 @@
     "@lipemat/eslint-config": "^4.0.4",
     "@types/jest": "^29.5.3",
     "@types/minimist": "^1",
+    "@types/react": "^18.2.64",
     "chokidar": "^3.5.3",
     "eslint": "^9",
     "glob": "^10.3.3",
     "memfs": "^3.5.3",
+    "react": "^18.2.0",
     "setimmediate": "^1.0.5"
   },
   "resolutions": {

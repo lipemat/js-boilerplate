@@ -1,8 +1,144 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`babel.config.test.ts Included plugins 1`] = `
+""use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = require("react");
+var _jsxRuntime = require("react/jsx-runtime");
+class Share extends _react.Component {
+  render() {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        className: "twitter-share-button",
+        onClick: this.openFacebook.bind(this),
+        children: "Facebook"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        className: "twitter-share-button",
+        onClick: this.openTwitter.bind(this),
+        children: "Twitter"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        onClick: this.props.close,
+        children: "Close"
+      })]
+    });
+  }
+  openTwitter() {
+    const $url = encodeURI(this.props.url ?? '');
+    const $href = 'https://twitter.com/intent/tweet?url=' + $url;
+    window.open($href, 'Twitter', 'width=640,height=580');
+  }
+  openFacebook() {
+    const $url = encodeURI(this.props.url ?? '');
+    const $href = 'https://www.facebook.com/sharer/sharer.php?u=' + $url;
+    window.open($href, 'Twitter', 'width=640,height=580');
+  }
+}
+exports.default = Share;"
+`;
+
+exports[`babel.config.test.ts Included plugins 2`] = `
 [
+  "objectRestSpread",
+  "classProperties",
   "jsx",
+  [
+    "typescript",
+    {
+      "disallowAmbiguousJSXLike": false,
+      "dts": undefined,
+    },
+  ],
+  "explicitResourceManagement",
+  "classStaticBlock",
+  "privateIn",
+  "classProperties",
+  "numericSeparator",
+  "nullishCoalescingOperator",
+  "optionalChaining",
+  "jsonStrings",
+  "optionalCatchBinding",
+  "asyncGenerators",
+  "objectRestSpread",
+  "exportNamespaceFrom",
+  "dynamicImport",
+  "topLevelAwait",
+  "importMeta",
+]
+`;
+
+exports[`babel.config.test.ts Included plugins 3`] = `
+""use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = require("react");
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _jsxFileName = "\\\\js-boilerplate\\\\share.tsx";
+class Share extends _react.Component {
+  render() {
+    return /*#__PURE__*/(0, _jsxDevRuntime.jsxDEV)("div", {
+      children: [/*#__PURE__*/(0, _jsxDevRuntime.jsxDEV)("button", {
+        className: "twitter-share-button",
+        onClick: this.openFacebook.bind(this),
+        children: "Facebook"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 12,
+        columnNumber: 5
+      }, this), /*#__PURE__*/(0, _jsxDevRuntime.jsxDEV)("button", {
+        className: "twitter-share-button",
+        onClick: this.openTwitter.bind(this),
+        children: "Twitter"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 5
+      }, this), /*#__PURE__*/(0, _jsxDevRuntime.jsxDEV)("button", {
+        onClick: this.props.close,
+        children: "Close"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 24,
+        columnNumber: 5
+      }, this)]
+    }, void 0, true, {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 4
+    }, this);
+  }
+  openTwitter() {
+    const $url = encodeURI(this.props.url ?? '');
+    const $href = 'https://twitter.com/intent/tweet?url=' + $url;
+    window.open($href, 'Twitter', 'width=640,height=580');
+  }
+  openFacebook() {
+    const $url = encodeURI(this.props.url ?? '');
+    const $href = 'https://www.facebook.com/sharer/sharer.php?u=' + $url;
+    window.open($href, 'Twitter', 'width=640,height=580');
+  }
+}
+exports.default = Share;"
+`;
+
+exports[`babel.config.test.ts Included plugins 4`] = `
+[
+  "objectRestSpread",
+  "classProperties",
+  "jsx",
+  [
+    "typescript",
+    {
+      "disallowAmbiguousJSXLike": false,
+      "dts": undefined,
+    },
+  ],
   "explicitResourceManagement",
   "classStaticBlock",
   "privateIn",

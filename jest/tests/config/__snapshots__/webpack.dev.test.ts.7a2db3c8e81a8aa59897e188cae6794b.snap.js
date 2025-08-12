@@ -18,7 +18,6 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
           "cacheDirectory": true,
           "plugins": [
             "react-refresh/babel",
-            "@babel/plugin-transform-react-jsx-source",
           ],
           "presets": [
             [
@@ -285,7 +284,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
           "cacheDirectory": true,
           "plugins": [
             "react-refresh/babel",
-            "@babel/plugin-transform-react-jsx-source",
           ],
           "presets": [
             [
@@ -552,7 +550,6 @@ exports[`webpack.dev.test.ts cssTsFiles: cssTsFiles 1`] = `
           "cacheDirectory": true,
           "plugins": [
             "react-refresh/babel",
-            "@babel/plugin-transform-react-jsx-source",
           ],
           "presets": [
             [
