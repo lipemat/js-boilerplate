@@ -31,11 +31,7 @@ async function validate() {
 		if ( rule.test?.toString() === /\.pcss$/.toString() ) {
 			// @ts-ignore
 			rule.use?.splice( 1, 0, {
-				loader: '@teamsupercell/typings-for-css-modules-loader',
-				options: {
-					disableLocalsExport: true,
-					prettierConfigFile: path.resolve( __dirname, '../helpers/.prettierrc.json' ),
-				},
+				loader: path.resolve( __dirname, '../lib/css-module-types.ts' ),
 			} )
 		}
 		return rule;
