@@ -10,7 +10,7 @@
   "compilerOptions": {
     "declaration": false,
     "module": "CommonJS",
-    "sourceMap": false,
+    "sourceMap": true,
     "strict": true,
     "target": "ES2022"
   }
