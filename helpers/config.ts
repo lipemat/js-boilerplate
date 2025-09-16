@@ -126,7 +126,11 @@ export function getExtensionsConfig<T extends object>( fileName: string, default
 	let mergedConfig: T = {} as T;
 	extensions.forEach( extension => {
 		try {
-			const extensionConfig = require( extension + '/config/' + fileName );
+			let extensionConfig = require( extension + '/config/' + fileName );
+			// For ES Modules, we need to use the default export.
+			if ( 'default' in extensionConfig ) {
+				extensionConfig = extensionConfig.default;
+			}
 			if ( 'function' === typeof extensionConfig ) {
 				mergedConfig = {...mergedConfig, ...extensionConfig( {...defaultConfig, ...mergedConfig} )};
 			} else {
