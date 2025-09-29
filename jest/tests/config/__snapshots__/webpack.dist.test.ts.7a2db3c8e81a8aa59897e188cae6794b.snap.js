@@ -62,11 +62,7 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
           {
-            "loader": "clean-css-loader",
-            "options": {
-              "level": 2,
-              "sourceMap": false,
-            },
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\clean-css-loader.ts",
           },
         ],
       },
@@ -395,11 +391,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
           {
-            "loader": "clean-css-loader",
-            "options": {
-              "level": 2,
-              "sourceMap": false,
-            },
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\clean-css-loader.ts",
           },
         ],
       },
@@ -721,11 +713,7 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles No types 1`] = `
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
           {
-            "loader": "clean-css-loader",
-            "options": {
-              "level": 2,
-              "sourceMap": false,
-            },
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\clean-css-loader.ts",
           },
         ],
       },
@@ -915,11 +903,7 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles With Types 1`] = `
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           "css-loader",
           {
-            "loader": "clean-css-loader",
-            "options": {
-              "level": 2,
-              "sourceMap": false,
-            },
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\clean-css-loader.ts",
           },
         ],
       },

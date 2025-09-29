@@ -133,11 +133,7 @@ const config: WebpackConfig = {
 					MiniCssExtractPlugin.loader,
 					'css-loader',
 					{
-						loader: 'clean-css-loader',
-						options: {
-							level: 2,
-							sourceMap: false,
-						},
+						loader: path.resolve( __dirname, '../lib/clean-css-loader.ts' ),
 					},
 				],
 			},
