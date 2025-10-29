@@ -40,7 +40,7 @@ Add the following to your package.json. (this may also be found in the `template
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
 
 * `brotliFiles : {bool}` Enabled generating pre-compressed .br files for CSS and JS.
-* `shortCssClasses : {bool}` Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
+* `shortCssClasses: {bool|{js:bool, pcss:bool}}` Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
 * `jsPath : {string}` Path of JS application relative to `package.json`. If `package.json` is in same directory as the JS application, this may be omitted.
 * `cssTsFiles : {bool}` Enable auto generation of TypeScript definitions for CSS modules. 
 
