@@ -20,7 +20,10 @@ export interface PackageConfig {
 	packageManager?: string;
 	resolutions?: Dependencies;
 	scripts: Partial<Scripts>;
-	shortCssClasses: boolean;
+	shortCssClasses: boolean | {
+		js: boolean;
+		pcss: boolean;
+	};
 	url: string;
 	version?: string;
 	workingDirectory: string;
@@ -73,7 +76,7 @@ packageConfig.workingDirectory = packageConfig.jsPath !== '' ? resolve( packageC
 try {
 	const localConfig = require( resolve( workingDirectory, './local-config.json' ) );
 	packageConfig = {...packageConfig, ...localConfig};
-} catch ( e ) {
+} catch {
 }
 
 /**

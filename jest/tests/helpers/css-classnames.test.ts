@@ -1,8 +1,9 @@
 import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
 import {LoaderContext} from 'webpack';
+import type {PackageConfig} from '../../../helpers/package-config';
 
 // Change this variable during tests.
-let mockShortCssEnabled = false;
+let mockShortCssEnabled: PackageConfig['shortCssClasses'] = false;
 
 // Change the result of the getPackageConfig function.
 jest.mock( '../../../helpers/package-config.js', () => ( {
@@ -60,9 +61,27 @@ describe( 'Test CSS Classname Generation', () => {
 		expect( SHORT_ALPHABET.length ).toEqual( 26 );
 	} );
 
-	test( 'Are Short CSS Classes Enabled', () => {
+	test( 'Are Short CSS Classes Enabled?', () => {
 		expect( usingShortCssClasses() ).toEqual( false );
 		mockShortCssEnabled = true;
 		expect( usingShortCssClasses() ).toEqual( true );
+
+		mockShortCssEnabled = {
+			js: false,
+			pcss: true,
+		}
+		expect( usingShortCssClasses() ).toBe( false );
+
+		mockShortCssEnabled = {
+			js: true,
+			pcss: false,
+		}
+		expect( usingShortCssClasses() ).toBe( true );
+
+		mockShortCssEnabled = {
+			js: true,
+			pcss: true,
+		}
+		expect( usingShortCssClasses() ).toBe( true );
 	} );
 } );
