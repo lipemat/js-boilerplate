@@ -92,13 +92,13 @@
     "webpack-subresource-integrity": "^5.1.0"
   },
   "devDependencies": {
-    "@lipemat/eslint-config": "^5.1.3",
+    "@lipemat/eslint-config": "^5.1.4",
     "@types/jest": "^29.5.3",
     "@types/minimist": "^1",
     "@types/react": "^18.2.64",
     "chokidar": "^3.5.3",
     "eslint": "^9",
-    "glob": "^10.3.3",
+    "glob": "^10.5.0",
     "memfs": "^3.5.3",
     "react": "^18.2.0",
     "setimmediate": "^1.0.5"
