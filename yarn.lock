@@ -2365,7 +2365,65 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lipemat/js-boilerplate@npm:^10.14.3, @lipemat/js-boilerplate@workspace:.":
+"@lipemat/js-boilerplate@npm:^10.14.3":
+  version: 10.14.6
+  resolution: "@lipemat/js-boilerplate@npm:10.14.6"
+  dependencies:
+    "@babel/core": "npm:^7.24.7"
+    "@babel/preset-env": "npm:^7.24.7"
+    "@babel/preset-react": "npm:^7.24.7"
+    "@babel/preset-typescript": "npm:^7.24.7"
+    "@csstools/postcss-global-data": "npm:2.0.0"
+    "@pmmmwh/react-refresh-webpack-plugin": "npm:^0.6.1"
+    "@statoscope/webpack-plugin": "npm:^5.29.0"
+    "@types/babel__preset-env": "npm:^7.9.6"
+    "@types/clean-css": "npm:^4.2.11"
+    "@types/postcss-load-config": "npm:^3.0.1"
+    "@types/postcss-preset-env": "npm:^7.7.0"
+    "@wordpress/browserslist-config": "npm:^6.19.0"
+    babel-jest: "npm:^29.0.0"
+    babel-loader: "npm:^10.0.0"
+    browserslist: "npm:^4.21.9"
+    chalk: "npm:^4.0"
+    clean-css: "npm:^5.3.3"
+    clean-webpack-plugin: "npm:^4.0.0"
+    compression-webpack-plugin: "npm:^10.0.0"
+    core-js: "npm:^3.33.1"
+    cross-spawn: "npm:^7.0.6"
+    css-loader: "npm:6.7.1"
+    fork-ts-checker-webpack-plugin: "npm:^7.2.13"
+    html-webpack-plugin: "npm:^5.5.0"
+    identity-obj-proxy: "npm:^3.0.0"
+    jest: "npm:^29.0.0"
+    jest-cli: "npm:^29.0.0"
+    jest-environment-jsdom: "npm:^29.0.0"
+    mini-css-extract-plugin: "npm:^2.9.2"
+    minimist: "npm:^1.2.8"
+    postcss: "npm:^8.4.47"
+    postcss-color-mod-function: "npm:^4.1.1"
+    postcss-custom-media: "npm:^8.0.1"
+    postcss-import: "npm:^15.1.0"
+    postcss-loader: "npm:^8.1.1"
+    postcss-nested: "npm:^5.0.6"
+    postcss-preset-env: "npm:^7.8.3"
+    postcss-scss: "npm:^4.0.4"
+    postcss-sort-media-queries: "npm:^5.2.0"
+    react-refresh: "npm:^0.17.0"
+    style-loader: "npm:^3.3.1"
+    ts-node: "npm:^10.9.1"
+    typescript: "npm:^5.9.3"
+    webpack: "npm:^5.101.0"
+    webpack-assets-manifest: "npm:^6.2.1"
+    webpack-cli: "npm:^6.0.1"
+    webpack-dev-server: "npm:^5.2.2"
+    webpack-subresource-integrity: "npm:^5.1.0"
+  bin:
+    lipemat-js-boilerplate: bin/lipemat-js-boilerplate.js
+  checksum: 10c0/9e1e2be78083e09038241cdad14ae73b20cf2bbb83c1f3385e8231c5462383920540e6800a2656a2a93a2ffbe95a4f428c4bbe35268e962202f8dd1b34582871
+  languageName: node
+  linkType: hard
+
+"@lipemat/js-boilerplate@workspace:.":
   version: 0.0.0-use.local
   resolution: "@lipemat/js-boilerplate@workspace:."
   dependencies:
