@@ -98,7 +98,7 @@
     "@types/react": "^18.2.64",
     "chokidar": "^3.5.3",
     "eslint": "^9",
-    "glob": "^10.5.0",
+    "glob": "^11.1.0",
     "memfs": "^3.5.3",
     "react": "^18.2.0",
     "setimmediate": "^1.0.5"
