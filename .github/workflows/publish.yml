@@ -1,7 +1,7 @@
 ##########################################################
 # Publish on npm.js
 #
-# @version 4.0.0
+# @version 5.0.0
 #
 ###########################################################
 
@@ -17,9 +17,8 @@ on:
 jobs:
   publish:
     name: Publish on npm.js
-    uses: lipemat/public-actions/.github/workflows/publish-package.yml@version/1
+    uses: lipemat/public-actions/.github/workflows/publish-package.yml@version/2
     with:
       beta: false
       nodeVersion: '20.11.0'
       withInstall: true
-    secrets: inherit
