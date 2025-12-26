@@ -19,5 +19,5 @@ jobs:
     uses: lipemat/public-actions/.github/workflows/publish-package.yml@version/2
     with:
       beta: ${{ contains(github.ref_name, 'beta') }}
-      nodeVersion: '20.11.0'
+      nodeVersion: '22.21.1'
       withInstall: true
