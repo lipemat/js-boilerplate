@@ -12,13 +12,12 @@ on:
   push:
     tags:
       - "*"
-      - "!*beta*"
 
 jobs:
   publish:
     name: Publish on npm.js
     uses: lipemat/public-actions/.github/workflows/publish-package.yml@version/2
     with:
-      beta: false
+      beta: ${{ contains(github.ref_name, 'beta') }}
       nodeVersion: '20.11.0'
       withInstall: true
