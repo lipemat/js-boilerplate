@@ -4,10 +4,10 @@ const {getLocalIdent} = require( '../../../helpers/css-classnames' );
 let mockShortCssEnabled = false;
 
 // Change the result of the getPackageConfig function so we can change shortCssClasses.
-jest.mock( '../../../helpers/package-config.js', () => ( {
-	...jest.requireActual( '../../../helpers/package-config.js' ),
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.js' ),
+		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 		// Change this variable during the test.
 		shortCssClasses: mockShortCssEnabled,
 	} ),

@@ -1,15 +1,15 @@
 import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
 import {LoaderContext} from 'webpack';
-import type {PackageConfig} from '../../../helpers/package-config';
+import type {PackageConfig} from '@lipemat/js-boilerplate-shared';
 
 // Change this variable during tests.
 let mockShortCssEnabled: PackageConfig['shortCssClasses'] = false;
 
 // Change the result of the getPackageConfig function.
-jest.mock( '../../../helpers/package-config.js', () => ( {
-	...jest.requireActual( '../../../helpers/package-config.js' ),
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.js' ),
+		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 		// Change this variable during the test.
 		shortCssClasses: mockShortCssEnabled,
 	} ),
