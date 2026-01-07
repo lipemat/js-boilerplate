@@ -4,7 +4,7 @@ import {type Configuration as WebpackConfig} from 'webpack';
 import type {Configuration as DevServerConfig} from 'webpack-dev-server';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config';
-import {getPackageConfig} from './package-config';
+import {getExtensionsConfig, getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {EntriesConfig} from '../config/entries.config';
 import type {PostCSSConfig} from '../config/postcss.config';
 import type {CssLoaderConfig} from '../config/css-loader.config';
@@ -23,12 +23,7 @@ type Configs = {
 	'webpack.dist': WebpackConfig;
 };
 
-const {dependencies, devDependencies, workingDirectory, packageDirectory} = getPackageConfig();
-
-const extensions = [
-	...Object.keys( dependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
-	...Object.keys( devDependencies ?? {} ).filter( name => name.includes( 'js-boilerplate-' ) ),
-];
+const {workingDirectory, packageDirectory} = getPackageConfig();
 
 
 /**
@@ -111,45 +106,6 @@ export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
 
 
 /**
- * Get a config from any existing extension's /config directories
- * merged into one.
- *
- * @param {string} fileName
- * @param {Object} defaultConfig - Default config from this package.
- *                               Used for passing to an extension callback.
- *
- * @see getConfig
- *
- * @return {Object}
- */
-export function getExtensionsConfig<T extends object>( fileName: string, defaultConfig: T ): T {
-	let mergedConfig: T = {} as T;
-	extensions.forEach( extension => {
-		try {
-			let extensionConfig = require( extension + '/config/' + fileName );
-			// For ES Modules, we need to use the default export.
-			if ( 'default' in extensionConfig ) {
-				extensionConfig = extensionConfig.default;
-			}
-			if ( 'function' === typeof extensionConfig ) {
-				mergedConfig = {...mergedConfig, ...extensionConfig( {...defaultConfig, ...mergedConfig} )};
-			} else {
-				mergedConfig = {...mergedConfig, ...extensionConfig};
-			}
-		} catch ( e ) {
-			if ( e instanceof Error ) {
-				if ( ! ( 'code' in e ) || 'MODULE_NOT_FOUND' !== e.code ) {
-					console.error( e );
-				}
-			}
-		}
-	} );
-
-	return mergedConfig;
-}
-
-
-/**
  * Get the path to the "tsconfig.json" file if it exists.
  *
  * 1. The working directory.
@@ -191,6 +147,12 @@ export function getBrowsersList(): readonly string[] {
 	return projectBrowsersList;
 }
 
+/**
+ * Adjust the browserslist to include our defaults.
+ */
+export function adjustBrowserslist( browserRules: string[] ): string[] {
+	return browserRules;
+}
 
 /**
  * If the browserslist is not specified, we fall back to WordPress defaults.
@@ -216,9 +178,9 @@ export const getDefaultBrowsersList = (): false | string[] => {
 };
 
 
-/**
- * Adjust the browserslist to include our defaults.
- */
-export function adjustBrowserslist( browserRules: string[] ): string[] {
-	return browserRules;
+export {
+	/**
+	 * @deprecated Use `@lipemat/js-boilerplate-shared` instead.
+	 */
+	getExtensionsConfig,
 }
