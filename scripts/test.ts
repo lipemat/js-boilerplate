@@ -1,7 +1,8 @@
-const {resolve: pathResolve} = require( 'path' );
-const {existsSync} = require( 'fs' );
+import {resolve as pathResolve} from 'path';
+import {existsSync} from 'fs';
 
-const {getPackageConfig} = require( '@lipemat/js-boilerplate-shared' );
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {run} from 'jest-cli';
 
 const packageConfig = getPackageConfig();
 
@@ -19,4 +20,4 @@ if ( possibleConfig.length < 1 ) {
 	}
 }
 
-require( 'jest-cli/bin/jest' );
+run()
