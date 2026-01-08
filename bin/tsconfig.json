@@ -9,7 +9,8 @@
   ],
   "compilerOptions": {
     "declaration": false,
+    "noEmit": false,
     "sourceMap": true,
-    "strict": true,
+    "strict": true
   }
 }

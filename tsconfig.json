@@ -11,8 +11,5 @@
     "scripts/**/*",
     "src/**/*",
     "types/**/*",
-  ],
-  "compilerOptions": {
-    "esModuleInterop": true,
-  }
+  ]
 }

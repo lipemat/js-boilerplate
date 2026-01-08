@@ -37,11 +37,11 @@
   },
   "scripts": {
     "browserslist": "lipemat-js-boilerplate browserslist",
-    "build": "ts-node ./bin/build.ts",
+    "build": "tsc --project ./bin",
     "prepublishOnly": "yarn run build",
     "test": "lipemat-js-boilerplate test",
     "validate-ts": "tsc --noEmit",
-    "watch": "ts-node ./bin/watch.ts"
+    "watch": "tsc --project ./bin --watch"
   },
   "dependencies": {
     "@babel/core": "^7.24.7",
