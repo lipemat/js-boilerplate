@@ -39,10 +39,10 @@ Add the following to your package.json. (this may also be found in the `template
 ```
 **_You may adjust things as needed but be sure to leave the `scripts` as is._**
 
-* `brotliFiles : {bool}` Enabled generating pre-compressed .br files for CSS and JS.
-* `shortCssClasses: {bool|{js:bool, pcss:bool}}` Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
-* `jsPath : {string}` Path of JS application relative to `package.json`. If `package.json` is in same directory as the JS application, this may be omitted.
-* `cssTsFiles : {bool}` Enable auto generation of TypeScript definitions for CSS modules. 
+* `brotliFiles : {bool}` Enabled generating pre-compressed .br files for CSS and JS. Defaults to `true`.
+* `cssTsFiles : {bool}` Enable auto generation of TypeScript definitions for CSS modules. Defaults to `true`.
+* `jsPath : {string}` Path of JS application relative to `package.json`. Defaults to `./js`.
+* `shortCssClasses: {bool|{js:bool, pcss:bool}}` Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site. Defaults to `true`.
 
 ## Code Completion In PHPStorm
 Some `@types` have been specified in this library to help with code completion and allow using the built-in TypeScript support. Unfortunately, some typescripts still send errors to PHPStorm like "Default export is not declared in an imported module". I've found that it's easier to just remove this warning by un-checking `Editor -> Inspections -> JavaScript -> General -> Validate Imports`. (this may not need to be un-checked if you enable the built-in TypeScript support).
