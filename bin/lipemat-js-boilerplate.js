@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-const spawn = require( 'cross-spawn' );
+import {sync as spawn} from 'cross-spawn';
+import {dirname, resolve} from 'path';
+import {fileURLToPath} from 'node:url';
+
 const args = process.argv.slice( 2 );
 
 const scriptIndex = args.findIndex(
@@ -29,9 +32,9 @@ switch ( script ) {
 	case 'test':
 	case 'validate-css-modules': {
 		// If the ts-node command is not available, install it globally.
-		if ( spawn.sync( 'ts-node', [ '-v' ] ).error ) {
+		if ( spawn( 'ts-node', [ '-v' ] ).error ) {
 			console.log( 'Installing ts-node globally.' );
-			spawn.sync( 'npm', [ 'install', '-g', 'ts-node' ] );
+			spawn( 'npm', [ 'install', '-g', 'ts-node' ] );
 		}
 
 		if ( TS_CONVERTED_SCRIPTS.includes( script ) ) {
@@ -39,10 +42,11 @@ switch ( script ) {
 		}
 
 		// Run the script.
-		const result = spawn.sync(
+		const result = spawn(
 			'ts-node',
 			nodeArgs
-				.concat( require.resolve( '../scripts/' + script ) )
+				.concat( resolve( dirname( fileURLToPath( import.meta.url ) ), '../scripts/' + script ) )
+
 				.concat( args.slice( scriptIndex + 1 ) ),
 			{stdio: 'inherit'}
 		);
