@@ -16,7 +16,7 @@ function getPostCSSConfig(): PostCSSConfig {
 	// @ts-ignore
 	let config: PostCSSConfig = {};
 	jest.isolateModules( () => {
-		config = require( '../../../config/postcss.config.ts' );
+		config = require( '../../../config/postcss.config.ts' ).default;
 	} );
 	return config;
 }
@@ -67,7 +67,7 @@ function getBrowsersPlugin( plugins: Plugin[] ): {plugins: Plugin[]} {
 // Create a data provider for fixtures.
 const fixtures: Fixture[] = require( 'glob' )
 	.sync( 'jest/fixtures/{postcss,safari-15}/*.pcss' )
-	.map( file => {
+	.map( ( file: string ) => {
 		return {
 			basename: basename( file ),
 			input: file,

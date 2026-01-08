@@ -10,7 +10,6 @@ exports[`jest.config.test.ts should match the snapshot 1`] = `
     "is-plain-obj": "identity-obj-proxy",
     "uuid": "identity-obj-proxy",
   },
-  "prettierPath": null,
   "roots": [
     "./tests",
   ],

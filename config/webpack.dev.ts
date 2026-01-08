@@ -5,7 +5,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config';
 import {getEntries} from '../helpers/entries';
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {BabelConfig} from './babel.config';
 
 const postcssOptions = getConfig( 'postcss.config' );

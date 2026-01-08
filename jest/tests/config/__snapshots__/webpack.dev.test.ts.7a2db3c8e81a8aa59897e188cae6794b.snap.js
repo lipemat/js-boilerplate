@@ -71,6 +71,9 @@ exports[`webpack.dev.test.ts Browserslist config: Chrome 71 1`] = `
         "use": [
           "style-loader",
           {
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\css-module-types.ts",
+          },
+          {
             "loader": "css-loader",
             "options": {
               "importLoaders": 1,
@@ -336,6 +339,9 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
         "test": /\\\\\\.pcss\\$/,
         "use": [
           "style-loader",
+          {
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\css-module-types.ts",
+          },
           {
             "loader": "css-loader",
             "options": {

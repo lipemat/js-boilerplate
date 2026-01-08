@@ -71,11 +71,15 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         "use": [
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           {
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\css-module-types.ts",
+          },
+          {
             "loader": "css-loader",
             "options": {
               "importLoaders": 1,
               "modules": {
                 "exportLocalsConvention": "camelCase",
+                "getLocalIdent": [Function],
                 "localIdentName": "[contenthash:base64:5]",
                 "mode": [Function],
               },
@@ -288,6 +292,24 @@ exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
         "typescript": {
           "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
         },
+      },
+    },
+    CompressionPlugin {
+      "algorithm": [Function],
+      "options": {
+        "algorithm": "brotliCompress",
+        "compressionOptions": {
+          "params": {
+            "1": 11,
+          },
+        },
+        "deleteOriginalAssets": false,
+        "exclude": undefined,
+        "filename": "[path][base].br",
+        "include": undefined,
+        "minRatio": 0.8,
+        "test": /\\\\\\.\\(js\\|css\\)\\$/,
+        "threshold": 0,
       },
     },
   ],
@@ -400,11 +422,15 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "use": [
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           {
+            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\css-module-types.ts",
+          },
+          {
             "loader": "css-loader",
             "options": {
               "importLoaders": 1,
               "modules": {
                 "exportLocalsConvention": "camelCase",
+                "getLocalIdent": [Function],
                 "localIdentName": "[contenthash:base64:5]",
                 "mode": [Function],
               },
@@ -619,6 +645,24 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         },
       },
     },
+    CompressionPlugin {
+      "algorithm": [Function],
+      "options": {
+        "algorithm": "brotliCompress",
+        "compressionOptions": {
+          "params": {
+            "1": 11,
+          },
+        },
+        "deleteOriginalAssets": false,
+        "exclude": undefined,
+        "filename": "[path][base].br",
+        "include": undefined,
+        "minRatio": 0.8,
+        "test": /\\\\\\.\\(js\\|css\\)\\$/,
+        "threshold": 0,
+      },
+    },
   ],
   "resolve": {
     "extensions": [
@@ -688,8 +732,15 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles No types 1`] = `
                 "shippedProposals": false,
                 "targets": {
                   "browsers": [
-                    "chrome 72",
-                    "firefox 65",
+                    "> 1%",
+                    "last 1 Android versions",
+                    "last 1 ChromeAndroid versions",
+                    "last 2 Chrome versions",
+                    "last 2 Firefox versions",
+                    "last 2 Safari versions",
+                    "last 2 iOS versions",
+                    "last 2 Edge versions",
+                    "last 2 Opera versions",
                   ],
                 },
                 "useBuiltIns": "usage",
@@ -698,7 +749,7 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles No types 1`] = `
             [
               "@babel/preset-react",
               {
-                "development": false,
+                "development": true,
                 "runtime": "automatic",
               },
             ],
@@ -802,6 +853,24 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles No types 1`] = `
         },
       },
     },
+    CompressionPlugin {
+      "algorithm": [Function],
+      "options": {
+        "algorithm": "brotliCompress",
+        "compressionOptions": {
+          "params": {
+            "1": 11,
+          },
+        },
+        "deleteOriginalAssets": false,
+        "exclude": undefined,
+        "filename": "[path][base].br",
+        "include": undefined,
+        "minRatio": 0.8,
+        "test": /\\\\\\.\\(js\\|css\\)\\$/,
+        "threshold": 0,
+      },
+    },
   ],
   "resolve": {
     "extensions": [
@@ -837,7 +906,7 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles No types 1`] = `
     "timings": false,
     "version": false,
   },
-  "target": "browserslist:chrome 72, firefox 65",
+  "target": "browserslist:> 1%, last 1 Android versions, last 1 ChromeAndroid versions, last 2 Chrome versions, last 2 Firefox versions, last 2 Safari versions, last 2 iOS versions, last 2 Edge versions, last 2 Opera versions",
 }
 `;
 
@@ -990,6 +1059,24 @@ exports[`webpack.dist.test.ts cssTsFiles: cssTsFiles With Types 1`] = `
         "typescript": {
           "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
         },
+      },
+    },
+    CompressionPlugin {
+      "algorithm": [Function],
+      "options": {
+        "algorithm": "brotliCompress",
+        "compressionOptions": {
+          "params": {
+            "1": 11,
+          },
+        },
+        "deleteOriginalAssets": false,
+        "exclude": undefined,
+        "filename": "[path][base].br",
+        "include": undefined,
+        "minRatio": 0.8,
+        "test": /\\\\\\.\\(js\\|css\\)\\$/,
+        "threshold": 0,
       },
     },
   ],

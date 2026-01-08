@@ -1,4 +1,4 @@
-import {getBrowsersList} from '../helpers/config.ts';
+import {getBrowsersList} from '../helpers/config.js';
 import type {TransformOptions} from '@babel/core';
 import type {Options} from '@babel/preset-env';
 import {createRequire} from 'node:module';

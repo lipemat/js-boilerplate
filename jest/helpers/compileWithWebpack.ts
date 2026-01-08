@@ -1,10 +1,10 @@
 import {basename, extname, join, resolve} from 'path';
-import webpack, {type Compiler, OutputFileSystem} from 'webpack';
+import webpack, {type Compiler, type OutputFileSystem} from 'webpack';
 import 'setimmediate';
-import {createFsFromVolume, IFs, Volume} from 'memfs';
+import {createFsFromVolume, type IFs, Volume} from 'memfs';
 
 import {getConfig} from '../../helpers/config';
-import {getPackageConfig} from '../../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 
 /**
  * Compile a file using webpack.
@@ -59,7 +59,7 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
  *         load fresh each time.
  */
 export default function compileWithWebpack( fixture: Fixture, config = {} ): Promise<string> {
-	const fullConfig = {...require( '../../config/webpack.dist' ), ...config};
+	const fullConfig = {...require( '../../config/webpack.dist' ).default, ...config};
 
 	// Isolate the css-loader and postcss config, so it is loaded fresh each time.
 	// Allow differentiation between production and development.

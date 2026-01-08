@@ -24,13 +24,13 @@ function runThroughBabel( config: BabelConfig, mode: 'production' | 'development
 
 describe( 'babel.config.test.ts', () => {
 	test( 'Browserslist config', () => {
-		let config = require( '../../../config/babel.config' );
+		let config = require( '../../../config/babel.config' ).default;
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		const expectedBrowsers = [ ...wpBrowsers ];
 		expect( config.presets[ 0 ][ 1 ].targets.browsers ).toEqual( expectedBrowsers );
 
 		jest.resetModules();
-		config = require( '../../../config/babel.config' );
+		config = require( '../../../config/babel.config' ).default;
 		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
 			browsers: expectedBrowsers,
 		} );
@@ -38,7 +38,7 @@ describe( 'babel.config.test.ts', () => {
 
 		jest.resetModules();
 		process.env.BROWSERSLIST = 'chrome 68, firefox 60';
-		config = require( '../../../config/babel.config' );
+		config = require( '../../../config/babel.config' ).default;
 		delete process.env.BROWSERSLIST;
 		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
 			browsers: [
@@ -48,6 +48,7 @@ describe( 'babel.config.test.ts', () => {
 		} );
 	} );
 
+
 	test( 'Transforming works properly', () => {
 		const defaultBrowsers = translate( babelPresetDefault );
 		expect( defaultBrowsers ).toMatchSnapshot( 'Default browsers' );
@@ -56,17 +57,20 @@ describe( 'babel.config.test.ts', () => {
 			fail( 'babelPresetDefault.presets is null' );
 		}
 
+		// @ts-ignore
 		babelPresetDefault.presets[ 0 ][ 1 ].targets.browsers = [ 'chrome 50' ];
 		const chrome50 = translate( babelPresetDefault );
 		expect( chrome50 ).toMatchSnapshot( 'Chrome 50' );
 		expect( chrome50 ).not.toEqual( defaultBrowsers );
 
+		// @ts-ignore
 		babelPresetDefault.presets[ 0 ][ 1 ].targets.browsers = [ 'ie 11' ];
 		const ie11 = translate( babelPresetDefault );
 		expect( ie11 ).toMatchSnapshot( 'IE 11' );
 		expect( ie11 ).not.toEqual( defaultBrowsers );
 		expect( ie11 ).not.toEqual( chrome50 );
 
+		// @ts-ignore
 		babelPresetDefault.presets[ 0 ][ 1 ].targets.browsers = [ 'chrome 130' ];
 		const chrome130 = translate( babelPresetDefault );
 		expect( chrome130 ).toMatchSnapshot( 'Chrome 130' );
@@ -79,7 +83,7 @@ describe( 'babel.config.test.ts', () => {
 		const fileName = path.join( __dirname, '../../fixtures/react-component/share.tsx' );
 
 		process.env.NODE_ENV = 'production';
-		const distConfig = require( '../../../config/babel.config' );
+		const distConfig = require( '../../../config/babel.config' ).default;
 		const distResult = runThroughBabel( distConfig, 'production', fileName );
 
 		expect( distResult.code.replace( rootDir, '' ) ).toMatchSnapshot();
@@ -87,7 +91,7 @@ describe( 'babel.config.test.ts', () => {
 		expect( distResult.options.parserOpts.plugins ).toContain( 'dynamicImport' );
 
 		process.env.NODE_ENV = 'development';
-		const developConfig = require( '../../../config/babel.config' );
+		const developConfig = require( '../../../config/babel.config' ).default;
 		const devResult = runThroughBabel( developConfig, 'development', fileName )
 		expect( devResult.code.replace( rootDir, '' ) ).toMatchSnapshot();
 		expect( devResult.options.parserOpts.plugins ).toMatchSnapshot();
@@ -100,8 +104,8 @@ describe( 'babel.config.test.ts', () => {
 
 
 	test( 'Build files', () => {
-		const TS = require( '../../../config/babel.config.ts' );
-		const JS = require( '../../../config/babel.config.js' );
+		const TS = require( '../../../config/babel.config.ts' ).default;
+		const JS = require( '../../../config/babel.config.js' ).default;
 		expect( TS ).toStrictEqual( JS );
 	} );
 } );

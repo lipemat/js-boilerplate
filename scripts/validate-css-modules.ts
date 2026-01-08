@@ -27,6 +27,7 @@ async function validate() {
 	webpackConfig.stats = 'errors-warnings';
 
 	// Add CSS module typings generation to webpack config.
+	// @ts-expect-error
 	webpackConfig.module?.rules?.map( ( rule: webpack.RuleSetRule ) => {
 		if ( rule.test?.toString() === /\.pcss$/.toString() ) {
 			// @ts-ignore

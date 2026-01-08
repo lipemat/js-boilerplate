@@ -10,8 +10,8 @@ const compiler: Compiler | null = webpack( config );
 if ( null === compiler ) {
 	throw new Error( 'Failed to create the webpack compiler.' );
 }
-compiler.run( ( err: Error | null, stats: Stats ) => {
-	if ( err ) {
+compiler.run( ( err: Error | null, stats: Stats | undefined ) => {
+	if ( err || 'undefined' === typeof stats ) {
 		throw err;
 	}
 

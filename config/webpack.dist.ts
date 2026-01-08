@@ -10,7 +10,7 @@ import {type Configuration as WebpackConfig, ProvidePlugin, type WebpackPluginIn
 
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config';
 import {getEntries} from '../helpers/entries';
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 
 const postcssOptions = getConfig( 'postcss.config' );
 const babelOptions = getConfig( 'babel.config' );

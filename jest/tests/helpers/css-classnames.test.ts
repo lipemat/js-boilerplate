@@ -1,5 +1,5 @@
 import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
-import {LoaderContext} from 'webpack';
+import type {LoaderContext} from 'webpack';
 import type {PackageConfig} from '@lipemat/js-boilerplate-shared';
 
 // Change this variable during tests.
