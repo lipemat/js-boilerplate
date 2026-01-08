@@ -5,6 +5,7 @@
   "author": "Mat Lipe",
   "license": "MIT",
   "jsPath": "./",
+  "type": "module",
   "engines": {
     "node": ">=22.21.1"
   },
@@ -58,7 +59,7 @@
     "@wordpress/browserslist-config": "^6.19.0",
     "babel-jest": "^30.2.0",
     "babel-loader": "^10.0.0",
-    "browserslist": "^4.21.9",
+    "browserslist": "^4.28.1",
     "chalk": "^4.0",
     "clean-css": "^5.3.3",
     "clean-webpack-plugin": "^4.0.0",

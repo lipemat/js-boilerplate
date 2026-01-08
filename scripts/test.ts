@@ -1,16 +1,11 @@
 const {resolve: pathResolve} = require( 'path' );
 const {existsSync} = require( 'fs' );
 
-const {getPackageConfig} = require( '../helpers/package-config' );
+const {getPackageConfig} = require( '@lipemat/js-boilerplate-shared' );
 
 const packageConfig = getPackageConfig();
 
 const possibleConfig = [
-	// @todo Remove pulling from the root on next major release.
-	pathResolve( packageConfig.workingDirectory + '/jest.config.ts' ),
-	pathResolve( packageConfig.workingDirectory + '/jest.config.js' ),
-
-	// New location.
 	pathResolve( packageConfig.workingDirectory + '/jest/jest.config.ts' ),
 	pathResolve( packageConfig.workingDirectory + '/jest/jest.config.js' ),
 ].filter( existsSync );

@@ -9,7 +9,7 @@ describe( 'jest.config.test.ts', () => {
 
 	test( 'Build files', () => {
 		const TS = require( '../../../config/jest.config.ts' );
-		const JS = require( '../../../config/jest.config.js' );
+		const JS = require( '../../../config/jest.config' );
 		expect( TS ).toStrictEqual( JS );
 	} );
 } );

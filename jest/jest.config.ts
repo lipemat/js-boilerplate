@@ -1,10 +1,11 @@
-import config from '../config/jest.config';
+import config from '../config/jest.config.js';
 import type {Config} from 'jest';
+import {resolve} from 'path';
 
 const adjustedConfig: Config = {
 	...config,
 	// Custom snapshot resolver for the boilerplate.
-	snapshotResolver: require.resolve( './snapshot-resolver.ts' ),
+	snapshotResolver: resolve( './jest/snapshot-resolver.ts' ),
 
 	moduleNameMapper: {
 		...config.moduleNameMapper,

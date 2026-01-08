@@ -49,4 +49,4 @@ if ( 'production' === process.env.NODE_ENV ) {
 	cssLoader.sourceMap = false;
 }
 
-module.exports = cssLoader;
+export default cssLoader;

@@ -1,6 +1,7 @@
-import {getBrowsersList} from '../helpers/config';
+import {getBrowsersList} from '../helpers/config.ts';
 import type {TransformOptions} from '@babel/core';
 import type {Options} from '@babel/preset-env';
+import {createRequire} from 'node:module';
 
 export type BabelConfig = Pick<BabelFull, 'presets' | 'plugins' | 'cacheDirectory'>;
 export type BabelFull = Partial<TransformOptions> & BabelLoader;
@@ -27,7 +28,7 @@ const presetEnv: Options = {
 	bugfixes: true,
 	corejs: {
 		// Use the core-js version currently installed in the project.
-		version: require( 'core-js/package.json' ).version,
+		version: createRequire( import.meta.url )( 'core-js/package.json' ).version,
 		proposals: false,
 	},
 	// Enable the `debug` option to debug the included polyfills and plugins.
@@ -56,4 +57,3 @@ const babelConfig: BabelConfig = {
 };
 
 export default babelConfig;
-module.exports = babelConfig;

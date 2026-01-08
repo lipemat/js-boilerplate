@@ -1,16 +1,18 @@
 import {existsSync} from 'fs';
+import {createRequire} from 'node:module';
 import {resolve} from 'path';
 import {type Configuration as WebpackConfig} from 'webpack';
 import type {Configuration as DevServerConfig} from 'webpack-dev-server';
 import type {BabelConfig} from '../config/babel.config';
-import type {JestConfig} from '../config/jest.config';
+import type {JestConfig} from '../config/jest.config.ts';
 import {getExtensionsConfig, getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {EntriesConfig} from '../config/entries.config';
 import type {PostCSSConfig} from '../config/postcss.config';
 import type {CssLoaderConfig} from '../config/css-loader.config';
 
 // Must be required to avoid issues with browserslist.
-const browserslist = require( 'browserslist' );
+const browserslist = createRequire( import.meta.url )( 'browserslist' );
+const requireModule = createRequire( import.meta.url );
 
 
 type Configs = {
@@ -38,10 +40,10 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
 	let hasLocal = false;
 	try {
 		if ( inWorkingDirectory ) {
-			require( resolve( workingDirectory, fileName ) );
+			requireModule( resolve( workingDirectory, fileName ) );
 			hasLocal = true;
 		} else {
-			require( resolve( packageDirectory + '/config', fileName ) );
+			requireModule( resolve( packageDirectory + '/config', fileName ) );
 			hasLocal = true;
 		}
 	} catch ( e ) {
@@ -85,10 +87,10 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
  * @return {Object}
  */
 export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
-	let mergedConfig = require( '../config/' + fileName ) as Configs[T];
+	let mergedConfig = requireModule( '../config/' + fileName ) as Configs[T];
 	mergedConfig = {...mergedConfig, ...getExtensionsConfig<Configs[T]>( fileName, mergedConfig )};
 	try {
-		const localConfig = require( resolve( packageDirectory + '/config', fileName ) );
+		const localConfig = requireModule( resolve( packageDirectory + '/config', fileName ) );
 		if ( 'function' === typeof localConfig ) {
 			mergedConfig = {...mergedConfig, ...localConfig( mergedConfig )};
 		} else {
@@ -141,7 +143,7 @@ export function getTsConfigFile(): string {
 export function getBrowsersList(): readonly string[] {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
-		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
+		const wp = [ ...requireModule( '@wordpress/browserslist-config' ) ];
 		return adjustBrowserslist( wp );
 	}
 	return projectBrowsersList;
@@ -171,7 +173,7 @@ export function adjustBrowserslist( browserRules: string[] ): string[] {
  */
 export const getDefaultBrowsersList = (): false | string[] => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
+		const wp = [ ...requireModule( '@wordpress/browserslist-config' ) ];
 		return adjustBrowserslist( wp );
 	}
 	return false;

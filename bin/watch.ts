@@ -4,6 +4,7 @@ import chalk from 'chalk';
 
 const toWatch = [
 	'config/*.ts',
+	'config/*.mts',
 	'helpers/*.ts',
 	'lib/*.ts',
 ];

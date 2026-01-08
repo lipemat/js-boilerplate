@@ -3,14 +3,17 @@ import {existsSync} from 'fs';
 import {type pluginOptions} from 'postcss-preset-env';
 import type Processor from 'postcss/lib/processor';
 import {getBrowsersList} from '../helpers/config';
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import PrettyPlugin from '../lib/postcss-pretty';
 import cleanCSS from '../lib/postcss-clean';
 import type {Config, ConfigPlugin} from 'postcss-load-config';
 import type {LoaderContext} from 'webpack';
 import type {Plugin} from 'postcss';
+import {createRequire} from 'node:module';
 
-const postcssPresetEnv = require( 'postcss-preset-env' );
+const requireModule = createRequire( import.meta.url );
+
+const postcssPresetEnv = requireModule( 'postcss-preset-env' );
 
 export type PostCSSConfig = Config & Partial<LoaderContext<Config>> & {
 	plugins: Plugin[];
@@ -84,17 +87,17 @@ const externalFiles: string[] = [];
  */
 const config: PostCSSConfig = {
 	plugins: [
-		require( '@csstools/postcss-global-data' )( {
+		requireModule( '@csstools/postcss-global-data' )( {
 			files: externalFiles,
 		} ),
-		require( 'postcss-import' )( {
+		requireModule( 'postcss-import' )( {
 			skipDuplicates: false,
 		} ),
-		require( 'postcss-custom-media' ),
-		require( 'postcss-nested' ),
+		requireModule( 'postcss-custom-media' ),
+		requireModule( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
-		require( 'postcss-color-mod-function' ),
-		require( 'postcss-sort-media-queries' )( {
+		requireModule( 'postcss-color-mod-function' ),
+		requireModule( 'postcss-sort-media-queries' )( {
 			onlyTopLevel: true,
 			sort: 'mobile-first',
 			configuration: {
@@ -118,4 +121,4 @@ if ( isPluginsArray( config.plugins ) ) {
 	}
 }
 
-module.exports = config;
+export default config;

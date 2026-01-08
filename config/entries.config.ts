@@ -24,4 +24,4 @@ const entries: EntriesConfig = {
 	],
 };
 
-module.exports = entries;
+export default entries;

@@ -1,9 +1,8 @@
 import {resolve} from 'path';
 import type {Config} from 'jest';
 import {existsSync} from 'fs';
-import {getPackageConfig} from '../helpers/package-config';
-import {getConfig} from '../helpers/config';
-
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getConfig} from '../helpers/config.js';
 
 export type JestConfig = Pick<Config, 'globals' | 'moduleNameMapper' | 'roots' | 'testEnvironment' | 'testEnvironmentOptions' | 'transform' | 'transformIgnorePatterns' | 'setupFilesAfterEnv'>;
 
@@ -21,9 +20,6 @@ const jestConfig: Config = {
 		'is-plain-obj': 'identity-obj-proxy',
 		uuid: 'identity-obj-proxy',
 	},
-	// Does not support prettier 3 until version 30.
-	// @link https://github.com/jestjs/jest/issues/14305
-	prettierPath: null,
 	roots: [
 		'./tests',
 	],
@@ -47,4 +43,3 @@ const jestConfig: Config = {
 };
 
 export default jestConfig;
-module.exports = jestConfig;

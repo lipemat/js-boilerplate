@@ -110,4 +110,3 @@ const config: WebpackConfig = {
 };
 
 export default config;
-module.exports = config;

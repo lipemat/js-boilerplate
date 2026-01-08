@@ -13,7 +13,7 @@ import type {LoaderContext} from 'webpack';
  *
  * @link https://github.com/retyui/clean-css-loader
  */
-function cleanCssLoader( this: LoaderContext<Record<string, never>>, content: string, ...args: [] ): void {
+export default function cleanCssLoader( this: LoaderContext<Record<string, never>>, content: string, ...args: [] ): void {
 	const callback = this.async();
 
 	const clean: MinifierPromise = new CleanCSS( {
@@ -33,5 +33,3 @@ function cleanCssLoader( this: LoaderContext<Record<string, never>>, content: st
 		} )
 		.catch( callback );
 }
-
-export = cleanCssLoader;
