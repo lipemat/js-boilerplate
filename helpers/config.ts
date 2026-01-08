@@ -10,9 +10,10 @@ import type {EntriesConfig} from '../config/entries.config';
 import type {PostCSSConfig} from '../config/postcss.config';
 import type {CssLoaderConfig} from '../config/css-loader.config';
 
-// Must be required to avoid issues with browserslist.
-const browserslist = createRequire( import.meta.url )( 'browserslist' );
 const requireModule = createRequire( import.meta.url );
+
+// Must be required to avoid issues with browserslist.
+const browserslist = requireModule( 'browserslist' );
 
 
 type Configs = {
@@ -87,8 +88,18 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
  * @return {Object}
  */
 export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
-	let mergedConfig = requireModule( '../config/' + fileName ) as Configs[T];
-	mergedConfig = {...mergedConfig, ...getExtensionsConfig<Configs[T]>( fileName, mergedConfig )};
+	let config = requireModule( '../config/' + fileName );
+	if ( 'default' in config ) {
+		config = config.default;
+	}
+
+	let mergedConfig: Configs[T] = {...config, ...getExtensionsConfig<Configs[T]>( fileName, config )};
+
+	// Prevent double merging during local unit tests.
+	if ( 'js-boilerplate' === packageDirectory.split( /[\\/]/ ).pop() ) {
+		return mergedConfig;
+	}
+
 	try {
 		const localConfig = requireModule( resolve( packageDirectory + '/config', fileName ) );
 		if ( 'function' === typeof localConfig ) {

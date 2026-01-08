@@ -2,15 +2,15 @@
   "extends": "../config/tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "JS Boilerplate Source Files",
-  "include": [
-    "../config/*.ts",
-    "../helpers/*.ts",
-    "../lib/*.ts"
-  ],
   "compilerOptions": {
     "declaration": false,
     "noEmit": false,
     "sourceMap": true,
     "strict": true
-  }
+  },
+  "include": [
+    "../config/*.ts",
+    "../helpers/*.ts",
+    "../lib/*.ts"
+  ]
 }

@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import {Compilation, type Compiler, WebpackPluginInstance} from 'webpack';
+import {Compilation, type Compiler, type WebpackPluginInstance} from 'webpack';
 import type {AssetsStorage, WebpackAssetsManifest} from 'webpack-assets-manifest';
 
 /**

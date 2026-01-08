@@ -1,7 +1,7 @@
 import {readFileSync} from 'fs';
 import {basename} from 'path';
 import postcss, {type Plugin} from 'postcss';
-import compileWithWebpack, {Fixture} from '../../helpers/compileWithWebpack';
+import compileWithWebpack, {type Fixture} from '../../helpers/compileWithWebpack';
 import browserslist from 'browserslist';
 import postcssPresetEnv from 'postcss-preset-env';
 import type {PostCSSConfig} from '../../../config/postcss.config';

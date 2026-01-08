@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`webpack.dist.test.ts Browserslist config: Chrome 72, Firefox 65 1`] = `
 {

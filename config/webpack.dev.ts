@@ -1,4 +1,4 @@
-import {type Configuration as WebpackConfig, ProvidePlugin, WebpackPluginInstance} from 'webpack';
+import {type Configuration as WebpackConfig, ProvidePlugin, type WebpackPluginInstance} from 'webpack';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';

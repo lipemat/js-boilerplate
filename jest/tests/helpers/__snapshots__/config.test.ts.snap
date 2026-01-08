@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`config getBrowsersList: browserslist 1`] = `
 [
@@ -6,9 +6,7 @@ exports[`config getBrowsersList: browserslist 1`] = `
   "android 143",
   "chrome 143",
   "chrome 142",
-  "chrome 141",
   "chrome 139",
-  "chrome 134",
   "chrome 112",
   "edge 143",
   "edge 142",

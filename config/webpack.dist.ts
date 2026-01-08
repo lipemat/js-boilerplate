@@ -6,7 +6,7 @@ import {WebpackAssetsManifest} from 'webpack-assets-manifest';
 import {SubresourceIntegrityPlugin} from 'webpack-subresource-integrity';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import WebpackAssetsHash from '../helpers/WebpackAssetsHash';
-import {type Configuration as WebpackConfig, ProvidePlugin, WebpackPluginInstance} from 'webpack';
+import {type Configuration as WebpackConfig, ProvidePlugin, type WebpackPluginInstance} from 'webpack';
 
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config';
 import {getEntries} from '../helpers/entries';
