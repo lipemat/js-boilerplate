@@ -11,20 +11,19 @@ import camelCase from '../helpers/camel-case';
  *
  * Inspired by: `@teamsupercell/typings-for-css-modules-loader` but without dependencies and under our control.
  */
-function createCssModuleTypings( this: LoaderContext<Record<string, never>>, content: string, ...args: [] ): void {
+export default function createCssModuleTypings( this: LoaderContext<Record<string, never>>, content: string, ...args: [] ): void {
 	if ( 'cacheable' in this && 'function' === typeof this.cacheable ) {
 		this.cacheable();
 	}
 
 	try {
-		const fileName = this.resourcePath;
-		const typingsPath = fileName.replace( /\.pcss$/, '.pcss.d.ts' );
-
 		const indexOfLocals = content.indexOf( '.locals' );
 		const cssModuleKeys = -1 === indexOfLocals ? [] : getCssModuleKeys( content.substring( indexOfLocals ) );
-		const cssModuleDefinition = generateModuleTypeDefinition( cssModuleKeys, camelCase( basename( fileName ), true ) );
+		if ( cssModuleKeys.length > 0 ) {
+			const fileName = this.resourcePath;
+			const cssModuleDefinition = generateModuleTypeDefinition( cssModuleKeys, camelCase( basename( fileName ), true ) );
 
-		if ( 0 < cssModuleKeys.length ) {
+			const typingsPath = fileName.replace( /\.pcss$/, '.pcss.d.ts' );
 			writeTypingsFile( typingsPath, cssModuleDefinition );
 		}
 
