@@ -1,6 +1,8 @@
 import path from 'path';
 import type {PackageConfig} from '@lipemat/js-boilerplate-shared';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+// @ts-expect-error
+import wpBrowsers from '@wordpress/browserslist-config';
 
 const mockPackageConfig: Partial<PackageConfig> = {};
 // Change the result of the getPackageConfig function, so we can change anything.
@@ -21,7 +23,6 @@ describe( 'webpack.dist.test.ts', () => {
 	test( 'Browserslist config', () => {
 		process.env.NODE_ENV = 'production';
 		const config = require( '../../../config/webpack.dist' ).default;
-		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
 		expect( config ).toMatchSnapshot( 'Default Browsers' );
 

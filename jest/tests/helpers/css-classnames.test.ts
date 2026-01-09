@@ -1,19 +1,6 @@
-import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
 import type {LoaderContext} from 'webpack';
-import type {PackageConfig} from '@lipemat/js-boilerplate-shared';
-
-// Change this variable during tests.
-let mockShortCssEnabled: PackageConfig['shortCssClasses'] = false;
-
-// Change the result of the getPackageConfig function.
-jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
-	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
-	getPackageConfig: () => ( {
-		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
-		// Change this variable during the test.
-		shortCssClasses: mockShortCssEnabled,
-	} ),
-} ) );
+import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
+import {modifyPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 function makeResource( path: string ): LoaderContext<{ resourcePath: string }> {
 	return {
@@ -46,6 +33,7 @@ describe( 'Test CSS Classname Generation', () => {
 		expect( getNextClass() ).toEqual( 'Aab' );
 	} );
 
+
 	it( 'getLocalIdent', () => {
 		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/fake.pcss' ), '', 'a-class' ) ).toEqual( 'A' );
 		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/other.pcss',
@@ -56,32 +44,41 @@ describe( 'Test CSS Classname Generation', () => {
 		expect( getLocalIdent( makeResource( 'E:/SVN/js-boilerplate/tests/other.pcss' ), '', 'b-class' ) ).toEqual( 'C' );
 	} );
 
+
 	test( 'Alphabet Length', () => {
 		expect( ALPHABET.length ).toEqual( 62 );
 		expect( SHORT_ALPHABET.length ).toEqual( 26 );
 	} );
 
+
 	test( 'Are Short CSS Classes Enabled?', () => {
-		expect( usingShortCssClasses() ).toEqual( false );
-		mockShortCssEnabled = true;
 		expect( usingShortCssClasses() ).toEqual( true );
 
-		mockShortCssEnabled = {
-			js: false,
-			pcss: true,
-		}
+		modifyPackageConfig( {shortCssClasses: false} );
+		expect( usingShortCssClasses() ).toEqual( false );
+
+		modifyPackageConfig( {
+			shortCssClasses: {
+				js: false,
+				pcss: true,
+			},
+		} );
 		expect( usingShortCssClasses() ).toBe( false );
 
-		mockShortCssEnabled = {
-			js: true,
-			pcss: false,
-		}
+		modifyPackageConfig( {
+			shortCssClasses: {
+				js: true,
+				pcss: false,
+			},
+		} );
 		expect( usingShortCssClasses() ).toBe( true );
 
-		mockShortCssEnabled = {
-			js: true,
-			pcss: true,
-		}
+		modifyPackageConfig( {
+			shortCssClasses: {
+				js: true,
+				pcss: true,
+			},
+		} );
 		expect( usingShortCssClasses() ).toBe( true );
 	} );
 } );
