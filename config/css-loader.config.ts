@@ -1,4 +1,4 @@
-import {getLocalIdent, usingShortCssClasses} from '@lipemat/js-boilerplate-shared/helpers/css-classnames';
+import {getLocalIdent, usingShortCssClasses} from '@lipemat/js-boilerplate-shared/helpers/css-classnames.js';
 import type {Config, Mode} from '@lipemat/js-boilerplate-shared/types/css-loader';
 import type {AtLeast} from '@lipemat/js-boilerplate-shared/types/utility';
 

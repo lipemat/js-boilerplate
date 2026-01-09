@@ -5,7 +5,7 @@ import compileWithWebpack, {type Fixture} from '../../helpers/compileWithWebpack
 import browserslist from 'browserslist';
 import postcssPresetEnv from 'postcss-preset-env';
 import type {PostcssConfig} from '../../../config/postcss.config';
-import {getBrowsersList} from '../../../helpers/config';
+import {getBrowsersList} from '../../../helpers/config.js';
 
 /**
  * @notice We can't reset the modules of MiniCssExtractPlugin conflicts with

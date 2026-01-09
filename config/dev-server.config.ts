@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '../helpers/package-config.js';
 import type {Configuration} from 'webpack-dev-server';
 
 const packageConfig = getPackageConfig();

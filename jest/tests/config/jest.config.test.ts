@@ -1,4 +1,4 @@
-import {getConfig} from '../../../helpers/config';
+import {getConfig} from '../../../helpers/config.js';
 import {createRequire} from 'node:module';
 
 const requireModule = createRequire( import.meta.url );

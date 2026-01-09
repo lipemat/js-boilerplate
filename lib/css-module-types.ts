@@ -1,7 +1,7 @@
 import type {LoaderContext} from 'webpack';
 import {existsSync, readFileSync, writeFileSync} from 'fs';
 import {basename} from 'path';
-import camelCase from '../helpers/camel-case';
+import camelCase from '../helpers/camel-case.js';
 
 
 /**

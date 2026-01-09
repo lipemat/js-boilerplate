@@ -2,7 +2,7 @@ import browserslist from 'browserslist';
 // @ts-expect-error
 import wpBrowsers from '@wordpress/browserslist-config';
 
-import {getBrowsersList, getDefaultBrowsersList} from '../../../helpers/config';
+import {getBrowsersList, getDefaultBrowsersList} from '../../../helpers/config.js';
 
 afterEach( () => {
 	delete process.env.BROWSERSLIST;

@@ -1,4 +1,4 @@
-import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '@lipemat/js-boilerplate-shared/helpers/css-classnames';
+import {ALPHABET, getLocalIdent, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '@lipemat/js-boilerplate-shared/helpers/css-classnames.js';
 
 export {
 	ALPHABET,

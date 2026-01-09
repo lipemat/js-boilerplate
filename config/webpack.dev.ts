@@ -4,7 +4,7 @@ import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
-import {getEntries} from '../helpers/entries';
+import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {BabelConfig} from './babel.config';
 

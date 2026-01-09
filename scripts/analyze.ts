@@ -1,4 +1,4 @@
-import {getConfig} from '../helpers/config';
+import {getConfig} from '../helpers/config.js';
 import webpack from 'webpack';
 import StatoscopeWebpackPlugin from '@statoscope/webpack-plugin';
 import fs from 'fs';

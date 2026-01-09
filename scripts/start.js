@@ -2,7 +2,7 @@ process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
 const webpack = require( 'webpack' );
-const config = require( '../helpers/package-config' );
+const config = require( '../helpers/package-config.js' );
 const {unlinkSync, writeFile} = require( 'fs' );
 const WebpackDevServer = require( 'webpack-dev-server' );
 const configHelper = require( '../helpers/config.cts' );

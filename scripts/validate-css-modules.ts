@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import {getConfig} from '../helpers/config';
+import {getConfig} from '../helpers/config.js';
 import path from 'path';
 
 const help = `
