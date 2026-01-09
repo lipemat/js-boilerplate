@@ -2,6 +2,9 @@
 config/*js
 helpers/*js
 lib/*js
+scripts/*js
+
+
 
 # system/hidden files
 *.bak

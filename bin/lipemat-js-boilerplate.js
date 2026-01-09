@@ -13,15 +13,6 @@ const scriptIndex = args.findIndex(
 let script = -1 === scriptIndex ? args[ 0 ] : args[ scriptIndex ];
 const nodeArgs = scriptIndex > 0 ? args.slice( 0, scriptIndex ) : [];
 
-
-const TS_CONVERTED_SCRIPTS = [
-	'analyze',
-	'dist',
-	'test',
-	'lint',
-	'validate-css-modules',
-];
-
 switch ( script ) {
 	case 'analyze':
 	case 'browserslist':
@@ -37,9 +28,7 @@ switch ( script ) {
 			spawn( 'npm', [ 'install', '-g', 'ts-node' ] );
 		}
 
-		if ( TS_CONVERTED_SCRIPTS.includes( script ) ) {
-			script = script + '.ts';
-		}
+		script = script + '.js';
 
 		// Run the script.
 		const result = spawn(

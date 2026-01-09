@@ -19,7 +19,7 @@
  * ```
  */
 
-const fs = require( 'fs' );
+import fs from 'fs';
 
 const PNP_FILES = [
 	'./.pnp.js',
@@ -31,7 +31,7 @@ PNP_FILES.forEach( PNP_FILE => {
 	if ( fs.existsSync( PNP_FILE ) ) {
 		fs.readFile( PNP_FILE, 'utf8', ( readError, data ) => {
 			if ( readError ) {
-				return console.log( readError );
+				return console.error( readError );
 			}
 
 			const result = data.replace( /if \(reference != null\) {/, '// # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. \n' +
@@ -41,9 +41,9 @@ PNP_FILES.forEach( PNP_FILE => {
 
 			fs.writeFile( PNP_FILE, result, 'utf8', writeError => {
 				if ( writeError ) {
-					return console.log( writeError );
+					return console.error( writeError );
 				}
-				console.log( `The ${PNP_FILE} file has been adjusted to no longer display warnings for loose modules.` );
+				console.debug( `The ${PNP_FILE} file has been adjusted to no longer display warnings for loose modules.` );
 			} );
 		} );
 	}
