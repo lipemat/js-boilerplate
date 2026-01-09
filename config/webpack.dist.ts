@@ -11,6 +11,7 @@ import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {fileURLToPath} from 'node:url';
 
 const postcssOptions = await getConfig( 'postcss.config.js' );
 const babelOptions = await getConfig( 'babel.config.js' );
@@ -133,7 +134,7 @@ const config: WebpackConfig = {
 					MiniCssExtractPlugin.loader,
 					'css-loader',
 					{
-						loader: path.resolve( './lib/clean-css-loader.js' ),
+						loader: fileURLToPath( new URL( '../lib/clean-css-loader.js', import.meta.url ) ),
 					},
 				],
 			},
@@ -142,7 +143,7 @@ const config: WebpackConfig = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
-						loader: path.resolve( './lib/css-module-types.js' ),
+						loader: fileURLToPath( new URL( '../lib/css-module-types.js', import.meta.url ) ),
 					},
 					{
 						loader: 'css-loader',
@@ -156,7 +157,7 @@ const config: WebpackConfig = {
 					},
 				].filter( loader => {
 					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
-						return loader.loader !== path.resolve( '../lib/css-module-types.js' );
+						return loader.loader !== fileURLToPath( new URL( '../lib/css-module-types.js', import.meta.url ) );
 					}
 					return true;
 				} ),

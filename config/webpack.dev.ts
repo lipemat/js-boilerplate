@@ -7,6 +7,7 @@ import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js'
 import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {BabelConfig} from './babel.config';
+import {fileURLToPath} from 'node:url';
 
 const postcssOptions = await getConfig( 'postcss.config.js' );
 const babelOptions: BabelConfig = await getConfig( 'babel.config.js' );
@@ -85,7 +86,7 @@ const config: WebpackConfig = {
 				use: [
 					'style-loader',
 					{
-						loader: path.resolve( './lib/css-module-types.js' ),
+						loader: fileURLToPath( new URL( '../lib/css-module-types.js', import.meta.url ) ),
 					},
 					{
 						loader: 'css-loader',
@@ -99,7 +100,7 @@ const config: WebpackConfig = {
 					},
 				].filter( loader => {
 					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
-						return loader.loader !== path.resolve( './lib/css-module-types.js' );
+						return loader.loader !== fileURLToPath( new URL( '../lib/css-module-types.js', import.meta.url ) );
 					}
 					return true;
 				} ),
