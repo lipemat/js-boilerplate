@@ -75,14 +75,16 @@ export = ${moduleName};
  */
 function writeTypingsFile( fileName: string, content: string ): void {
 	if ( ! existsSync( fileName ) ) {
-		writeFileSync( fileName, content );
+		writeTypingsFile.fileWriter( fileName, content );
 	} else {
 		const existingContent = readFileSync( fileName, 'utf8' );
 		if ( existingContent !== content ) {
-			writeFileSync( fileName, content );
+			writeTypingsFile.fileWriter( fileName, content );
 		}
 	}
 }
+writeTypingsFile.fileWriter = writeFileSync;
+
 
 /**
  * Extracts CSS module keys from the content of a CSS Module file.
@@ -104,4 +106,11 @@ function getCssModuleKeys( content: string ): string[] {
 }
 
 
-export default createCssModuleTypings;
+/**
+ * Modifier file writer used by the writeTypingsFile function.
+ *
+ * Here for unit test overrides of `writeFileSync`.
+ */
+export function modifyFileWriter( fn: typeof writeTypingsFile.fileWriter ): void {
+	writeTypingsFile.fileWriter = fn
+}
