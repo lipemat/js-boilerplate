@@ -8,10 +8,10 @@ import {getEntries} from '../helpers/entries';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {BabelConfig} from './babel.config';
 
-const postcssOptions = getConfig( 'postcss.config' );
-const babelOptions: BabelConfig = getConfig( 'babel.config' );
-const cssLoaderOptions = getConfig( 'css-loader.config' );
-const devServerOptions = getConfig( 'dev-server.config' );
+const postcssOptions = await getConfig( 'postcss.config.js' );
+const babelOptions: BabelConfig = await getConfig( 'babel.config.js' );
+const cssLoaderOptions = await getConfig( 'css-loader.config.js' );
+const devServerOptions = await getConfig( 'dev-server.config.js' );
 
 // To support React Fast Refresh.
 babelOptions.plugins?.unshift( 'react-refresh/babel' );
@@ -85,7 +85,7 @@ const config: WebpackConfig = {
 				use: [
 					'style-loader',
 					{
-						loader: path.resolve( __dirname, '../lib/css-module-types.js' ),
+						loader: path.resolve( './lib/css-module-types.js' ),
 					},
 					{
 						loader: 'css-loader',
@@ -99,7 +99,7 @@ const config: WebpackConfig = {
 					},
 				].filter( loader => {
 					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
-						return loader.loader !== path.resolve( __dirname, '../lib/css-module-types.js' );
+						return loader.loader !== path.resolve( './lib/css-module-types.js' );
 					}
 					return true;
 				} ),

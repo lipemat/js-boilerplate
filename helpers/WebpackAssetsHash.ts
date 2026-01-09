@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import {Compilation, type Compiler, type WebpackPluginInstance} from 'webpack';
+import webpack, {type Compiler, type WebpackPluginInstance} from 'webpack';
 import type {AssetsStorage, WebpackAssetsManifest} from 'webpack-assets-manifest';
 
 /**
@@ -30,7 +30,7 @@ class WebpackAssetsHash implements WebpackPluginInstance {
 			compilation.hooks.processAssets.tap(
 				{
 					name: 'WebpackAssetsHash',
-					stage: Compilation.PROCESS_ASSETS_STAGE_ANALYSE,
+					stage: webpack.Compilation.PROCESS_ASSETS_STAGE_ANALYSE,
 				},
 				this.storeContentHash.bind( this, compilation ),
 			);
@@ -43,7 +43,7 @@ class WebpackAssetsHash implements WebpackPluginInstance {
 	 *
 	 * Hash matches Webpack [contenthash].
 	 */
-	storeContentHash( compilation: Compilation ) {
+	storeContentHash( compilation: webpack.Compilation ) {
 		for ( const asset of compilation.getAssets() ) {
 			this.assets[ asset.name ] = crypto.createHash( 'md5' )
 				.update( asset.source.source() )
@@ -71,5 +71,4 @@ class WebpackAssetsHash implements WebpackPluginInstance {
 	}
 }
 
-module.exports = WebpackAssetsHash;
 export default WebpackAssetsHash;

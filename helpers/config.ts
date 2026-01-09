@@ -1,5 +1,4 @@
 import {existsSync} from 'fs';
-import {createRequire} from 'node:module';
 import {resolve} from 'path';
 import {type Configuration as WebpackConfig} from 'webpack';
 import type {Configuration as DevServerConfig} from 'webpack-dev-server';
@@ -7,23 +6,27 @@ import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config.ts';
 import {getExtensionsConfig, getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {EntriesConfig} from '../config/entries.config';
-import type {PostCSSConfig} from '../config/postcss.config.cts';
+import type {PostcssConfig} from '../config/postcss.config.ts';
 import type {CssLoaderConfig} from '../config/css-loader.config';
-
-const requireModule = createRequire( import.meta.url );
-
-// Must be required to avoid issues with browserslist.
-const browserslist = requireModule( 'browserslist' );
-
+import browserslist from 'browserslist';
+// @ts-expect-error TS2307
+import wpBrowsers from '@wordpress/browserslist-config';
 
 type Configs = {
 	'babel.config': BabelConfig;
+	'babel.config.js': BabelConfig;
 	'css-loader.config': CssLoaderConfig;
+	'css-loader.config.js': CssLoaderConfig;
 	'dev-server.config': DevServerConfig;
+	'dev-server.config.js': DevServerConfig;
 	'entries.config': EntriesConfig;
+	'entries.config.js': EntriesConfig;
 	'jest.config': JestConfig;
-	'postcss.config': PostCSSConfig;
+	'jest.config.js': JestConfig;
+	'postcss.config': PostcssConfig;
+	'postcss.config.js': PostcssConfig;
 	'webpack.dist': WebpackConfig;
+	'webpack.dist.js': WebpackConfig;
 };
 
 const {workingDirectory, packageDirectory} = getPackageConfig();
@@ -37,14 +40,14 @@ const {workingDirectory, packageDirectory} = getPackageConfig();
  *
  * @return {boolean}
  */
-export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean = false ): boolean {
+export async function hasLocalOverride( fileName: string, inWorkingDirectory: boolean = false ): Promise<boolean> {
 	let hasLocal = false;
 	try {
 		if ( inWorkingDirectory ) {
-			requireModule( resolve( workingDirectory, fileName ) );
+			await import( resolve( workingDirectory, fileName ) );
 			hasLocal = true;
 		} else {
-			requireModule( resolve( packageDirectory + '/config', fileName ) );
+			await import( resolve( packageDirectory + '/config', fileName ) );
 			hasLocal = true;
 		}
 	} catch ( e ) {
@@ -87,8 +90,8 @@ export function hasLocalOverride( fileName: string, inWorkingDirectory: boolean 
  *
  * @return {Object}
  */
-export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
-	let config = requireModule( '../config/' + fileName );
+export async function getConfig<T extends keyof Configs>( fileName: T ): Promise<Configs[T]> {
+	let config = await import( '../config/' + fileName );
 	if ( 'default' in config ) {
 		config = config.default;
 	}
@@ -101,7 +104,7 @@ export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
 	}
 
 	try {
-		const localConfig = requireModule( resolve( packageDirectory + '/config', fileName ) );
+		const localConfig = await import( resolve( packageDirectory + '/config', fileName ) );
 		if ( 'function' === typeof localConfig ) {
 			mergedConfig = {...mergedConfig, ...localConfig( mergedConfig )};
 		} else {
@@ -154,7 +157,7 @@ export function getTsConfigFile(): string {
 export function getBrowsersList(): readonly string[] {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
-		const wp = [ ...requireModule( '@wordpress/browserslist-config' ) ];
+		const wp = [ ...wpBrowsers ];
 		return adjustBrowserslist( wp );
 	}
 	return projectBrowsersList;
@@ -184,7 +187,7 @@ export function adjustBrowserslist( browserRules: string[] ): string[] {
  */
 export const getDefaultBrowsersList = (): false | string[] => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		const wp = [ ...requireModule( '@wordpress/browserslist-config' ) ];
+		const wp = [ ...wpBrowsers ];
 		return adjustBrowserslist( wp );
 	}
 	return false;
@@ -196,4 +199,4 @@ export {
 	 * @deprecated Use `@lipemat/js-boilerplate-shared` instead.
 	 */
 	getExtensionsConfig,
-}
+};

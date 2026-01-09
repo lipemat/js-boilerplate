@@ -6,15 +6,15 @@ import {WebpackAssetsManifest} from 'webpack-assets-manifest';
 import {SubresourceIntegrityPlugin} from 'webpack-subresource-integrity';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import WebpackAssetsHash from '../helpers/WebpackAssetsHash.js';
-import {type Configuration as WebpackConfig, ProvidePlugin, type WebpackPluginInstance} from 'webpack';
+import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance} from 'webpack';
 
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 
-const postcssOptions = getConfig( 'postcss.config' );
-const babelOptions = getConfig( 'babel.config' );
-const cssLoaderOptions = getConfig( 'css-loader.config' );
+const postcssOptions = await getConfig( 'postcss.config.js' );
+const babelOptions = await getConfig( 'babel.config.js' );
+const cssLoaderOptions = await getConfig( 'css-loader.config.js' );
 
 const ManifestPlugin = new WebpackAssetsManifest( {
 	integrity: true,
@@ -23,7 +23,7 @@ const ManifestPlugin = new WebpackAssetsManifest( {
 } );
 
 const plugins: WebpackPluginInstance[] = [
-	new ProvidePlugin( {
+	new webpack.ProvidePlugin( {
 		jQuery: 'jquery',
 		$: 'jquery',
 	} ),
@@ -133,7 +133,7 @@ const config: WebpackConfig = {
 					MiniCssExtractPlugin.loader,
 					'css-loader',
 					{
-						loader: path.resolve( __dirname, '../lib/clean-css-loader.js' ),
+						loader: path.resolve( './lib/clean-css-loader.js' ),
 					},
 				],
 			},
@@ -142,7 +142,7 @@ const config: WebpackConfig = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
-						loader: path.resolve( __dirname, '../lib/css-module-types.js' ),
+						loader: path.resolve( './lib/css-module-types.js' ),
 					},
 					{
 						loader: 'css-loader',
@@ -156,7 +156,7 @@ const config: WebpackConfig = {
 					},
 				].filter( loader => {
 					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
-						return loader.loader !== path.resolve( __dirname, '../lib/css-module-types.js' );
+						return loader.loader !== path.resolve( '../lib/css-module-types.js' );
 					}
 					return true;
 				} ),

@@ -1,6 +1,7 @@
 import {basename} from 'path';
 import {readFileSync} from 'fs';
 import compileWithWebpack, {type Fixture} from '../../helpers/compileWithWebpack';
+import {sync} from 'glob';
 
 
 describe( 'Clean CSS Loader', () => {
@@ -18,8 +19,7 @@ describe( 'Clean CSS Loader', () => {
  * - Output (min) file in `fixtures/css/min` with the same name as the source file.
  */
 function provideCssFiles(): Fixture[] {
-	return require( 'glob' )
-		.sync( 'jest/fixtures/css/*.css' )
+	return sync( 'jest/fixtures/css/*.css' )
 		.map( ( file: string ) => {
 			return {
 				basename: basename( file ),

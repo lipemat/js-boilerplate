@@ -1,4 +1,4 @@
-import type {PostCSSConfig} from '../../../config/postcss.config.cts';
+import type {PostcssConfig} from '../../../config/postcss.config.ts';
 import {jest} from '@jest/globals';
 
 /**
@@ -6,11 +6,11 @@ import {jest} from '@jest/globals';
  *         itself. Instead, we isolate other configurations to allow them to
  *         load fresh each time.
  */
-export function getPostCSSConfig(): PostCSSConfig {
+export function getPostCSSConfig(): PostcssConfig {
 	// @ts-ignore
-	let config: PostCSSConfig = {};
+	let config: PostcssConfig = {};
 	jest.isolateModules( () => {
-		config = require( '../../../config/postcss.config.cts' ).default;
+		config = require( '../../../config/postcss.config.ts' ).default;
 	} );
 	return config;
 }

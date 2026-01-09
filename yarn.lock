@@ -3156,7 +3156,7 @@ __metadata:
 
 "@lipemat/js-boilerplate-shared@file:../js-boilerplate-shared::locator=%40lipemat%2Fjs-boilerplate%40workspace%3A.":
   version: 0.0.1
-  resolution: "@lipemat/js-boilerplate-shared@file:../js-boilerplate-shared#../js-boilerplate-shared::hash=c725fb&locator=%40lipemat%2Fjs-boilerplate%40workspace%3A."
+  resolution: "@lipemat/js-boilerplate-shared@file:../js-boilerplate-shared#../js-boilerplate-shared::hash=76607d&locator=%40lipemat%2Fjs-boilerplate%40workspace%3A."
   dependencies:
     "@babel/preset-env": "npm:^7.28.5"
     "@babel/preset-typescript": "npm:^7.28.5"
@@ -3164,7 +3164,7 @@ __metadata:
     core-js: "npm:^3.33.1"
   peerDependencies:
     typescript: ^5.9.3
-  checksum: 10c0/b69c2327324b397b72ff1e33264d6378c393884b302ee038769b049da088778cd949acae66a1394caafea5adaf0f13ee44e281869aa0e50aab41bcebce8d521c
+  checksum: 10c0/4e1f1d9cb633e497d586713db81a3ca04fdc41da2474ba4b661b55ad8c4135a85bae138c2a61f55698bd786552a577ac945518df809e46329d219f276ebc3d03
   languageName: node
   linkType: hard
 

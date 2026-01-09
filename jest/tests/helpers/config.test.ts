@@ -1,4 +1,6 @@
 import browserslist from 'browserslist';
+// @ts-expect-error
+import wpBrowsers from '@wordpress/browserslist-config';
 
 import {getBrowsersList, getDefaultBrowsersList} from '../../../helpers/config';
 
@@ -8,7 +10,7 @@ afterEach( () => {
 
 describe( 'config', () => {
 	test( 'getDefaultBrowsersList', () => {
-		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
+		const expectedBrowsers = [ ...wpBrowsers ];
 
 		expect( getDefaultBrowsersList() ).toEqual( expectedBrowsers );
 		expect( getDefaultBrowsersList() ).toEqual( getBrowsersList() );
@@ -18,7 +20,7 @@ describe( 'config', () => {
 	} );
 
 	test( 'getBrowsersList', () => {
-		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
+		const expectedBrowsers = [ ...wpBrowsers ];
 
 		// Check if the browserslist results change, which may explain other failures.
 		expect( browserslist( getBrowsersList() ) ).toMatchSnapshot( 'browserslist' );
@@ -27,7 +29,7 @@ describe( 'config', () => {
 		expect( getBrowsersList() ).toEqual( expectedBrowsers );
 		expect( getBrowsersList() ).toEqual( getDefaultBrowsersList() );
 
-		const wpDefaultBrowsers = browserslist( require( '@wordpress/browserslist-config' ), {
+		const wpDefaultBrowsers = browserslist( wpBrowsers, {
 			env: 'production',
 		} );
 		// @notice If this fails, we can probably add 'not and_uc 15.5' to adjustBrowserslist.

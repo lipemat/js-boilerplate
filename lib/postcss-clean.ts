@@ -10,13 +10,9 @@
  * Decided to use this `lib` instead of maintaining another fork.
  *
  * @link https://www.npmjs.com/package/postcss-clean
- *
  */
 import postCss, {type Helpers, type Plugin, type Root} from 'postcss';
-import type {MinifierOutput, OptionsOutput, Output} from 'clean-css';
-
-// Can't use `import` due to the plugin not supporting a default export.
-const CleanCSS = require( 'clean-css' );
+import CleanCSS, {type MinifierOutput, type OptionsOutput, type Output} from 'clean-css';
 
 const cleaner = ( opts: OptionsOutput = {} ): Plugin => {
 	const clean: MinifierOutput = new CleanCSS( opts );

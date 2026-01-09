@@ -10,7 +10,6 @@ export {
 };
 
 const packageConfig: PackageConfig = getPackageConfig();
-packageConfig.getPackageConfig = getPackageConfig;
-
-packageConfig.default = packageConfig;
-module.exports = packageConfig;
+export {
+	packageConfig as default,
+}

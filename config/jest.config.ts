@@ -7,7 +7,7 @@ import {getConfig} from '../helpers/config.js';
 export type JestConfig = Pick<Config, 'globals' | 'moduleNameMapper' | 'roots' | 'testEnvironment' | 'testEnvironmentOptions' | 'transform' | 'transformIgnorePatterns' | 'setupFilesAfterEnv'>;
 
 const {workingDirectory, url} = getPackageConfig();
-const babelConfig = getConfig( 'babel.config' );
+const babelConfig = await getConfig( 'babel.config.js' );
 delete babelConfig.cacheDirectory;
 
 

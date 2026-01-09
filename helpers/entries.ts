@@ -4,7 +4,7 @@ import {existsSync} from 'fs';
 import {resolve} from 'path';
 import type {EntriesConfig} from '../config/entries.config.js';
 
-const entries: EntriesConfig = getConfig( 'entries.config' );
+const entries: EntriesConfig = await getConfig( 'entries.config.js' );
 
 /**
  * Entry points to be loaded by Webpack.

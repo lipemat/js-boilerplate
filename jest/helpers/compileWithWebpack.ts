@@ -1,10 +1,12 @@
 import {basename, extname, join, resolve} from 'path';
-import webpack, {type Compiler, type OutputFileSystem} from 'webpack';
+import webpack, {type Compiler, type Configuration, type OutputFileSystem} from 'webpack';
 import 'setimmediate';
 import {createFsFromVolume, type IFs, Volume} from 'memfs';
-
 import {getConfig} from '../../helpers/config';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {importFresh} from './imports';
+import {jest} from '@jest/globals';
+
 
 /**
  * Compile a file using webpack.
@@ -58,8 +60,9 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
  *         itself. Instead, we isolate other configurations to allow them to
  *         load fresh each time.
  */
-export default function compileWithWebpack( fixture: Fixture, config = {} ): Promise<string> {
-	const fullConfig = {...require( '../../config/webpack.dist' ).default, ...config};
+export default async function compileWithWebpack( fixture: Fixture, config = {} ): Promise<string> {
+	const webpackConfig = await importFresh<Configuration>( './config/webpack.dist.js' )
+	const fullConfig = {...webpackConfig, ...config};
 
 	// Isolate the css-loader and postcss config, so it is loaded fresh each time.
 	// Allow differentiation between production and development.
@@ -76,9 +79,9 @@ export default function compileWithWebpack( fixture: Fixture, config = {} ): Pro
 	// Point a single entry to the fixture file.
 	const entry = basename( fixture.input, extname( fixture.input ) );
 	fullConfig.entry = {
-		[ entry ]: resolve( __dirname, '../../', fixture.input ),
+		[ entry ]: resolve( './', fixture.input ),
 	};
-	fullConfig.context = resolve( __dirname, '../fixtures' );
+	fullConfig.context = resolve( './fixtures' );
 
 	// The manifest plugin does not work in this context.
 	delete fullConfig.plugins[ 6 ];

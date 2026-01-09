@@ -4,7 +4,7 @@ import postcss, {type Plugin} from 'postcss';
 import compileWithWebpack, {type Fixture} from '../../helpers/compileWithWebpack';
 import browserslist from 'browserslist';
 import postcssPresetEnv from 'postcss-preset-env';
-import type {PostCSSConfig} from '../../../config/postcss.config';
+import type {PostcssConfig} from '../../../config/postcss.config';
 import {getBrowsersList} from '../../../helpers/config';
 
 /**
@@ -12,11 +12,11 @@ import {getBrowsersList} from '../../../helpers/config';
  *         itself. Instead, we isolate other configurations to allow them to
  *         load fresh each time.
  */
-function getPostCSSConfig(): PostCSSConfig {
+function getPostCSSConfig(): PostcssConfig {
 	// @ts-ignore
-	let config: PostCSSConfig = {};
+	let config: PostcssConfig = {};
 	jest.isolateModules( () => {
-		config = require( '../../../config/postcss.config.cts' ).default;
+		config = require( '../../../config/postcss.config.ts' ).default;
 	} );
 	return config;
 }
