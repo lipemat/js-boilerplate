@@ -11,6 +11,7 @@ import type {CssLoaderConfig} from '../config/css-loader.config';
 import browserslist from 'browserslist';
 // @ts-expect-error TS2307
 import wpBrowsers from '@wordpress/browserslist-config';
+import {createRequire} from 'node:module';
 
 type Configs = {
 	'babel.config': BabelConfig;
@@ -104,7 +105,11 @@ export async function getConfig<T extends keyof Configs>( fileName: T ): Promise
 	}
 
 	try {
-		const localConfig = await import( resolve( packageDirectory + '/config', fileName ) );
+		let localConfig = createRequire( import.meta.url )( resolve( packageDirectory, 'config', fileName.replace( /\.js$/, '' ) ) );
+		if ( 'default' in localConfig ) {
+			localConfig = localConfig.default;
+		}
+
 		if ( 'function' === typeof localConfig ) {
 			mergedConfig = {...mergedConfig, ...localConfig( mergedConfig )};
 		} else {
@@ -112,7 +117,7 @@ export async function getConfig<T extends keyof Configs>( fileName: T ): Promise
 		}
 	} catch ( e ) {
 		if ( e instanceof Error ) {
-			if ( ! ( 'code' in e ) || 'MODULE_NOT_FOUND' !== e.code ) {
+			if ( ! ( 'code' in e ) || ( 'MODULE_NOT_FOUND' !== e.code && 'ERR_MODULE_NOT_FOUND' !== e.code ) ) {
 				console.error( e );
 			}
 		}
