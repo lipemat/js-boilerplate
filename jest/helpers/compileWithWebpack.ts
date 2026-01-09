@@ -2,7 +2,6 @@ import {basename, extname, join, resolve} from 'path';
 import webpack, {type Compiler, type Configuration, type OutputFileSystem} from 'webpack';
 import 'setimmediate';
 import {createFsFromVolume, type IFs, Volume} from 'memfs';
-import {getConfig} from '../../helpers/config';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import {importFresh} from './imports';
 import {jest} from '@jest/globals';
@@ -61,18 +60,22 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
  *         load fresh each time.
  */
 export default async function compileWithWebpack( fixture: Fixture, config = {} ): Promise<string> {
-	const webpackConfig = await importFresh<Configuration>( './config/webpack.dist.js' )
+	const webpackConfig = await importFresh<Configuration>( './config/webpack.dist.js' );
+	const cssLoader = await importFresh( './config/css-loader.config.js' );
+	const postcssConfig = await importFresh( './config/postcss.config.js' );
+
+
 	const fullConfig = {...webpackConfig, ...config};
 
 	// Isolate the css-loader and postcss config, so it is loaded fresh each time.
 	// Allow differentiation between production and development.
 	jest.isolateModules( () => {
 		if ( getPackageConfig().cssTsFiles ) {
-			fullConfig.module.rules[ 2 ].use[ 2 ].options = getConfig( 'css-loader.config' );
-			fullConfig.module.rules[ 2 ].use[ 3 ].options.postcssOptions = getConfig( 'postcss.config' );
+			fullConfig.module.rules[ 2 ].use[ 2 ].options = cssLoader;
+			fullConfig.module.rules[ 2 ].use[ 3 ].options.postcssOptions = postcssConfig;
 		} else {
-			fullConfig.module.rules[ 2 ].use[ 1 ].options = getConfig( 'css-loader.config' );
-			fullConfig.module.rules[ 2 ].use[ 2 ].options.postcssOptions = getConfig( 'postcss.config' );
+			fullConfig.module.rules[ 2 ].use[ 1 ].options = cssLoader;
+			fullConfig.module.rules[ 2 ].use[ 2 ].options.postcssOptions = postcssConfig;
 		}
 	} );
 
