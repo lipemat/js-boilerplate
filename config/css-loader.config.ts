@@ -1,6 +1,6 @@
 import {getLocalIdent, usingShortCssClasses} from '@lipemat/js-boilerplate-shared/helpers/css-classnames';
-import type {Config, Mode} from '../types/css-loader';
-import type {AtLeast} from '../types/utility';
+import type {Config, Mode} from '@lipemat/js-boilerplate-shared/types/css-loader';
+import type {AtLeast} from '@lipemat/js-boilerplate-shared/types/utility';
 
 export type CssLoaderConfig = AtLeast<Config, 'importLoaders' | 'modules' | 'sourceMap' | 'url'>
 

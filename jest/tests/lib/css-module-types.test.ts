@@ -1,38 +1,14 @@
-import * as fs from 'fs';
 import {sync} from 'glob';
 import {basename, join, resolve} from 'path';
 import {type LoaderContext} from 'webpack';
-// @ts-expect-error TS5097: An import path can only end with a .ts extension when allowImportingTsExtensions is enabled.
-import createCssModuleTypings from '../../../lib/css-module-types.ts';
+// @ts-ignore
+import createCssModuleTypings, {modifyFileWriter} from '../../../lib/css-module-types.js';
 import compileWithWebpack from '../../helpers/compileWithWebpack';
-import {getPackageConfig, type PackageConfig} from '../../../helpers/package-config';
+import {jest} from '@jest/globals';
+import {readFileSync, writeFileSync as restoreSync} from 'fs';
 
 
-// Change the result of the getPackageConfig function, so we can change anything.
-jest.mock( '../../../helpers/package-config.js', () => {
-	const mockPackageConfig: Partial<PackageConfig> = {}
-
-	return {
-		...jest.requireActual( '../../../helpers/package-config.js' ),
-		getPackageConfig: () => ( {
-			...jest.requireActual( '../../../helpers/package-config.js' ),
-			...mockPackageConfig,
-			change: ( changes: Partial<PackageConfig> ) => {
-				Object.assign( mockPackageConfig, changes );
-			},
-		} ),
-	}
-} );
-
-
-jest.mock( 'fs', () => {
-	const actualFs = jest.requireActual( 'fs' );
-	return {
-		...actualFs,
-		writeFileSync: jest.fn(),
-	};
-} );
-
+const writeFileSyncMock = jest.fn();
 
 const mockAsyncFunction = jest.fn().mockReturnValue( () => {
 } );
@@ -47,15 +23,17 @@ const mockLoaderContext: LoaderContext<Record<string, never>> = {
 
 describe( 'Format CSS Module Typings', () => {
 	beforeEach( () => {
-		jest.clearAllMocks();
-		// @ts-expect-error TS2339: Property change does not exist on type PackageConfig
-		getPackageConfig().change( {cssTsFiles: true} );
+		modifyFileWriter( writeFileSyncMock );
 	} );
 
+	afterEach( () => {
+		modifyFileWriter( restoreSync );
+		jest.clearAllMocks();
+	} );
 
 	test( 'Empty files are not generated', async () => {
 		const pcssFile = join( 'jest/fixtures/postcss-modules/default.pcss' );
-		const postCSSContent = fs.readFileSync( pcssFile, 'utf8' );
+		const postCSSContent = readFileSync( pcssFile, 'utf8' );
 
 		await compileWithWebpack( {
 			basename: basename( pcssFile ),
@@ -64,7 +42,7 @@ describe( 'Format CSS Module Typings', () => {
 			output: pcssFile.replace( '.pcss', '.css' ),
 		} );
 
-		expect( fs.writeFileSync ).not.toHaveBeenCalled();
+		expect( writeFileSyncMock ).not.toHaveBeenCalled();
 		mockLoaderContext.resourcePath = pcssFile;
 		createCssModuleTypings.call( mockLoaderContext, postCSSContent );
 		expect( mockLoaderContext.callback ).toHaveBeenCalledWith( null, postCSSContent );
@@ -81,8 +59,8 @@ describe( 'Format CSS Module Typings', () => {
 			cleanFile,
 		};
 	} ) )( '$description', async ( {pcssFile, cleanFile} ) => {
-		const expectedContent = fs.readFileSync( cleanFile, 'utf8' );
-		const postCSSContent = fs.readFileSync( pcssFile, 'utf8' );
+		const expectedContent = readFileSync( cleanFile, 'utf8' );
+		const postCSSContent = readFileSync( pcssFile, 'utf8' );
 
 		await compileWithWebpack( {
 			basename: basename( pcssFile ),
@@ -90,7 +68,7 @@ describe( 'Format CSS Module Typings', () => {
 			input: pcssFile,
 			output: pcssFile.replace( '.pcss', '.css' ),
 		} );
-		expect( fs.writeFileSync ).toHaveBeenCalledWith( resolve( pcssFile.replace( /\.pcss$/, '.pcss.d.ts' ) ), expectedContent );
+		expect( writeFileSyncMock ).toHaveBeenCalledWith( resolve( pcssFile.replace( /\.pcss$/, '.pcss.d.ts' ) ), expectedContent );
 
 		mockLoaderContext.resourcePath = pcssFile;
 		createCssModuleTypings.call( mockLoaderContext, postCSSContent );

@@ -1,22 +1,13 @@
-import {getLocalIdent} from '@lipemat/js-boilerplate-shared/helpers/css-classnames';
-
-// Change this variable during tests.
-let mockShortCssEnabled = false;
-
-jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
-	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
-	getPackageConfig: () => ( {
-		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ).getPackageConfig(),
-		// Change this variable during the test.
-		shortCssClasses: mockShortCssEnabled,
-	} ),
-} ) );
-
+import {modifyPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
+import {jest} from '@jest/globals';
+import {importFresh} from '../../helpers/imports';
+import type {CssLoaderConfig} from '../../../config/css-loader.config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 
 // Change the result of the getLocalIdent function to something we can verify.
-jest.mock( '@lipemat/js-boilerplate-shared/helpers/css-classnames', () => ( {
-	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/css-classnames' ),
+jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/css-classnames', () => ( {
 	getLocalIdent: jest.fn().mockReturnValue( '__TEST_CSS__' ),
+	usingShortCssClasses: () => getPackageConfig().shortCssClasses,
 } ) );
 
 
@@ -26,13 +17,15 @@ beforeEach( () => {
 
 afterEach( () => {
 	process.env.NODE_ENV = 'test';
-	mockShortCssEnabled = false;
+	modifyPackageConfig( {
+		shortCssClasses: false,
+	} )
 	jest.resetModules();
 } );
 
 describe( 'css-loader.config.test.ts', () => {
-	test( 'Develop config', () => {
-		const config = require( '../../../config/css-loader.config' ).default;
+	test( 'Develop config', async () => {
+		const config = await importFresh<CssLoaderConfig>( './config/css-loader.config' );
 		expect( config.importLoaders ).toEqual( 1 );
 		expect( config.modules.exportLocalsConvention ).toEqual( 'camelCase' );
 		expect( config.modules.localIdentName ).toEqual( 'Ⓜ[name]__[local]__[contenthash:base64:2]' );
@@ -45,11 +38,14 @@ describe( 'css-loader.config.test.ts', () => {
 		expect( config ).toMatchSnapshot( 'develop' );
 	} );
 
-	test( 'Production config', () => {
+
+	test( 'Production config', async () => {
 		jest.resetModules();
-		mockShortCssEnabled = false;
+		modifyPackageConfig( {
+			shortCssClasses: false,
+		} )
 		process.env.NODE_ENV = 'production';
-		const config = require( '../../../config/css-loader.config' ).default;
+		const config = await importFresh<CssLoaderConfig>( './config/css-loader.config' );
 		expect( config.importLoaders ).toEqual( 1 );
 		expect( config.modules.exportLocalsConvention ).toEqual( 'camelCase' );
 		expect( config.modules.localIdentName ).toEqual( '[contenthash:base64:5]' );
@@ -59,12 +55,17 @@ describe( 'css-loader.config.test.ts', () => {
 		expect( config ).toMatchSnapshot( 'production CSS modules disabled' );
 
 		jest.resetModules();
-		mockShortCssEnabled = true;
-		const cssEnabled = require( '../../../config/css-loader.config' ).default;
+		modifyPackageConfig( {
+			shortCssClasses: true,
+		} )
+		const cssEnabled = await importFresh<CssLoaderConfig>( './config/css-loader.config' );
 		expect( cssEnabled.modules.getLocalIdent ).toBeDefined();
 		expect( cssEnabled.modules.getLocalIdent() ).toEqual( '__TEST_CSS__' );
-		// @ts-expect-error
-		expect( cssEnabled.modules.getLocalIdent() ).toEqual( getLocalIdent() );
+
+		const real = await import( '@lipemat/js-boilerplate-shared/helpers/css-classnames' );
+
+		// @ts-expect-error -- Not passing data to the mock function.
+		expect( cssEnabled.modules.getLocalIdent() ).toEqual( real.getLocalIdent() );
 
 		expect( cssEnabled ).toMatchSnapshot( 'production CSS modules enabled' );
 	} );

@@ -35,8 +35,13 @@ exports[`css-loader.config.test.ts Production config: production CSS modules ena
       "calls": [
         [],
         [],
+        [],
       ],
       "results": [
+        {
+          "type": "return",
+          "value": "__TEST_CSS__",
+        },
         {
           "type": "return",
           "value": "__TEST_CSS__",
