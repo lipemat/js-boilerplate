@@ -1,4 +1,5 @@
-import type {PostCSSConfig} from '../../../config/postcss.config';
+import type {PostCSSConfig} from '../../../config/postcss.config.cts';
+import {jest} from '@jest/globals';
 
 /**
  * @notice We can't reset the modules of MiniCssExtractPlugin conflicts with
@@ -9,7 +10,7 @@ export function getPostCSSConfig(): PostCSSConfig {
 	// @ts-ignore
 	let config: PostCSSConfig = {};
 	jest.isolateModules( () => {
-		config = require( '../../../config/postcss.config.ts' ).default;
+		config = require( '../../../config/postcss.config.cts' ).default;
 	} );
 	return config;
 }

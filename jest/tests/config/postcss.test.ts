@@ -16,7 +16,7 @@ function getPostCSSConfig(): PostCSSConfig {
 	// @ts-ignore
 	let config: PostCSSConfig = {};
 	jest.isolateModules( () => {
-		config = require( '../../../config/postcss.config.ts' ).default;
+		config = require( '../../../config/postcss.config.cts' ).default;
 	} );
 	return config;
 }

@@ -19,7 +19,7 @@ afterEach( () => {
 
 describe( 'webpack.dev.test.ts', () => {
 	test( 'Browserslist config', () => {
-		const config = require( '../../../config/webpack.dev.ts' ).default;
+		const config = require( '../../../config/webpack.dev.js' ).default;
 		const wpBrowsers = require( '@wordpress/browserslist-config' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
 		expect( config ).toMatchSnapshot( 'Default Browsers' );
@@ -27,7 +27,7 @@ describe( 'webpack.dev.test.ts', () => {
 
 		jest.resetModules();
 		process.env.BROWSERSLIST = 'chrome 71';
-		const config2 = require( '../../../config/webpack.dev.ts' ).default;
+		const config2 = require( '../../../config/webpack.dev.js' ).default;
 		expect( config2.target ).toEqual( 'browserslist:chrome 71' );
 		expect( config ).toMatchSnapshot( 'Chrome 71' );
 	} );
@@ -36,7 +36,7 @@ describe( 'webpack.dev.test.ts', () => {
 	test( 'cssTsFiles', () => {
 		mockPackageConfig.cssTsFiles = false;
 		jest.resetModules();
-		let config = require( '../../../config/webpack.dev.ts' ).default;
+		let config = require( '../../../config/webpack.dev.js' ).default;
 		let loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
 		expect( loaders[ 1 ].loader ).toEqual( 'css-loader' );
@@ -44,10 +44,10 @@ describe( 'webpack.dev.test.ts', () => {
 
 		mockPackageConfig.cssTsFiles = true;
 		jest.resetModules();
-		config = require( '../../../config/webpack.dev.ts' ).default;
+		config = require( '../../../config/webpack.dev.js' ).default;
 		loaders = config.module.rules.pop().use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
-		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/css-module-types.ts' ) );
+		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/css-module-types.js' ) );
 		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
 		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
 

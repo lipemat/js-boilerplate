@@ -5,11 +5,11 @@ import {CleanWebpackPlugin} from 'clean-webpack-plugin';
 import {WebpackAssetsManifest} from 'webpack-assets-manifest';
 import {SubresourceIntegrityPlugin} from 'webpack-subresource-integrity';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import WebpackAssetsHash from '../helpers/WebpackAssetsHash';
+import WebpackAssetsHash from '../helpers/WebpackAssetsHash.js';
 import {type Configuration as WebpackConfig, ProvidePlugin, type WebpackPluginInstance} from 'webpack';
 
-import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config';
-import {getEntries} from '../helpers/entries';
+import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
+import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 
 const postcssOptions = getConfig( 'postcss.config' );
@@ -111,7 +111,7 @@ const config: WebpackConfig = {
 		crossOriginLoading: 'anonymous',
 	},
 	resolve: {
-		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
+		extensions: [ '.js', '.jsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( getPackageConfig().workingDirectory, 'src' ),
 			'node_modules',
@@ -133,7 +133,7 @@ const config: WebpackConfig = {
 					MiniCssExtractPlugin.loader,
 					'css-loader',
 					{
-						loader: path.resolve( __dirname, '../lib/clean-css-loader.ts' ),
+						loader: path.resolve( __dirname, '../lib/clean-css-loader.js' ),
 					},
 				],
 			},
@@ -142,7 +142,7 @@ const config: WebpackConfig = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
-						loader: path.resolve( __dirname, '../lib/css-module-types.ts' ),
+						loader: path.resolve( __dirname, '../lib/css-module-types.js' ),
 					},
 					{
 						loader: 'css-loader',
@@ -156,7 +156,7 @@ const config: WebpackConfig = {
 					},
 				].filter( loader => {
 					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
-						return loader.loader !== path.resolve( __dirname, '../lib/css-module-types.ts' );
+						return loader.loader !== path.resolve( __dirname, '../lib/css-module-types.js' );
 					}
 					return true;
 				} ),

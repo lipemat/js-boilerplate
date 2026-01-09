@@ -2735,7 +2735,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/globals@npm:30.2.0":
+"@jest/globals@npm:30.2.0, @jest/globals@npm:^30.2.0":
   version: 30.2.0
   resolution: "@jest/globals@npm:30.2.0"
   dependencies:
@@ -3156,7 +3156,7 @@ __metadata:
 
 "@lipemat/js-boilerplate-shared@file:../js-boilerplate-shared::locator=%40lipemat%2Fjs-boilerplate%40workspace%3A.":
   version: 0.0.1
-  resolution: "@lipemat/js-boilerplate-shared@file:../js-boilerplate-shared#../js-boilerplate-shared::hash=e188f6&locator=%40lipemat%2Fjs-boilerplate%40workspace%3A."
+  resolution: "@lipemat/js-boilerplate-shared@file:../js-boilerplate-shared#../js-boilerplate-shared::hash=c725fb&locator=%40lipemat%2Fjs-boilerplate%40workspace%3A."
   dependencies:
     "@babel/preset-env": "npm:^7.28.5"
     "@babel/preset-typescript": "npm:^7.28.5"
@@ -3164,7 +3164,7 @@ __metadata:
     core-js: "npm:^3.33.1"
   peerDependencies:
     typescript: ^5.9.3
-  checksum: 10c0/1f96c434c9e650785aa0f502f8e171fd5e16bb0e215b25dd371924bbe056a4f0f784453056604c1c089a50592abf668f89b401dba7c2a7254a3e25fa2507461b
+  checksum: 10c0/b69c2327324b397b72ff1e33264d6378c393884b302ee038769b049da088778cd949acae66a1394caafea5adaf0f13ee44e281869aa0e50aab41bcebce8d521c
   languageName: node
   linkType: hard
 
@@ -3235,6 +3235,7 @@ __metadata:
     "@babel/preset-react": "npm:^7.24.7"
     "@babel/preset-typescript": "npm:^7.24.7"
     "@csstools/postcss-global-data": "npm:2.0.0"
+    "@jest/globals": "npm:^30.2.0"
     "@lipemat/eslint-config": "npm:^5.1.4"
     "@lipemat/js-boilerplate-shared": "file:../js-boilerplate-shared"
     "@pmmmwh/react-refresh-webpack-plugin": "npm:^0.6.1"

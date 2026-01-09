@@ -3,7 +3,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config';
+import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {BabelConfig} from './babel.config';
@@ -52,7 +52,7 @@ const config: WebpackConfig = {
 		chunkFilename: '[name].js',
 	},
 	resolve: {
-		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
+		extensions: [ '.js', '.jsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( getPackageConfig().workingDirectory, 'src' ),
 			'node_modules',
@@ -85,7 +85,7 @@ const config: WebpackConfig = {
 				use: [
 					'style-loader',
 					{
-						loader: path.resolve( __dirname, '../lib/css-module-types.ts' ),
+						loader: path.resolve( __dirname, '../lib/css-module-types.js' ),
 					},
 					{
 						loader: 'css-loader',
@@ -99,7 +99,7 @@ const config: WebpackConfig = {
 					},
 				].filter( loader => {
 					if ( ! getPackageConfig().cssTsFiles && 'object' === typeof loader ) {
-						return loader.loader !== path.resolve( __dirname, '../lib/css-module-types.ts' );
+						return loader.loader !== path.resolve( __dirname, '../lib/css-module-types.js' );
 					}
 					return true;
 				} ),

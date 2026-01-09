@@ -1,14 +1,14 @@
 import config from '../config/jest.config.js';
 import type {Config} from 'jest';
 import {resolve} from 'path';
-import sharedConfig from '@lipemat/js-boilerplate-shared/config/jest.config.js';
 
 const adjustedConfig: Config = {
 	...config,
 	// Custom snapshot resolver for the boilerplate.
-	snapshotResolver: resolve( './jest/snapshot-resolver.ts' ),
+	snapshotResolver: resolve( './jest/snapshot-resolver.cjs' ),
 
-	transform: sharedConfig.transform,
+	// Enable ESM support for TypeScript files.
+	extensionsToTreatAsEsm: [ '.ts', '.tsx', '.mts' ],
 
 	moduleNameMapper: {
 		...config.moduleNameMapper,

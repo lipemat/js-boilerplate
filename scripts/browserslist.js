@@ -1,5 +1,5 @@
 const browserslist = require( 'browserslist' );
-const {getBrowsersList} = require( '../helpers/config' );
+const {getBrowsersList} = require( '../helpers/config.cts' );
 
 const help = `
 	List browsers being targeted by Babel and PostCSS.

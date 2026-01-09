@@ -1,4 +1,5 @@
-import {basename, dirname} from 'path';
+const {basename, dirname} = require('path');
+const crypto = require('crypto');
 
 /**
  * Custom module resolver for Jest snapshots.
@@ -37,15 +38,15 @@ const filesWithPaths = [
  * If the package is installed on a different machine or inside a monorepo, the
  * path will change, and the snapshots will fail.
  */
-function getCurrentDirectoryHash( dir: string ) {
-	return require( 'crypto' ).createHash( 'md5' ).update( dir ).digest( 'hex' );
+function getCurrentDirectoryHash( dir ) {
+	return crypto.createHash( 'md5' ).update( dir ).digest( 'hex' );
 }
 
 
 /**
  * Convert the test file path to the path of its snapshot.
  */
-export function resolveSnapshotPath( testPath: string, snapshotExtension: string ) {
+function resolveSnapshotPath( testPath, snapshotExtension ) {
 	const normalizedPath = testPath.replace( /\\/g, '/' );
 	const filePath = dirname( normalizedPath ) + '/__snapshots__/' + basename( normalizedPath );
 	if ( filesWithPaths.includes( basename( testPath ) ) ) {
@@ -58,7 +59,7 @@ export function resolveSnapshotPath( testPath: string, snapshotExtension: string
 /**
  * Convert the path of a snapshot to the path of the original test file.
  */
-export function resolveTestPath( snapshotFilePath: string, snapshotExtension: string ) {
+function resolveTestPath( snapshotFilePath, snapshotExtension ) {
 	const normalizedPath = snapshotFilePath.replace( /\\/g, '/' );
 	const hash = getCurrentDirectoryHash( dirname( normalizedPath.replace( '__snapshots__/', '' ) ) );
 
@@ -85,7 +86,7 @@ export function resolveTestPath( snapshotFilePath: string, snapshotExtension: st
 /**
  * Test to make sure the resolves are mapping back and forth correctly.
  */
-export const testPathForConsistencyCheck = 'some/__tests__/webpack.dist.test.ts';
+const testPathForConsistencyCheck = 'some/__tests__/webpack.dist.test.ts';
 
 module.exports = {
 	resolveSnapshotPath,

@@ -1,8 +1,8 @@
-import {getConfig} from './config';
-import {getPackageConfig} from './package-config';
+import {getConfig} from './config.js';
+import {getPackageConfig} from './package-config.js';
 import {existsSync} from 'fs';
 import {resolve} from 'path';
-import type {EntriesConfig} from '../config/entries.config';
+import type {EntriesConfig} from '../config/entries.config.js';
 
 const entries: EntriesConfig = getConfig( 'entries.config' );
 

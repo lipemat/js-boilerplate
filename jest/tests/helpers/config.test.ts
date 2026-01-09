@@ -1,6 +1,6 @@
-const browserslist = require( 'browserslist' );
+import browserslist from 'browserslist';
 
-const {getDefaultBrowsersList, getBrowsersList} = require( '../../../helpers/config' );
+import {getBrowsersList, getDefaultBrowsersList} from '../../../helpers/config';
 
 afterEach( () => {
 	delete process.env.BROWSERSLIST;

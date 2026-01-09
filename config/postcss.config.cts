@@ -1,19 +1,14 @@
 import {resolve} from 'path';
 import {existsSync} from 'fs';
-import {type pluginOptions} from 'postcss-preset-env';
+import postcssPresetEnv, {type pluginOptions} from 'postcss-preset-env';
 import type Processor from 'postcss/lib/processor';
-import {getBrowsersList} from '../helpers/config';
+import {getBrowsersList} from '../helpers/config.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import PrettyPlugin from '../lib/postcss-pretty';
 import cleanCSS from '../lib/postcss-clean';
 import type {Config, ConfigPlugin} from 'postcss-load-config';
 import type {LoaderContext} from 'webpack';
 import type {Plugin} from 'postcss';
-import {createRequire} from 'node:module';
-
-const requireModule = createRequire( import.meta.url );
-
-const postcssPresetEnv = requireModule( 'postcss-preset-env' );
 
 export type PostCSSConfig = Config & Partial<LoaderContext<Config>> & {
 	plugins: Plugin[];
@@ -35,8 +30,9 @@ const presetEnv: pluginOptions = {
 	features: {},
 };
 
-// Get a list of included postcss plugins based on the browsers list.
-const includedPlugins: string[] = postcssPresetEnv( presetEnv ).plugins.map( ( plugin: Processor['plugins'][number] ) => {
+// Get a list of included postcss plugins based on the browser list.
+const processor = postcssPresetEnv( presetEnv ) as Processor;
+const includedPlugins: string[] = processor.plugins.map( ( plugin: Processor['plugins'][number] ) => {
 	return 'postcssPlugin' in plugin ? plugin.postcssPlugin : '';
 } );
 
@@ -87,17 +83,17 @@ const externalFiles: string[] = [];
  */
 const config: PostCSSConfig = {
 	plugins: [
-		requireModule( '@csstools/postcss-global-data' )( {
+		require( '@csstools/postcss-global-data' )( {
 			files: externalFiles,
 		} ),
-		requireModule( 'postcss-import' )( {
+		require( 'postcss-import' )( {
 			skipDuplicates: false,
 		} ),
-		requireModule( 'postcss-custom-media' ),
-		requireModule( 'postcss-nested' ),
+		require( 'postcss-custom-media' ),
+		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
-		requireModule( 'postcss-color-mod-function' ),
-		requireModule( 'postcss-sort-media-queries' )( {
+		require( 'postcss-color-mod-function' ),
+		require( 'postcss-sort-media-queries' )( {
 			onlyTopLevel: true,
 			sort: 'mobile-first',
 			configuration: {

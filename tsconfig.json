@@ -11,5 +11,8 @@
     "scripts/**/*",
     "src/**/*",
     "types/**/*"
-  ]
+  ],
+  "compilerOptions": {
+    "verbatimModuleSyntax": false
+  }
 }

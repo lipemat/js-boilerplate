@@ -39,7 +39,7 @@
     "browserslist": "lipemat-js-boilerplate browserslist",
     "build": "tsc --project ./bin",
     "prepublishOnly": "yarn run build",
-    "test": "lipemat-js-boilerplate test",
+    "test": "NODE_OPTIONS=--experimental-vm-modules lipemat-js-boilerplate test",
     "validate-ts": "tsc --noEmit",
     "watch": "tsc --project ./bin --watch"
   },
@@ -95,6 +95,7 @@
     "webpack-subresource-integrity": "^5.1.0"
   },
   "devDependencies": {
+    "@jest/globals": "^30.2.0",
     "@lipemat/eslint-config": "^5.1.4",
     "@types/jest": "^29.5.3",
     "@types/minimist": "^1",

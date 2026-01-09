@@ -7,7 +7,7 @@ import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config.ts';
 import {getExtensionsConfig, getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {EntriesConfig} from '../config/entries.config';
-import type {PostCSSConfig} from '../config/postcss.config';
+import type {PostCSSConfig} from '../config/postcss.config.cts';
 import type {CssLoaderConfig} from '../config/css-loader.config';
 
 const requireModule = createRequire( import.meta.url );
