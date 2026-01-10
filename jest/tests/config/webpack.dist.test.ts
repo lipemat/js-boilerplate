@@ -1,56 +1,84 @@
-import path from 'path';
-import type {PackageConfig} from '@lipemat/js-boilerplate-shared';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-// @ts-expect-error
 import wpBrowsers from '@wordpress/browserslist-config';
 
-const mockPackageConfig: Partial<PackageConfig> = {};
-// Change the result of the getPackageConfig function, so we can change anything.
-jest.mock( '@lipemat/js-boilerplate-shared', () => ( {
-	...jest.requireActual( '@lipemat/js-boilerplate-shared' ),
-	getPackageConfig: () => ( {
-		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ).getPackageConfig(),
-		...mockPackageConfig,
-	} ),
-} ) );
+import {importFresh} from '../../helpers/imports.ts';
+import {fileURLToPath} from 'node:url';
+import type {PackageConfig} from '@lipemat/js-boilerplate-shared';
 
-afterEach( () => {
-	delete process.env.BROWSERSLIST;
-	process.env.NODE_ENV = 'test';
+import {jest} from '@jest/globals';
+
+let mod: Partial<PackageConfig> = {};
+
+jest.unstable_mockModule( '@lipemat/js-boilerplate-shared', async () => {
+	const originalModule = await import( '@lipemat/js-boilerplate-shared/helpers/package-config.js' );
+
+	return {
+		getPackageConfig: () => {
+			return {
+				...originalModule.getPackageConfig(),
+				...mod,
+			}
+		},
+		modifyPackageConfig: ( changes: Partial<ReturnType<typeof originalModule.getPackageConfig>> ) => {
+			mod = changes
+		},
+	};
 } );
 
-describe( 'webpack.dist.test.ts', () => {
-	test( 'Browserslist config', () => {
-		process.env.NODE_ENV = 'production';
-		const config = require( '../../../config/webpack.dist' ).default;
-		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
-		expect( config ).toMatchSnapshot( 'Default Browsers' );
 
+const {modifyPackageConfig} = await import( '@lipemat/js-boilerplate-shared' );
+
+
+describe( 'webpack.dist.test.ts', () => {
+	afterEach( () => {
+		delete process.env.BROWSERSLIST;
+		process.env.NODE_ENV = 'test';
 		jest.resetModules();
-		process.env.BROWSERSLIST = 'chrome 72, firefox 65';
-		const config2 = require( '../../../config/webpack.dist' ).default;
-		expect( config2.target ).toEqual( 'browserslist:chrome 72, firefox 65' );
-		expect( config ).toMatchSnapshot( 'Chrome 72, Firefox 65' );
 	} );
 
 
-	test( 'cssTsFiles', () => {
-		mockPackageConfig.cssTsFiles = false;
-		jest.resetModules();
-		let config = require( '../../../config/webpack.dist' ).default;
-		let loaders = config.module.rules.pop().use;
+	test( 'Browserslist config', async () => {
+		process.env.NODE_ENV = 'production';
+
+		const config = await importFresh( './config/webpack.dist.js' );
+		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
+		expect( config ).toMatchSnapshot( 'Default Browsers' );
+	} );
+
+
+	test( 'Chrome 72, Firefox 65', async () => {
+		process.env.NODE_ENV = 'production';
+		process.env.BROWSERSLIST = 'chrome 72, firefox 65';
+
+		const config2 = await importFresh( './config/webpack.dist.js' );
+		expect( config2.target ).toEqual( 'browserslist:chrome 72, firefox 65' );
+		expect( config2 ).toMatchSnapshot( 'Chrome 72, Firefox 65' );
+	} );
+
+
+	test( 'cssTsFiles Disabled', async () => {
+		modifyPackageConfig( {
+			cssTsFiles: false,
+		} );
+		const config = await importFresh( './config/webpack.dist.js' );
+		const loaders = [ ...config.module.rules ].pop()?.use;
 		expect( loaders[ 0 ] ).toEqual( MiniCssExtractPlugin.loader );
 		expect( loaders[ 1 ].loader ).toEqual( 'css-loader' );
 		expect( loaders[ 2 ].loader ).toEqual( 'postcss-loader' );
 
 		expect( config ).toMatchSnapshot( 'cssTsFiles No types' );
+	} );
 
-		mockPackageConfig.cssTsFiles = true;
-		jest.resetModules();
-		config = require( '../../../config/webpack.dist' ).default;
-		loaders = config.module.rules.pop().use;
+
+	test( 'cssTsFiles Enabled', async () => {
+		process.env.NODE_ENV = 'production';
+		modifyPackageConfig( {
+			cssTsFiles: true,
+		} );
+		const config = await importFresh( './config/webpack.dist.js' );
+		const loaders = [ ...config.module.rules ].pop()?.use;
 		expect( loaders[ 0 ] ).toEqual( MiniCssExtractPlugin.loader );
-		expect( loaders[ 1 ].loader ).toEqual( path.resolve( __dirname, '../../../lib/css-module-types.ts' ) );
+		expect( loaders[ 1 ].loader ).toEqual( fileURLToPath( new URL( '../../../lib/css-module-types.js', import.meta.url ) ) );
 		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
 		expect( loaders[ 3 ].loader ).toEqual( 'postcss-loader' );
 

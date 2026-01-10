@@ -14,7 +14,6 @@ import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import {fileURLToPath} from 'node:url';
 
-const postcssOptions = getPostCSSConfig();
 const babelOptions = await getConfig( 'babel.config.js' );
 const cssLoaderOptions = await getConfig( 'css-loader.config.js' );
 
@@ -113,7 +112,7 @@ const config: WebpackConfig = {
 		crossOriginLoading: 'anonymous',
 	},
 	resolve: {
-		extensions: [ '.js', '.jsx', '.js', '.jsx', '.json', '.pcss' ],
+		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( getPackageConfig().workingDirectory, 'src' ),
 			'node_modules',
@@ -153,7 +152,7 @@ const config: WebpackConfig = {
 					{
 						loader: 'postcss-loader',
 						options: {
-							postcssOptions,
+							postcssOptions: getPostCSSConfig(),
 						},
 					},
 				].filter( loader => {

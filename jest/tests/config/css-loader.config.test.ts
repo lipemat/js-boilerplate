@@ -1,8 +1,7 @@
-import {modifyPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
+import {getPackageConfig, modifyPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {jest} from '@jest/globals';
 import {importFresh} from '../../helpers/imports';
 import type {CssLoaderConfig} from '../../../config/css-loader.config';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 
 // Change the result of the getLocalIdent function to something we can verify.
 jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/css-classnames', () => ( {

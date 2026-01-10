@@ -2,7 +2,7 @@ import {basename, extname, join, resolve} from 'path';
 import webpack, {type Compiler, type Configuration, type OutputFileSystem} from 'webpack';
 import 'setimmediate';
 import {createFsFromVolume, type IFs, Volume} from 'memfs';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {importFresh} from './imports';
 import {jest} from '@jest/globals';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';

@@ -1,4 +1,4 @@
-import {type Configuration as WebpackConfig, ProvidePlugin, type WebpackPluginInstance} from 'webpack';
+import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance} from 'webpack';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -10,6 +10,9 @@ import type {BabelConfig} from './babel.config';
 import {fileURLToPath} from 'node:url';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 
+
+const packageConfig = getPackageConfig();
+
 const postcssOptions = getPostCSSConfig();
 const babelOptions: BabelConfig = await getConfig( 'babel.config.js' );
 const cssLoaderOptions = await getConfig( 'css-loader.config.js' );
@@ -20,7 +23,7 @@ babelOptions.plugins?.unshift( 'react-refresh/babel' );
 
 
 const plugins: WebpackPluginInstance[] = [
-	new ProvidePlugin( {
+	new webpack.ProvidePlugin( {
 		jQuery: 'jquery',
 		$: 'jquery',
 	} ),
@@ -54,7 +57,7 @@ const config: WebpackConfig = {
 		chunkFilename: '[name].js',
 	},
 	resolve: {
-		extensions: [ '.js', '.jsx', '.js', '.jsx', '.json', '.pcss' ],
+		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( getPackageConfig().workingDirectory, 'src' ),
 			'node_modules',

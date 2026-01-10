@@ -1,19 +1,17 @@
 import {getConfig} from '../../../helpers/config.js';
-import {createRequire} from 'node:module';
-
-const requireModule = createRequire( import.meta.url );
 
 describe( 'jest.config.test.ts', () => {
-	it( 'should match the snapshot', () => {
-		const config = requireModule( '../../../config/jest.config.js' ).default;
-		expect( config ).toMatchSnapshot();
-		expect( config ).toStrictEqual( getConfig( 'jest.config' ) );
+	it( 'should match the snapshot', async () => {
+		const config = await import( '../../../config/jest.config.js' );
+		expect( config.default ).toMatchSnapshot();
+		expect( config.default ).toStrictEqual( await getConfig( 'jest.config' ) );
+		expect( config.default ).toStrictEqual( await getConfig( 'jest.config.js' ) );
 	} );
 
 
-	test( 'Build files', () => {
-		const TS = requireModule( '../../../config/jest.config.ts' ).default
-		const JS = requireModule( '../../../config/jest.config.js' ).default;
+	test( 'Build files', async () => {
+		const TS = await import( '../../../config/jest.config.ts' );
+		const JS = await import( '../../../config/jest.config.js' );
 		expect( TS ).toStrictEqual( JS );
 	} );
 } );

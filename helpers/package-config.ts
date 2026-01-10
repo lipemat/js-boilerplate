@@ -1,4 +1,4 @@
-import {getPackageConfig, type PackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getPackageConfig, type PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 
 export {
