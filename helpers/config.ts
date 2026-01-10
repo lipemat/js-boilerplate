@@ -8,9 +8,10 @@ import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {EntriesConfig} from '../config/entries.config.js';
 import type {CssLoaderConfig} from '../config/css-loader.config.js';
 import browserslist from 'browserslist';
-import wpBrowsers from '@wordpress/browserslist-config';
 import {createRequire} from 'node:module';
 import {getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+// @ts-ignore -- Does not ship with types.
+import wpBrowsers from '@wordpress/browserslist-config';
 
 type Configs = {
 	'babel.config': BabelConfig;
