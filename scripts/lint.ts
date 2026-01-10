@@ -2,7 +2,7 @@ import {ESLint} from 'eslint';
 import minimist from 'minimist';
 import chalk from 'chalk';
 
-import {getPackageConfig} from '../helpers/package-config.js';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 
 // Command line arguments.
 const flags = minimist( process.argv.slice( 2 ) );

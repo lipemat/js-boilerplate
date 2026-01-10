@@ -4,11 +4,10 @@ import {type Configuration as WebpackConfig} from 'webpack';
 import type {Configuration as DevServerConfig} from 'webpack-dev-server';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config.ts';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import type {EntriesConfig} from '../config/entries.config.ts';
 import type {CssLoaderConfig} from '../config/css-loader.config.ts';
 import browserslist from 'browserslist';
-// @ts-expect-error TS2307
 import wpBrowsers from '@wordpress/browserslist-config';
 import {createRequire} from 'node:module';
 import {getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.ts';
@@ -24,6 +23,8 @@ type Configs = {
 	'entries.config.js': EntriesConfig;
 	'jest.config': JestConfig;
 	'jest.config.js': JestConfig;
+	'webpack.dev': WebpackConfig;
+	'webpack.dev.js': WebpackConfig;
 	'webpack.dist': WebpackConfig;
 	'webpack.dist.js': WebpackConfig;
 };
