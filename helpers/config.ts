@@ -3,14 +3,14 @@ import {resolve} from 'path';
 import {type Configuration as WebpackConfig} from 'webpack';
 import type {Configuration as DevServerConfig} from 'webpack-dev-server';
 import type {BabelConfig} from '../config/babel.config';
-import type {JestConfig} from '../config/jest.config.ts';
+import type {JestConfig} from '../config/jest.config.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
-import type {EntriesConfig} from '../config/entries.config.ts';
-import type {CssLoaderConfig} from '../config/css-loader.config.ts';
+import type {EntriesConfig} from '../config/entries.config.js';
+import type {CssLoaderConfig} from '../config/css-loader.config.js';
 import browserslist from 'browserslist';
 import wpBrowsers from '@wordpress/browserslist-config';
 import {createRequire} from 'node:module';
-import {getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.ts';
+import {getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 
 type Configs = {
 	'babel.config': BabelConfig;
@@ -91,7 +91,15 @@ export async function hasLocalOverride( fileName: string, inWorkingDirectory: bo
  * @return {Object}
  */
 export async function getConfig<T extends keyof Configs>( fileName: T ): Promise<Configs[T]> {
-	let config = await import( '../config/' + fileName );
+	let config;
+	try {
+		config = await import( '../config/' + fileName );
+	} catch ( e ) {
+		console.error( `Failed to import config file: ../config/${fileName}` );
+		console.error( 'Error details:', e );
+		throw e;
+	}
+
 	if ( 'default' in config ) {
 		config = config.default;
 	}
