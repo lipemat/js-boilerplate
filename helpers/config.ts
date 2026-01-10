@@ -91,25 +91,11 @@ export async function hasLocalOverride( fileName: string, inWorkingDirectory: bo
  * @return {Object}
  */
 export async function getConfig<T extends keyof Configs>( fileName: T ): Promise<Configs[T]> {
-	let config;
-	try {
-		config = await import( '../config/' + fileName );
-	} catch ( e ) {
-		console.error( `Failed to import config file: ../config/${fileName}` );
-		console.error( 'Error details:', e );
-		throw e;
-	}
+	const configModule = await import( `../config/${fileName}` );
+	const config = configModule.default;
 
-	if ( 'default' in config ) {
-		config = config.default;
-	}
-
-	let mergedConfig: Configs[T] = {...config, ...getExtensionsConfig<Configs[T]>( fileName, config )};
-
-	// Prevent double merging during local unit tests.
-	if ( 'js-boilerplate' === packageDirectory.split( /[\\/]/ ).pop() ) {
-		return mergedConfig;
-	}
+	const extensionsConfig = getExtensionsConfig<Configs[T]>( fileName, config );
+	let mergedConfig: Configs[T] = {...config, ...extensionsConfig};
 
 	try {
 		let localConfig = createRequire( import.meta.url )( resolve( packageDirectory, 'config', fileName.replace( /\.js$/, '' ) ) );

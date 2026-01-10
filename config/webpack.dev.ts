@@ -10,9 +10,6 @@ import type {BabelConfig} from './babel.config';
 import {fileURLToPath} from 'node:url';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 
-
-const packageConfig = getPackageConfig();
-
 const postcssOptions = getPostCSSConfig();
 const babelOptions: BabelConfig = await getConfig( 'babel.config.js' );
 const cssLoaderOptions = await getConfig( 'css-loader.config.js' );
