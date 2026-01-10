@@ -20,7 +20,6 @@ switch ( script ) {
 	case 'fix-pnp':
 	case 'lint':
 	case 'start':
-	case 'test':
 	case 'validate-css-modules': {
 		// If the ts-node command is not available, install it globally.
 		if ( spawn( 'ts-node', [ '-v' ] ).error ) {

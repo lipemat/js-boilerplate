@@ -28,7 +28,6 @@ Add the following to your package.json. (this may also be found in the `template
     "lint": "lipemat-js-boilerplate lint",
     "postinstall": "lipemat-js-boilerplate fix-pnp",
     "start": "lipemat-js-boilerplate start",
-    "test": "lipemat-js-boilerplate test"
   },
   "devDependencies": {},
   "dependencies": {
