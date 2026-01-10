@@ -5,9 +5,8 @@ import type {Configuration as DevServerConfig} from 'webpack-dev-server';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config.ts';
 import {getExtensionsConfig, getPackageConfig} from '@lipemat/js-boilerplate-shared';
-import type {EntriesConfig} from '../config/entries.config';
-import type {PostcssConfig} from '../config/postcss.config.ts';
-import type {CssLoaderConfig} from '../config/css-loader.config';
+import type {EntriesConfig} from '../config/entries.config.ts';
+import type {CssLoaderConfig} from '../config/css-loader.config.ts';
 import browserslist from 'browserslist';
 // @ts-expect-error TS2307
 import wpBrowsers from '@wordpress/browserslist-config';
@@ -24,8 +23,6 @@ type Configs = {
 	'entries.config.js': EntriesConfig;
 	'jest.config': JestConfig;
 	'jest.config.js': JestConfig;
-	'postcss.config': PostcssConfig;
-	'postcss.config.js': PostcssConfig;
 	'webpack.dist': WebpackConfig;
 	'webpack.dist.js': WebpackConfig;
 };

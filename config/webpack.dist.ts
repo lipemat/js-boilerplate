@@ -7,13 +7,14 @@ import {SubresourceIntegrityPlugin} from 'webpack-subresource-integrity';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import WebpackAssetsHash from '../helpers/WebpackAssetsHash.js';
 import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance} from 'webpack';
+import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
 import {fileURLToPath} from 'node:url';
 
-const postcssOptions = await getConfig( 'postcss.config.js' );
+const postcssOptions = getPostCSSConfig();
 const babelOptions = await getConfig( 'babel.config.js' );
 const cssLoaderOptions = await getConfig( 'css-loader.config.js' );
 

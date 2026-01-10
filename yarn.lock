@@ -1647,7 +1647,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/template@npm:^7.25.7, @babel/template@npm:^7.27.1, @babel/template@npm:^7.27.2, @babel/template@npm:^7.3.3":
+"@babel/template@npm:^7.25.7, @babel/template@npm:^7.25.9, @babel/template@npm:^7.27.1, @babel/template@npm:^7.27.2, @babel/template@npm:^7.3.3":
   version: 7.27.2
   resolution: "@babel/template@npm:7.27.2"
   dependencies:
@@ -2933,27 +2933,23 @@ __metadata:
     "@babel/preset-env": "npm:^7.24.7"
     "@babel/preset-react": "npm:^7.24.7"
     "@babel/preset-typescript": "npm:^7.24.7"
-    "@csstools/postcss-global-data": "npm:2.0.0"
     "@jest/globals": "npm:^30.2.0"
     "@lipemat/eslint-config": "npm:^5.1.4"
     "@lipemat/js-boilerplate-shared": "link:../js-boilerplate-shared"
     "@pmmmwh/react-refresh-webpack-plugin": "npm:^0.6.1"
     "@statoscope/webpack-plugin": "npm:^5.29.0"
     "@types/babel__preset-env": "npm:^7.9.6"
-    "@types/clean-css": "npm:^4.2.11"
     "@types/jest": "npm:^29.5.3"
     "@types/minimist": "npm:^1"
     "@types/node": "npm:^22.19.3"
-    "@types/postcss-load-config": "npm:^3.0.1"
-    "@types/postcss-preset-env": "npm:^7.7.0"
     "@types/react": "npm:^18.2.64"
     "@wordpress/browserslist-config": "npm:^6.19.0"
     babel-jest: "npm:^30.2.0"
     babel-loader: "npm:^10.0.0"
+    babel-plugin-transform-import-meta: "npm:^2.3.3"
     browserslist: "npm:^4.28.1"
     chalk: "npm:^4.0"
     chokidar: "npm:^3.5.3"
-    clean-css: "npm:^5.3.3"
     clean-webpack-plugin: "npm:^4.0.0"
     compression-webpack-plugin: "npm:^10.0.0"
     core-js: "npm:^3.33.1"
@@ -2969,15 +2965,6 @@ __metadata:
     memfs: "npm:^3.5.3"
     mini-css-extract-plugin: "npm:^2.9.2"
     minimist: "npm:^1.2.8"
-    postcss: "npm:^8.4.47"
-    postcss-color-mod-function: "npm:^4.1.1"
-    postcss-custom-media: "npm:^8.0.1"
-    postcss-import: "npm:^15.1.0"
-    postcss-loader: "npm:^8.1.1"
-    postcss-nested: "npm:^5.0.6"
-    postcss-preset-env: "npm:^7.8.3"
-    postcss-scss: "npm:^4.0.4"
-    postcss-sort-media-queries: "npm:^5.2.0"
     react: "npm:^18.2.0"
     react-refresh: "npm:^0.17.0"
     setimmediate: "npm:^1.0.5"
@@ -5419,6 +5406,18 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
   checksum: 10c0/63aa8ed716df6a9277c6ab42b887858fa9f57a70cc1d0ae2b91bdf081e45d4502848cba306fb60b02f59f99b32fd02ff4753b373cac48ccdac9b7d19dd56f06d
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-import-meta@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "babel-plugin-transform-import-meta@npm:2.3.3"
+  dependencies:
+    "@babel/template": "npm:^7.25.9"
+    tslib: "npm:^2.8.1"
+  peerDependencies:
+    "@babel/core": ^7.10.0
+  checksum: 10c0/184275ef4f1c14a79e46fa2084e5743fbcfbaa52a9372f713e0e97e45aab4ac5be214c7eb4893fb9ea0088d32913772651776c660bee38bd2c8d52ef92750c07
   languageName: node
   linkType: hard
 
@@ -13443,7 +13442,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.3.1, tslib@npm:^2.4.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.8.1":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
