@@ -13,6 +13,11 @@ const scriptIndex = args.findIndex(
 let script = -1 === scriptIndex ? args[ 0 ] : args[ scriptIndex ];
 const nodeArgs = scriptIndex > 0 ? args.slice( 0, scriptIndex ) : [];
 
+const PRODUCTION_SCRIPTS = [
+	'analyze',
+	'dist',
+]
+
 switch ( script ) {
 	case 'analyze':
 	case 'browserslist':
@@ -36,7 +41,15 @@ switch ( script ) {
 				.concat( resolve( dirname( fileURLToPath( import.meta.url ) ), '../scripts/' + script ) )
 
 				.concat( args.slice( scriptIndex + 1 ) ),
-			{stdio: 'inherit'}
+			{
+				stdio: 'inherit',
+				env: {
+					...process.env,
+					NODE_ENV: PRODUCTION_SCRIPTS.includes( script ) ? 'production' : 'development',
+					BABEL_ENV: PRODUCTION_SCRIPTS.includes( script ) ? 'production' : 'development',
+				},
+			},
+
 		);
 		if ( result.error ) {
 			console.log( result.error );

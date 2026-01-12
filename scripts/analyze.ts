@@ -16,9 +16,6 @@ Usage: lipemat-js-boilerplate analyze [--stats-only|--help]
 	
 `;
 
-process.env.BABEL_ENV = 'production';
-process.env.NODE_ENV = 'production';
-
 // Command line arguments.
 const flags = minimist( process.argv.slice( 2 ) );
 const workingDirectory = fs.realpathSync( process.cwd() );

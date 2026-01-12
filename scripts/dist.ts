@@ -1,9 +1,6 @@
 import {getConfig} from '../helpers/config.js';
 import webpack, {type Compiler, type Configuration, type Stats} from 'webpack';
 
-process.env.BABEL_ENV = 'production';
-process.env.NODE_ENV = 'production';
-
 const config: Configuration = await getConfig( 'webpack.dist.js' );
 
 const compiler: Compiler | null = webpack( config );
