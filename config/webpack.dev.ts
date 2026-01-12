@@ -3,12 +3,14 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
+import {getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {BabelConfig} from './babel.config';
 import {fileURLToPath} from 'node:url';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-config.js';
+
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
 const postcssOptions = getPostCSSConfig( 'develop' );
 const babelOptions: BabelConfig = await getConfig( 'babel.config.js' );

@@ -1,4 +1,4 @@
-import {getBrowsersList} from '../helpers/config.js';
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 import type {TransformOptions} from '@babel/core';
 import type {Options} from '@babel/preset-env';
 import coreJS from 'core-js/package.json' with {type: 'json'};
@@ -6,6 +6,7 @@ import type {AtLeast} from '../types/utility';
 
 export type BabelConfig = AtLeast<Pick<BabelFull, 'presets' | 'plugins' | 'cacheDirectory'>, 'presets'|'plugins'>;
 export type BabelFull = Partial<TransformOptions> & BabelLoader;
+
 
 /**
  * @link https://webpack.js.org/loaders/babel-loader/#options
