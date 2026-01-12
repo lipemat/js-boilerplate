@@ -1,6 +1,6 @@
 import {getConfig} from '../helpers/config.js';
 import webpack from 'webpack';
-import StatoscopeWebpackPlugin from '@statoscope/webpack-plugin';
+import Statoscope from '@statoscope/webpack-plugin';
 import fs from 'fs';
 import minimist from 'minimist';
 
@@ -24,6 +24,8 @@ const flags = minimist( process.argv.slice( 2 ) );
 const workingDirectory = fs.realpathSync( process.cwd() );
 const statsDir = workingDirectory + '/node_modules/.cache/statoscope';
 const webpackConfig = await getConfig( 'webpack.dist.js' );
+// @ts-expect-error TS2339 ESM imports of Statscrope resuire translation of `.default.
+const StatoscopeWebpackPlugin: typeof Statoscope = Statoscope.default;
 
 if ( true === flags.h || true === flags.help ) {
 	console.debug( help );
