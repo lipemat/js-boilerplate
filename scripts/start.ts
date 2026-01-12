@@ -8,8 +8,8 @@ import WebpackDevServer from 'webpack-dev-server';
 import {getConfig} from '../helpers/config.js';
 import path from 'path';
 
-const webpackConfig = await getConfig( 'webpack.dev' );
-const devServerConfig = await getConfig( 'dev-server.config' );
+const webpackConfig = await getConfig( 'webpack.dev.js' );
+const devServerConfig = await getConfig( 'dev-server.config.js' );
 
 const compiler = webpack( webpackConfig );
 if ( null === compiler ) {

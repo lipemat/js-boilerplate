@@ -23,7 +23,7 @@ process.env.NODE_ENV = 'production';
 const flags = minimist( process.argv.slice( 2 ) );
 const workingDirectory = fs.realpathSync( process.cwd() );
 const statsDir = workingDirectory + '/node_modules/.cache/statoscope';
-const webpackConfig = getConfig( 'webpack.dist' );
+const webpackConfig = await getConfig( 'webpack.dist' );
 
 if ( true === flags.h || true === flags.help ) {
 	console.debug( help );

@@ -23,20 +23,19 @@ if ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) {
 }
 
 async function validate() {
-	let webpackConfig = getConfig( 'webpack.dist' );
+	let webpackConfig = await getConfig( 'webpack.dist.js' );
 	webpackConfig.stats = 'errors-warnings';
 
 	// Add CSS module typings generation to webpack config.
-	// @ts-expect-error
-	webpackConfig.module?.rules?.map( ( rule: webpack.RuleSetRule ) => {
-		if ( rule.test?.toString() === /\.pcss$/.toString() ) {
-			// @ts-ignore
+	webpackConfig.module?.rules?.map( rule => {
+		if ( rule && 'object' === typeof rule && 'test' in rule && rule.test?.toString() === /\.pcss$/.toString() ) {
+			// @ts-expect-error
 			rule.use?.splice( 1, 0, {
 				loader: path.resolve( __dirname, '../lib/css-module-types.ts' ),
 			} )
 		}
 		return rule;
-	} )
+	} );
 
 	// Wait for the generation to finish before continuing.
 	await new Promise( ( resolve, reject ) => {
@@ -56,7 +55,7 @@ async function validate() {
 	console.debug( '>>> CSS Module definitions generated.' );
 
 	// A fresh config for CSS validation.
-	webpackConfig = getConfig( 'webpack.dist' );
+	webpackConfig = await getConfig( 'webpack.dist' );
 	webpackConfig.stats = 'errors-warnings';
 	webpack( webpackConfig )?.run( ( err, stats ) => {
 		if ( err ) {
@@ -72,4 +71,4 @@ async function validate() {
 }
 
 
-validate();
+await validate();
