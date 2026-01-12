@@ -5,7 +5,7 @@ import {createFsFromVolume, type IFs, Volume} from 'memfs';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {importFresh} from './imports';
 import {jest} from '@jest/globals';
-import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-config.js';
 
 
 /**
@@ -63,7 +63,7 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
 export default async function compileWithWebpack( fixture: Fixture, config = {} ): Promise<string> {
 	const webpackConfig = await importFresh<Configuration>( './config/webpack.dist.js' );
 	const cssLoader = await importFresh( './config/css-loader.config.js' );
-	const postcssConfig = getPostCSSConfig();
+	const postcssConfig = getPostCSSConfig( process.env.NODE_ENV ?? 'test' );
 
 
 	const fullConfig = {...webpackConfig, ...config};

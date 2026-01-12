@@ -7,7 +7,7 @@ import {SubresourceIntegrityPlugin} from 'webpack-subresource-integrity';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import WebpackAssetsHash from '../helpers/WebpackAssetsHash.js';
 import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance} from 'webpack';
-import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-config.js';
 
 import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries.js';
@@ -149,10 +149,11 @@ const config: WebpackConfig = {
 						loader: 'css-loader',
 						options: cssLoaderOptions,
 					},
+					// Minification is handled by a PostCSS plugin.
 					{
 						loader: 'postcss-loader',
 						options: {
-							postcssOptions: getPostCSSConfig(),
+							postcssOptions: getPostCSSConfig( 'production' ),
 						},
 					},
 				].filter( loader => {

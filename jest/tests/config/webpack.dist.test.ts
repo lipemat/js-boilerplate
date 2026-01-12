@@ -17,12 +17,16 @@ jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/package-config
 			return {
 				...originalModule.getPackageConfig(),
 				...mod,
-			}
+			};
 		},
 	};
 } );
 
 describe( 'webpack.dist.test.ts', () => {
+	beforeEach( () => {
+		process.env.NODE_ENV = 'production';
+	} );
+
 	afterEach( () => {
 		delete process.env.BROWSERSLIST;
 		process.env.NODE_ENV = 'test';
@@ -32,7 +36,6 @@ describe( 'webpack.dist.test.ts', () => {
 
 
 	test( 'Browserslist config', async () => {
-		process.env.NODE_ENV = 'production';
 		mod = {
 			shortCssClasses: false,
 			cssTsFiles: false,
@@ -46,7 +49,6 @@ describe( 'webpack.dist.test.ts', () => {
 
 
 	test( 'Chrome 72, Firefox 65', async () => {
-		process.env.NODE_ENV = 'production';
 		process.env.BROWSERSLIST = 'chrome 72, firefox 65';
 
 		const config2 = await importFresh( './config/webpack.dist.js' );
@@ -70,7 +72,6 @@ describe( 'webpack.dist.test.ts', () => {
 
 
 	test( 'cssTsFiles Enabled', async () => {
-		process.env.NODE_ENV = 'production';
 		mod = {
 			cssTsFiles: true,
 		};

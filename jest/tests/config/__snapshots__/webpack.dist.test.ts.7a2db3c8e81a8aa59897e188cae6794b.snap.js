@@ -844,7 +844,7 @@ exports[`webpack.dist.test.ts cssTsFiles Disabled: cssTsFiles No types 1`] = `
             [
               "@babel/preset-react",
               {
-                "development": true,
+                "development": false,
                 "runtime": "automatic",
               },
             ],
@@ -873,10 +873,11 @@ exports[`webpack.dist.test.ts cssTsFiles Disabled: cssTsFiles No types 1`] = `
               "importLoaders": 1,
               "modules": {
                 "exportLocalsConvention": "camelCase",
-                "localIdentName": "Ⓜ[name]__[local]__[contenthash:base64:2]",
+                "getLocalIdent": [Function],
+                "localIdentName": "[contenthash:base64:5]",
                 "mode": [Function],
               },
-              "sourceMap": true,
+              "sourceMap": false,
               "url": false,
             },
           },
@@ -994,10 +995,9 @@ exports[`webpack.dist.test.ts cssTsFiles Disabled: cssTsFiles No types 1`] = `
                   },
                   {
                     "OnceExit": [Function],
-                    "postcssPlugin": "js-boilerplate/postcss-pretty",
+                    "postcssPlugin": "clean",
                   },
                 ],
-                "sourceMap": true,
               },
             },
           },
