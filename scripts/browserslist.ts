@@ -1,5 +1,5 @@
-const browserslist = require( 'browserslist' );
-const {getBrowsersList} = require( '../helpers/config.cts' );
+import browserslist from 'browserslist';
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 
 const help = `
 	List browsers being targeted by Babel and PostCSS.
@@ -13,7 +13,7 @@ const help = `
 
 const args = process.argv.slice( 2 );
 if ( args[ 0 ] && ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) ) {
-	console.log( help );
+	console.debug( help );
 	process.exit( 0 );
 }
 
