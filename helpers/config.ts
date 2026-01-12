@@ -9,9 +9,8 @@ import type {EntriesConfig} from '../config/entries.config.js';
 import type {CssLoaderConfig} from '../config/css-loader.config.js';
 import browserslist from 'browserslist';
 import {createRequire} from 'node:module';
-import {ensureJSExtension, getBrowsersList, getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
-// @ts-ignore -- Does not ship with types.
-import wpBrowsers from '@wordpress/browserslist-config';
+import {ensureJSExtension, getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
 type Configs = {
 	'babel.config.js': BabelConfig;
@@ -153,10 +152,9 @@ export function getTsConfigFile(): string {
  *
  * @return {boolean | string[]}
  */
-export const getDefaultBrowsersList = (): false | string[] => {
+export const getDefaultBrowsersList = (): false | readonly string[] => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		const wp = [ ...wpBrowsers ];
-		return wp;
+		return getBrowsersList();
 	}
 	return false;
 };

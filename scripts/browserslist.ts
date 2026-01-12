@@ -1,5 +1,5 @@
 import browserslist from 'browserslist';
-import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
 const help = `
 	List browsers being targeted by Babel and PostCSS.

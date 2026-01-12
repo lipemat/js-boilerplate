@@ -8,8 +8,9 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import WebpackAssetsHash from '../helpers/WebpackAssetsHash.js';
 import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance} from 'webpack';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-config.js';
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
-import {getBrowsersList, getConfig, getTsConfigFile} from '../helpers/config.js';
+import {getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {fileURLToPath} from 'node:url';
