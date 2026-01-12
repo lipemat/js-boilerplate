@@ -40,11 +40,12 @@ const cssLoader: CssLoaderConfig = {
 if ( 'production' === process.env.NODE_ENV ) {
 	cssLoader.modules = {
 		exportLocalsConvention: 'camelCase',
-		// Use short CSS Classes if enabled.
-		...usingShortCssClasses() ? {getLocalIdent} : {},
 		// Hash used when short CSS classes are not enabled.
 		localIdentName: '[contenthash:base64:5]',
 		mode,
+	}
+	if ( usingShortCssClasses() ) {
+		cssLoader.modules.getLocalIdent = getLocalIdent;
 	}
 	cssLoader.sourceMap = false;
 }

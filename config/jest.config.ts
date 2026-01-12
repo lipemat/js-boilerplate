@@ -1,7 +1,7 @@
 import {resolve} from 'path';
 import type {Config} from 'jest';
 import {existsSync} from 'fs';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getConfig} from '../helpers/config.js';
 
 export type JestConfig = Pick<Config, 'globals' | 'moduleNameMapper' | 'roots' | 'testEnvironment' | 'testEnvironmentOptions' | 'transform' | 'transformIgnorePatterns' | 'setupFilesAfterEnv'>;

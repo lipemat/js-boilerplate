@@ -1,28 +1,31 @@
-import {getPackageConfig, modifyPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
+import {modifyPackageConfig, resetPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {jest} from '@jest/globals';
 import {importFresh} from '../../helpers/imports';
 import type {CssLoaderConfig} from '../../../config/css-loader.config';
 
+
+const originalModule = await import( '@lipemat/js-boilerplate-shared/helpers/css-classnames.js' );
+
 // Change the result of the getLocalIdent function to something we can verify.
-jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/css-classnames', () => ( {
+jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/css-classnames.js', () => ( {
+
+	...originalModule,
 	getLocalIdent: jest.fn().mockReturnValue( '__TEST_CSS__' ),
-	usingShortCssClasses: () => getPackageConfig().shortCssClasses,
 } ) );
 
 
-beforeEach( () => {
-	jest.resetModules();
-} );
-
-afterEach( () => {
-	process.env.NODE_ENV = 'test';
-	modifyPackageConfig( {
-		shortCssClasses: false,
-	} )
-	jest.resetModules();
-} );
-
 describe( 'css-loader.config.test.ts', () => {
+	beforeEach( () => {
+		jest.resetModules();
+	} );
+
+	afterEach( () => {
+		process.env.NODE_ENV = 'test';
+		resetPackageConfig();
+		jest.resetModules();
+	} );
+
+
 	test( 'Develop config', async () => {
 		const config = await importFresh<CssLoaderConfig>( './config/css-loader.config' );
 		expect( config.importLoaders ).toEqual( 1 );

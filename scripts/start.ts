@@ -2,7 +2,7 @@ process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
 import webpack from 'webpack';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {unlinkSync, writeFile} from 'fs';
 import WebpackDevServer from 'webpack-dev-server';
 import {getConfig} from '../helpers/config.js';

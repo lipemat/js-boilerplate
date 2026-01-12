@@ -4,12 +4,12 @@ import {type Configuration as WebpackConfig} from 'webpack';
 import type {Configuration as DevServerConfig} from 'webpack-dev-server';
 import type {BabelConfig} from '../config/babel.config';
 import type {JestConfig} from '../config/jest.config.js';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {EntriesConfig} from '../config/entries.config.js';
 import type {CssLoaderConfig} from '../config/css-loader.config.js';
 import browserslist from 'browserslist';
 import {createRequire} from 'node:module';
-import {getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+import {getBrowsersList, getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 // @ts-ignore -- Does not ship with types.
 import wpBrowsers from '@wordpress/browserslist-config';
 
@@ -145,30 +145,6 @@ export function getTsConfigFile(): string {
 	return tsConfig;
 }
 
-
-/**
- * Get the browserslist from the current project.
- *
- * - If specified using standard browserslist config, we will use that.
- *
- *  @link https://github.com/browserslist/browserslist#config-file
- */
-export function getBrowsersList(): readonly string[] {
-	const projectBrowsersList = browserslist();
-	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
-		const wp = [ ...wpBrowsers ];
-		return adjustBrowserslist( wp );
-	}
-	return projectBrowsersList;
-}
-
-/**
- * Adjust the browserslist to include our defaults.
- */
-export function adjustBrowserslist( browserRules: string[] ): string[] {
-	return browserRules;
-}
-
 /**
  * If the browserslist is not specified, we fall back to WordPress defaults.
  *
@@ -187,7 +163,7 @@ export function adjustBrowserslist( browserRules: string[] ): string[] {
 export const getDefaultBrowsersList = (): false | string[] => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
 		const wp = [ ...wpBrowsers ];
-		return adjustBrowserslist( wp );
+		return wp;
 	}
 	return false;
 };
@@ -198,4 +174,8 @@ export {
 	 * @deprecated Use `@lipemat/js-boilerplate-shared` instead.
 	 */
 	getExtensionsConfig,
+	/**
+	 * @deprecated Use `@lipemat/js-boilerplate-shared` instead.
+	 */
+	getBrowsersList,
 };

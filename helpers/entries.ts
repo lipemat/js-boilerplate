@@ -1,5 +1,5 @@
 import {getConfig} from './config.js';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {existsSync} from 'fs';
 import {resolve} from 'path';
 import type {EntriesConfig} from '../config/entries.config.js';

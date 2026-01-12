@@ -1,4 +1,4 @@
-import type {PackageConfig} from '@lipemat/js-boilerplate-shared';
+import type {PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.ts';
 import wpBrowsers from '@wordpress/browserslist-config';
 import {jest} from '@jest/globals';
 import {fileURLToPath} from 'node:url';
@@ -6,24 +6,19 @@ import {importFresh} from '../../helpers/imports.ts';
 
 let mod: Partial<PackageConfig> = {};
 
+const originalModule = await import( '@lipemat/js-boilerplate-shared/helpers/package-config.js' );
 
-jest.unstable_mockModule( '@lipemat/js-boilerplate-shared', async () => {
-	const originalModule = await import( '@lipemat/js-boilerplate-shared/helpers/package-config.js' );
-
+jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => {
 	return {
+		...originalModule,
 		getPackageConfig: () => {
 			return {
 				...originalModule.getPackageConfig(),
 				...mod,
 			}
 		},
-		modifyPackageConfig: ( changes: Partial<ReturnType<typeof originalModule.getPackageConfig>> ) => {
-			mod = changes
-		},
 	};
 } );
-
-const {modifyPackageConfig} = await import( '@lipemat/js-boilerplate-shared' );
 
 
 describe( 'webpack.dev.test.ts', () => {
@@ -31,10 +26,17 @@ describe( 'webpack.dev.test.ts', () => {
 		delete process.env.BROWSERSLIST;
 		process.env.NODE_ENV = 'test';
 		jest.resetModules();
+		mod = {};
 	} );
 
 
 	test( 'Browserslist config', async () => {
+		mod = {
+			shortCssClasses: false,
+			cssTsFiles: false,
+			brotliFiles: false,
+		};
+
 		const config = await importFresh( './config/webpack.dev.js' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
 		expect( config ).toMatchSnapshot( 'Default Browsers' );
@@ -51,9 +53,9 @@ describe( 'webpack.dev.test.ts', () => {
 
 
 	test( 'cssTsFiles Disabled', async () => {
-		modifyPackageConfig( {
+		mod = {
 			cssTsFiles: false,
-		} );
+		};
 		const config = await importFresh( './config/webpack.dev.js' );
 		const loaders = [ ...config.module.rules ].pop()?.use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
@@ -63,9 +65,9 @@ describe( 'webpack.dev.test.ts', () => {
 
 
 	test( 'cssTsFiles Enabled', async () => {
-		modifyPackageConfig( {
+		mod = {
 			cssTsFiles: true,
-		} );
+		};
 		const config = await importFresh( './config/webpack.dev.js' );
 		const loaders = [ ...config.module.rules ].pop()?.use;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );

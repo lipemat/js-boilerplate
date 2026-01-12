@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {getPackageConfig} from '@lipemat/js-boilerplate-shared';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {Configuration} from 'webpack-dev-server';
 
 const packageConfig = getPackageConfig();

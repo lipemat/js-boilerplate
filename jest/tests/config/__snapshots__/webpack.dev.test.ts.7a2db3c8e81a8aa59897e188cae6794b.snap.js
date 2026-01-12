@@ -71,9 +71,6 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
         "use": [
           "style-loader",
           {
-            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\css-module-types.js",
-          },
-          {
             "loader": "css-loader",
             "options": {
               "importLoaders": 1,

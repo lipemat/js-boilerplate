@@ -71,15 +71,11 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "use": [
           "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\node_modules\\mini-css-extract-plugin\\dist\\loader.js",
           {
-            "loader": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\lib\\css-module-types.js",
-          },
-          {
             "loader": "css-loader",
             "options": {
               "importLoaders": 1,
               "modules": {
                 "exportLocalsConvention": "camelCase",
-                "getLocalIdent": [Function],
                 "localIdentName": "[contenthash:base64:5]",
                 "mode": [Function],
               },
@@ -292,24 +288,6 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
         "typescript": {
           "configFile": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\tsconfig.json",
         },
-      },
-    },
-    CompressionPlugin {
-      "algorithm": [Function],
-      "options": {
-        "algorithm": "brotliCompress",
-        "compressionOptions": {
-          "params": {
-            "1": 11,
-          },
-        },
-        "deleteOriginalAssets": false,
-        "exclude": undefined,
-        "filename": "[path][base].br",
-        "include": undefined,
-        "minRatio": 0.8,
-        "test": /\\\\\\.\\(js\\|css\\)\\$/,
-        "threshold": 0,
       },
     },
   ],
