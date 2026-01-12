@@ -32,6 +32,8 @@ switch ( script ) {
 			spawn( 'npm', [ 'install', '-g', 'ts-node' ] );
 		}
 
+		const env = PRODUCTION_SCRIPTS.includes( script ) ? 'production' : 'development';
+
 		script = script + '.js';
 
 		// Run the script.
@@ -45,8 +47,8 @@ switch ( script ) {
 				stdio: 'inherit',
 				env: {
 					...process.env,
-					NODE_ENV: PRODUCTION_SCRIPTS.includes( script ) ? 'production' : 'development',
-					BABEL_ENV: PRODUCTION_SCRIPTS.includes( script ) ? 'production' : 'development',
+					NODE_ENV: env,
+					BABEL_ENV: env,
 				},
 			},
 
