@@ -20,18 +20,18 @@ if ( args[ 0 ] && ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) ) {
 
 const provided = getBrowsersList();
 
-console.log( '' );
-console.log( 'JS Provided Browserslist' );
+console.debug( '' );
+console.debug( 'JS Provided Browserslist' );
 console.table( provided );
 
-console.log( '' );
-console.log( 'JS Included Browsers' );
+console.debug( '' );
+console.debug( 'JS Included Browsers' );
 console.table( browserslist( provided, {
 	env: 'production',
 } ) );
 
-console.log( '' );
-console.log( 'JS Browser Coverage' );
+console.debug( '' );
+console.debug( 'JS Browser Coverage' );
 console.table( browserslist.coverage( browserslist( provided, {
 	env: 'production',
 } ) ) );

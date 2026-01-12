@@ -31,7 +31,7 @@ function errorOccurred( results: ESLint.LintResult[] ): boolean {
 		cacheStrategy: 'content',
 	} );
 
-	console.log( chalk.underline( 'Running "js-boilerplate:lint" (eslint) task' ) );
+	console.debug( chalk.underline( 'Running "js-boilerplate:lint" (eslint) task' ) );
 
 	// 2. Lint files. This doesn't modify target files.
 	const results: ESLint.LintResult[] = await eslint.lintFiles( [
@@ -47,14 +47,14 @@ function errorOccurred( results: ESLint.LintResult[] ): boolean {
 
 	// 5. Output it.
 	if ( '' === resultText ) {
-		console.log( `>> Linted ${results.length} files without errors` );
+		console.debug( `>> Linted ${results.length} files without errors` );
 	} else {
-		console.log( resultText );
+		console.debug( resultText );
 		if ( errorOccurred( results ) ) {
 			process.exitCode = 1;
 		}
 	}
-	console.log( '' );
+	console.debug( '' );
 }() ).catch( error => {
 	process.exitCode = 1;
 	console.error( error );
