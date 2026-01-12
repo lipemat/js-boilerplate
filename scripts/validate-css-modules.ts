@@ -55,7 +55,7 @@ async function validate() {
 	console.debug( '>>> CSS Module definitions generated.' );
 
 	// A fresh config for CSS validation.
-	webpackConfig = await getConfig( 'webpack.dist' );
+	webpackConfig = await getConfig( 'webpack.dist.js' );
 	webpackConfig.stats = 'errors-warnings';
 	webpack( webpackConfig )?.run( ( err, stats ) => {
 		if ( err ) {

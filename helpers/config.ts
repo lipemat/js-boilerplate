@@ -9,24 +9,17 @@ import type {EntriesConfig} from '../config/entries.config.js';
 import type {CssLoaderConfig} from '../config/css-loader.config.js';
 import browserslist from 'browserslist';
 import {createRequire} from 'node:module';
-import {getBrowsersList, getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+import {ensureJSExtension, getBrowsersList, getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 // @ts-ignore -- Does not ship with types.
 import wpBrowsers from '@wordpress/browserslist-config';
 
 type Configs = {
-	'babel.config': BabelConfig;
 	'babel.config.js': BabelConfig;
-	'css-loader.config': CssLoaderConfig;
 	'css-loader.config.js': CssLoaderConfig;
-	'dev-server.config': DevServerConfig;
 	'dev-server.config.js': DevServerConfig;
-	'entries.config': EntriesConfig;
 	'entries.config.js': EntriesConfig;
-	'jest.config': JestConfig;
 	'jest.config.js': JestConfig;
-	'webpack.dev': WebpackConfig;
 	'webpack.dev.js': WebpackConfig;
-	'webpack.dist': WebpackConfig;
 	'webpack.dist.js': WebpackConfig;
 };
 
@@ -92,7 +85,7 @@ export async function hasLocalOverride( fileName: string, inWorkingDirectory: bo
  * @return {Object}
  */
 export async function getConfig<T extends keyof Configs>( fileName: T ): Promise<Configs[T]> {
-	const configModule = await import( `../config/${fileName}` );
+	const configModule = await import( ensureJSExtension( `../config/${fileName}` ) );
 	const config = configModule.default;
 
 	const extensionsConfig = getExtensionsConfig<Configs[T]>( fileName, config );
