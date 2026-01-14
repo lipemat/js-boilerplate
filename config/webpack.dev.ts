@@ -12,7 +12,7 @@ import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-c
 
 import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
-const postcssOptions = getPostCSSConfig( 'develop' );
+const postcssOptions = getPostCSSConfig( 'development' );
 const babelOptions: BabelConfig = await getConfig( 'babel.config.js' );
 const cssLoaderOptions = await getConfig( 'css-loader.config.js' );
 const devServerOptions = await getConfig( 'dev-server.config.js' );

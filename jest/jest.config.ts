@@ -12,10 +12,6 @@ const adjustedConfig: Config = {
 
 	moduleNameMapper: {
 		...config.moduleNameMapper,
-
-		// A temporary workaround for the shared package being a symlink.
-		// @todo remove once the shared package is published.
-		'^@lipemat/js-boilerplate-shared/helpers/package-config.js$': '<rootDir>/../../js-boilerplate-shared/helpers/package-config.js',
 	},
 };
 
