@@ -7,10 +7,8 @@ import type {JestConfig} from '../config/jest.config.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {EntriesConfig} from '../config/entries.config.js';
 import type {CssLoaderConfig} from '../config/css-loader.config.js';
-import browserslist from 'browserslist';
 import {createRequire} from 'node:module';
 import {ensureJSExtension, getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
-import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
 type Configs = {
 	'babel.config.js': BabelConfig;
@@ -136,37 +134,3 @@ export function getTsConfigFile(): string {
 	} );
 	return tsConfig;
 }
-
-/**
- * If the browserslist is not specified, we fall back to WordPress defaults.
- *
- * - Return the default browserslist if the current project does not specify one.
- * - Return false if a browserslist is specified.
- *
- * Used in cases where we can fall back to standard browserslist config if the project
- * has not specified one.
- *
- * @deprecated Use getBrowsersList instead.
- *
- * @link https://github.com/browserslist/browserslist#config-file
- *
- * @return {boolean | string[]}
- */
-export const getDefaultBrowsersList = (): false | readonly string[] => {
-	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		return getBrowsersList();
-	}
-	return false;
-};
-
-
-export {
-	/**
-	 * @deprecated Use `@lipemat/js-boilerplate-shared` instead.
-	 */
-	getExtensionsConfig,
-	/**
-	 * @deprecated Use `@lipemat/js-boilerplate-shared` instead.
-	 */
-	getBrowsersList,
-};
