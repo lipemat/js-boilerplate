@@ -34,10 +34,6 @@ const jestConfig: Config = {
 		'node_modules/(?!@lipemat)',
 	],
 	setupFilesAfterEnv: [
-		// @todo Remove old "tests" directory in version 11.
-		resolve( workingDirectory, 'tests/setup.js' ),
-		resolve( workingDirectory, 'tests/setup.ts' ),
-		// New location.
 		resolve( workingDirectory, 'jest/setup.ts' ),
 	].filter( existsSync ),
 };
