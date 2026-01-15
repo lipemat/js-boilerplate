@@ -3542,9 +3542,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lipemat/js-boilerplate-shared@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "@lipemat/js-boilerplate-shared@npm:0.0.2"
+"@lipemat/js-boilerplate-shared@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@lipemat/js-boilerplate-shared@npm:0.0.3"
   dependencies:
     "@babel/preset-env": "npm:^7.28.5"
     "@babel/preset-typescript": "npm:^7.28.5"
@@ -3569,7 +3569,7 @@ __metadata:
     postcss-sort-media-queries: "npm:^5.2.0"
   peerDependencies:
     typescript: ^5.9.3
-  checksum: 10c0/95928f81f1a7a7b237449b0d8e165ba78ddb320f1b621620a2d0e49f4633baf960f65bafbb4172bbb2404e121d666926a275d6dec09e9383a571f621ea80819d
+  checksum: 10c0/fdc52b81e9eb56d28abec93ee18ce430f867f002996a5938a8797a626d36c9921914a23ad0e03861ee819c8c953396bc63f715e3c87671acdea2ed4aed3ac136
   languageName: node
   linkType: hard
 
@@ -3641,7 +3641,7 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.24.7"
     "@jest/globals": "npm:^30.2.0"
     "@lipemat/eslint-config": "npm:^5.1.4"
-    "@lipemat/js-boilerplate-shared": "npm:^0.0.2"
+    "@lipemat/js-boilerplate-shared": "npm:^0.0.3"
     "@pmmmwh/react-refresh-webpack-plugin": "npm:^0.6.1"
     "@statoscope/webpack-plugin": "npm:^5.29.0"
     "@types/babel__preset-env": "npm:^7.9.6"
