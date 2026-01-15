@@ -1,8 +1,10 @@
 import {getLocalIdent, usingShortCssClasses} from '@lipemat/js-boilerplate-shared/helpers/css-classnames.js';
-import type {Config, Mode} from '@lipemat/js-boilerplate-shared/types/css-loader';
+import type {Config, Mode, ObjectModules} from '@lipemat/js-boilerplate-shared/types/css-loader';
 import type {AtLeast} from '@lipemat/js-boilerplate-shared/types/utility';
 
-export type CssLoaderConfig = AtLeast<Config, 'importLoaders' | 'modules' | 'sourceMap' | 'url'>
+export type CssLoaderConfig = AtLeast<Config, 'importLoaders' | 'modules' | 'sourceMap' | 'url'> & {
+	modules: AtLeast<ObjectModules, 'exportLocalsConvention' | 'localIdentName' | 'mode'>;
+}
 
 /**
  * Options for the Webpack `css-loader`.
@@ -43,7 +45,7 @@ if ( 'production' === process.env.NODE_ENV ) {
 		// Hash used when short CSS classes are not enabled.
 		localIdentName: '[contenthash:base64:5]',
 		mode,
-	}
+	};
 	if ( usingShortCssClasses() ) {
 		cssLoader.modules.getLocalIdent = getLocalIdent;
 	}

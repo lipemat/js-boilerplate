@@ -62,7 +62,10 @@ describe( 'css-loader.config.test.ts', () => {
 		} )
 		const cssEnabled = await importFresh<CssLoaderConfig>( './config/css-loader.config' );
 		expect( cssEnabled.modules.getLocalIdent ).toBeDefined();
-		expect( cssEnabled.modules.getLocalIdent() ).toEqual( '__TEST_CSS__' );
+		if ( undefined !== cssEnabled.modules.getLocalIdent ) {
+			// @ts-expect-error -- Not passing data to the mock function.
+			expect( cssEnabled.modules.getLocalIdent() ).toEqual( '__TEST_CSS__' );
+		}
 
 		const real = await import( '@lipemat/js-boilerplate-shared/helpers/css-classnames' );
 

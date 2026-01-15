@@ -4,6 +4,7 @@ describe( 'jest.config.test.ts', () => {
 	it( 'should match the snapshot', async () => {
 		const config = await import( '../../../config/jest.config.js' );
 		expect( config.default ).toMatchSnapshot();
+		// @ts-expect-error Technically not supported by validating backward compatibility.
 		expect( config.default ).toStrictEqual( await getConfig( 'jest.config' ) );
 		expect( config.default ).toStrictEqual( await getConfig( 'jest.config.js' ) );
 	} );

@@ -3,6 +3,7 @@ import wpBrowsers from '@wordpress/browserslist-config';
 import {jest} from '@jest/globals';
 import {fileURLToPath} from 'node:url';
 import {importFresh} from '../../helpers/imports.ts';
+import {type Configuration as WebpackConfig, RuleSetRule, type RuleSetUseFunction} from 'webpack';
 
 let mod: Partial<PackageConfig> = {};
 
@@ -37,7 +38,7 @@ describe( 'webpack.dev.test.ts', () => {
 			brotliFiles: false,
 		};
 
-		const config = await importFresh( './config/webpack.dev.js' );
+		const config = await importFresh<WebpackConfig>( './config/webpack.dev.js' );
 		expect( config.target ).toEqual( 'browserslist:' + wpBrowsers.join( ', ' ) );
 		expect( config ).toMatchSnapshot( 'Default Browsers' );
 	} );
@@ -46,7 +47,7 @@ describe( 'webpack.dev.test.ts', () => {
 	test( 'Chrome 71', async () => {
 		jest.resetModules();
 		process.env.BROWSERSLIST = 'chrome 71';
-		const config2 = await importFresh( './config/webpack.dev.js' );
+		const config2 = await importFresh<WebpackConfig>( './config/webpack.dev.js' );
 		expect( config2.target ).toEqual( 'browserslist:chrome 71' );
 		expect( config2 ).toMatchSnapshot( 'Chrome 71' );
 	} );
@@ -56,8 +57,8 @@ describe( 'webpack.dev.test.ts', () => {
 		mod = {
 			cssTsFiles: false,
 		};
-		const config = await importFresh( './config/webpack.dev.js' );
-		const loaders = [ ...config.module.rules ].pop()?.use;
+		const config = await importFresh<WebpackConfig>( './config/webpack.dev.js' );
+		const loaders = ( [ ...config.module?.rules ?? [] ].pop() as RuleSetRule ).use as RuleSetUseFunction;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
 		expect( loaders[ 1 ].loader ).toEqual( 'css-loader' );
 		expect( loaders[ 2 ].loader ).toEqual( 'postcss-loader' );
@@ -68,8 +69,8 @@ describe( 'webpack.dev.test.ts', () => {
 		mod = {
 			cssTsFiles: true,
 		};
-		const config = await importFresh( './config/webpack.dev.js' );
-		const loaders = [ ...config.module.rules ].pop()?.use;
+		const config = await importFresh<WebpackConfig>( './config/webpack.dev.js' );
+		const loaders = ( [ ...config.module?.rules ?? [] ].pop() as RuleSetRule ).use as RuleSetUseFunction;
 		expect( loaders[ 0 ] ).toEqual( 'style-loader' );
 		expect( loaders[ 1 ].loader ).toEqual( fileURLToPath( new URL( '../../../lib/css-module-types.js', import.meta.url ) ) );
 		expect( loaders[ 2 ].loader ).toEqual( 'css-loader' );
