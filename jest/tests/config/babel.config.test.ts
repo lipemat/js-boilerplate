@@ -7,14 +7,18 @@ import wpBrowsers from '@wordpress/browserslist-config';
 
 import babelPresetDefault, {type BabelConfig} from '../../../config/babel.config.js';
 import {importFresh} from '../../helpers/imports';
-import type {BabelFileResult} from '@babel/core';
+import type {BabelFileResult, TransformOptions} from '@babel/core';
+
+type Result = BabelFileResult & {
+	options: TransformOptions
+}
 
 
 async function translate( config: BabelConfig ) {
 	return ( await runThroughBabel( config, 'production', resolve( './jest/tests/core/transform.test.ts' ) ) )?.code;
 }
 
-async function runThroughBabel( config: BabelConfig, mode: 'production' | 'development' = 'production', filename: string ) {
+async function runThroughBabel( config: BabelConfig, mode: 'production' | 'development' = 'production', filename: string ): Promise<Result | null> {
 	const input = readFileSync( filename );
 	delete config.cacheDirectory;
 	jest.resetModules();
@@ -25,7 +29,7 @@ async function runThroughBabel( config: BabelConfig, mode: 'production' | 'devel
 		configFile: false,
 		envName: mode,
 		presets: [ config ],
-	} );
+	} ) as Result | null;
 }
 
 
@@ -34,11 +38,11 @@ describe( 'babel.config.test.ts', () => {
 		let config = await importFresh<BabelConfig>( './config/babel.config.js' );
 
 		const expectedBrowsers = [ ...wpBrowsers ];
-		expect( config.presets[ 0 ][ 1 ].targets.browsers ).toEqual( expectedBrowsers );
+		expect( config.presets?.[ 0 ][ 1 ].targets.browsers ).toEqual( expectedBrowsers );
 
 		jest.resetModules();
 		config = await importFresh( './config/babel.config.js' );
-		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
+		expect( config.presets?.[ 0 ][ 1 ].targets ).toEqual( {
 			browsers: expectedBrowsers,
 		} );
 
@@ -47,7 +51,7 @@ describe( 'babel.config.test.ts', () => {
 		process.env.BROWSERSLIST = 'chrome 68, firefox 60';
 		config = await importFresh( './config/babel.config.js' );
 		delete process.env.BROWSERSLIST;
-		expect( config.presets[ 0 ][ 1 ].targets ).toEqual( {
+		expect( config.presets?.[ 0 ][ 1 ].targets ).toEqual( {
 			browsers: [
 				'chrome 68',
 				'firefox 60',
@@ -91,28 +95,28 @@ describe( 'babel.config.test.ts', () => {
 
 		process.env.NODE_ENV = 'production';
 		const distConfig = await importFresh<BabelConfig>( './config/babel.config.js' );
-		const distResult: BabelFileResult = await runThroughBabel( distConfig, 'production', fileName ) as BabelFileResult;
+		const distResult = await runThroughBabel( distConfig, 'production', fileName ) as Result;
 
 		expect( distResult.code?.replace( rootDir, '' ) ).toMatchSnapshot();
-		expect( distResult.options.parserOpts.plugins ).toMatchSnapshot();
-		expect( distResult.options.parserOpts.plugins ).toContain( 'dynamicImport' );
+		expect( distResult.options.parserOpts?.plugins ).toMatchSnapshot();
+		expect( distResult.options.parserOpts?.plugins ).toContain( 'dynamicImport' );
 
 		process.env.NODE_ENV = 'development';
-		const developConfig = await importFresh( './config/babel.config.js' );
-		const devResult = await runThroughBabel( developConfig, 'development', fileName )
-		expect( devResult.code.replace( rootDir, '' ) ).toMatchSnapshot();
-		expect( devResult.options.parserOpts.plugins ).toMatchSnapshot();
+		const developConfig = await importFresh<BabelConfig>( './config/babel.config.js' );
+		const devResult = await runThroughBabel( developConfig, 'development', fileName ) as Result;
+		expect( devResult.code?.replace( rootDir, '' ) ).toMatchSnapshot();
+		expect( devResult.options.parserOpts?.plugins ).toMatchSnapshot();
 		//expect( devResult.options.parserOpts.plugins ).toContain( 'transformReactSource' );
-		expect( distResult.options.parserOpts.plugins ).toContain( 'dynamicImport' );
+		expect( distResult.options.parserOpts?.plugins ).toContain( 'dynamicImport' );
 
-		expect( distResult.options.parserOpts.plugins ).toStrictEqual( devResult.options.parserOpts.plugins );
+		expect( distResult.options.parserOpts?.plugins ).toStrictEqual( devResult.options.parserOpts?.plugins );
 		expect( distResult.code ).not.toBe( devResult.code );
 	} );
 
 
 	test( 'Build files', async () => {
-		const TS = await importFresh( './config/babel.config.ts' );
-		const JS = await importFresh( './config/babel.config.js' );
+		const TS = await importFresh<BabelConfig>( './config/babel.config.ts' );
+		const JS = await importFresh<BabelConfig>( './config/babel.config.js' );
 		expect( TS ).toStrictEqual( JS );
 	} );
 } );

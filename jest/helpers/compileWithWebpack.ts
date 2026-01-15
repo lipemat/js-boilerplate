@@ -1,11 +1,12 @@
 import {basename, extname, join, resolve} from 'path';
-import webpack, {type Compiler, type Configuration, type OutputFileSystem} from 'webpack';
+import webpack, {type Compiler, type OutputFileSystem} from 'webpack';
 import 'setimmediate';
 import {createFsFromVolume, type IFs, Volume} from 'memfs';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {importFresh} from './imports';
 import {jest} from '@jest/globals';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-config.js';
+import type {WebpackConfig} from '../../config/webpack.dist.ts';
 
 
 /**
@@ -61,9 +62,10 @@ function compile( compiler: Compiler, fixture: Fixture ): Promise<string> {
  *         load fresh each time.
  */
 export default async function compileWithWebpack( fixture: Fixture, config = {} ): Promise<string> {
-	const webpackConfig = await importFresh<Configuration>( './config/webpack.dist.js' );
+	const webpackConfig = await importFresh<WebpackConfig>( './config/webpack.dist.js' );
 	const cssLoader = await importFresh( './config/css-loader.config.js' );
-	const postcssConfig = getPostCSSConfig( process.env.NODE_ENV ?? 'test' );
+	const env = 'production' === process.env.NODE_ENV ? 'production' : 'development';
+	const postcssConfig = getPostCSSConfig( env );
 
 
 	const fullConfig = {...webpackConfig, ...config};

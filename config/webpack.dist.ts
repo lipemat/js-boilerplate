@@ -6,7 +6,7 @@ import {WebpackAssetsManifest} from 'webpack-assets-manifest';
 import {SubresourceIntegrityPlugin} from 'webpack-subresource-integrity';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import WebpackAssetsHash from '../helpers/WebpackAssetsHash.js';
-import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance} from 'webpack';
+import webpack, {type Configuration, type ModuleOptions, type RuleSetRule, type WebpackPluginInstance} from 'webpack';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-config.js';
 import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
@@ -14,6 +14,13 @@ import {getConfig, getTsConfigFile} from '../helpers/config.js';
 import {getEntries} from '../helpers/entries.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {fileURLToPath} from 'node:url';
+import type {AtLeast} from '@lipemat/js-boilerplate-shared/types/utility';
+
+export type WebpackConfig = AtLeast<Omit<Configuration, 'module'>, 'entry'|'output'|'plugins'> & {
+	module: Omit<ModuleOptions, 'rules'> & {
+		rules: [RuleSetRule, AtLeast<RuleSetRule, 'use'>, AtLeast<RuleSetRule, 'use'>];
+	}
+};
 
 const babelOptions = await getConfig( 'babel.config.js' );
 const cssLoaderOptions = await getConfig( 'css-loader.config.js' );

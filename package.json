@@ -40,7 +40,7 @@
     "build": "tsc --project ./bin",
     "prepublishOnly": "yarn run build",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config=jest/jest.config.ts",
-    "validate-ts": "tsc --noEmit --project ./bin",
+    "validate-ts": "tsc --noEmit",
     "watch": "tsc --project ./bin --watch"
   },
   "dependencies": {
