@@ -34,7 +34,7 @@ async function validate() {
 		if ( rule && 'object' === typeof rule && 'test' in rule && rule.test?.toString() === /\.pcss$/.toString() ) {
 			// @ts-expect-error
 			rule.use?.splice( 1, 0, {
-				loader: path.resolve( __dirname, '../lib/css-module-types.ts' ),
+				loader: path.resolve( __dirname, '../lib/css-module-types.js' ),
 			} )
 		}
 		return rule;
