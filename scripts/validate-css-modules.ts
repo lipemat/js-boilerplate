@@ -1,6 +1,9 @@
 import webpack from 'webpack';
 import {getConfig} from '../helpers/config.js';
 import path from 'path';
+import {fileURLToPath} from 'url';
+
+const __dirname = path.dirname( fileURLToPath( import.meta.url ) );
 
 const help = `
 Validate CSS modules using .d.ts definition files for each CSS module.
