@@ -56,6 +56,13 @@ const config: WebpackConfig = {
 		chunkFilename: '[name].js',
 	},
 	resolve: {
+		alias: {
+			/**
+			 * Support using `$src` to refer to the project's source directory.
+			 * Must include `("baseUrl": ".")` in the tsconfig.json file for the `paths` aliases to work.
+			 */
+			$src: path.resolve( getPackageConfig().workingDirectory, 'src' ),
+		},
 		extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json', '.pcss' ],
 		modules: [
 			path.resolve( getPackageConfig().workingDirectory, 'src' ),

@@ -19,6 +19,14 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "paths": {
+      "$src": [
+        "./js/src"
+      ],
+      "$src/*": [
+        "./js/src/*"
+      ]
+    },
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,

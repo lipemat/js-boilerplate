@@ -292,6 +292,9 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
     },
   ],
   "resolve": {
+    "alias": {
+      "$src": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+    },
     "extensions": [
       ".ts",
       ".tsx",
@@ -760,6 +763,9 @@ exports[`webpack.dist.test.ts Chrome 72, Firefox 65: Chrome 72, Firefox 65 1`] =
     },
   ],
   "resolve": {
+    "alias": {
+      "$src": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+    },
     "extensions": [
       ".ts",
       ".tsx",
@@ -1108,6 +1114,9 @@ exports[`webpack.dist.test.ts cssTsFiles Disabled: cssTsFiles No types 1`] = `
     },
   ],
   "resolve": {
+    "alias": {
+      "$src": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+    },
     "extensions": [
       ".ts",
       ".tsx",
@@ -1459,6 +1468,9 @@ exports[`webpack.dist.test.ts cssTsFiles Enabled: cssTsFiles With Types 1`] = `
     },
   ],
   "resolve": {
+    "alias": {
+      "$src": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+    },
     "extensions": [
       ".ts",
       ".tsx",

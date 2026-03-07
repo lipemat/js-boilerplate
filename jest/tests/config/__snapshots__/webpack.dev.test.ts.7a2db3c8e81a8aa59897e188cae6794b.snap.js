@@ -248,6 +248,9 @@ exports[`webpack.dev.test.ts Browserslist config: Default Browsers 1`] = `
     },
   ],
   "resolve": {
+    "alias": {
+      "$src": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+    },
     "extensions": [
       ".ts",
       ".tsx",
@@ -619,6 +622,9 @@ exports[`webpack.dev.test.ts Chrome 71: Chrome 71 1`] = `
     },
   ],
   "resolve": {
+    "alias": {
+      "$src": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+    },
     "extensions": [
       ".ts",
       ".tsx",
@@ -888,6 +894,9 @@ exports[`webpack.dev.test.ts cssTsFiles Enabled: cssTsFiles 1`] = `
     },
   ],
   "resolve": {
+    "alias": {
+      "$src": "E:\\SVN\\the-boilerplate\\packages\\js-boilerplate\\src",
+    },
     "extensions": [
       ".ts",
       ".tsx",
