@@ -3651,7 +3651,7 @@ __metadata:
     "@types/react": "npm:^18.2.64"
     "@wordpress/browserslist-config": "npm:^6.19.0"
     babel-jest: "npm:^30.2.0"
-    babel-loader: "npm:^10.0.0"
+    babel-loader: "npm:~10.0.0"
     browserslist: "npm:^4.28.1"
     chalk: "npm:^4.0"
     chokidar: "npm:^3.5.3"
@@ -6009,7 +6009,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-loader@npm:^10.0.0":
+"babel-loader@npm:^10.0.0, babel-loader@npm:~10.0.0":
   version: 10.0.0
   resolution: "babel-loader@npm:10.0.0"
   dependencies:
