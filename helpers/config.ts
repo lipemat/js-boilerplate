@@ -7,8 +7,7 @@ import type {JestConfig} from '../config/jest.config.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {EntriesConfig} from '../config/entries.config.js';
 import type {CssLoaderConfig} from '../config/css-loader.config.js';
-import {createRequire} from 'node:module';
-import {ensureJSExtension, getExtensionsConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
+import {ensureJSExtension, getExtensionsConfig, mergeWithLocalConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 
 type Configs = {
 	'babel.config.js': BabelConfig;
@@ -86,27 +85,9 @@ export async function getConfig<T extends keyof Configs>( fileName: T ): Promise
 	const config = configModule.default;
 
 	const extensionsConfig = getExtensionsConfig<Configs[T]>( fileName, config );
-	let mergedConfig: Configs[T] = {...config, ...extensionsConfig};
+	const mergedConfig: Configs[T] = {...config, ...extensionsConfig};
 
-	try {
-		let localConfig = createRequire( import.meta.url )( resolve( packageDirectory, 'config', fileName.replace( /\.js$/, '' ) ) );
-		if ( 'default' in localConfig ) {
-			localConfig = localConfig.default;
-		}
-
-		if ( 'function' === typeof localConfig ) {
-			mergedConfig = {...mergedConfig, ...localConfig( mergedConfig )};
-		} else {
-			mergedConfig = {...mergedConfig, ...localConfig};
-		}
-	} catch ( e ) {
-		if ( e instanceof Error ) {
-			if ( ! ( 'code' in e ) || ( 'MODULE_NOT_FOUND' !== e.code && 'ERR_MODULE_NOT_FOUND' !== e.code ) ) {
-				console.error( e );
-			}
-		}
-	}
-	return mergedConfig;
+	return mergeWithLocalConfig<Configs[T]>( fileName, mergedConfig );
 }
 
 
