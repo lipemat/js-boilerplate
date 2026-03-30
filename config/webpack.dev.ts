@@ -1,4 +1,4 @@
-import webpack, {type Configuration as WebpackConfig, type WebpackPluginInstance} from 'webpack';
+import webpack, {type WebpackPluginInstance} from 'webpack';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -11,6 +11,7 @@ import {fileURLToPath} from 'node:url';
 import {getPostCSSConfig} from '@lipemat/js-boilerplate-shared/helpers/postcss-config.js';
 
 import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
+import type {WebpackConfig} from './webpack.dist.ts';
 
 const postcssOptions = getPostCSSConfig( 'development' );
 const babelOptions: BabelConfig = await getConfig( 'babel.config.js' );
