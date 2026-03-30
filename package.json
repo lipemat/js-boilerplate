@@ -1,6 +1,6 @@
 {
   "name": "@lipemat/js-boilerplate",
-  "version": "11.0.0-beta.4",
+  "version": "11.0.0",
   "description": "Dependencies and scripts for a no config JavaScript app",
   "author": "Mat Lipe",
   "license": "MIT",
@@ -48,7 +48,7 @@
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@lipemat/js-boilerplate-shared": ">=0.2.1",
+    "@lipemat/js-boilerplate-shared": "^1.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
     "@statoscope/webpack-plugin": "^5.29.0",
     "@types/babel__preset-env": "^7.9.6",
@@ -96,8 +96,7 @@
     "setimmediate": "^1.0.5"
   },
   "resolutions": {
-    "type-fest": "^4.41.0",
-    "@lipemat/js-boilerplate-shared": "portal:/E:/SVN/the-boilerplate/packages/js-boilerplate-shared"
+    "type-fest": "^4.41.0"
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.13.0"
 }
