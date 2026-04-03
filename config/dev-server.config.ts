@@ -18,7 +18,6 @@ if ( 'object' === typeof ( packageConfig.certificates ) ) {
 	};
 }
 
-
 const config: Configuration = {
 	allowedHosts: 'all',
 	client: {
@@ -26,6 +25,11 @@ const config: Configuration = {
 		overlay: {
 			errors: true,
 			warnings: false,
+		},
+		webSocketURL: {
+			hostname: url.hostname,
+			port: 3000,
+			protocol: 'wss',
 		},
 	},
 	headers: {
