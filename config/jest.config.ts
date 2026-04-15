@@ -17,8 +17,6 @@ const jestConfig: Config = {
 	},
 	moduleNameMapper: {
 		'\\.(pcss|less|css)$': 'identity-obj-proxy',
-		'is-plain-obj': 'identity-obj-proxy',
-		uuid: 'identity-obj-proxy',
 		// Support using `$src` to refer to the project's source directory.
 		'^\\$src/(.*)$': '<rootDir>/../src/$1',
 	},
