@@ -98,5 +98,5 @@
   "resolutions": {
     "type-fest": "^4.41.0"
   },
-  "packageManager": "yarn@4.13.0"
+  "packageManager": "yarn@4.15.0"
 }
