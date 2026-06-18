@@ -48,7 +48,7 @@
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@lipemat/js-boilerplate-shared": "^1.0.0",
+    "@lipemat/js-boilerplate-shared": "^1.0.3",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
     "@statoscope/webpack-plugin": "^5.29.0",
     "@types/babel__preset-env": "^7.9.6",
@@ -97,5 +97,5 @@
   "resolutions": {
     "type-fest": "^4.41.0"
   },
-  "packageManager": "yarn@4.15.0"
+  "packageManager": "yarn@4.17.0"
 }
