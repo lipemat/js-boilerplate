@@ -31,7 +31,7 @@ const jestConfig: Config = {
 		'^.+\\.[tj]sx?$': [ 'babel-jest', babelConfig ],
 	},
 	transformIgnorePatterns: [
-		'node_modules/(?!@lipemat)',
+		'node_modules/(?!@lipemat|uuid)',
 	],
 	setupFilesAfterEnv: [
 		resolve( workingDirectory, 'jest/setup.ts' ),
