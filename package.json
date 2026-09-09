@@ -95,7 +95,8 @@
     "setimmediate": "^1.0.5"
   },
   "resolutions": {
-    "type-fest": "^4.41.0"
+    "type-fest": "^4.41.0",
+    "qs": "^6.16.0"
   },
   "packageManager": "yarn@4.17.0"
 }

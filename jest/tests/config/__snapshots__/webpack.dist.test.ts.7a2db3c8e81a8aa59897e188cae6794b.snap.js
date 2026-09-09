@@ -102,10 +102,6 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                   {
                     "plugins": [
                       {
-                        "postcssPlugin": "postcss-normalize-display-values",
-                        "prepare": [Function],
-                      },
-                      {
                         "AtRule": [Function],
                         "postcssPlugin": "postcss-font-format-keywords",
                       },
@@ -906,10 +902,6 @@ exports[`webpack.dist.test.ts cssTsFiles Disabled: cssTsFiles No types 1`] = `
                   {
                     "plugins": [
                       {
-                        "postcssPlugin": "postcss-normalize-display-values",
-                        "prepare": [Function],
-                      },
-                      {
                         "AtRule": [Function],
                         "postcssPlugin": "postcss-font-format-keywords",
                       },
@@ -1259,10 +1251,6 @@ exports[`webpack.dist.test.ts cssTsFiles Enabled: cssTsFiles With Types 1`] = `
                   [Function],
                   {
                     "plugins": [
-                      {
-                        "postcssPlugin": "postcss-normalize-display-values",
-                        "prepare": [Function],
-                      },
                       {
                         "AtRule": [Function],
                         "postcssPlugin": "postcss-font-format-keywords",

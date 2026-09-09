@@ -339,10 +339,6 @@ describe('Tests can run with modern syntax.', () => {
 exports[`babel.config.test.ts Transforming works properly: Default browsers 1`] = `
 ""use strict";
 
-require("core-js/modules/web.url.can-parse.js");
-require("core-js/modules/web.url-search-params.delete.js");
-require("core-js/modules/web.url-search-params.has.js");
-require("core-js/modules/web.url-search-params.size.js");
 describe('Tests can run with modern syntax.', () => {
   async function* foo() {
     await 1;
