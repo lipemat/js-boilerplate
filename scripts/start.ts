@@ -3,10 +3,10 @@ process.env.NODE_ENV = 'development';
 
 import webpack from 'webpack';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
-import {unlinkSync, writeFile} from 'fs';
 import WebpackDevServer from 'webpack-dev-server';
 import {getConfig} from '../helpers/config.js';
 import {getDevServerPort} from '../helpers/dev-server-port.js';
+import {createRunningFlag} from '../lib/running-flag.js';
 import path from 'path';
 
 process.env.LIPEMAT_DEV_SERVER_PORT = String( await getDevServerPort() );
@@ -24,19 +24,11 @@ const server = new WebpackDevServer( devServerConfig, compiler );
  * Create a `.running` file within the `dist` which only
  * exists if this script is running.
  */
-const runningFile = path.resolve( getPackageConfig().workingDirectory, 'dist/.running' );
-writeFile( runningFile, JSON.stringify( {
+createRunningFlag( path.resolve( getPackageConfig().workingDirectory, 'dist/.running' ), JSON.stringify( {
 	pid: process.pid,
 	port: Number( process.env.LIPEMAT_DEV_SERVER_PORT ),
 	started: new Date().toISOString(),
-} ), err => {
-	if ( err ) {
-		throw err;
-	}
-	process.on( 'exit', () => {
-		unlinkSync( runningFile );
-	} );
-} );
+} ) );
 
 ( async() => {
 	try {
