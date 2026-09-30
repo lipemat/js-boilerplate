@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^30.2.0",
-    "@lipemat/eslint-config": "^5.2.1",
+    "@lipemat/eslint-config": "^5.6.0",
     "@types/jest": "^30.0.0",
     "@types/minimist": "^1",
     "@types/react": "^18.2.64",
