@@ -6,7 +6,7 @@ import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-c
 import WebpackDevServer from 'webpack-dev-server';
 import {getConfig} from '../helpers/config.js';
 import {getDevServerPort} from '../helpers/dev-server-port.js';
-import {createRunningFlag} from '../lib/running-flag.js';
+import {createRunningFlag} from '@lipemat/js-boilerplate-shared/helpers/running-flag.js';
 import path from 'path';
 
 process.env.LIPEMAT_DEV_SERVER_PORT = String( await getDevServerPort() );
