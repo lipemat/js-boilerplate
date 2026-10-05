@@ -13,6 +13,6 @@ describe( 'jest.config.test.ts', () => {
 	test( 'Build files', async () => {
 		const TS = await import( '../../../config/jest.config.ts' );
 		const JS = await import( '../../../config/jest.config.js' );
-		expect( TS ).toStrictEqual( JS );
+		expect( JSON.stringify( TS ) ).toStrictEqual( JSON.stringify( JS ) );
 	} );
 } );

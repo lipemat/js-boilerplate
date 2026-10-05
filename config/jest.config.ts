@@ -10,6 +10,26 @@ const {workingDirectory, url} = getPackageConfig();
 const babelConfig = await getConfig( 'babel.config.js' );
 delete babelConfig.cacheDirectory;
 
+/**
+ * Enhances the provided Jest configuration to support React testing.
+ *
+ * For external package which use both React and Svelte, this function can be used to add React support to the existing Jest configuration.
+ *
+ * @example ```ts
+ * const adjustedConfig: Config = supportSvelteTests( config );
+ * supportReactTests( adjustedConfig );
+ * ```
+ *
+ * @since 11.4.0
+ */
+export function supportReactTests( config: Config ): Config {
+	if ( undefined === config.transform ) {
+		config.transform = {};
+	}
+	config.transform[ '^.+\\.[tj]sx$' ] = [ 'babel-jest', babelConfig ];
+	return config;
+}
+
 
 const jestConfig: Config = {
 	globals: {
