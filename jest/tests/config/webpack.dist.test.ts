@@ -11,7 +11,7 @@ let mod: Partial<PackageConfig> = {};
 
 const originalModule = await import( '@lipemat/js-boilerplate-shared/helpers/package-config.js' );
 
-jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => {
+function mockPackageConfig(): typeof originalModule {
 	return {
 		...originalModule,
 		getPackageConfig: () => {
@@ -21,7 +21,10 @@ jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/package-config
 			};
 		},
 	};
-} );
+}
+
+jest.unstable_mockModule( '@lipemat/js-boilerplate-shared/helpers/package-config.js', mockPackageConfig );
+jest.doMock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', mockPackageConfig );
 
 describe( 'webpack.dist.test.ts', () => {
 	beforeEach( () => {
