@@ -74,15 +74,14 @@ export = ${moduleName};
  */
 function writeTypingsFile( fileName: string, content: string ): void {
 	if ( ! existsSync( fileName ) ) {
-		writeTypingsFile.fileWriter( fileName, content );
+		writeFileSync( fileName, content );
 	} else {
 		const existingContent = readFileSync( fileName, 'utf8' );
 		if ( existingContent !== content ) {
-			writeTypingsFile.fileWriter( fileName, content );
+			writeFileSync( fileName, content );
 		}
 	}
 }
-writeTypingsFile.fileWriter = writeFileSync;
 
 
 /**
@@ -102,14 +101,4 @@ function getCssModuleKeys( content: string ): string[] {
 		}
 	}
 	return cssModuleKeys;
-}
-
-
-/**
- * Modifier file writer used by the writeTypingsFile function.
- *
- * Here for unit test overrides of `writeFileSync`.
- */
-export function modifyFileWriter( fn: typeof writeTypingsFile.fileWriter ): void {
-	writeTypingsFile.fileWriter = fn
 }

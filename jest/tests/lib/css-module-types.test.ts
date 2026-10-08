@@ -1,39 +1,47 @@
 import {sync} from 'glob';
+import fs from 'fs';
+import {syncBuiltinESMExports} from 'node:module';
 import {basename, join, resolve} from 'path';
 import {type LoaderContext} from 'webpack';
-// @ts-ignore
-import createCssModuleTypings, {modifyFileWriter} from '../../../lib/css-module-types.js';
-import compileWithWebpack from '../../helpers/compileWithWebpack';
 import {jest} from '@jest/globals';
-import {readFileSync, writeFileSync as restoreSync} from 'fs';
 
 
-const writeFileSyncMock = jest.fn();
+const writeFileSyncMock = jest.spyOn( fs, 'writeFileSync' ).mockImplementation( () => {} );
 
-const mockAsyncFunction = jest.fn().mockReturnValue( () => {
-} );
+// Webpack imports loaders outside Jest's ESM module registry.
+syncBuiltinESMExports();
+jest.unstable_mockModule( 'fs', () => ( {
+	...fs,
+	default: fs,
+	writeFileSync: writeFileSyncMock,
+} ) );
 
-// @ts-expect-error TS2345: Argument of type 'Record<string, never>' is not assignable to a parameter of type 'LoaderContext<{}>'.
-const mockLoaderContext: LoaderContext<Record<string, never>> = {
-	callback: jest.fn().mockReturnValue( () => {
-	} ),
-	async: () => mockAsyncFunction,
+const {default: createCssModuleTypings} = await import( '../../../lib/css-module-types.js' );
+const {default: compileWithWebpack} = await import( '../../helpers/compileWithWebpack' );
+
+type CssLoaderContext = LoaderContext<Record<string, never>>;
+const mockAsyncFunction = jest.fn<CssLoaderContext['callback']>();
+const mockLoaderContext: Pick<CssLoaderContext, 'async' | 'callback' | 'emitError' | 'resourcePath'> = {
+	callback: jest.fn<CssLoaderContext['callback']>(),
+	async: jest.fn<CssLoaderContext['async']>().mockReturnValue( mockAsyncFunction ),
 	emitError: jest.fn(),
+	resourcePath: '',
 };
 
 describe( 'Format CSS Module Typings', () => {
-	beforeEach( () => {
-		modifyFileWriter( writeFileSyncMock );
+	afterEach( () => {
+		jest.clearAllMocks();
 	} );
 
-	afterEach( () => {
-		modifyFileWriter( restoreSync );
-		jest.clearAllMocks();
+	afterAll( () => {
+		writeFileSyncMock.mockRestore();
+		syncBuiltinESMExports();
+		jest.unstable_unmockModule( 'fs' );
 	} );
 
 	test( 'Empty files are not generated', async () => {
 		const pcssFile = join( 'jest/fixtures/postcss-modules/default.pcss' );
-		const postCSSContent = readFileSync( pcssFile, 'utf8' );
+		const postCSSContent = fs.readFileSync( pcssFile, 'utf8' );
 
 		await compileWithWebpack( {
 			basename: basename( pcssFile ),
@@ -59,8 +67,8 @@ describe( 'Format CSS Module Typings', () => {
 			cleanFile,
 		};
 	} ) )( '$description', async ( {pcssFile, cleanFile} ) => {
-		const expectedContent = readFileSync( cleanFile, 'utf8' );
-		const postCSSContent = readFileSync( pcssFile, 'utf8' );
+		const expectedContent = fs.readFileSync( cleanFile, 'utf8' );
+		const postCSSContent = fs.readFileSync( pcssFile, 'utf8' );
 
 		await compileWithWebpack( {
 			basename: basename( pcssFile ),
