@@ -23,7 +23,7 @@ exports[`webpack.dist.test.ts Browserslist config: Default Browsers 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.49.0",
+                  "version": "3.50.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -351,7 +351,7 @@ exports[`webpack.dist.test.ts Chrome 72, Firefox 65: Chrome 72, Firefox 65 1`] =
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.49.0",
+                  "version": "3.50.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -822,7 +822,7 @@ exports[`webpack.dist.test.ts cssTsFiles Disabled: cssTsFiles No types 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.49.0",
+                  "version": "3.50.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
@@ -1169,7 +1169,7 @@ exports[`webpack.dist.test.ts cssTsFiles Enabled: cssTsFiles With Types 1`] = `
                 "bugfixes": true,
                 "corejs": {
                   "proposals": false,
-                  "version": "3.49.0",
+                  "version": "3.50.0",
                 },
                 "debug": false,
                 "ignoreBrowserslistConfig": true,
