@@ -2594,9 +2594,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lipemat/js-boilerplate-shared@npm:^1.1.1, @lipemat/js-boilerplate-shared@npm:^1.2.0":
-  version: 1.2.2
-  resolution: "@lipemat/js-boilerplate-shared@npm:1.2.2"
+"@lipemat/js-boilerplate-shared@portal:/E:/SVN/the-boilerplate/packages/js-boilerplate-shared::locator=%40lipemat%2Fjs-boilerplate%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@lipemat/js-boilerplate-shared@portal:/E:/SVN/the-boilerplate/packages/js-boilerplate-shared::locator=%40lipemat%2Fjs-boilerplate%40workspace%3A."
   dependencies:
     "@babel/preset-env": "npm:^7.28.5"
     "@babel/preset-typescript": "npm:^7.28.5"
@@ -2625,9 +2625,8 @@ __metadata:
     typescript: ^6.0.3
   bin:
     js-boilerplate-shared__fix-pnp: bin/fix-pnp.js
-  checksum: 10c0/236d7534a47e8915faf2d7e5d6e430a52848f6d555405f9d77a373dcef4b27b765234c181c1457fc465421e8b4a84ae5586741a3800debd2acf317330016f9fb
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "@lipemat/js-boilerplate@workspace:.":
   version: 0.0.0-use.local
