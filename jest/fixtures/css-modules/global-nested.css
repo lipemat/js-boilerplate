@@ -1,0 +1,35 @@
+.Ⓜglobal-nested__form__X2 h3.title {
+	color: red;
+}
+
+.Ⓜglobal-nested__form__X2 .b .d, .Ⓜglobal-nested__form__X2 .c .d {
+	color: blue;
+}
+
+.Ⓜglobal-nested__form__X2:hover .e {
+	color: green;
+}
+
+.top {
+	color: black;
+}
+
+.Ⓜglobal-nested__x__FD .y {
+	color: pink;
+}
+
+.Ⓜglobal-nested__z__MA .w {
+	color: gray;
+}
+
+@media (any-hover: hover) {
+	.Ⓜglobal-nested__m__UE:hover .f {
+		color: purple;
+	}
+	.Ⓜglobal-nested__m__UE .g {
+		color: orange;
+	}
+	.h:hover {
+		color: teal;
+	}
+}
