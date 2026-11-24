@@ -10,7 +10,7 @@
     "jest/**/*",
     "scripts/**/*",
     "src/**/*",
-    "types/**/*"
+    "types"
   ],
   "compilerOptions": {
     "strict": false,

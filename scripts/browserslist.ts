@@ -12,7 +12,7 @@ const help = `
 	--help, -h       Show help menu.`;
 
 const args = process.argv.slice( 2 );
-if ( args[ 0 ] && ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) ) {
+if ( undefined !== args[ 0 ] && ( '-h' === args[ 0 ] || '--help' === args[ 0 ] ) ) {
 	console.debug( help );
 	process.exit( 0 );
 }

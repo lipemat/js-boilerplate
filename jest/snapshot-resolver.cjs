@@ -1,5 +1,5 @@
-const {basename, dirname} = require('path');
-const crypto = require('crypto');
+const {basename, dirname} = require( 'path' );
+const crypto = require( 'crypto' );
 
 /**
  * Custom module resolver for Jest snapshots.
@@ -68,7 +68,7 @@ function resolveTestPath( snapshotFilePath, snapshotExtension ) {
 
 	const fileWithoutHash = basename( newPath )
 		.replace( '.' + hash, '' )
-		.slice( 0, -snapshotExtension.length - 3 )
+		.slice( 0, -snapshotExtension.length - 3 );
 
 	if ( filesWithPaths.includes( fileWithoutHash ) ) {
 		newPath = newPath
@@ -92,4 +92,4 @@ module.exports = {
 	resolveSnapshotPath,
 	resolveTestPath,
 	testPathForConsistencyCheck,
-}
+};

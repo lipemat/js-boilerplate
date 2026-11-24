@@ -31,11 +31,11 @@ async function validate() {
 
 	// Add CSS module typings generation to webpack config.
 	webpackConfig.module?.rules?.map( rule => {
-		if ( rule && 'object' === typeof rule && 'test' in rule && rule.test?.toString() === /\.pcss$/.toString() ) {
+		if ( null !== rule && 'object' === typeof rule && 'test' in rule && rule.test?.toString() === /\.pcss$/.toString() ) {
 			// @ts-expect-error
 			rule.use?.splice( 1, 0, {
 				loader: path.resolve( __dirname, '../lib/css-module-types.js' ),
-			} )
+			} );
 		}
 		return rule;
 	} );
